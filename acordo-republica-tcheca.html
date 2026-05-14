@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acordo Brasil-República Tcheca • Previdência Social</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+        :root {
+            --navy: #0A1326;
+            --electric: #0066FF;
+            --bright: #3DA5FF;
+            --cream: #FFFFFF;
+            --muted: #C0C6CE;
+            --border: rgba(0, 102, 255, 0.25);
+            --success: #1BA947;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Serif 4', Georgia, serif; background: var(--navy); color: var(--cream); }
+        .header { background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, transparent 70%); border-bottom: 1px solid var(--border); padding: 32px 24px; }
+        .header-content { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 12px; color: var(--muted); text-transform: uppercase; }
+        .breadcrumb a { color: var(--bright); text-decoration: none; }
+        .title-section { display: flex; align-items: center; gap: 20px; margin-bottom: 16px; }
+        .flag { width: 80px; height: 60px; border-radius: 4px; object-fit: contain; }
+        .title-info h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 700; color: var(--bright); margin-bottom: 4px; }
+        .key-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px; }
+        .info-card { background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, transparent 70%); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; }
+        .info-label { color: var(--bright); font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+        .info-value { color: var(--cream); font-size: 13px; }
+        main { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+        .contact-section { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+        .contact-box { background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
+        .contact-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid rgba(0, 102, 255, 0.2); }
+        .contact-header img { width: 40px; height: 30px; }
+        .contact-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3em; font-weight: 600; }
+        .contact-item { border-bottom: 1px solid rgba(0, 102, 255, 0.1); padding-bottom: 12px; margin-bottom: 12px; }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-label { color: var(--bright); font-weight: 600; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+        .contact-value { color: var(--cream); font-size: 14px; line-height: 1.5; }
+        .contact-value a { color: var(--bright); text-decoration: none; }
+        .tabs-nav { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 32px; gap: 2px; flex-wrap: wrap; }
+        .tab-btn { background: transparent; border: none; color: var(--muted); padding: 16px 20px; font-size: 13px; font-weight: 600; text-transform: uppercase; cursor: pointer; border-bottom: 3px solid transparent; font-family: 'Source Serif 4', Georgia, serif; }
+        .tab-btn:hover { color: var(--bright); }
+        .tab-btn.active { color: var(--bright); border-bottom-color: var(--electric); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 700; color: var(--bright); margin-bottom: 24px; }
+        .benefits-list { display: grid; gap: 12px; }
+        .benefit-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: rgba(0, 102, 255, 0.08); border: 1px solid var(--border); border-radius: 6px; }
+        .benefit-check { color: var(--success); font-weight: 700; flex-shrink: 0; }
+        .benefit-name { color: var(--cream); }
+        .document-text { background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px; max-height: 800px; overflow-y: auto; color: var(--cream); font-size: 12px; line-height: 1.7; white-space: pre-wrap; word-wrap: break-word; font-family: monospace; }
+        .docs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .docs-table thead { background: rgba(0, 102, 255, 0.08); }
+        .docs-table th { padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 600; color: var(--bright); text-transform: uppercase; }
+        .docs-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 13px; }
+        .doc-name { color: var(--cream); font-weight: 500; }
+        .doc-desc { color: var(--muted); font-size: 12px; margin-top: 3px; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; text-transform: uppercase; }
+        .badge.principal { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .badge.complementar { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .btn-download { display: inline-block; background: var(--electric); color: var(--navy); padding: 5px 12px; border-radius: 3px; font-size: 11px; font-weight: 600; text-decoration: none; text-transform: uppercase; }
+        .btn-download:hover { background: var(--bright); }
+        footer { background: rgba(0, 0, 0, 0.3); border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--muted); font-size: 13px; }
+        @media (max-width: 768px) {
+            .title-info h1 { font-size: 28px; }
+            .contact-section { grid-template-columns: 1fr; }
+            .tabs-nav { flex-direction: column; }
+            .tab-btn { padding: 12px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="breadcrumb">
+                <a href="index.html">← Voltar</a> / Acordos Internacionais / República Tcheca
+            </div>
+            <div class="title-section">
+                <img src="https://flagcdn.com/w80/cz.png" alt="República Tcheca" class="flag">
+                <div class="title-info">
+                    <h1>Acordo Brasil-República Tcheca</h1>
+                    <p style="font-size: 12px; color: var(--muted); text-transform: uppercase;">Acordo Bilateral sobre Previdência Social</p>
+                </div>
+            </div>
+            <div class="key-info">
+                <div class="info-card">
+                    <div class="info-label">📋 Tipo</div>
+                    <div class="info-value">Acordo Bilateral + Ajuste Administrativo</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">📅 Decreto</div>
+                    <div class="info-value">Decreto nº 10.615/2021</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">✅ Em Vigor</div>
+                    <div class="info-value">09 de dezembro de 2020</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">📄 Artigos</div>
+                    <div class="info-value">28 (Acordo) + 16 (Ajuste)</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="contact-section">
+            <div class="contact-box">
+                <div class="contact-header">
+                    <img src="https://flagcdn.com/w40/br.png" alt="Brasil">
+                    <div class="contact-title">APSAI (Brasil)</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">🏢 Instituição</div>
+                    <div class="contact-value">Agência da Previdência Social de Atendimento Acordos Internacionais - Rio de Janeiro (RJ)</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">📍 Endereço</div>
+                    <div class="contact-value">Rua Pedro Lessa nº 36, 5º andar, sala 519, Centro, Rio de Janeiro (RJ), CEP 20.030-030</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">📞 Telefone</div>
+                    <div class="contact-value">(21) 2272-3438 / 2272-3515</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">✉️ E-mail</div>
+                    <div class="contact-value"><a href="mailto:apsai17001220@inss.gov.br">apsai17001220@inss.gov.br</a></div>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <div class="contact-header">
+                    <img src="https://flagcdn.com/w40/cz.png" alt="República Tcheca">
+                    <div class="contact-title">Órgão de Ligação (República Tcheca)</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">🏢 Instituição</div>
+                    <div class="contact-value">Czech Social Security Administration (ČSSZ/CSSA)</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">📍 Endereço</div>
+                    <div class="contact-value">Křížová 25, 225 08 Praha 5, República Tcheca</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">✉️ E-mail</div>
+                    <div class="contact-value"><a href="mailto:posta@cssz.cz">posta@cssz.cz</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="abrirAba(event, 'beneficios-tcheca')">Benefícios — Rep. Tcheca</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'beneficios-brasil')">Benefícios — Brasil</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'acordo')">Acordo (28 Artigos)</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'documentos')">Documentos (7)</button>
+        </div>
+
+        <div id="beneficios-tcheca" class="tab-content active">
+            <h2 class="section-title">Benefícios Cobertos — República Tcheca</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Aposentadoria por Idade</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Pensão por Morte</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Incapacidade Permanente</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="beneficios-brasil" class="tab-content">
+            <h2 class="section-title">Benefícios Cobertos — Brasil</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Aposentadoria por idade</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Aposentadoria por invalidez</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Pensão por morte</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Incapacidade permanente para o trabalho</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Regime Geral de Previdência Social (RGPS)</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Regimes Próprios de Previdência Social (RPPS)</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="acordo" class="tab-content">
+            <h2 class="section-title">Acordo de Previdência Social (28 Artigos)</h2>
+            <div class="document-text">ACORDO ENTRE A REPUBLICA FEDERATIVA DO BRASIL
+E A REPUBLICA TCHECA SOBRE A PREVIDENCIA SOCIAL
+
+A Republica Federativa do Brasil
+a Republica Tcheca,
+doravante denominados "Os Estados Contratantes",
+
+Desejosos por reforcar a amizade e de regular as relagdes entre os dois Estados
+em mateéria de previdéncia social,
+
+Acordam o seguinte:
+
+Parte I
+Disposicées Gerais
+
+Artigo 1 - Definigdes
+Para os fins do presente Acordo, os seguintes termos significam:
+a) "legislacdo" - as leis e outros regulamentos nacionais especificados no Artigo 2;
+b) "autoridade competente":
+   i. Para a Republica Tcheca: Ministério do Trabalho e Assuntos Sociais;
+   ii. Para a Republica Federativa do Brasil: 0 Ministério da Economia;
+c) "instituigao competente" — a agéncia, a instituicdo ou o orgdo responsavel pela aplicacdo da legislacdo prevista no Artigo 2;
+d) "organismo de ligac30" — o Orgdo designado para simplificar a comunicacao e prestar assisténcia na implementacdo do acordo;
+e) "beneficio" — beneficios pecunidrios, incluindo quaisquer suplementos ou reajustes, determinados pelas legislagdes especificadas no Artigo 2;
+f) "residéncia" - residéncia habitual legalmente estabelecida;
+g) "estadia" - residéncia temporaria;
+h) "periodos de seguro" - os periodos de contribuicgéo, bem como periodos reconhecidos como equivalentes, cumpridos ao abrigo da legislagdo de cada Estado Contratante.
+i) "nacional" — uma pessoa definida conforme a Constituicao e as leis de cada Estado Contratante.
+
+Artigo 2 - Ambito Material
+Para os fins deste Acordo, deve ser aplicada:
+a) para a Republica Tcheca: a legislagdo sobre os beneficios de seguro de pensao em relacao a velhice, invalidez e de sobrevivéncia, e a legislacdo relacionada; e
+b) para a Republica Federativa do Brasil:
+   i. a legislagdo sobre o Regime Geral de Previdéncia Social, no que se refere a aposentadoria por idade, aposentadoria por invalidez e pensao por morte.
+   ii. a legislag¢do sobre os Regimes Prdprios de Previdéncia Social dos Servidores Publicos, no que se refere a aposentadoria por idade, aposentadoria por invalidez e pensdo por morte.
+
+Artigo 3 - Ambito de aplicagao pessoal
+Este Acordo aplica-se a todas as pessoas que esto ou estiveram sujeitas a legislagdo de um ou de ambos os Estados Contratantes, bem como a outras pessoas que obtém os seus direitos dessas pessoas.
+
+Artigo 4 - igualdade de tratamento
+Salvo disposi¢do em contrario no presente Acordo, as pessoas referidas no Artigo 3 terao os mesmos direitos e obrigacdes dispensados aos nacionais, nos termos da legislacdo de cada Estado Contratante.
+
+Artigo 5 - Exportagao de beneficios
+Salvo disposigdo em contrario no presente Acordo, o direito aos beneficios e seus pagamentos, de acordo com a legislacdo de um Estado Contratante, seja concedido por periodos independentes ou por totalizagdo desses periodos, ndo podem ser reduzidos, alterados, suspensos, ou confiscados pelo fato do beneficidrio residir no territério do outro Estado Contratante.
+
+Artigo 6 - Equivaléncia de eventos
+Eventos que tenham efeitos juridicos de acordo com a legislagdo de um Estado Contratante que ocorram no territério do outro Estado Contratante, serado levados em consideragdo como se tivessem ocorrido no territério do primeiro Estado Contratante.
+
+PARTE II
+LEGISLAGAO APLICAVEL
+
+Artigo 7 - Regra Geral
+Salvo disposi¢éo em contrario no presente Acordo, a pessoa que exerca uma atividade como empregada ou por conta prépria no territorio de um dos Estados Contratantes, no que diz respeito a essa atividade, estard sujeita apenas a legislagdo do Estado Contratante no qual desempenha a atividade.
+
+Artigo 8 - Trabalhadores Deslocados
+Uma pessoa normalmente empregada no territério de um Estado Contratante e que é deslocada por seu empregador para o territdrio do outro Estado Contratante para executar determinados trabalhos para aquele empregador deve continuar sujeita a legislacdo do primeiro Estado Contratante até o final de 36 (trinta e seis) meses do deslocamento, como se a pessoa estivesse empregada nesse territério.
+
+Artigo 9 - Membros da Tripulagéo de Companhia Aérea
+Salvo disposi¢do em contrario no pardgrafo 2, o membro de tripulagdo de companhia aérea que trabalha nos territérios de ambos os Estados Contratantes esta sujeito somente a legislagdo do Estado Contratante em cujo territério a empresa tenha a sua sede.
+
+Artigo 10 - Membros da Tripulacgdo a Bordo de Navios
+A pessoa empregada como membro da tripulagio de um navio com bandeira de qualquer dos Estados Contratantes estara sujeita a legislagdo desse Estado Contratante.
+
+Artigo 11 - Funcionarios publicos
+Os funcionarios publicos e as pessoas consideradas como tal estar3o sujeitos a legisla¢do do Estado Contratante em cuja administragdo se encontram empregados.
+
+Artigo 12 - Missées Diplomaticas e Postos Consulares
+Este Acordo nao afeta o disposto na Convencdo de Viena sobre Relacdes Diplomaticas, de 18 de abril de 1961, e na Convencdo de Viena sobre as Relacdes Consulares, de 24 de abril de 1963.
+
+Artigo 13 - Excegoes
+A pedido conjunto de um(a) empregado(a) e seu empregador, ou um pedido de uma pessoa por conta propria, as Autoridades Competentes ou as Instituigdes Competentes dos dois Estados Contratantes podem acordar excecées as disposicées desta Parte do Acordo.
+
+PARTE III
+DISPOSICOES ESPECIAIS RELATIVAS A BENEFICIOS
+
+Artigo 14 - Totalizagao dos Periodos de Seguro
+Se 0 beneficio, sob a legislacdo do Estado Contratante, estiver condicionado a existéncia ou a conclusdo de determinados periodos de seguro, a instituig¢do competente desse Estado Contratante deverd considerar a exist€ncia ou conclus3o de periodos equivalentes de seguro cumpridos sob a legislagéo do outro Estado Contratante, desde que esses periodos de seguro nao se sobreponham.
+
+Artigo 15 - Calculo dos Beneficios
+Se o direito a um beneficio existir de acordo com a legislagdo de um dos Estados Contratantes sem a aplicagdo do Artigo 14, a instituigdo competente dos Estados Contratantes calculara 0 montante do beneficio exclusivamente com base nos periodos de seguro cumpridos ao abrigo da sua legislagdo.
+
+Artigo 16 - Periodos de Seguro Inferiores a Um (1) Ano
+Sem prejuizo do disposto no Artigo 14, em que a duracao total dos periodos de seguro cumpridos sob a legislagdo do Estado Contratante for inferior a 1 (um) ano, e que, com base unicamente nesses periodos, nenhum direito existir sob essa legislagdo, a Instituicao Competente desse Estado Contratante nao sera obrigada a conceder os beneficios a respeito dos referidos periodos.
+
+Artigo 17 - Disposigdes Especiais Concernentes a Republica Tcheca
+Nao obstante o disposto no Artigo 14 deste Acordo, apenas os periodos de seguro tchecos serdo levados em consideracdo para cumprir a condigdo de prazo minimo de seguro exigido pela legislagdo da Republica Tcheca.
+
+PARTE IV
+DISPOSICOES DIVERSAS
+
+Artigo 18 - As Medidas Administrativas e de Cooperacao
+As autoridades competentes de ambos os Estados Contratantes devem regular e determinar as medidas necessarias para a implementacdo do presente Acordo.
+
+Artigo 19 - Utilizagao das Linguas Oficiais
+Para a implementacgao do presente Acordo, as autoridades competentes, as instituig6es competentes e os organismos de ligagdo dos Estados Contratantes poderao se comunicar uns com os outros diretamente em suas linguas oficiais e também em inglés.
+
+Artigo 20 - Isengao de Taxas e Autenticacgao
+Documentos e certificados que precisem ser produzidos para efeitos do presente Acordo serao isentos de legalizagdo.
+
+Artigo 21 - A Apresentacdo de Pedido ou Recurso
+Qualquer pedido ou recurso que, sob a legislac30 de um Estado Contratante, deva ser apresentado, no prazo fixado, para a autoridade competente ou a instituigdo competente desse Estado Contratante serdo considerados como tal, se for apresentado no mesmo prazo a instituicdo competente do outro Estado Contratante.
+
+Artigo 22 - Recuperacdo de Pagamentos Indevidos
+Se a instituigdo competente de um Estado Contratante pagou beneficios indevidamente ou a maior para uma pessoa, essa instituigd4o competente pode pedir a instituicdo competente do outro Estado Contratante que deduza o montante indevido dos pagamentos em atraso ou em andamento devidos ao beneficiario.
+
+Artigo 23 - Moeda de pagamento
+Os beneficios seraéo pagos em moeda corrente do Estado Contratante que faz o pagamento.
+
+Artigo 24 - Resolucao de Controvérsias
+Quaisquer controversias relativas a interpretagdo ou implementacao do presente Acordo serdo resolvidas por meio de consultas entre as autoridades competentes ou instituigdes competentes dos Estados Contratantes.
+
+PARTE V
+DISPOSIGOES TRANSITORIAS E FINAIS
+
+Artigo 25 - Disposig6es Transitérias
+Este Acordo nao conferira a capacidade de exercer direito a um beneficio ou ao seu pagamento para qualquer periodo anterior a data de entrada em vigor deste Acordo.
+
+Artigo 26 - Ratificagdo e Entrada em Vigor
+Este Acordo esta sujeito a ratificagdo e entrara em vigor no 1º (primeiro) dia do 3º (terceiro) més seguinte ao mês em que os Estados Contratantes informarem-se mutuamente.
+
+Artigo 27 - Revisdo ou Emenda
+Cada Estado Contratante pode solicitar revisio ou emenda a este Acordo.
+
+Artigo 28 - Duragao e Dentncia
+Este Acordo é celebrado por um periodo indeterminado. Cada Estado Contratante podera denunciar este Acordo mediante notificac3o por escrito ao outro Estado Contratante.</div>
+        </div>
+
+        <div id="documentos" class="tab-content">
+            <h2 class="section-title">Documentos Disponíveis (7)</h2>
+            <table class="docs-table">
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Categoria</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Acordo de Segurança Social (2020)</div>
+                            <div class="doc-desc">Texto oficial do acordo bilateral assinado em 09/12/2020</div>
+                        </td>
+                        <td><span class="badge principal">PRINCIPAL</span></td>
+                        <td><a href="01-acordo-principal-tcheca.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Ajuste Administrativo</div>
+                            <div class="doc-desc">Regulamentação complementar do acordo de segurança social</div>
+                        </td>
+                        <td><span class="badge complementar">COMPLEMENTAR</span></td>
+                        <td><a href="02-ajuste-administrativo-tcheca.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Certificado de Deslocamento</div>
+                            <div class="doc-desc">Comprovante de aplicação de legislação de deslocamento</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="03-certificado-deslocamento.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Retificação de Certificado</div>
+                            <div class="doc-desc">Documento para retificação de deslocamento</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="04-retificacao-deslocamento.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Aposentadoria Brasil</div>
+                            <div class="doc-desc">Formulário oficial para solicitação de aposentadoria</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="05-formulario-idade-brasil.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Pensão Brasil</div>
+                            <div class="doc-desc">Formulário para requerimento de pensão por morte</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="06-formulario-morte-brasil.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Incapacidade Brasil</div>
+                            <div class="doc-desc">Formulário para requerimento de incapacidade permanente</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="07-formulario-invalidez-brasil.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>✅ Acordo completo com 28 artigos + Ajuste Administrativo com 16 artigos + 7 documentos</p>
+        <p>Acordos Internacionais de Previdência Social • Brasil • 2026</p>
+    </footer>
+
+    <script>
+        function abrirAba(evt, abaId) {
+            document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
+            document.getElementById(abaId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>

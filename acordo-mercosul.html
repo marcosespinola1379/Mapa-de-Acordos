@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acordo Mercosul • Previdência Social</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+        
+        :root {
+            --navy: #0A1326;
+            --secondary: #0F1E3A;
+            --electric: #0066FF;
+            --bright: #3DA5FF;
+            --cream: #FFFFFF;
+            --muted: #C0C6CE;
+            --border: rgba(0, 102, 255, 0.25);
+            --success: #1BA947;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, serif;
+            background: var(--navy);
+            color: var(--cream);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+            border-bottom: 1px solid var(--border);
+            padding: 32px 24px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .breadcrumb a {
+            color: var(--bright);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.8;
+        }
+
+        .title-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .flag {
+            width: 80px;
+            height: 60px;
+            border-radius: 4px;
+            object-fit: contain;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-info h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--bright);
+            margin-bottom: 4px;
+        }
+
+        .agreement-type {
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .key-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px 14px;
+            font-size: 12px;
+        }
+
+        .info-label {
+            color: var(--bright);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            color: var(--cream);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            min-height: 300px;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0, 102, 255, 0.2);
+        }
+
+        .contact-header img {
+            width: 40px;
+            height: 30px;
+            border-radius: 3px;
+            object-fit: contain;
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--bright);
+        }
+
+        .contact-item {
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .contact-label {
+            color: var(--bright);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            color: var(--cream);
+            font-size: 14px;
+        }
+
+        .contact-value a {
+            color: var(--bright);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .contact-value a:hover {
+            opacity: 0.8;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--bright);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0, 102, 255, 0.25);
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .benefit-item {
+            background: linear-gradient(135deg, rgba(27, 169, 71, 0.1) 0%, transparent 70%);
+            border: 1px solid rgba(27, 169, 71, 0.3);
+            border-radius: 6px;
+            padding: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .benefit-check {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .benefit-name {
+            color: var(--cream);
+            font-size: 13px;
+        }
+
+        .acordo-text {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.9;
+            color: var(--cream);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 700px;
+            overflow-y: auto;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            padding: 12px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            font-family: 'Source Serif 4', Georgia, serif;
+        }
+
+        .tab-btn:hover {
+            color: var(--bright);
+        }
+
+        .tab-btn.active {
+            color: var(--bright);
+            border-bottom-color: var(--electric);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .docs-toolbar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px 14px;
+        }
+
+        .search-box input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            color: var(--cream);
+            font-family: inherit;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 12px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--electric);
+            color: var(--cream);
+        }
+
+        .filter-btn.active {
+            background: var(--electric);
+            border-color: var(--electric);
+            color: var(--navy);
+        }
+
+        .docs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .docs-table thead {
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .docs-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--electric);
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .docs-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--cream);
+        }
+
+        .docs-table tbody tr:hover {
+            background: rgba(0, 102, 255, 0.08);
+        }
+
+        .doc-name {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .doc-desc {
+            font-size: 11px;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .badge.principal {
+            background: rgba(217, 119, 6, 0.2);
+            color: #fbbf24;
+        }
+
+        .badge.complementar {
+            background: rgba(124, 58, 237, 0.2);
+            color: #c4b5fd;
+        }
+
+        .badge.formulario {
+            background: rgba(3, 105, 161, 0.2);
+            color: #7dd3fc;
+        }
+
+        .badge.roteiro {
+            background: rgba(22, 163, 74, 0.2);
+            color: #86efac;
+        }
+
+        .file-size {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 7px 14px;
+            background: transparent;
+            border: 1px solid var(--electric);
+            color: var(--electric);
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: var(--electric);
+            color: var(--navy);
+        }
+
+
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+            align-items: stretch;
+        }
+
+        .shortcut-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            min-height: 108px;
+            padding: 16px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.16);
+            color: var(--cream);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .shortcut-btn:hover {
+            border-color: var(--electric);
+            transform: translateY(-2px);
+        }
+
+        .shortcut-btn img {
+            width: 46px;
+            height: 32px;
+            border-radius: 3px;
+            background: #fff;
+            object-fit: contain;
+            box-shadow: 0 2px 8px rgba(0,0,0,.25);
+        }
+
+        .shortcut-btn span {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .box-note {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+            padding-top: 8px;
+            border-top: 1px solid rgba(0, 102, 255, 0.16);
+        }
+
+        .organismos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .organismo-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            scroll-margin-top: 20px;
+        }
+
+        .organismo-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .organismo-card-header img {
+            width: 42px;
+            height: 30px;
+            border-radius: 3px;
+            object-fit: contain;
+            background: #fff;
+        }
+
+        .organismo-card-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 18px;
+            color: var(--bright);
+        }
+
+        .organismo-line {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .organismo-label {
+            display: block;
+            color: var(--electric);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 3px;
+        }
+
+        .organismo-value {
+            color: var(--cream);
+            font-size: 13px;
+        }
+
+        .organismos-note {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+
+
+
+        .mercosul-links-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-top: 6px;
+        }
+
+        .mercosul-links-top {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .mercosul-links-bottom {
+            display: flex;
+            justify-content: center;
+        }
+
+        .mercosul-flag-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            min-height: 132px;
+            padding: 18px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.14);
+            color: var(--cream);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        .mercosul-flag-btn:hover {
+            border-color: var(--electric);
+            transform: translateY(-2px);
+        }
+
+        .mercosul-flag-btn img {
+            width: 66px;
+            height: 44px;
+            border-radius: 4px;
+            background: #fff;
+            object-fit: contain;
+            box-shadow: 0 2px 8px rgba(0,0,0,.25);
+        }
+
+        .mercosul-flag-btn span {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .mercosul-links-bottom .mercosul-flag-btn {
+            width: min(240px, 100%);
+        }
+
+        @media (max-width: 900px) {
+            .mercosul-links-top {
+                grid-template-columns: 1fr;
+            }
+
+            .mercosul-links-bottom .mercosul-flag-btn {
+                width: 100%;
+            }
+        }
+
+
+        .header-tools {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 12px;
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.18);
+            color: var(--cream);
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--electric);
+            transform: translateY(-1px);
+        }
+
+        .theme-toggle .theme-icon {
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        body.light-mode {
+            --navy: #f5f7fb;
+            --secondary: #ffffff;
+            --electric: #0b57d0;
+            --bright: #0b57d0;
+            --cream: #16263f;
+            --muted: #5e6a7a;
+            --border: rgba(11, 87, 208, 0.18);
+            --success: #15803d;
+        }
+
+        body.light-mode .header {
+            background: linear-gradient(135deg, rgba(11, 87, 208, 0.08) 0%, rgba(255, 255, 255, 0.75) 70%);
+        }
+
+        body.light-mode .contact-box,
+        body.light-mode .organismo-card,
+        body.light-mode .info-card,
+        body.light-mode .acordo-text,
+        body.light-mode .search-box,
+        body.light-mode .mercosul-flag-btn {
+            background: linear-gradient(135deg, rgba(11, 87, 208, 0.05) 0%, rgba(255, 255, 255, 0.95) 100%);
+            box-shadow: 0 10px 24px rgba(13, 37, 76, 0.06);
+        }
+
+        body.light-mode .theme-toggle {
+            background: rgba(11, 87, 208, 0.06);
+        }
+
+        body.light-mode .docs-table thead {
+            background: rgba(11, 87, 208, 0.06);
+        }
+
+        body.light-mode .docs-table tbody tr:hover {
+            background: rgba(11, 87, 208, 0.06);
+        }
+
+        body.light-mode .benefit-item {
+            background: linear-gradient(135deg, rgba(21, 128, 61, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
+        }
+
+        @media (max-width: 768px) {
+            .header-tools {
+                justify-content: flex-start;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .title-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .docs-toolbar {
+                flex-direction: column;
+            }
+
+            .search-box {
+                min-width: unset;
+            }
+
+            .docs-table {
+                font-size: 12px;
+            }
+
+            .docs-table th,
+            .docs-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+
+            <div class="header-tools">
+                <button class="theme-toggle" id="theme-toggle" type="button" onclick="toggleTheme()">
+                    <span class="theme-icon" id="theme-icon">☀️</span>
+                    <span id="theme-label">Tema claro</span>
+                </button>
+            </div>
+
+            <div class="breadcrumb">
+                <a href="#inicio">← VOLTAR</a>
+                <span>/</span>
+                <a href="#acordos">ACORDOS INTERNACIONAIS</a>
+                <span>/</span>
+                <span>MERCOSUL</span>
+            </div>
+
+            <div class="title-section">
+                <img src="data:image/png;base64,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" alt="Mercosul" class="flag">
+                <div class="title-info">
+                    <h1>Acordo Multilateral Mercosul</h1>
+                    <p class="agreement-type">ACORDO MULTILATERAL</p>
+                </div>
+            </div>
+
+            <div class="key-info">
+                <div class="info-card">
+                    <div class="info-label">📋 INSTRUMENTO</div>
+                    <div class="info-value">Multilateral</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">📜 DECRETO</div>
+                    <div class="info-value">Decreto Legislativo nº 451/2001</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">✅ EM VIGOR DESDE</div>
+                    <div class="info-value">01 de junho de 2005</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">📁 DOCUMENTOS</div>
+                    <div class="info-value">9 documentos disponíveis</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; padding: 16px; background: rgba(0, 102, 255, 0.1); border: 1px solid var(--border); border-radius: 6px;">
+                <p style="color: var(--muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">🌍 Países Membros</p>
+                <p style="color: var(--cream); font-size: 13px; line-height: 1.6;">Argentina • Brasil • Paraguai • Uruguai</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        
+        <div class="contact-section">
+            <div class="contact-box">
+                <div class="contact-header">
+                    <img src="https://flagcdn.com/w40/br.png" alt="Brasil">
+                    <div class="contact-title">APSAI / INSS (Brasil)</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">Instituição</div>
+                    <div class="contact-value">Agência da Previdência Social de Atendimento Acordos Internacionais – Florianópolis (SC)<br><span style="color: var(--muted);">Código: 20.001.130</span></div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">Endereço</div>
+                    <div class="contact-value">Rua Felipe Schmidt, nº 331, 4º Andar, Sala 19.002, Centro, Florianópolis (SC) CEP 88.010-000</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">Telefone</div>
+                    <div class="contact-value">(48) 3298-8125 / 3298-8142</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">Fax</div>
+                    <div class="contact-value">(48) 3298-8158</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">E-mail</div>
+                    <div class="contact-value"><a href="mailto:apsai20001130@inss.gov.br">apsai20001130@inss.gov.br</a></div>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <div class="contact-header">
+                    <img src="data:image/png;base64,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" alt="Mercosul">
+                    <div class="contact-title">Órgãos de Ligação</div>
+                </div>
+
+                <div class="mercosul-links-wrap">
+                    <div class="mercosul-links-top">
+                        <button class="mercosul-flag-btn" type="button" onclick="irParaOrgao('orgao-argentina');">
+                            <img src="https://flagcdn.com/w80/ar.png" alt="Argentina">
+                            <span>Argentina</span>
+                        </button>
+
+                        <button class="mercosul-flag-btn" type="button" onclick="irParaOrgao('orgao-paraguai');">
+                            <img src="https://flagcdn.com/w80/py.png" alt="Paraguai">
+                            <span>Paraguai</span>
+                        </button>
+                    </div>
+
+                    <div class="mercosul-links-bottom">
+                        <button class="mercosul-flag-btn" type="button" onclick="irParaOrgao('orgao-uruguai');">
+                            <img src="https://flagcdn.com/w80/uy.png" alt="Uruguai">
+                            <span>Uruguai</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- ABAS -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="abrirAba(event, 'beneficios-mercosul')">Benefícios — Mercosul</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'beneficios-brasil')">Benefícios — Brasil</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'acordo')">Acordo</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'ajuste-administrativo')">Ajuste Administrativo</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'organismos')">Órgãos de Ligação</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'documentos')">Documentos</button>
+        </div>
+
+        <!-- ABA: BENEFÍCIOS MERCOSUL -->
+        <div id="beneficios-mercosul" class="tab-content active">
+            <div style="margin-bottom: 40px;">
+                <h2 class="section-title">Benefícios Cobertos pelo Acordo — Mercosul</h2>
+                <div class="benefits-list">
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Assistência médica / prestações de saúde</span></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Aposentadoria por idade</span></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Aposentadoria por idade avançada</span></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Aposentadoria por invalidez</span></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Pensão por morte</span></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Auxílio-doença</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA: BENEFÍCIOS BRASIL -->
+        <div id="beneficios-brasil" class="tab-content">
+            <div style="margin-bottom: 40px;">
+                <h2 class="section-title">Benefícios Cobertos pelo Acordo — Brasil</h2>
+                <div class="benefits-list">
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Assistência médica (para trabalhador deslocado e dependentes autorizados)</span></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Aposentadoria por idade</span></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Aposentadoria por invalidez</span></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Pensão por morte</span></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><span class="benefit-name">Auxílio-doença</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA: ACORDO -->
+        <div id="acordo" class="tab-content">
+            <div class="acordo-text"><div style="font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 700; color: var(--bright); text-align: center; margin-bottom: 12px;">Acordo Multilateral de Seguridade Social do Mercosul</div>ACORDO MULTILATERAL DE SEGURIDADE SOCIAL
+
+DO MERCADO COMUM DO SUL
+Os Governos da República Argentina, da República Federativa do
+Brasil, da República do Paraguai e da Republica Oriental do Uruguai,
+
+CONSIDERANDO o Tratado de Assunção de 26 de março de 1991
+e o Protocolo de Ouro Preto de 17 de dezembro de 1994; e
+DESEJOSOS em estabelecer normas que regulem as relações de
+Seguridade Social entre os países integrantes do MERCOSUL:
+Decidiram celebrar o presente Acordo Multilateral de Seguridade Social
+nos seguintes termos:
+
+TÍTULO I
+
+Disposições Gerais
+
+ARTIGO l
+1. OS termos e expressões que se enumeram a seguir possuem, para
+os efeitos de aplicação do Acordo, o seguinte significado:
+a) &quot;Estados Partes&quot; designa à República Argentina, à República
+Federativa do Brasil, à República do Paraguai e à República Oriental do
+Uruguai, ou qualquer outro Estado que venha a aderir de acordo com o
+previsto no Artigo 19 do presente Acordo;
+b) &quot;Legislação&quot;, leis, regulamentos e demais disposições sobre
+Seguridade Social aplicáveis nos territórios dos Estados Partes;
+c) &quot;Autoridade Competente&quot;, os titulares dos organismos
+governamentais que, conforme a legislação interna de cada Estado
+Parte, tenham competência sobre os regimes de Seguridade Social;
+d) &quot;Organismo de Ligação&quot;, organismo de coordenação entre as
+instituições que intervenham na aplicação do Acordo;
+e) &quot;Entidades Gestoras&quot;, as instituições competentes para outorgar as
+prestações amparadas pelo Acordo;
+f) &quot;Trabalhador&quot;, toda pessoa que, por realizar ou ter realizado uma
+atividade, está ou esteve sujeita à legislação de um ou mais Estados
+Partes;
+g) &quot;Período de seguro ou contribuição&quot;, todo período definido como tal
+pela legislação sob a qual o trabalhador esteja acolhido, assim como
+
+qualquer período considerado pela mesma como equivalente a um
+período de seguro ou contribuição;
+h) &quot;Prestações pecuniárias&quot;, qualquer prestação em espécie, renda,
+subsidio ou indenização previstos pelas legislações e mencionadas no
+Acordo, incluído qualquer complemento, suplemento ou revalorização;
+i) &quot;Prestações de saúde&quot;, as destinadas a prevenir, conservar,
+restabelecer a saúde ou rehabilitar profissionalmente o trabalhador nos
+termos previstos pelas respectivas legislações nacionais;
+j) &quot;Familiares e assemelhados&quot;, pessoas definidas ou admitidas como
+tais pelas legislações mencionadas no Acordo.
+2. Os demais termos ou expressões utilizados no Acordo possuem o
+significado que lhes atribui a legislação aplicável.
+3. Os Estados Partes designarão e comunicar-se-ão as Entidades
+Gestoras e Organismos de Ligação.
+
+TÍTULO II
+
+Âmbito de aplicação pessoal
+
+ARTIGO 2
+1. Os direitos à Seguridade Social serão reconhecidos aos trabalhadores
+que prestem ou tenham prestado serviços em quaisquer dos Estados
+Partes, sendo-lhes reconhecidos, assim como a seus familiares e
+assemelhados, os mesmos direitos e estando sujeitos às mesmas
+obrigações que os nacionais de tais Estados Partes com respeito aos
+especificamente mencionados no presente Acordo.
+2. O presente Acordo também será aplicado aos trabalhadores de
+qualquer outra nacionalidade residentes no território de um dos Estados
+Partes, desde que prestem ou tenham prestado serviços em tais
+Estados Partes.
+TÍTULO III
+Âmbito de aplicação material
+
+ARTIGO 3
+1 O presente Acordo será aplicado em conformidade com a legislação
+de seguridade social referente às prestações contributivas pecuniárias e
+de saúde existentes nos Estados Partes, na forma, condições e
+extensão aqui estabelecidas.
+2. Cada Estado Parte concederá as prestações pecuniárias e de saúde
+de acordo com sua própria legislação.
+3. As normas sobre prescrição e caducidade vigentes em cada Estado
+Parte serão aplicadas ao disposto neste Artigo.
+TÍTULO IV
+
+Determinação da legislação aplicável
+
+ARTIGO 4
+O trabalhador estará submetido à legislação do Estado Parte em cujo
+território exerça a atividade laboral.
+ARTIGO 5
+O principio estabelecido no Artigo 4 tem as seguintes exceções:
+a) o trabalhador de uma empresa com sede em um dos Estados Partes
+que desempenhe tarefas profissionais, de pesquisa, cientificas, técnicas
+ou de direção, ou atividades similares, e outras que poderão ser
+definidas pela Comissão Multilateral Permanente prevista no Artigo 16,
+Parágrafo 2, e que seja deslocado para prestar serviços no território de
+outro Estado, por um período limitado, continuará sujeito à legislação
+do Estado Parte de origem até um prazo de doze meses, suscetível de
+ser prorrogado, em caráter excepcional, mediante prévio e expresso
+consentimento da Autoridade Competente do outro Estado Parte;
+b) o pessoal de vôo das empresas de transporte aéreo e o pessoal de
+trânsito das empresas de transporte terrestre continuarão
+exclusivamente sujeitos à legislação do Estado Parte em cujo território
+a respectiva empresa tenha sua sede;
+
+c) os membros da tripulação de navio de bandeira de um dos Estados
+Partes continuarão sujeitos à legislação do mesmo Estado. Qualquer
+outro trabalhador empregado em tarefas de carga e descarga, conserto
+e vigilância de navio, quando no porto, estará sujeito à legislação do
+Estado Parte sob cuja jurisdição se encontre o navio;
+2. Os membros das representações diplomáticas e consulares,
+organismos internacionais e demais funcionários ou empregados dessas
+representações serão regidos pelas legislações, tratados e convenções
+que lhes sejam aplicáveis.
+TÍTULO V
+Disposições sobre prestações de saúde
+ARTIGO 6
+1. As prestações de saúde serão outorgadas ao trabalhador deslocado
+temporariamente para o território de outro Estado Parte, assim como
+para seus familiares e assemelhados, desde que a Entidade Gestora do
+Estado de origem autorize a sua outorga.
+2. Os custos que se originen de acordo com o previsto no parágrafo
+anterior correrão a cargo da Entidade Gestora que tenha autorizado a
+prestação.
+TÍTULO VI
+
+Totalização de períodos de seguro ou contribuição
+ARTIGO 7
+1. Os períodos de seguro ou contribuição cumpridos nos territórios dos
+Estados Partes serão considerados, para a concessão das prestações
+por velhice, idade avançada, invalidez ou morte, na forma e nas
+condições estabelecidas no Regulamento Administrativo. Este
+Regulamento Administrativo estabelecerá também os mecanismos de
+pagamento pro-rata das prestações.
+2. O Estado Parte onde o trabalhador tenha contribuído durante um
+período inferior a doze meses poderá não reconhecer prestação
+alguma, independentemente de que tal período seja computado pelos
+demais Estados Partes.
+3. Caso o trabalhador ou seus familiares e assemelhados não tenham
+reunido o direito às prestações de acordo com as disposições do
+
+Parágrafo 1, serão também computáveis os serviços prestados em
+outro Estado que tenha celebrado acordos bilaterais ou multilaterais de
+Seguridade Social com qualquer dos Estados Partes.
+4. Se somente um dos Estados Partes tiver concluído um acordo de
+seguridade com outro pais, para fins da aplicação do Parágrafo 3, será
+necessário que tal Estado Parte assuma como próprio o período de
+seguro ou contribuição cumprido neste terceiro país.
+ARTIGO 8
+Os períodos de seguro ou contribuição cumpridos antes da vigência do
+presente Acordo serão considerados no caso de que o trabalhador
+tenha períodos de seguro ou contribuição posteriores a essa data,
+desde que estes não tenham sido utilizados anteriormente na
+concessão de prestações pecuniárias em outro pais.
+TÍTULO VII
+Disposições aplicáveis a regimes de aposentadoria e pensões
+de
+capitalização individual
+ARTIGO 9
+1. O presente Acordo será aplicável também aos trabalhadores filiados
+a um regime de aposentadoria e pensões de capitalização individual
+estabelecido por algum dos Estados Partes para a obtenção das
+prestações por velhice, idade avançada, invalidez ou morte.
+2. Os Estados Partes e os que venham a aderir, no futuro, ao presente
+Acordo que possuírem regimes de aposentadoria e pensões de
+capitalização individual poderão estabelecer mecanismos de
+transferências de fundos para os fins de obtenção das prestações por
+velhice, idade avançada, invalidez ou morte. Tais transferências
+efetuar-se-ão na oportunidade em que o interessado comprovar direito
+à obtenção das respectivas prestações. A informação aos afiliados
+deverá ser proporcionada de acordo com a legislação de cada um dos
+Estados Partes.
+3. As administradoras de fundos ou empresas seguradoras deverão dar
+cumprimento aos mecanismos previstos neste Acordo.
+
+TITULO VIII
+
+Cooperação administrativa
+ARTIGO 10
+Os exames médico-periciais solicitados pela Entidade Gestora de um
+Estado Parte, para fins de avaliação da incapacidade temporária ou
+permanente dos trabalhadores ou de seus familiares ou assemelhados
+que se encontrem no território de outro Estado Parte, serão realizados
+pela Entidade Gestora deste último e correrão por conta da Entidade
+Gestora que o solicite.
+
+TITULO IX
+Disposições finais
+ARTIGO 11
+1 As Entidades Gestoras dos Estados Partes pagarão as prestações
+pecuniárias em moeda de seu próprio país.
+2. As Entidades Gestoras dos Estados Partes estabelecerão mecanismos
+de tran sferências de fundos para o pagamento das prestações
+pecuniárias do trabalhador ou de seus familiares ou assemelhados que
+residam no território de outro Estado.
+ARTIGO 12
+As prestações pecuniárias concedidas de acordo com o regime de um
+ou de outro Estado Parte não serão objeto de redução, suspensão ou
+extinção exclusivamente pelo fato de que o trabalhador ou seus
+familiares ou assemelhados residam em outro Estado Parte.
+ARTIGO 13
+1. Os documentos que sejam necessários para os fins do presente
+Acordo não necessitarão de tradução oficial, visto ou legalização pelas
+autoridades diplomáticas, consulares e de registro público, desde que
+tenham tramitado com a intervenção de uma Entidade Gestora ou
+Organismo de Ligação.
+
+2. A correspondência entre as Autoridades Competentes, Organismos
+de Ligação e Entidades Gestoras dos Estados Partes será redigida no
+respectivo idioma oficial do Estado emissor.
+
+ARTIGO 14
+As solicitações e documentos apresentados perante as Autoridades
+Competentes ou Entidades Gestoras de qualquer Estado Parte onde o
+interessado comprove períodos de seguro ou contribuição ou residência
+surtirão efeito como se fossem apresentados às Autoridades ou
+Entidades Gestoras correspondentes do outro Estado Parte.
+ARTIGO 15
+Os recursos que corresponda interpor, perante uma Autoridade
+Competente ou Entidade Gestora de qualquer Estado Parte onde o
+interessado tenha períodos de seguro ou contribuição ou residência,
+serão considerados como interpostos em tempo hábil, mesmo quando
+apresentados à instituição correspondente do outro Estado Parte, desde
+que sua apresentação seja efetuada dentro do prazo estabelecido pela
+legislação do Estado perante o qual devam ser fundamentados os
+recursos.
+ARTIGO 16
+1. O presente Acordo será aplicado em conformidade com as
+disposições do Regulamento Administrativo.
+2. As Autoridades Competentes instituirão uma Comissão Multilateral
+Permanente, que deliberará por consenso e onde cada representação
+estará integrada por até 3 membros de cada Estado Parte. A Comissão
+terá as seguintes funções:
+a) verificar a aplicação do Acordo, do Regulamento Administrativo e
+demais instrumentos complementares;
+b) assessorar as Autoridades Competentes;
+c) planejar as
+complementares;
+
+eventuais
+
+modificações,
+
+ampliações
+
+e
+
+normas
+
+d) manter negociações diretas, por um prazo de 6 meses, a fim de
+resolver as eventuais divergências sobre a aplicação do Acordo.
+Vencido o término anterior sem que tenham resolvido as diferenças,
+qualquer um dos Estados Partes poderá recorrer ao sistema de solução
+de controvérsia vigente entre os Estados Partes do Tratado de
+Assunção.
+3. A Comissão Multilateral Permanente reunir-se-á uma vez por ano,
+alternadamente em cada um dos Estados Partes, ou quando o solicite
+um deles.
+
+4. As Autoridades Competentes poderão delegar a elaboração do
+Regulamento Administrativo e demais instrumentos complementares à
+Comissão Multilateral Permanente.
+ARTIGO 17
+1. O presente Acordo estará sujeito à ratificação e entrará em vigor a
+partir do primeiro dia do mês seguinte à data do depósito do último
+instrumento de ratificação.
+2. O presente Acordo e seus instrumentos de ratificação serão
+depositados perante o Governo da República do Paraguai, o qual
+comunicará aos Governos dos Estados Partes a data do depósito dos
+instrumentos de ratificação e da entrada em vigor do presente Acordo.
+3. O Governo da República do Paraguai enviará cópia autenticada do
+presente Acordo aos Governos dos demais Estados Partes.
+4. A partir da entrada em vigor do presente Acordo, ficarão derrogados
+os Acordos Bilaterais de Seguridade Social ou de Previdência Social
+celebrados entre os Estados Partes. A entrada em vigor do presente
+Acordo não significará em nenhum caso a perda de direitos adquiridos
+ao amparo dos mencionados Acordos Bilaterais.
+ARTIGO 18
+1. O presente Acordo terá duração indefinida.
+2. O Estado Parte que desejar se desvincular do presente Acordo
+poderá denunciá-lo ao qualquer momento pela via diplomática,
+notificando disso ao Depositário, que o comunicará aos demais Estados
+Partes. Neste caso, não serão afetados os direitos adquiridos em
+virtude deste Acordo.
+3. O Estados Partes regulamentarão, de comum acordo, as situações
+decorrentes da denúncia do presente Acordo.
+4. A denúncia surtirá efeito 6 meses depois da data de notificação.
+ARTIGO 19
+O presente Acordo estará aberto à adesão, mediante negociação, a
+aquele Estado que no futuro adiram ao Tratado de Assunção.
+Feito em Montevidéu, em 15 de dezembro de 1997, em um original,
+nos idiomas português e espanhol, sendo ambos igualmente autênticos.</div></div>
+        </div>
+
+        <!-- ABA: AJUSTE ADMINISTRATIVO -->
+        <div id="ajuste-administrativo" class="tab-content">
+            <div class="acordo-text">
+                <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 700; color: var(--bright); text-align: center; margin-bottom: 12px;">Regulamento Administrativo para a Aplicação do Acordo Multilateral de Seguridade Social do Mercosul</div>
+                REGULAMENTO ADMINISTRATIVO PARA A
+APLICAÇÃO DO ACORDO
+MULTILATERAL DE SEGURIDADE SOCIAL DO MERCADO COMUM DO
+SUL
+
+Os Governos da Republica Argentina, da República Federativa do
+Brasil, da República do Paraguai e da República Oriental do Uruguai,
+Em cumprimento ao disposto no Artigo 16 do Acordo Multilateral de
+Seguridade
+Social,
+estabelecem
+o
+seguinte
+Regulamento
+Administrativo:
+
+TÍTULO I
+Disposições Gerais
+ARTIGO 1
+Para a aplicação do presente Regulamento Administrativo:
+1. O termo &quot;Acordo&quot; designa o Acordo Multilateral de Seguridade Social
+entre a República Argentina, a República Federativa do Brasil, a
+República do Paraguai e a República Oriental do Uruguai ou qualquer
+outro Estado que vencia a aderir.
+2. O termo &quot;Regulamento Administrativo&quot; designa o presente
+Regulamento Administrativo.
+3. As expressões e termos definidos rio Artigo 1 do Acordo têm o
+mesmo significado rio presente Regulamento Administrativo.
+4 Os prazos mencionados no presente Regulamento Administrativo
+contar-se-ão, salvo expressa menção em contrário, em dias corridos.
+
+No caso de vencerem em dia não útil, prorrogar-se-ão até o dia útil
+seguinte.
+ARTIGO 2
+1 São Autoridades Competentes os titulares: na Argentina, do
+Ministério de Trabalho e Seguridade Social e do Ministério da Saúde e
+Ação Social; no Brasil, do Ministério cia Previdência e Assistência
+Social e do Ministério da Saúde: no Paraguai, do Ministério da Justiça e
+do Trabalho e do Ministério da Saúde Pública e Bem-Estar Social: e no
+Uruguai, do Ministério do Trabalho e da Seguridade Social.
+2. São Entidades Gestoras: na Argentina, a Administração Nacional da
+Seguridade Social (ANSES), as Caixas ou Institutos Municipais e
+Provinciais de Previdência, a Superintendência de Administradores de
+Fundo de Aposentadorias e Pensões e as Administradoras de Fundos de
+Aposentadorias e Pensões, no que se refere aos regimes que amparam
+as contingências de velhice, invalidez e morte baseadas no sistema de
+reparto ou no sistema de capitalização individual, e a Administração
+Nacional do Seguro de Saúde (ANSSAL) no que se refere às prestações
+de saúde; no Brasil, o Instituto Nacional do Seguro Social (INSS) e o
+Ministério da Saúde; no Paraguai, o Instituto de Previdência Social
+(IPS); e no Uruguai, o Banco de Previdência Social (BPS).
+3. São Organismos de Ligação: na Argentina, a Administração Nacional
+da Seguridade Social (ANSES) e a Administração Nacional do Seguro de
+Saúde (ANSSAL); no Brasil, o Instituto Nacional do Seguro Social
+(INSS) e o Ministério da Saúde; no Paraguai, o Instituto de Previdência
+Social (IPS); e no Uruguai, o Banco de Previdência Social (BPS).
+4. Os Organismos de Ligação estabelecidos no Parágrafo 3 deste Artigo
+terão como objetivo facilitar a aplicação do Acordo e adotar as medidas
+necessárias para lograr sua máxima agilização e simplificação
+administrativas.
+
+TÍTULO II
+Disposições sobre o deslocamento temporário de
+trabalhadores
+ARTIGO 3
+1. Para os casos previstos na alínea &quot;1 a&quot; do Artigo 5 do Acordo, o
+Organismo de Ligação expedirá, mediante solicitação da empresa do
+Estado de origem do trabalhador que for deslocado temporariamente
+para prestar serviços no território de outro Estado, um certificado no
+qual conste que o trabalhador permanece sujeito à legislação do Estado
+
+de origem, indicando os familiares e assemelhados que o
+acompanharão nesse deslocamento. Cópia de tal certificado deverá ser
+entregue ao trabalhador.
+2. A empresa que deslocou temporariamente o trabalhador comunicará
+ao Organismo de Ligação do Estado que expediu o certificado, neste
+caso, a interrupção da atividade prevista na situação anterior.
+3. Para os efeitos estabelecidos na alínea &quot;1.a&quot; do Artigo 5 do Acordo, a
+empresa deverá apresentar a solicitação de prorrogação perante a
+Entidade Gestora do Estado de origem. A Entidade Gestora do Estado
+de origem expedirá o certificado de prorrogação correspondente,
+mediante consulta prévia e expresso consentimento da Entidade
+Gestora do outro Estado.
+4 A empresa apresentará as solicitações a que se referem os Parágrafos
+1 e 3 com trinta dias de antecedência mínima da ocorrência do fato
+gerador. Em caso contrário, o trabalhador ficará automaticamente
+sujeito, a partir do inicio da atividade ou da data de expiração do prazo
+autorizado, à legislação do Estado em cujo território continuar
+desenvolvendo suas atividades.
+TÍTULO III
+
+Disposições sobre as prestações de saúde
+
+ARTIGO 4
+1. O trabalhador deslocado temporariamente nos termos da alínea &quot;1.a&quot;
+do Artigo 5 do Acordo, ou seus familiares ou assemelhados, para que
+possam obter as prestações de saúde durante o período de
+permanência no Estado Parte em que se encontrem, deverão
+apresentar ao Organismo de Ligação o certificado aludido no Parágrafo
+1 ou 3 do Artigo anterior.
+ARTIGO 5
+O trabalhador ou seus familiares e assemelhados que necessitarem de
+assistência médica de urgência deverão apresentar perante a Entidade
+Gestora do Estado em que se encontrem o certificado expedido pelo
+Estado de origem.
+TÍTULO IV
+
+Totalização de períodos de seguro ou contribuição
+
+ARTIGO 6
+1. De acordo com o previsto no Artigo 7 do Acordo, os períodos de
+seguro ou contribuição cumpridos no território dos Estados Partes serão
+considerados, para a concessão das prestações por velhice, idade
+avançada, invalidez ou morte. observando as seguintes regras:
+a) Cada Estado Parte considerará os períodos cumpridos e certificados
+por outro Estado, desde que não se superponham, como períodos de
+seguro ou contribuição, conforme sua própria legislação;
+b) Os períodos de seguro ou contribuição cumpridos antes do início da
+vigência do Acordo serão considerados somente quando o trabalhador
+tiver períodos de trabalho a cumprir a partir dessa data;
+c) O período cumprido em um Estado Parte, sob um regime de seguro
+voluntário, somente será considerado quando não for simultâneo a um
+período de seguro ou contribuição obrigatório cumprido em outro
+Estado.
+2. Nos casos em que a aplicação do Parágrafo 2 do Artigo 7 do Acordo
+venha exonerar de suas obrigações a todas as Entidades Gestoras
+competentes dos Estados Partes envolvidos, as prestações serão
+concedidas ao amparo, exclusivamente, do último dos Estados Partes
+aonde o trabalhador reúna as condições exigidas por sua legislação,
+com prévia totalização de todos os períodos de seguro ou contribuição
+cumpridos pelo trabalhador em todos os Estados Partes.
+ARTIGO 7
+As prestações a que os trabalhadores, seus familiares e dependentes
+tenham direito, ao amparo da legislação de cada um dos Estados
+Partes, serão pagas de acordo com as normas seguintes:
+1. Quando se reúnam as condições requeridas pela legislação de um
+Estado Parte para se ter direito às prestações sem que seja necessário
+recorrer à totalização de períodos prevista no Titulo VI do Acordo, a
+Entidade Gestora calculará a prestação em virtude unicamente do
+previsto na legislação nacional que se aplique, sem prejuízo da
+totalização que possa solicitar o beneficiário.
+
+2. Quando o direito a prestações não se origine unicamente com base
+nos períodos de seguro ou contribuição cumpridos no Estado
+Contratante de que se trate, a liquidação da prestação deverá ser
+feita tomando-se em conta a totalização dos períodos de seguro
+ou contribuição cumpridos nos outros Estados Partes.
+3. Caso seja aplicado o parágrafo precedente, a Entidade Gestora
+determinará, em primeiro lugar, o valor da prestação a que o
+interessado ou seus familiares e assemelhados teriam direito como se
+os períodos totalizados tivessem sido cumpridos sob sua própria
+legislação e, em seguida, fixará o valor ela prestação em proporção aos
+períodos cumpridos exclusivamente sob tal legislação.
+TÍTULO VI
+Apresentação de solicitações
+ARTIGO 8
+1. Para obter a concessão das prestações de acordo com o estabelecido
+no Artigo 7 precedente, os trabalhadores ou seus familiares e
+assemelhados deverão apresentar solicitação, em formulário especial,
+ao Organismo de Ligação do Estado em que residirem.
+2. Os trabalhadores ou seus familiares e dependentes, residentes no
+território de outro Estado, deverão dirigir-se ao Organismo de Ligação
+do Estado Parte sob cuja legislação o trabalhador se encontrava
+assegurado no último período de seguro ou contribuição.
+
+3. Sem prejuízo do estabe!ecido no Parágrafo 1, as solicitações
+dirigidas às Autoridades Competentes ou Entidades Gestoras de
+qualquer Estado Parte aonde o interessado tenha períodos de seguro
+ou contribuição ou residência produzirão os mesmos efeitos como se
+tivessem sido entregues ao Organismo de Ligação previsto nos
+parágrafos anteriores. As Autoridades Competentes ou Entidades
+Gestoras receptoras obrigar-se-ão a enviá-las. sem demora, ao
+Organismo de Ligação competente, informando as datas em que as
+solicitações foram apresentadas.
+ARTIGO 9
+1. Para o trâmite das solicitações das prestações pecuniárias, os
+Organismos de Ligação utilizarão um formulário especial no qual serão
+consignados, entre outros, os dados de filiação do trabalhador ou,
+
+conforme o caso, de seus familiares e assemelhados, conjuntamente
+com a relação e o resumo dos períodos de seguro ou contribuição
+cumpridos pelo trabalhador nos Estados Partes.
+2. O Organismo de Ligação do Estado onde se solicita a prestação
+avaliará, se for o caso, a incapacidade temporária ou permanente,
+emitindo o certificado correspondente, que acompanhará os exames
+médico-periciais realizados no trabalhador ou, conforme o caso, de
+seus familiares e assemelhados.
+3. Os laudos, médico-periciais do trabalhador consignarão, entre outros
+dados, se a incapacidade temporária ou invalidez é conseqüência de
+acidente do trabalho ou doença profissional, e indicarão a necessidade
+de reabilitação profissional.
+4 O Organismo de Ligação do outro Estado pronunciar-se-á sobre a
+solicitação, em conformidade com sua respectiva legislação,
+considerando-se os antecedentes médico-periciais praticados.
+5. O Organismo de Ligação do Estado onde se solicita a prestação
+remeterá os formulários estabelecidos ao Organismo de Ligação do
+outro Estado.
+ARTIGO 10
+1 O Organismo de Ligação do outro Estado preencherá os formulários
+recebidos cora as seguintes indicações:
+a) períodos de seguro ou contribuição creditados ao trabalhador sob
+sua própria legislação;
+b) o valor prestação reconhecida de acordo com o previsto no
+Parágrafo 3 do Artigo 7 do presente Regulamento Administrativo.
+2. O Organismo de Ligação indicado no parágrafo anterior remeterá os
+formulários devidamente preenchidos ao Organismo de Ligação do
+Estado onde o trabalhador solicitou a prestação.
+ARTIGO 11
+1 A resolução sobre a prestação solicitada pelo trabalhador ou seus
+familiares e assernelhados será encaminhada pela Entidade
+Gestora de cada Estado Parte ao domicilio dos mesmos, por meio do
+respectivo Organismo de Ligação.
+2. Uma cópia da resolução será remetida ao Organismo de Ligação do
+outro Estado.
+
+TÍTULO VI
+Disposições finais
+ARTIGO 12
+As Entidades Gestoras e os Organismos de Ligação dos Estados Partes
+deverão controlar a autenticidade dos documentos apresentados pelo
+trabalhador ou seus familiares e assemelhados.
+ARTIGO 13
+A Comissão Multilateral Permanente estabelecerá e aprovará os
+formulários de ligação necessários para a aplicação do Acordo e do
+Regulamento Administrativo. Tais formulários de ligação deverão ser
+utilizados pelas Entidades Gestoras e Organismos de Ligação para se
+comunicarem entre si.
+ARTIGO 14
+O presente Regulamento Administrativo terá a mesma duração do
+Acordo
+O presente Acordo será depositado junto ao Governo da República do
+Paraguai, o qual enviará cópia autêntica do mesmo aos Governos dos
+demais Estados Partes.
+Feito em Montevidéu, em 15 de dezembro de 1997, em um original,
+nos idiomas português e espanhol, sendo ambos os textos igualmente
+autênticos.
+Guido di Tella,Ministro de Relaciones Exteriores y Culto, República
+Argentina -- Luis Felipe Lampreia, Ministro de Relaciones Exteriores,
+República Federativa del Brasil -- Ruben Melgarejo Lanzoni, Ministro de
+Relaciones Exteriores, -- Carlos Pérez del Castillo, Ministro (i) de
+Relaciones Exteriores, Uruguay.
+            </div>
+        </div>
+
+        <!-- ABA: ÓRGÃOS DE LIGAÇÃO -->
+        <div id="organismos" class="tab-content">
+            <div style="margin-bottom: 40px;">
+                <h2 class="section-title">Órgãos de Ligação</h2>
+                <div class="organismos-grid">
+                    <div class="organismo-card" id="orgao-argentina">
+                        <div class="organismo-card-header">
+                            <img src="https://flagcdn.com/w80/ar.png" alt="Argentina">
+                            <div class="organismo-card-title">Argentina</div>
+                        </div>
+                        <div class="organismo-line"><span class="organismo-label">Instituição</span><div class="organismo-value">Departamento de Convênios Internacionales</div></div>
+                        <div class="organismo-line"><span class="organismo-label">Endereço</span><div class="organismo-value">Edifício Paraná 415, 1302, Buenos Aires - Argentina</div></div>
+                        <div class="organismo-line"><span class="organismo-label">Telefone</span><div class="organismo-value">00xx 5 4114 339-3291 / 3292</div></div>
+                        <div class="organismo-line"><span class="organismo-label">Fax</span><div class="organismo-value">00xx 5 4114 339-3297</div></div>
+                    </div>
+
+                    <div class="organismo-card" id="orgao-paraguai">
+                        <div class="organismo-card-header">
+                            <img src="https://flagcdn.com/w80/py.png" alt="Paraguai">
+                            <div class="organismo-card-title">Paraguai</div>
+                        </div>
+                        <div class="organismo-line"><span class="organismo-label">Instituição</span><div class="organismo-value">Instituto de Previsión Social do Paraguay (IPS)</div></div>
+                        <div class="organismo-line"><span class="organismo-label">Endereço</span><div class="organismo-value">Luis Alberto de Herrera 1.144, Primer Piso, Edifício IPS - Asunción, Paraguay</div></div>
+                        <div class="organismo-line"><span class="organismo-label">Telefone</span><div class="organismo-value">00xx591 2122-3811</div></div>
+                    </div>
+
+                    <div class="organismo-card" id="orgao-uruguai">
+                        <div class="organismo-card-header">
+                            <img src="https://flagcdn.com/w80/uy.png" alt="Uruguai">
+                            <div class="organismo-card-title">Uruguai</div>
+                        </div>
+                        <div class="organismo-line"><span class="organismo-label">Instituição</span><div class="organismo-value">Banco de Previsión Social</div></div>
+                        <div class="organismo-line"><span class="organismo-label">Endereço</span><div class="organismo-value">Rua Colônia 1851, Piso 1 – 11200, Montevideo – Uruguai.</div></div>
+                        <div class="organismo-line"><span class="organismo-label">Telefone</span><div class="organismo-value">00xxx5982 401-7673</div></div>
+                        <div class="organismo-line"><span class="organismo-label">Fax</span><div class="organismo-value">00xx5982 409-7182</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA: DOCUMENTOS -->
+        <div id="documentos" class="tab-content">
+            <div style="margin-bottom: 40px;">
+                <h2 class="section-title">Documentos Disponíveis para Download</h2>
+
+                <div class="docs-toolbar">
+                    <div class="search-box">
+                        <span>🔍</span>
+                        <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="filtrarDocs()">
+                    </div>
+
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filtrarCategoria(event, 'todas')">Todos</button>
+                        <button class="filter-btn" onclick="filtrarCategoria(event, 'principal')">Principal</button>
+                        <button class="filter-btn" onclick="filtrarCategoria(event, 'complementar')">Complementar</button>
+                        <button class="filter-btn" onclick="filtrarCategoria(event, 'formulario')">Formulários</button>
+                        <button class="filter-btn" onclick="filtrarCategoria(event, 'roteiro')">Roteiros</button>
+                    </div>
+                </div>
+
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Documento</th>
+                            <th>Categoria</th>
+                            <th>Arquivo</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="docs-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <p>Acordos Internacionais de Previdência Social • Brasil • 2026</p>
+    </footer>
+
+    
+    <script>
+        const documentos = [
+            { nome: "Acordo Multilateral de Seguridade Social do Mercosul", desc: "Texto principal do acordo multilateral", cat: "principal", arquivo: "mercosul/Acordo.pdf", tamanho: "348 KB" },
+            { nome: "Regulamento Administrativo do Acordo Multilateral", desc: "Instrumento de aplicação do acordo no Mercosul", cat: "complementar", arquivo: "mercosul/Ajuste Administrativo.pdf", tamanho: "237 KB" },
+            { nome: "MER-Solicitud 01 — Formulário de solicitação de benefícios", desc: "Pedido de aposentadoria, auxílio-doença ou pensão", cat: "formulario", arquivo: "mercosul/3a_081013-161948-634.pdf", tamanho: "183 KB" },
+            { nome: "MER-Traslado 03 — Certificado de deslocamento temporário", desc: "Comprovação de destacamento temporário do trabalhador", cat: "formulario", arquivo: "mercosul/3a_081013-161948-731.pdf", tamanho: "100 KB" },
+            { nome: "MER-Prórroga Traslado 04 — Prorrogação de deslocamento temporário", desc: "Solicitação de prorrogação do destacamento", cat: "formulario", arquivo: "mercosul/3a_081013-161948-826.pdf", tamanho: "92 KB" },
+            { nome: "TBM — Transferência de benefício em manutenção", desc: "Pedido de remessa de pagamento ou alteração de dados bancários", cat: "formulario", arquivo: "mercosul/Formulario-TBM.pdf", tamanho: "309 KB" },
+            { nome: "Atestado de vida para residentes no exterior", desc: "Comprovação de vida perante o INSS", cat: "formulario", arquivo: "mercosul/formulario_atestado-de-vida-para-residentes-no-exterior-pdf_consulados-atualizado-1.pdf", tamanho: "424 KB" },
+            { nome: "Cartilha Mercosul — Português", desc: "Guia explicativo sobre previdência social no Mercosul", cat: "roteiro", arquivo: "mercosul/mercosulpt.pdf", tamanho: "1.67 MB" },
+            { nome: "Cartilha Mercosul — Espanhol", desc: "Guia explicativo sobre previsión social en el Mercosur", cat: "roteiro", arquivo: "mercosul/mercosules.pdf", tamanho: "1.70 MB" }
+        ];
+
+        let categoriaAtiva = 'todas';
+
+        function getCatLabel(cat) {
+            const labels = {
+                principal: 'Principal',
+                complementar: 'Complementar',
+                formulario: 'Formulário',
+                roteiro: 'Roteiro'
+            };
+            return labels[cat] || 'Outro';
+        }
+
+        function renderDocs() {
+            const tbody = document.getElementById('docs-tbody');
+            if (!tbody) return;
+
+            const termo = (document.getElementById('search-docs')?.value || '').toLowerCase();
+
+            const filtrados = documentos.filter(doc =>
+                (categoriaAtiva === 'todas' || doc.cat === categoriaAtiva) &&
+                (doc.nome.toLowerCase().includes(termo) || doc.desc.toLowerCase().includes(termo))
+            );
+
+            tbody.innerHTML = filtrados.map(doc => `
+                <tr>
+                    <td>
+                        <div class="doc-name">📄 ${doc.nome}</div>
+                        <div class="doc-desc">${doc.desc}</div>
+                    </td>
+                    <td><span class="badge ${doc.cat}">${getCatLabel(doc.cat)}</span></td>
+                    <td><div class="file-size">${doc.tamanho}</div></td>
+                    <td><a href="${doc.arquivo}" download class="btn-download">⬇ Download</a></td>
+                </tr>
+            `).join('');
+        }
+
+        function filtrarDocs() {
+            renderDocs();
+        }
+
+        function filtrarCategoria(evt, cat) {
+            categoriaAtiva = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if (evt && evt.currentTarget) {
+                evt.currentTarget.classList.add('active');
+            }
+            renderDocs();
+        }
+
+        function abrirAba(evt, abaId) {
+            document.querySelectorAll('.tab-content').forEach(aba => aba.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            const alvo = document.getElementById(abaId);
+            if (alvo) alvo.classList.add('active');
+            if (evt && evt.currentTarget) evt.currentTarget.classList.add('active');
+        }
+
+        function abrirAbaPorId(abaId) {
+            document.querySelectorAll('.tab-content').forEach(aba => aba.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            const alvo = document.getElementById(abaId);
+            if (alvo) alvo.classList.add('active');
+
+            const botao = Array.from(document.querySelectorAll('.tab-btn')).find(btn =>
+                (btn.getAttribute('onclick') || '').includes("'" + abaId + "'")
+            );
+            if (botao) botao.classList.add('active');
+        }
+
+        function irParaOrgao(id) {
+            abrirAbaPorId('organismos');
+            setTimeout(() => {
+                document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 80);
+        }
+
+        function applyTheme(mode) {
+            const isLight = mode === 'light';
+            document.body.classList.toggle('light-mode', isLight);
+
+            const label = document.getElementById('theme-label');
+            const icon = document.getElementById('theme-icon');
+
+            if (label) label.textContent = isLight ? 'Tema escuro' : 'Tema claro';
+            if (icon) icon.textContent = isLight ? '🌙' : '☀️';
+        }
+
+        function toggleTheme() {
+            const nextMode = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+            localStorage.setItem('mercosul-theme', nextMode);
+            applyTheme(nextMode);
+        }
+
+        (function initTheme() {
+            const saved = localStorage.getItem('mercosul-theme');
+            applyTheme(saved === 'light' ? 'light' : 'dark');
+        })();
+
+        document.addEventListener('DOMContentLoaded', renderDocs);
+    </script>
+
+</body>
+</html>

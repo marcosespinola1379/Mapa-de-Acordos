@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acordo Brasil-Áustria • Previdência Social</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+        
+        :root {
+            --navy: #0A1326;
+            --secondary: #0F1E3A;
+            --electric: #0066FF;
+            --bright: #3DA5FF;
+            --cream: #FFFFFF;
+            --muted: #C0C6CE;
+            --border: rgba(0, 102, 255, 0.25);
+            --success: #1BA947;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, serif;
+            background: var(--navy);
+            color: var(--cream);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+            border-bottom: 1px solid var(--border);
+            padding: 32px 24px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .breadcrumb a {
+            color: var(--bright);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.8;
+        }
+
+        .title-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .flag {
+            width: 80px;
+            height: 60px;
+            border-radius: 4px;
+            object-fit: contain;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-info h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--bright);
+            margin-bottom: 4px;
+        }
+
+        .agreement-type {
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .key-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px 14px;
+            font-size: 12px;
+        }
+
+        .info-label {
+            color: var(--bright);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            color: var(--cream);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            min-height: 300px;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0, 102, 255, 0.2);
+        }
+
+        .contact-header img {
+            width: 40px;
+            height: 30px;
+            border-radius: 3px;
+            object-fit: contain;
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--bright);
+        }
+
+        .contact-item {
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--electric);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+
+        .contact-value {
+            color: var(--cream);
+            font-size: 13px;
+            padding-left: 20px;
+            word-break: break-word;
+        }
+
+        .contact-value.update {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--bright);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0, 102, 255, 0.25);
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .benefit-item {
+            background: linear-gradient(135deg, rgba(27, 169, 71, 0.1) 0%, transparent 70%);
+            border: 1px solid rgba(27, 169, 71, 0.3);
+            border-radius: 6px;
+            padding: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .benefit-check {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .benefit-name {
+            color: var(--cream);
+            font-size: 13px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            padding: 12px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            font-family: 'Source Serif 4', Georgia, serif;
+        }
+
+        .tab-btn:hover {
+            color: var(--bright);
+        }
+
+        .tab-btn.active {
+            color: var(--bright);
+            border-bottom-color: var(--electric);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .acordo-text {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.9;
+            color: var(--cream);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 700px;
+            overflow-y: auto;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .ajuste-adm-text {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.9;
+            color: var(--cream);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 700px;
+            overflow-y: auto;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .docs-toolbar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px 14px;
+        }
+
+        .search-box input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            color: var(--cream);
+            font-family: inherit;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 12px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--electric);
+            color: var(--cream);
+        }
+
+        .filter-btn.active {
+            background: var(--electric);
+            border-color: var(--electric);
+            color: var(--navy);
+        }
+
+        .docs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .docs-table thead {
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .docs-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--electric);
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .docs-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--cream);
+        }
+
+        .docs-table tbody tr:hover {
+            background: rgba(0, 102, 255, 0.08);
+        }
+
+        .doc-name {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .doc-desc {
+            font-size: 11px;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            background: rgba(217, 119, 6, 0.2);
+            color: #fbbf24;
+        }
+
+        .file-size {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 7px 14px;
+            background: transparent;
+            border: 1px solid var(--electric);
+            color: var(--electric);
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: var(--electric);
+            color: var(--navy);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            color: rgba(192, 198, 206, 0.2);
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .title-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+
+            .acordo-text {
+                max-height: 500px;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .tab-btn {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="breadcrumb">
+                <a href="index.html">← Voltar</a>
+                <span>/</span>
+                <span>Acordos Internacionais</span>
+                <span>/</span>
+                <span>Áustria</span>
+            </div>
+
+            <div class="title-section">
+                <img src="https://flagcdn.com/w80/at.png" alt="Áustria" class="flag">
+                <div class="title-info">
+                    <h1>Acordo Brasil-Áustria</h1>
+                    <p class="agreement-type">Acordo Bilateral</p>
+                </div>
+            </div>
+
+            <div class="key-info">
+                <div class="info-card">
+                    <div class="info-label">📋 Instrumento</div>
+                    <div class="info-value">Acordo Brasil-Áustria</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">📅 Decreto</div>
+                    <div class="info-value">Decreto nº 12.952/2026</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">✅ Em Vigor Desde</div>
+                    <div class="info-value">01 de março de 2026</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">📄 Documentos</div>
+                    <div class="info-value">3 documentos disponíveis</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEÇÃO CONTATOS -->
+        <div class="contact-section">
+            <!-- APSAI Brasil -->
+            <div class="contact-box">
+                <div class="contact-header">
+                    <img src="https://flagcdn.com/w40/br.png" alt="Brasil">
+                    <div class="contact-title">Órgão de Ligação (Brasil)</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-label">
+                        <span>🏢</span>
+                        Instituição
+                    </div>
+                    <div class="contact-value update">Informação em atualização</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">
+                        <span>📍</span>
+                        Endereço
+                    </div>
+                    <div class="contact-value update">Informação em atualização</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">
+                        <span>📞</span>
+                        Telefone
+                    </div>
+                    <div class="contact-value update">Informação em atualização</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">
+                        <span>✉️</span>
+                        E-mail
+                    </div>
+                    <div class="contact-value update">Informação em atualização</div>
+                </div>
+            </div>
+
+            <!-- Órgão de Ligação Estrangeiro -->
+            <div class="contact-box">
+                <div class="contact-header">
+                    <img src="https://flagcdn.com/w40/at.png" alt="Áustria">
+                    <div class="contact-title">Órgão de Ligação (Áustria)</div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-label">
+                        <span>🏢</span>
+                        Instituição
+                    </div>
+                    <div class="contact-value update">Informação em atualização</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">
+                        <span>📍</span>
+                        Endereço
+                    </div>
+                    <div class="contact-value update">Informação em atualização</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">
+                        <span>📞</span>
+                        Telefone
+                    </div>
+                    <div class="contact-value update">Informação em atualização</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label">
+                        <span>🔗</span>
+                        Website
+                    </div>
+                    <div class="contact-value update">Informação em atualização</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABAS -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="abrirAba(event, 'beneficios-austria')">Benefícios — Áustria</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'beneficios-brasil')">Benefícios — Brasil</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'acordo')">Acordo</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'ajuste-adm')">Ajuste Administrativo</button>
+    <button class="tab-btn" onclick="abrirAba(event, 'documentos')">Documentos</button>
+            </div>
+
+        <!-- ABA: BENEFÍCIOS ÁUSTRIA -->
+        <div id="beneficios-austria" class="tab-content active">
+            <div style="margin-bottom: 40px;">
+                <h2 class="section-title">Benefícios Cobertos pelo Acordo — Áustria</h2>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Aposentadoria por idade</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Aposentadoria por invalidez</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Pensão por morte</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Seguro-saúde</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Seguro-acidente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA: BENEFÍCIOS BRASIL -->
+        <div id="beneficios-brasil" class="tab-content">
+            <div style="margin-bottom: 40px;">
+                <h2 class="section-title">Benefícios Cobertos pelo Acordo — Brasil</h2>
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Aposentadoria por idade</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Aposentadoria por invalidez</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Pensão por morte</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Incapacidade permanente para o trabalho</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Regime Geral de Previdência Social (RGPS)</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Regimes Próprios de Previdência Social (RPPS)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA: ACORDO -->
+        <div id="acordo" class="tab-content">
+            <div class="acordo-text">
+                <h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">DECRETO Nº 12.952, DE 27 DE ABRIL DE 2026</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Promulga o Acordo de Previdência Social entre a República Federativa do Brasil e a República da Áustria, firmado em Brasília, em 17 de maio de 2022.</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">O PRESIDENTE DA REPÚBLICA, no uso da atribuição que lhe confere o art. 84, caput, inciso IV, da Constituição, e</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Considerando que o Acordo de Previdência Social entre a República Federativa do Brasil e a República da Áustria foi firmado em Brasília, em 17 de maio de 2022;</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Considerando que o Congresso Nacional aprovou o Acordo por meio do Decreto Legislativo nº 226, de 4 de novembro de 2025; e</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Considerando que o Acordo entrou em vigor para a República Federativa do Brasil, no plano jurídico externo, em 1º de março de 2026, nos termos de seu Artigo 25;</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">DECRETA:</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Art. 1º Fica promulgado o Acordo de Previdência Social entre a República Federativa do Brasil e a República da Áustria, firmado em Brasília, em 17 de maio de 2022, anexo a este Decreto.</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Art. 2º São sujeitos à aprovação do Congresso Nacional atos que possam resultar em revisão do Acordo e ajustes complementares que acarretem encargos ou compromissos gravosos ao patrimônio nacional, nos termos do art. 49, caput, inciso I, da Constituição.</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Art. 3º Este Decreto entra em vigor na data de sua publicação.</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Brasília, 27 de abril de 2026; 205º da Independência e 138º da República</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">LUIZ INÁCIO LULA DA SILVA</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Mauro Luiz Iecker Vieira</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">---</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">ACORDO DE PREVIDÊNCIA SOCIAL ENTRE A REPÚBLICA FEDERATIVA DO BRASIL E A REPÚBLICA DA ÁUSTRIA</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">A República Federativa do Brasil,</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">e</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">A República da Áustria</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">doravante denominadas de</span> "Estados Contratantes",</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Imbuídas do desejo de regulamentar suas relações em matéria de Previdência Social,</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Acordam o seguinte:</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">PARTE I</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">DISPOSIÇÕES GERAIS</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 1</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Definições</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Para os fins deste Acordo:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">a)</span> "Áustria" significa a República da Áustria e "Brasil" significa a República Federativa do Brasil;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">b)</span> "legislação" significa as leis, regulamentações e as disposições estatutárias que dizem respeito aos Regimes de Previdência Social mencionados no Artigo 2;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">c)</span> "nacional" significa, em relação à Áustria, um cidadão austríaco e, em relação ao Brasil, um cidadão brasileiro;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">d)</span> "autoridade competente" significa:</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">- em relação a Áustria, os Ministros Federais responsáveis pela administração da legislação da Áustria, e</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">- em relação ao Brasil, o Ministério do Trabalho e da Previdência Social;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">e)</span> "organismo de implementação austríaco" significa a agência, a instituição, a organização ou o organismo responsável, no todo ou em parte, pela implementação da legislação especificada no Artigo 2;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">f)</span> "agência de ligação austríaca" significa Federação de Seguros Sociais</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">g)</span> "instituição competente brasileira" significa a agência, a instituição, a organização ou o organismo responsável, no todo ou em parte, pela implementação deste Acordo;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">h)</span> "organismo de ligação brasileiro" significa o órgão designado a efetuar a comunicação entre os Estados Contratantes e garantir o cumprimento das solicitações formuladas no âmbito do Acordo, bem como os devidos esclarecimentos às pessoas interessadas sobre os direitos e obrigações dele decorrentes;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">i)</span> "período de cobertura" significa os períodos de contribuição ou qualquer período tratado como tal na medida que for considerado equivalente a um período de cobertura pela legislação aplicável dos Estados Contratantes;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">j)</span> "benefício" significa as prestações ou benefício pecuniário incluindo qualquer suplemento ou reajustamento aplicável no que se refere às legislações especificadas no Artigo 2.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> As autoridades competentes poderão notificar uma a outra, por escrito, sobre mudanças nos organismos designados nas alíneas "e" a "h" do parágrafo 1 sem a necessidade de modificar este Acordo.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> Qualquer expressão não definida no presente Acordo terá o significado que lhe é atribuído na legislação aplicável de cada Estado Contratante.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 2</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Âmbito material</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Este Acordo deve ser aplicado:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(a) em rela</span> ção à Áustria:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(i) a legisla</span> ção que trata do seguro de pensão, no que diz respeito a aposentadorias por idade, invalidez e pensão por morte, com exceção de provisões especiais para tabeliões; e</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(ii) com rela</span> ção à Parte II, apenas à legislação que diz respeito ao seguro-saúde e seguro-acidente.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(b) em rela</span> ção ao Brasil:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(i) a legisla</span> ção que rege o Regime Geral de Previdência Social no que diz respeito aos benefícios por idade, morte e incapacidade permanente para o trabalho; e</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(ii) a legisla</span> ção que rege os Regimes Próprios de Previdência Social dos servidores públicos no que diz respeito aos benefícios por idade, morte e incapacidade permanente para o trabalho.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Este Acordo também será aplicado a qualquer legislação que revoga, substitui, emenda, suplementa ou consolida a legislação especificada no parágrafo 1 deste Artigo.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 3</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Âmbito pessoal</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Salvo disposição em contrário, este Acordo será aplicado a todas as pessoas que estão ou estiveram sujeitas à legislação de um ou de ambos os Estados Contratantes, bem como às que adquiram direitos derivados daquelas pessoas, conforme a legislação aplicável.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 4</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Igualdade de tratamento</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Salvo disposição contrária neste Acordo, nacionais de outro Estado Contratante e seus dependentes e sobreviventes deverão, na aplicação da legislação de um Estado Contratante, receber igual tratamento ao dispensado aos nacionais deste Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Para a aplicação do Acordo, o parágrafo 1 deste Artigo deverá também ser aplicado a:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(a) refugiados</span> , como definido no Artigo 1 da Convenção relativa ao Estatuto dos Refugiados, de 28 de julho de 1951, e no Protocolo dessa Convenção, de 31 de janeiro de 1967, residentes no território de um Estado Contratante;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(b) pessoas ap</span> átridas, como definido no Artigo 1 da Convenção relativa ao Estatuto das Pessoas Apátridas, de 28 de setembro de 1954, residentes no território de um Estado Contratante;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(c) qualquer outra pessoa que</span> é dependente ou sobrevivente e resida no território de um Estado Contratante, no que diz respeito aos seus direitos derivados da pessoa especificada neste parágrafo; e</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(d) em rela</span> ção à Áustria, nacionais do Estado em que a Regulação (EC) Nº 883/2004 se aplica.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> O parágrafo 1 deste Artigo não será aplicado às disposições da legislação dos Estados Contratantes no que e refere ao seguro de pessoas empregadas em missões diplomáticas ou postos consulares em um terceiro Estado ou por um membro dessa missão ou posto.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">4.</span> O Parágrafo 1 deste artigo não será aplicado às disposições da legislação austríaca no que se refere:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(a)</span> à participação de pessoas seguradas e empregadores na administração das instituições e associações assim como adjudicação no campo da seguridade social;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(b)</span> à transferência de encargos de seguro que resulta de acordos com terceiros Estados específicos, nos quais a nacionalidade austríaca, em datas específicas no passado, é relevante para aquisição de períodos de cobertura sob a legislação austríaca, para períodos cumpridos fora do território da Áustria.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">5.</span> No que diz respeito à legislação austríaca sobre a creditação de períodos de serviço de guerra e períodos considerados equivalentes, os nacionais brasileiros que eram nacionais austríacos imediatamente antes de 13 de março de 1938 deverão receber tratamento igual ao concedido aos nacionais austríacos.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 5</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Pagamentos de benefícios no exterior</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Salvo disposição contrária neste Acordo, um Estado Contratante não reduzirá nem modificará benefícios adquiridos por força de sua legislação unicamente pelo fato de o beneficiário estar temporariamente ou residir no território do outro Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Os benefícios sob a legislação de um Estado Contratante deverão ser pagos aos nacionais do outro Estado Contratante, que residem fora dos territórios de ambos os Estados Contratantes, sob as mesmas condições e da mesma forma que seriam pagos aos nacionais do primeiro Estado Contratante que residem fora dos territórios dos Estados Contratantes.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> No que concerne à legislação austríaca, o parágrafo 1 deste Artigo não se aplica ao suplemento compensatório e aos pagamentos únicos para manutenção do poder de compra.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">PARTE II</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">DISPOSIÇÕES QUE DETERMINAM A LEGISLAÇÃO APLICÁVEL</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 6</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Disposições gerais</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Observadas as disposições dos Artigos 7 a 10, um empregado ou trabalhador por conta própria que trabalha no território de um Estado Contratante estará, no que diz respeito a esse trabalho, sujeito apenas à legislação desse Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Funcionários públicos de um dos Estados Contratantes e pessoas consideradas como tal deverão estar sujeitos à legislação do Estado Contratante cuja administração as emprega.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 7</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Trabalhadores deslocados</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Uma pessoa empregada por um empregador por no mínimo um mês no território de qualquer dos Estados Contratantes, que seja deslocada por seu empregador para o território do outro Estado Contratante, para executar determinados trabalhos para o mesmo empregador, deverá permanecer, no que se refere a essa relação de emprego, sujeita à legislação do primeiro Estado Contratante, como se continuasse empregada no território desse Estado Contratante, desde que a duração prevista do trabalho não exceda 60 meses.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> O parágrafo 1 do Artigo 6 será aplicado se uma pessoa deslocada exercer um emprego sob um contrato adicional de trabalho com qualquer outro empregador ou uma atividade como trabalhador por conta própria no território do outro Estado Contratante, com relação a esse emprego ou a essa atividade por conta própria adicional.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> Uma pessoa que tenha estado sujeita às disposições do Parágrafo 1 deste Artigo, após o período de 60 meses, mesmo que fracionado, não estará sujeita novamente àquelas disposições, salvo se decorrido um ano do término do deslocamento anterior.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 8</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Membros de tripulação de companhias aéreas</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Os membros de tripulação de companhias aéreas que trabalham nos territórios de ambos os Estados Contratantes estão sujeitos somente à legislação do Estado Contratante em cujo território a empresa tenha sua sede. Entretanto, se essa empresa tiver uma subsidiária, representação permanente ou filial no território do outro Estado Contratante, a pessoa contratada por essa subsidiária, representação ou filial estará submetida à legislação do Estado Contratante no qual a subsidiária, representação ou filial se localizar.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 9</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Membros da tripulação a bordo de navios</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> A pessoa que realiza uma atividade remunerada a bordo de um navio com bandeira de um dos Estados Contratantes estará sujeita à legislação deste Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Os trabalhadores empregados em trabalhos de carga, descarga, reparação de navios e serviços de vigilância no porto estão submetidos à legislação do Estado Contratante a cujo território pertença o porto.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 10</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Membros de Missões Diplomáticas e de repartições consulares</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">O presente Acordo não afeta as disposições da Convenção de Viena sobre Relações Diplomáticas, de 18 de Abril de 1961, ou da Convenção de Viena sobre Relações Consulares, de 24 de Abril de 1963.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 11</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Exceções às disposições sobre a legislação aplicável</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">A pedido de um empregado e seu empregador ou de um trabalhador por conta própria, as autoridades competentes de ambos os Estados Contratantes podem fornecer, por consentimento mútuo, exceções na aplicação dos Artigos 6 a 10, levando em conta a natureza e circunstâncias do trabalho.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">PARTE III</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">DISPOSIÇÕES SOBRE BENEFÍCIOS</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 12</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Cálculo dos benefícios quando a totalização não é necessária</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Quando, de acordo com a legislação de um dos Estados Contratantes, o direito ao benefício existir sem a necessidade de aplicação do parágrafo 1 do Artigo 13, no caso da Áustria, o organismo de implementação austríaco, ou, no caso do Brasil, o organismo de ligação brasileiro, determinará o valor do benefício exclusivamente com base nos períodos de cobertura que serão levados em conta de acordo com essa legislação.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 13</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Totalização de períodos de cobertura</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Se uma pessoa completou períodos de cobertura de acordo com a legislação de ambos os Estados Contratantes, esses períodos, desde que não se sobreponham, se necessário, deverão ser somados para o propósito da aquisição de direito a um benefício, como se fossem períodos de cobertura no Estado Contratante em questão.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Os períodos de cobertura de uma pessoa cumpridos em um terceiro Estado, com o qual um dos Estados Contratantes tenha um Acordo de Previdência Social de mesma natureza, serão considerados para o propósito de aquisição de direito a um benefício sob a legislação apenas desse Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> Se a duração total dos períodos de cobertura que serão levados em consideração para a determinação do benefício de acordo com a legislação de um Estado Contratante for menor do que 12 meses e, devido a esses períodos de cobertura, o direito a um benefício não existir, de acordo com a legislação a que se refere o Artigo 2, nenhum benefício será concedido de acordo com a legislação desse Estado Contratante.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">SEÇÃO 1</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">BENEFÍCIOS DE ACORDO COM A LEGISLAÇÃO DA ÁUSTRIA</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 14</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Disposição especial com relação à Áustria</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Quando uma pessoa que completou períodos de cobertura de acordo com a legislação de ambos os Estados Contratantes ou o sobrevivente dessa pessoa solicitar um benefício, o organismo de implementação austríaco determinará, de acordo com a legislação austríaca, se o solicitante tem direito a um benefício pela totalização dos períodos de cobertura, conforme definido no Artigo 13, e levando em conta as seguintes disposições:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(a) quando a legisla</span> ção da Áustria estabelecer que a concessão de determinados benefícios depende do cumprimento de períodos de cobertura em uma ocupação coberta por regimes especiais ou em uma ocupação ou em um emprego específico, apenas os períodos de cobertura cumpridos na mesma ocupação ou no mesmo emprego, de acordo com a legislação do Brasil, serão levados em consideração para a concessão de tais benefícios; e</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(b) quando a legisla</span> ção austríaca dispuser que o período de pagamento de um benefício deverá prolongar o período de referência durante o qual os períodos de cobertura devem ser concluídos até a data relevante, os períodos durante os quais um benefício foi concedido, pela legislação do Brasil, também deverão prolongar o período de referência mencionado anteriormente.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 15</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Cálculo dos benefícios austríacos</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Quando, de acordo com a legislação austríaca, o direito a um benefício existir apenas pela totalização dos períodos de acordo com parágrafo 1 do Artigo 13, o organismo de implementação austríaco determinará o valor do benefício de acordo com a Regulação (EC) nº 883/2004, com períodos de cobertura do Brasil, a serem considerados período de cobertura em outro Estado Membro da União Europeia.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Com exceção do parágrafo 1 deste Artigo, períodos de criação dos filhos deverão ser considerados para a determinação do benefício, apenas de acordo com a legislação austríaca.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">SEÇÃO 2</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">BENEFÍCIOS DE ACORDO COM A LEGISLAÇÃO DO BRASIL</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 16</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Totalização dos períodos de cobertura e cálculo dos benefícios</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Se uma pessoa não for elegível a um benefício considerando unicamente os períodos de cobertura cumpridos sob a legislação do Brasil, os períodos de cobertura cumpridos sob a legislação da Áustria serão também considerados, até o período mínimo necessário, para alcançar a elegibilidade ao benefício, devendo o organismo de ligação brasileiro proceder da seguinte forma:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(a) calcular o benef</span> ício teórico que seria pago como se os períodos de cobertura totalizados, até o mínimo necessário, para alcançar a elegibilidade ao benefício, houvessem sido cumpridos sob a legislação do Brasil (prestação teórica); e</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(b) sobre a presta</span> ção teórica, calcular o valor do benefício a ser pago de acordo com a razão entre a duração dos períodos de cobertura cumpridos sob a legislação do Brasil e a duração dos períodos de cobertura cumpridos sob a legislação de ambos os Estados Contratantes, até o período mínimo necessário, para alcançar a elegibilidade ao benefício (pro rata).</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> A prestação teórica mencionada na alínea "a" do parágrafo 1 deste Artigo não será, sob nenhuma circunstância, inferior ao valor mínimo garantido pela legislação do Brasil.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">PARTE IV</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">DISPOSIÇÕES DIVERSAS</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 17</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Cooperação e assistência administrativa</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> As autoridades competentes de ambos os Estados Contratantes firmarão um Ajuste Administrativo que definirá as medidas necessárias para a implementação deste Acordo.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> As autoridades competentes, a agência de ligação austríaca e a instituição competente brasileira, no âmbito de suas respectivas competências, deverão:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(a) informar</span> -se reciprocamente quanto às medidas adotadas para a aplicação deste Acordo; e</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(b) informar</span> -se reciprocamente sobre as mudanças na legislação que afetam a aplicação deste Acordo.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> As Autoridades Competentes e os organismos definidos nas alíneas "e" a "h" do parágrafo 1 do Artigo 1 deverão auxiliar-se reciprocamente na aplicação deste Acordo, como se estivessem aplicando suas próprias legislações. Essa assistência será gratuita, salvo exceções acordadas entre a agência de ligação austríaca e a instituição competente brasileira.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">4.</span> As Autoridades Competentes e os organismos definidos nas alíneas "e" a "h" do parágrafo 1 do Artigo 1 poderão comunicar-se diretamente entre si, com as pessoas interessadas ou com seus respectivos representantes.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">5.</span> As Autoridades Competentes e os organismos definidos nas alíneas "e" a "h" do parágrafo 1 do Artigo 1, não podem rejeitar os requerimentos ou outros documentos a elas enviados apenas pelo fato de terem sido redigidos em uma língua oficial do outro Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">6.</span> Se o organismo de implementação austríaco ou o organismo de ligação brasileiro solicitar a um requerente ou beneficiário que esteja temporariamente ou que resida no território do outro Estado Contratante que se submeta a perícia médica, tal perícia, a pedido desse organismo e a seu custo, deverá ser providenciada ou realizada no local de estada ou residência pelo organismo de ligação brasileiro ou pelo Organismo de Implementação Austríaco.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">7.</span> No caso de perícia médica realizada sob o amparo da legislação de ambos os Estados Contratantes, tais perícias serão providenciadas e realizadas pelo Organismo de Implementação Austríaco ou pelo organismo de ligação brasileiro, e a seu custo.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">8.</span> A agência de ligação austríaca e a instituição competente brasileira poderão acordar procedimentos relacionados às perícias médicas, assim como outras formas de reembolso, incluindo a isenção de tal reembolso.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 18</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Isenção de taxas e emolumentos</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Qualquer isenção ou redução de taxas, imposto postal, taxas legais ou de registro concedida pela legislação de um Estado Contratante com relação a certificados ou documentos que devem ser enviados para a aplicação dessa legislação deverá ser estendida também a certificados ou documentos similares que devem ser enviados para a aplicação deste Acordo ou da legislação do outro Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Todas as declarações, todos os documentos e todos os certificados de qualquer natureza que precisarem ser enviados para os fins deste Acordo serão isentos de autenticação pelas autoridades diplomáticas ou consulares, quando tramitados diretamente entre as autoridades competentes e/ou os organismos definidos nas alíneas "e" a "h" do parágrafo 1 do Artigo 1.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> Cópias dos documentos que são certificadas como cópias verdadeiras e exatas pelas autoridades competentes e/ou pelos organismos definidos nas alíneas "e" a "h" do parágrafo 1 do Artigo 1 serão aceitas como cópias verdadeiras e exatas sem qualquer outra certificação.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 19</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Igualdade de tratamento de requerimentos, notificações ou recursos</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Todo requerimento, declaração ou recurso que, para a aplicação deste Acordo ou da legislação de um Estado Contratante, seja submetido à autoridade competente, para a aplicação do Artigo 11, ou ao organismo de implementação austríaco ou ao organismo de ligação brasileiro, para os demais casos, será considerado como um requerimento, declaração ou recurso submetido ao organismo correspondente no outro Estado Contratante mencionado acima.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Um requerimento para benefícios, realizado segundo a legislação de um Estado Contratante, também é válido como requerimento para um benefício equivalente, segundo a legislação do outro Estado Contratante se, no requerimento, estiver informado que períodos de cobertura foram cumpridos segundo a legislação do outro Estado Contratante. Isso não se aplica caso o beneficiário, expressamente, requeira que o reconhecimento dos direitos de aposentadoria por idade, adquiridos de acordo com a legislação do outro Estado Contratante, seja suspenso.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> Todo requerimento, declaração ou recurso que, sob o amparo da legislação de um Estado Contratante, deve ser submetido, dentro de um período especificado, ao organismo de implementação austríaco ou ao organismo de ligação brasileiro, poderá ser enviado dentro do mesmo período ao correspondente organismo do outro Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">4.</span> Nos casos em que os parágrafos 1 a 3 deste Artigo se aplicam, a autoridade competente, o organismo de implementação austríaco ou o organismo de ligação brasileiro ao qual o envio foi feito, deverá encaminhar o requerimento, a notificação ou recurso, sem demora, ao organismo correspondente do outro Estado Contratante, indicando a data de recebimento no documento.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 20</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Pagamentos</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> O pagamento dos benefícios sob o amparo deste Acordo poderá ser feito na moeda de um ou de outro Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Os reembolsos, de acordo com este Acordo, serão feitos na moeda do Estado Contratante no qual se realizou o serviço.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> Os pagamentos, conforme previstos neste Acordo, serão realizados em conformidade com as regras ou práticas vigentes nesse campo em cada um dos Estados Contratantes, no momento do pagamento.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">4.</span> Se um Estado Contratante impuser controles de moeda ou outras medidas semelhantes que restrinjam os pagamentos, os envios ou as transferências de fundos ou recursos financeiros para pessoas que estão fora do Estado Contratante, o Estado Contratante deverá tomar, sem demora, as medidas adequadas para garantir o pagamento de todos os valores devidos em conformidade com este Acordo para as pessoas descritas no Artigo 3 que residam no outro Estado Contratante.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 21</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Proteção de dados</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Na medida em que dados pessoais são comunicados nos termos deste Acordo, e em conformidade com a lei nacional, as seguintes disposições deverão ser aplicadas, levando em consideração outras disposições obrigatórias dos respectivos Estados Contratantes:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(a) para a implementa</span> ção deste Acordo e da legislação a que se refere, dados pessoais podem ser comunicados aos órgãos responsáveis do Estado destinatário. Os órgãos destinatários respectivos não deverão usar esses dados para outros propósitos. A transmissão subsequente de dados pessoais dentro do território do Estado destinatário para outros órgãos é admissível em conformidade com a lei nacional do Estado destinatário, desde que sirva para fins de seguridade social, inclusive procedimentos judiciais relacionados;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(b) todos os dados pessoais comunicados de qualquer forma entre as autoridades</span> , instituições e outros órgãos responsáveis, nos termos deste Acordo ou de qualquer ajuste para implementá-lo, serão tratados como informações confidenciais recebidas do outro Estado Contratante da mesma maneira que as informações obtidas sob o amparo da lei nacional do Estado destinatário. Essas obrigações serão aplicadas a todas as pessoas que exerçam tarefas por força do Acordo e também às pessoas que são vinculadas pela obrigação de sigilo;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(c) em casos espec</span> íficos, o órgão destinatário deverá informar, a pedido do órgão remetente, sobre o uso dos dados recebidos e os resultados que foram alcançados por esses dados;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(d) o</span> órgão remetente deverá garantir que os dados pessoais comunicados estão corretos e atualizados. Antes de iniciar qualquer comunicação de dados pessoais, o órgão remetente tem que examinar se a comunicação é necessária e proporcional no que diz respeito ao propósito da comunicação em questão. Isso deve ser feito com a devida consideração às proibições relativas à comunicação existentes na lei nacional relevante. No caso de comunicação de dados incorretos ou dados que não deveriam ser comunicados por força da lei nacional do Estado remetente, o órgão destinatário deve ser informado o mais rápido possível. Este órgão deverá fazer a eliminação ou a correção necessária dos dados imediatamente. Se o órgão destinatário tiver motivos para supor que os dados comunicados podem estar incorretos ou devam ser eliminados, este órgão deverá imediatamente informar ao órgão remetente disso;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(e) toda pessoa interessada que prove sua identidade de maneira adequada dever</span> á receber do órgão responsável pelo processamento de dados as informações sobre os dados relacionados a ela que foram comunicados ou processados, acerca da origem, os destinatários ou categorias de destinatários das comunicações, o propósito do uso dos dados, assim como a base legal, de maneira compreensível. As informações serão dadas sem demoras indevidas e, a princípio, gratuitamente. Além disso, a pessoa interessada tem direito à correção de dados incompletos ou incorretos e à eliminação de dados processados de maneira ilegal. Detalhes de procedimentos adicionais relacionados à imposição desses direitos estão sujeitos à lei nacional;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(f) se houver viola</span> ção dos direitos relacionados à proteção de dados, as pessoas afetadas terão direito ao amparo legal e, inclusive, judicial, de acordo com a lei nacional respectiva dos Estados Contratantes.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(g) os dados pessoais comunicados dever</span> ão ser eliminados:</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">- se estiverem incorretos ou se tiverem sido comunicados ou obtidos de maneira ilegal; ou</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">- se dados legalmente comunicados precisarem ser eliminados em uma data posterior ao estabelecido pela lei nacional do Estado remetente; ou</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">- se os dados não forem mais necessários para o cumprimento do objetivo e se não houver nenhuma razão para supor que a eliminação pode prejudicar os interesses de uma pessoa que mereça proteção no campo da previdência social;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(h) ambos os</span> órgãos, remetente e destinatário, estarão obrigados a registrar o propósito, o assunto e a data da comunicação de dados pessoais;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">(i) ambos os</span> órgãos, remetente e destinatário, estarão obrigados a proteger efetivamente os dados pessoais contra destruição não autorizada ou acidental, perda acidental, acesso não autorizado, modificação acidental ou não autorizada e divulgação não autorizada.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> As disposições do parágrafo 1 deste Artigo serão aplicadas adequadamente aos sigilos comerciais e de negócios.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 22</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Pagamentos indevidos</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Quando o organismo de implementação austríaco ou o organismo de ligação brasileiro tenha realizado pagamento indevido de um benefício, a quantia indevida poderá ser deduzida dos pagamentos devidos de um benefício correspondente pago de acordo com a legislação do outro Estado Contratante para a conta do organismo de implementação austríaco ou da instituição competente brasileira.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 23</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Resolução de controvérsias</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">As divergências resultantes da aplicação ou da interpretação do presente Acordo serão resolvidas por meio de consultas entre as autoridades competentes dos Estados Contratantes.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">PARTE V</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">DISPOSIÇÕES TRANSITÓRIAS E FINAIS</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 24</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Disposições transitórias</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Este Acordo não conferirá nenhum direito ao pagamento de um benefício por qualquer período anterior à data de entrada em vigor deste Acordo.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Quaisquer períodos de cobertura cumpridos sob o amparo da legislação de um Estado Contratante, antes da entrada em vigor deste Acordo, serão também considerados para a determinação dos direitos adquiridos por força deste Acordo.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> Observado o parágrafo 1 deste Artigo, este Acordo também será aplicado a fatos geradores que são relevantes para a aquisição de direitos e que ocorreram antes da entrada em vigor deste Acordo, desde que direitos previamente determinados não tenham dado causa a pagamentos únicos (lump-sum).</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">4.</span> O valor de um benefício devido apenas em virtude deste Acordo será determinado a partir da data de entrada em vigor deste Acordo e a pedido do beneficiário. Se a solicitação for enviada dentro de dois anos da entrada em vigor deste Acordo, o benefício será pago a partir desta data. Do contrário, o benefício será pago a partir da data determinada de acordo com a legislação de cada Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">5.</span> Benefícios concedidos antes da entrada em vigor deste Acordo não serão revisados.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">6.</span> Ao aplicar o parágrafo 1 do Artigo 7, no caso de pessoas deslocadas ao território de um Estado Contratante em data anterior à data de entrada em vigor do presente Acordo, os períodos de emprego mencionados neste Artigo serão considerados como tendo início na data de entrada em vigor deste Acordo.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 25</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Entrada em vigor, vigência e denúncia</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Este Acordo entrará em vigor no primeiro dia do terceiro mês após o qual cada Estado Contratante tenha recebido do outro Estado Contratante notificação por escrito de que cumpriu todos os requisitos para a entrada em vigor deste Acordo.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Este Acordo permanecerá em vigor por um período indefinido. Qualquer Estado Contratante pode denunciá-lo por escrito, mediante notificação prévia de doze meses.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> No caso de denúncia deste Acordo, todos os direitos adquiridos por força de suas disposições serão mantidos.</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">EM TESTEMUNHO DO QUE, os abaixo assinados, devidamente autorizados por seus respectivos Governos, assinam este Acordo.</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">FEITO em Brasília, em 17 de maio de 2022, em duas vias originais, em português, alemão e inglês, sendo todos os textos igualmente autênticos. Em caso de divergências de interpretação, o texto em inglês prevalecerá.</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">PELA REPÚBLICA FEDERATIVA DO BRASIL</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">JOSÉ CARLOS OLIVEIRA</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Ministro de Estado do Trabalho e da Previdência</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">PELA REPÚBLICA DA ÁUSTRIA</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">DR. STEFAN SCHOLZ</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Embaixador Extraordinário e Plenipotenciário da Áustria para o Brasil</p>
+            </div>
+        </div>
+
+        <!-- ABA: DOCUMENTOS -->
+        <div id="documentos" class="tab-content">
+            <div style="background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px;">
+                <h2 class="section-title">Documentos Disponíveis</h2>
+                
+                <div class="docs-toolbar">
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="filtrarDocs()">
+                    </div>
+                </div>
+
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Documento</th>
+                            <th>Arquivo</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="docs-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+        <!-- ABA: AJUSTE ADMINISTRATIVO -->
+        <div id="ajuste-adm" class="tab-content">
+            <div class="acordo-text">
+                <h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">AJUSTE ADMINISTRATIVO</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">PARA A APLICAÇÃO DO ACORDO SOBRE PREVIDÊNCIA SOCIAL ENTRE A REPÚBLICA FEDERATIVA DO BRASIL E A REPÚBLICA DA ÁUSTRIA</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Nos termos do parágrafo 1 do artigo 17 do Acordo de Previdência Social entre a República Federativa do Brasil e a República da Áustria, assinado em 17 de maio de 2022, em Brasília, doravante denominado Acordo, as autoridades competentes:</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">- pela República Federativa do Brasil</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Ministério do Trabalho e Previdência</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">- pela República da Áustria</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">o</span> Ministro Federal de Assuntos Sociais, Saúde, Assistência e Proteção do Consumidor,</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">estabelecem</span> , de comum acordo, as seguintes disposições:</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">PARTE I</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">DISPOSIÇÕES GERAIS</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 1</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Definições</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Os termos utilizados neste Ajuste Administrativo terão o significado dado a eles no Artigo 1º do Acordo.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 2</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Deveres da agência de ligação austríaca e da instituição competente brasileira</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">A agência de ligação austríaca e a instituição competente brasileira terão os deveres previstos no Ajuste Administrativo. Para a implementação do Acordo, eles apoiar-se-ão mutuamente e comunicar-se-ão diretamente entre si, bem como com as pessoas interessadas ou os seus representantes.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">PARTE II</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">DISPOSIÇÕES RELATIVAS À LEGISLAÇÃO APLICÁVEL</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 3</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Certificado sobre a legislação aplicável</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Quando a legislação de um Estado Contratante for aplicável, de acordo com os casos previstos nos Artigos 7 a 11 do Acordo, os organismos designados no parágrafo 3 deste artigo, emitirão, por requerimento do empregador ou do trabalhador por conta própria, um certificado declarando que o empregado ou trabalhador por conta própria está sujeito à legislação aplicável e indicando a duração pela qual o certificado será válido. Este certificado garantirá que a pessoa em questão não estará sujeita à legislação do Estado Contratante no qual a atividade será exercida, no que se refere à atividade para a qual o certificado foi emitido.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> No caso de dúvida justificada quanto à autenticidade ou exatidão de um certificado, os organismos designados no parágrafo 3 deste artigo entrarão em contato direto entre si para resolver a questão.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> Os certificados referidos no parágrafo 1 do presente artigo serão emitidos:</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">quando a legisla</span> ção da Áustria for aplicável</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">- pela Instituição de Seguro Saúde pertinente;</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">quando a legisla</span> ção do Brasil for aplicável</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">- pelo organismo de ligação brasileiro.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">4.</span> O organismo designado no parágrafo 3 deste artigo de um Estado Contratante, que emitir o certificado, mencionado no parágrafo 1 do presente artigo, fornecerá uma cópia do certificado para o empregado ou trabalhador por conta própria em questão, bem como para o empregador responsável e, ao organismo designado no parágrafo 3 deste artigo do outro Estado Contratante.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">5.</span> Um novo certificado pode ser emitido sem a necessidade de consulta à autoridade competente do outro Estado Contratante, desde que o novo período de deslocamento esteja compreendido dentro dos 60 meses previstos no artigo 7 do Acordo.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">6.</span> Em caso de cessação da atividade antes do término do período mencionado no certificado, o empregador ou o trabalhador por conta própria deverá notificar o organismo designado no parágrafo 3 deste artigo do Estado Contratante que emitiu o certificado, a fim de que este último possa notificar o respectivo organismo do outro Estado Contratante.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">PARTE III</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Disposições relativas aos benefícios</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 4</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Requerimento de benefícios</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> O organismo de implementação austríaco e o organismo de ligação brasileiro enviarão um ao outro, direta e imediatamente, o formulário referente a um requerimento de benefício, ao qual se aplica a Parte III em combinação com o Artigo 19 do Acordo, indicando a data em que o requerimento foi apresentado. Eles enviarão um ao outro informações disponíveis sobre quaisquer outros fatos relevantes para a determinação do direito, inclusive quando necessário, relatórios médicos.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> O organismo de implementação austríaco e o organismo de ligação brasileiro no qual o benefício foi apresentado verificará a informação pertinente do solicitante e dos membros de sua família.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> O organismo de implementação austríaco e o organismo de ligação brasileiro deverão informar um ao outro, sem demora, sobre os períodos de cobertura cumpridos sob a legislação a que se aplicam, sempre que possível juntamente com a informação sobre o requerimento.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">4.</span> O organismo de implementação austríaco e o organismo de ligação brasileiro também informar-se-ão sobre as decisões relacionadas ao requerimento.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 5</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Troca de informações médicas e reembolso</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> Se o organismo de implementação austríaco ou organismo de ligação brasileiro realizar exames médicos periciais, enviará, por solicitação e sem ônus, todas as informações médicas disponíveis relativas à incapacidade do solicitante ou do beneficiário para o organismo correspondente do outro Estado Contratante, sempre que o exame médico pericial for necessário sob o amparo da legislação de ambos os Estados Contratantes.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Se o Organismo de Implementação Austríaco ou o Organismo de Ligação brasileiro julgar necessário, poderá solicitar exames médicos complementares. As despesas relativas a esses exames médicos complementares serão reembolsadas pelo Organismo de Implementação Austríaco ou pela Instituição Competente Brasileira, conforme o caso.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> No caso referido no parágrafo antecedente e nos casos referidos no parágrafo 6 do artigo 17 do Acordo, o Organismo de Implementação Austríaco ou a Instituição Competente Brasileira deverá enviar a fatura relativa às despesas incorridas no ano anterior para o organismo correspondente do outro Estado Contratante, discriminando cada caso até a data de 31 de março do ano subsequente. O organismo que recebe a fatura, deve realizar o reembolso dentro de um prazo de 120 dias a contar do recebimento da fatura.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 6</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Pagamento de benefícios</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> O organismo de implementação austríaco e a Instituição Competente Brasileira pagarão os benefícios pecuniários diretamente aos requerentes ou, conforme o caso, ao respectivo representante legal.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> Em relação ao parágrafo 4 do artigo 17 do Acordo, o Organismo de Implementação Austríaco e a Instituição Competente Brasileira têm o direito de exigir dos beneficiários ou, conforme o caso, de seus representantes legais, prova de que as condições para o pagamento continuado dos benefícios pecuniários estejam sendo cumpridas (por exemplo atestado de vida).</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">3.</span> O pagamento será realizado conforme o artigo 20 do Acordo, sem quaisquer deduções de despesas administrativas que possam resultar do pagamento de um benefício. Contudo, as despesas bancárias da conta do beneficiário ficarão a cargo do próprio beneficiário.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 7</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Formulários e troca eletrônica de dados</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">1.</span> A agência de ligação austríaca e a instituição competente brasileira decidirão sobre os procedimentos e formulários comuns (em alemão e português) necessários e adequados para a aplicação do Acordo e do presente Ajuste Administrativo.</p>
+<p style="margin-left: 20px; margin-bottom: 12px; line-height: 1.6; font-size: 13px; color: #FFFFFF;"><span style="font-weight: 600; color: #FFFFFF;">2.</span> A agência de ligação austríaca e a instituição competente brasileira poderão acordar sobre um intercâmbio eletrônico de dados, o mais rapidamente possível, caso os requisitos técnicos de ambos os Estados Contratantes sejam atendidos.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 8</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Estatísticas</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">A agência de ligação austríaca e a instituição competente brasileira trocarão estatísticas sobre o quantitativo de certificados emitidos, nos termos do artigo 3 do presente Ajuste Administrativo, e sobre os pagamentos efetuados aos beneficiários no âmbito do Acordo. Essas estatísticas serão fornecidas eletronicamente e anualmente.</p>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">PARTE IV</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">DISPOSIÇÕES FINAIS</h3>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: #FFFFFF;">Artigo 9</h3>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Período de Vigência</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Este Ajuste Administrativo entrará em vigor na mesma data de entrada em vigor do Acordo e terá idêntica duração.</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">FEITO em Brasília, em 17 de maio de 2022, em três exemplares, um em português, um em alemão e outro em inglês, sendo todos os textos igualmente autênticos. Em caso de divergência de interpretação, o texto em inglês prevalecerá.</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">O Ministério do Trabalho e Previdência</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Pela República Federativa do Brasil:</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">O Ministro Federal de Assuntos Sociais,</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Saúde, Assistência e Proteção do Consumidor</p>
+<p style="margin-bottom: 15px; line-height: 1.6; font-size: 13px; color: #FFFFFF;">Pela República da Áustria:</p>
+            </div>
+        </div>
+        
+        </main>
+
+    <footer>
+        <p>Acordos Internacionais de Previdência Social • Brasil • 2026</p>
+    </footer>
+
+    <script>
+        const documentos = [
+            { nome: "Acordo de Previdência Social Brasil-Áustria (2022)", desc: "Texto oficial do acordo bilateral assinado em 17/05/2022", arquivo: "01-acordo-principal.pdf", tamanho: "3.1 MB" },
+            { nome: "Decreto de Promulgação nº 12.952/2026", desc: "Decreto que promulga o Acordo para o Brasil", arquivo: "02-acordo-promulgado.pdf", tamanho: "253 KB" },
+            { nome: "Ajuste Administrativo Brasil-Áustria", desc: "Regulamentação administrativa para implementação do Acordo", arquivo: "03-ajuste-administrativo.pdf", tamanho: "246 KB" }
+        ];
+
+        function renderDocs() {
+            const tb = document.getElementById('docs-tbody');
+            const termo = document.getElementById('search-docs').value.toLowerCase();
+
+            const filtrados = documentos.filter(d =>
+                (d.nome.toLowerCase().includes(termo) || d.desc.toLowerCase().includes(termo))
+            );
+
+            tb.innerHTML = filtrados.map(d => `
+                <tr>
+                    <td>
+                        <div class="doc-name">📄 ${d.nome}</div>
+                        <div class="doc-desc">${d.desc}</div>
+                    </td>
+                    <td><div class="file-size">${d.tamanho}</div></td>
+                    <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
+                </tr>
+            `).join('');
+        }
+
+        function filtrarDocs() {
+            renderDocs();
+        }
+
+        function abrirAba(evt, abaId) {
+            const abas = document.querySelectorAll('.tab-content');
+            abas.forEach(aba => aba.classList.remove('active'));
+
+            const botoes = document.querySelectorAll('.tab-btn');
+            botoes.forEach(botao => botao.classList.remove('active'));
+
+            document.getElementById(abaId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        renderDocs();
+    </script>
+</body>
+</html>

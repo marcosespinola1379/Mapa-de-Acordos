@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acordo Brasil-Quebec • Previdência Social</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+        :root {
+            --navy: #0A1326;
+            --electric: #0066FF;
+            --bright: #3DA5FF;
+            --cream: #FFFFFF;
+            --muted: #C0C6CE;
+            --border: rgba(0, 102, 255, 0.25);
+            --success: #1BA947;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Source Serif 4', Georgia, serif; background: var(--navy); color: var(--cream); }
+        .header { background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, transparent 70%); border-bottom: 1px solid var(--border); padding: 32px 24px; }
+        .header-content { max-width: 1200px; margin: 0 auto; }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 12px; color: var(--muted); text-transform: uppercase; }
+        .breadcrumb a { color: var(--bright); text-decoration: none; }
+        .title-section { display: flex; align-items: center; gap: 20px; margin-bottom: 16px; }
+        .flag { width: 80px; height: 60px; border-radius: 4px; object-fit: contain; }
+        .title-info h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 40px; font-weight: 700; color: var(--bright); margin-bottom: 4px; }
+        .key-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px; }
+        .info-card { background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, transparent 70%); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; }
+        .info-label { color: var(--bright); font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+        .info-value { color: var(--cream); font-size: 13px; }
+        main { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+        .contact-section { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+        .contact-box { background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px; }
+        .contact-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid rgba(0, 102, 255, 0.2); }
+        .contact-header img { width: 40px; height: 30px; }
+        .contact-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3em; font-weight: 600; }
+        .contact-item { border-bottom: 1px solid rgba(0, 102, 255, 0.1); padding-bottom: 12px; margin-bottom: 12px; }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-label { color: var(--bright); font-weight: 600; font-size: 11px; text-transform: uppercase; margin-bottom: 4px; }
+        .contact-value { color: var(--cream); font-size: 14px; line-height: 1.5; }
+        .contact-value a { color: var(--bright); text-decoration: none; }
+        .tabs-nav { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 32px; gap: 2px; flex-wrap: wrap; }
+        .tab-btn { background: transparent; border: none; color: var(--muted); padding: 16px 20px; font-size: 13px; font-weight: 600; text-transform: uppercase; cursor: pointer; border-bottom: 3px solid transparent; font-family: 'Source Serif 4', Georgia, serif; }
+        .tab-btn:hover { color: var(--bright); }
+        .tab-btn.active { color: var(--bright); border-bottom-color: var(--electric); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 700; color: var(--bright); margin-bottom: 24px; }
+        .benefits-list { display: grid; gap: 12px; }
+        .benefit-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: rgba(0, 102, 255, 0.08); border: 1px solid var(--border); border-radius: 6px; }
+        .benefit-check { color: var(--success); font-weight: 700; flex-shrink: 0; }
+        .benefit-name { color: var(--cream); }
+        .document-text { background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px; max-height: 900px; overflow-y: auto; color: var(--cream); font-size: 12px; line-height: 1.7; white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New', monospace; }
+        .docs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .docs-table thead { background: rgba(0, 102, 255, 0.08); }
+        .docs-table th { padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 600; color: var(--bright); text-transform: uppercase; }
+        .docs-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 13px; }
+        .doc-name { color: var(--cream); font-weight: 500; }
+        .doc-desc { color: var(--muted); font-size: 12px; margin-top: 3px; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; text-transform: uppercase; }
+        .badge.principal { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .badge.complementar { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .btn-download { display: inline-block; background: var(--electric); color: var(--navy); padding: 5px 12px; border-radius: 3px; font-size: 11px; font-weight: 600; text-decoration: none; text-transform: uppercase; }
+        .btn-download:hover { background: var(--bright); }
+        footer { background: rgba(0, 0, 0, 0.3); border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--muted); font-size: 13px; }
+        @media (max-width: 768px) {
+            .contact-section { grid-template-columns: 1fr; }
+            .title-info h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="breadcrumb">
+                <a href="index.html">← Voltar</a> / Acordos Internacionais / Quebec
+            </div>
+            <div class="title-section">
+                <img src="https://flagcdn.com/w80/ca.png" alt="Canadá-Quebec" class="flag">
+                <div class="title-info">
+                    <h1>Acordo Brasil-Quebec</h1>
+                    <p style="font-size: 12px; color: var(--muted); text-transform: uppercase;">Acordo Bilateral sobre Previdência Social</p>
+                </div>
+            </div>
+            <div class="key-info">
+                <div class="info-card">
+                    <div class="info-label">📋 Tipo</div>
+                    <div class="info-value">Acordo Bilateral + Ajuste Administrativo</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">📅 Decreto</div>
+                    <div class="info-value">Decreto nº 8.288/2014</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">✅ Em Vigor</div>
+                    <div class="info-value">08 de agosto de 2011</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">📄 Artigos</div>
+                    <div class="info-value">29 (Acordo) + 8 (Ajuste)</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="contact-section">
+            <div class="contact-box">
+                <div class="contact-header">
+                    <img src="https://flagcdn.com/w40/br.png" alt="Brasil">
+                    <div class="contact-title">APSAI (Brasil)</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">🏢 Instituição</div>
+                    <div class="contact-value">Agência da Previdência Social de Atendimento Acordos Internacionais - Brasília (DF)</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">📍 Endereço</div>
+                    <div class="contact-value">SAUS, Quadra 4, Bloco L, 7º Andar, sala 713, Asa Sul, Brasília (DF), CEP 70070-924</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">📞 Telefone</div>
+                    <div class="contact-value">(61) 2017-7148 / 2017-8773</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">✉️ E-mail</div>
+                    <div class="contact-value"><a href="mailto:apsai23001140@inss.gov.br">apsai23001140@inss.gov.br</a></div>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <div class="contact-header">
+                    <img src="https://flagcdn.com/w40/ca.png" alt="Canadá">
+                    <div class="contact-title">Órgão de Ligação (Quebec)</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">🏢 Instituição</div>
+                    <div class="contact-value">Bureau des ententes de sécurité sociale, Retraite Québec</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">📍 Endereço</div>
+                    <div class="contact-value">1055 boulevard René-Lévesque Est, 9e étage, Montréal (Québec), H2L 4S5</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">📞 Telefone</div>
+                    <div class="contact-value">+1 (418) 646-4636</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="abrirAba(event, 'beneficios-quebec')">Benefícios — Quebec</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'beneficios-brasil')">Benefícios — Brasil</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'acordo')">Acordo</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'ajuste')">Ajuste Administrativo</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'documentos')">Documentos</button>
+        </div>
+
+        <div id="beneficios-quebec" class="tab-content active">
+            <h2 class="section-title">Benefícios Cobertos — Quebec</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Lei da Proteção Social do Idoso (Lei Q-2)</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Plano de Pensão do Canadá</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Seguro de Deslocamento</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="beneficios-brasil" class="tab-content">
+            <h2 class="section-title">Benefícios Cobertos — Brasil</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Aposentadoria por idade</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Aposentadoria por invalidez</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Pensão por morte</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Incapacidade permanente para o trabalho</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Regime Geral de Previdência Social (RGPS)</span>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-check">✓</span>
+                    <span class="benefit-name">Regimes Próprios de Previdência Social (RPPS)</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="acordo" class="tab-content">
+            <h2 class="section-title">Acordo — Transcrição Completa</h2>
+            <div class="document-text">
+
+ACORDO DE PREVIDÊNCIA SOCIAL ENTRE A REPÚBLICA FEDERATIVA DO
+BRASIL E O QUEBEC
+
+O Governo da República Federativa Do Brasil
+E
+
+O Governo do Quebec
+(doravante denominados “Partes”),
+
+Decidiram cooperar no campo da previdência social e concluíram um Acordo para
+este fim,
+
+Acordam o seguinte:
+
+TÍTULO I
+DISPOSIÇÕES GERAIS
+ARTIGO 1
+Definições
+l: Para a aplicação do presente Acordo e exceto quando o contexto lhes conceda outra
+conotação, os termos ou expressões abaixo significam:
+
+a) "autoridade competente": o Ministro do Quebec ou o Ministro do Brasil
+responsável pela aplicação da legislação referida no Artigo 2;
+
+b) "instituição competente". o ministério ou o organismo do Quebec responsável
+pela aplicação da legislação referida no Artigo 2 ou, em relação ao Brasil, o
+Instituto Nacional do Seguro Social;
+
+c) "legislação": leis, regulamentos, disposições estatutárias e quaisquer outras
+medidas de aplicação, existentes ou futuras, relativas aos campos e regimes de
+Previdência Social referidos no Artigo 2;
+
+d) "prestação": pensão, aposentadoria, indenização, valor global ou outro valor
+pecuniário previsto pela legislação de ambas as Partes, inclusive qualquer
+complemento, suplemento ou majoração;
+
+e) "nacional": uma pessoa com cidadania canadense que esteja ou tenha estado
+sujeita à legislação referida na alínea "a" do parágrafo 1 do Artigo 2, ou que tenha
+adquirido direitos em virtude da mesma, ou uma pessoa de nacionalidade
+brasileira.
+
+2. Os demais termos ou expressões não estabelecidos no presente Acordo têm o
+significado que lhes atribui a legislação aplicável.
+
+ARTIGO 2
+Âmbito de aplicação material
+
+1. O presente Acordo aplica-se:
+
+a) em relação ao Quebec: à legislação sobre o Regime de Previdência do Quebec
+(Régime de rentes du Québec);
+
+b) em relação ao Brasil: à legislação relativa ao Regime Geral de Previdência Social
+e aos Regimes Próprios de Previdência Social dos Servidores Públicos, no que se
+refere às prestações de aposentadoria por invalidez, aposentadoria por idade e
+pensão por morte.
+
+2. O Acordo aplica-se também a todo ato legislativo ou regulamentar que modifique,
+complete ou substitua a legislação prevista no parágrafo 1.
+
+3. O Acordo aplica-se igualmente a qualquer ato legislativo ou regulamentar de uma das
+Partes que estenda os regimes existentes a futuras categorias de beneficiários ou a novas prestações,
+no entanto, essa Parte tem o prazo de três meses, contados da data da publicação oficial desse ato,
+para notificar à outra Parte que o Acordo não se aplica.
+
+4. O Acordo não se aplica a ato legislativo ou regulamentar que cubra um novo ramo da
+Previdência Social, exceto se o Acordo for modificado com esse propósito.
+
+ARTIGO 3
+Âmbito de aplicação pessoal
+
+Salvo disposição em contrário, o Acordo aplica-se a qualquer pessoa que esteja ou
+tenha estado sujeita à legislação de uma das Partes ou que tenha adquirido direitos em virtude da
+mesma.
+
+ARTIGO 4
+Igualdade de tratamento
+
+Salvo disposição contrária neste Acordo, as pessoas referidas no Artigo 3 recebem,
+na aplicação da legislação de uma das Partes, o mesmo tratamento dos nacionais dessa Parte.
+
+ARTIGO 5
+Exportação de prestações
+
+Salvo disposição contrária neste Acordo, toda prestação pecuniária adquirida em
+virtude da legislação de uma das Partes, com ou sem a aplicação do Acordo, não pode ser reduzida,
+modificada, suspensa, cessada ou confiscada apenas pelo fato de o beneficiário residir ou se
+encontrar temporariamente fora do território da Parte da instituição devedora. O direito a essa
+prestação é conservado ao beneficiário, independentemente de seu local de residência ou estada
+temporária.
+
+TÍTULO II
+DISPOSIÇÕES RELATIVAS À LEGISLAÇÃO APLICÁVEL
+
+ARTIGO 6
+Regra geral
+
+Salvo disposição contrária neste Acordo e observados os Artigos 7 a 11, a pessoa que
+trabalha no território de uma das Partes está sujeita, em relação a esse trabalho, à legislação dessa
+Parte.
+
+ARTIGO 7
+Trabalhador por conta própria
+
+A pessoa que reside no território de uma das Partes e trabalha por conta própria no
+território da outra Parte ou no território de ambas as Partes está sujeita, em relação a esse trabalho,
+apenas à legislação de seu local de residência.
+
+ARTIGO 8
+Deslocamento de pessoas
+
+1. A pessoa que está sujeita à legislação de uma das Partes e que é temporariamente
+deslocada por seu empregador para exercer um trabalho, por um período não superior a sessenta
+meses, no território da outra Parte, permanece, em relação a esse trabalho, sujeita apenas à legislação
+da primeira Parte durante o período de seu deslocamento.
+
+2: Uma pessoa que tenha sido deslocada pelo período máximo previsto no Parágrafo 1
+deste Artigo somente poderá ser beneficiária de um novo deslocamento decorrido o prazo de um ano
+após o término do deslocamento anterior.
+
+ARTIGO 9
+Membro de tripulação contratado
+por uma empresa de transporte internacional
+
+1. A pessoa que trabalha no território de ambas as Partes como membro da tripulação de
+uma empresa de transporte internacional que, em nome de terceiros ou por conta própria, efetue
+transporte aéreo ou marítimo de passageiros ou mercadorias, cuja sede fique no território de uma das
+Partes, está, em relação a esse trabalho, sujeita apenas à legislação da Parte em cujo território fica a
+sede da empresa.
+
+2 No entanto, caso a pessoa seja contratada por uma filial ou por uma representação
+permanente que a empresa possua no território de uma das Partes, que não coincida com o território
+em que fica a sede, ela estará, em relação a esse trabalho, sujeita apenas à legislação da Parte em
+cujo território essa filial ou representação permanente se encontre.
+
+ARTIGO 10
+Pessoa a serviço do Estado
+
+1. A pessoa que esteja a serviço do Estado de uma das Partes e que desempenhe um
+trabalho no território da outra Parte estará sujeita, em relação a esse trabalho, apenas à legislação da
+primeira Parte.
+
+2. A pessoa que resida no território de uma das Partes e que, nesse território, seja
+recrutada para ali prestar serviço ao Estado da outra Parte, estará sujeita, relativamente a esse
+trabalho, apenas à legislação aplicada nesse território.
+
+3. Este Acordo deve ser interpretado respeitando as disposições da Convenção de Viena
+sobre Relações Diplomáticas, de 18 de abril de 1961, e da Convenção de Viena sobre Relações
+Consulares, de 24 de abril de 1963.
+
+ARTIGO 11
+Exceções
+
+As autoridades competentes de ambas as Partes podem, de comum acordo,
+estabelecer exceções às disposições dos Artigos 6 a 10 relativas a uma pessoa ou a uma categoria de
+pessoas.
+
+TÍTULO III
+DISPOSIÇÕES RELATIVAS ÀS PRESTAÇÕES
+
+ARTIGO 12
+Prestações abrangidas e períodos de seguro
+
+1. O presente Título aplica-se a todas as prestações abrangidas na Lei do Regime de
+Previdência do Quebec (Loi sur le régime de rentes du Québec).
+
+2. No presente Título, a expressão "período de seguro" designa, para O Quebec,
+qualquer ano pelo qual contribuições foram vertidas ou prestações de invalidez foram pagas em
+virtude da Lei do Regime de Previdência do Quebec (Loi sur le régime de rentes du Québec) ou
+qualquer outro ano considerado equivalente e, para o Brasil, o período de cobertura definido pelo
+Regime Geral de Previdência Social.
+
+ARTIGO 13
+Princípio da totalização
+1. Quando uma pessoa cumpre períodos de seguro em conformidade com a legislação
+de ambas as Partes e quando ela não é elegível a uma prestação em virtude apenas dos períodos de
+seguro cumpridos conforme a legislação de uma das Partes, a instituição competente dessa Parte
+totaliza, na medida do necessário para conceder o direito a uma prestação em virtude da legislação
+por ela aplicada, os períodos de seguro cumpridos em conformidade com sua legislação e os
+períodos cumpridos em virtude da legislação da outra Parte.
+
+2. No caso em que houver superposição dos períodos de seguro, cada Parte considerará
+apenas os períodos cumpridos sob sua própria legislação.
+
+ARTIGO 14
+Prestações em virtude da legislação do Quebec
+
+1. Caso uma pessoa que esteve sujeita à legislação de ambas as Partes satisfaça as
+condições necessárias para o exercício do direito, para si ou seus dependentes legais, seus
+sobreviventes ou outras pessoas, a uma prestação em virtude da legislação do Quebec, sem recorrer à
+totalização prevista no Artigo 13, a instituição competente do Quebec determinará o valor da
+prestação conforme estipulado nas disposições da legislação por ela aplicada.
+
+2. Caso a pessoa referida no parágrafo 1 não satisfaça as condições necessárias para o
+exercício do direito a uma prestação sem recorrer à totalização, a instituição competente do Quebec
+procederá da seguinte maneira:
+
+a) reconhecerá um ano de contribuição quando a instituição competente do Brasil
+comprovar que um período de seguro de pelo menos 3 meses em um ano civil
+tenha sido creditado em virtude da legislação do Brasil, desde que esse ano esteja
+incluído no período contributivo nos termos da legislação do Quebec;
+
+b) totalizará, em conformidade com o Artigo 13, os anos reconhecidos em virtude da
+alínea "a" e os períodos cumpridos segundo a legislação do Quebec.
+
+3. Quando o direito a uma prestação tenha sido adquirido em virtude da totalização
+prevista no parágrafo 2, a instituição competente do Quebec determinará o valor da prestação a ser
+paga somando os valores calculados em conformidade com as alíneas "a" e "b" a seguir:
+
+a) o valor da parcela da prestação vinculado ao salário-de-contribuição será
+calculado conforme estipulado nas disposições da legislação do Quebec;
+
+b) o valor da parcela fixa da prestação a ser paga conforme definido nas disposições
+do presente Acordo será determinado ao multiplicar-se:
+
+o valor da parcela fixa da prestação estipulado pelas disposições do Regime
+de Previdência do Quebec
+
+pela
+
+fração que expresse a relação entre os períodos de contribuição ao Regime
+de Previdência do Quebec e o período contributivo definido na legislação
+relativa a esse regime.
+
+ARTIGO 15
+Prestações em virtude da legislação do Brasil
+
+1. Caso uma pessoa que esteve sujeita à legislação de ambas as Partes satisfaça as
+condições necessárias para exercer o direito, para si ou para seus dependentes legais, seus
+sobreviventes ou outras pessoas, a uma prestação em virtude da legislação do Brasil sem recorrer à
+totalização prevista no Artigo 13, a instituição competente do Brasil determinará o valor da
+prestação conforme as disposições da legislação por ela aplicada.
+
+2. Para fins de determinar a elegibilidade para uma prestação de aposentadoria por
+idade de acordo com a legislação do Brasil:
+
+a) um ano que seja um período de seguro de acordo com o Regime de Previdência
+do Quebec será considerado como 12 meses de seguro de acordo com a
+legislação do Brasil;
+
+b) um mês de período de seguro de acordo com a Lei de Proteção Social do Idoso
+do Canadá e que não se sobreponha a um período de seguro de acordo com o
+Regime de Previdência do Quebec será considerado um mês de seguro de
+acordo com a legislação do Brasil.
+
+3. Para fins de determinar a elegibilidade para uma prestação por invalidez ou por
+morte de acordo com a legislação do Brasil, um ano que seja um período de seguro de acordo
+com o Regime de Previdência do Quebec será considerado como 12 meses de seguro de acordo
+com a legislação do Brasil.
+
+4. Caso uma pessoa seja elegível a uma prestação segundo a legislação do Brasil
+somente com a aplicação das disposições sobre totalização prevista no Artigo 13, a instituição
+competente do Brasil:
+
+a) calculará o valor teórico da prestação que seria pago se todos os períodos de
+seguro tivessem sido cumpridos sob a legislação do Brasil;
+
+b) com base no valor teórico da prestação, calculará o valor real da prestação a ser
+paga pró-rata considerando os períodos de seguro completados segundo a
+legislação do Brasil e o total dos períodos de seguro segundo a legislação de
+ambas as Partes, o qual não poderá exceder o período mínimo necessário para
+determinar a elegibilidade à prestação.
+
+5. O valor teórico da prestação, calculado conforme a alínea (a) do parágrafo 4, em
+nenhum caso poderá ser inferior ao mínimo garantido pela legislação do Brasil.
+
+ARTIGO 16
+Períodos cumpridos sob a legislação de uma terceira parte
+
+1. Caso uma pessoa não tenha direito a uma prestação após a totalização prevista no
+Artigo 14 ou no Artigo 15, os períodos de seguro cumpridos sob a legislação de uma terceira parte
+que esteja vinculada a cada uma das Partes por um instrumento jurídico de Previdência Social
+contendo as disposições relativas à totalização dos períodos de seguro serão considerados para
+estabelecer o direito às prestações, de acordo com as modalidades previstas pelo presente título.
+
+2: Para o Brasil, caso uma pessoa não tenha ainda direito a uma prestação após a
+totalização prevista no parágrafo 1, a elegibilidade dessa pessoa para tal beneficio será determinada
+pela totalização daqueles períodos e dos períodos de cobertura concluídos sob a legislação de um
+terceiro Estado com o qual apenas o Brasil esteja vinculado através de um instrumento de
+previdência social que permita a totalização de períodos.
+
+TÍTULO IV
+DISPOSIÇÕES DIVERSAS
+
+ARTIGO 17
+Ajuste Administrativo
+
+1. Um Ajuste Administrativo, a ser estabelecido pelas Partes, definirá os meios
+necessários à aplicação do presente Acordo.
+
+2 Cada Parte designará um organismo de ligação no Ajuste Administrativo.
+
+ARTIGO 18
+Requerimento de prestações
+
+1. Para usufruir de uma prestação no âmbito deste Acordo, uma pessoa deve apresentar
+um requerimento conforme previsto no Ajuste Administrativo.
+
+2. Para a aplicação do Título III, um requerimento de prestação apresentado após a
+entrada em vigor do Acordo sob a legislação de uma das Partes é considerado um requerimento de
+prestação correspondente sob a legislação da outra Parte nos casos a seguir:
+
+a) quando uma pessoa expressa a intenção de que seu requerimento seja considerado
+um requerimento sob a legislação da outra Parte;
+
+b) quando uma pessoa expressa, ao fazer seu requerimento, que períodos de seguro
+foram cumpridos sob a legislação da outra Parte.
+
+A data de recepção de um requerimento é considerada como sendo a mesma data de
+recepção desse requerimento sob a legislação da primeira Parte.
+
+3. O parágrafo precedente não impede que uma pessoa peça que seu requerimento de
+prestação sob a legislação da outra Parte seja diferido.
+
+ARTIGO 19
+Pagamento de prestações
+
+1. Toda prestação pecuniária é paga diretamente a um beneficiário na moeda da Parte
+que efetua o pagamento ou na moeda legal do local de residência do beneficiário, sem nenhuma
+dedução por despesa administrativa ou por quaisquer outras despesas incorridas para fins de
+pagamento dessa prestação.
+
+2. Para aplicação do parágrafo 1, quando necessário recorrer ao câmbio de moedas, a
+taxa de câmbio aplicada para tal é a vigente no dia da transferência das prestações pecuniárias.
+
+ARTIGO 20
+Prazo de apresentação em caso de recurso
+
+1. Um requerimento de recurso que, em virtude da legislação de uma das Partes, deva
+ser apresentado num prazo determinado perante a instituição correspondente dessa Parte, é
+considerado admissível perante ela desde que tenha sido apresentado, dentro do mesmo prazo,
+perante uma instituição competente correspondente da outra Parte. Nesse caso, a instituição
+competente da segunda Parte encaminha imediatamente esse requerimento à instituição competente
+da primeira Parte.
+
+2. A data em que esse requerimento é apresentado à instituição competente de uma das
+Partes é considerada como sendo a mesma data de apresentação à instituição competente da outra
+Parte.
+
+ARTIGO 21
+Perícias
+
+1. Quando solicitado pela instituição competente de uma das Partes, a instituição
+competente da outra Parte toma as medidas necessárias para realizar as perícias necessárias
+referentes a uma pessoa que resida ou que se encontre temporariamente no território da segunda
+Parte.
+
+2. As perícias referidas no parágrafo 1 não podem ser desconsideradas unicamente pelo
+fato de terem sido realizadas no território da outra Parte.
+
+ARTIGO 22
+Taxas e dispensa de visto e legalização
+
+1. Quaisquer isenções ou reduções de taxas previstas pela legislação de uma das Partes
+vinculadas à emissão de um atestado ou de um documento exigido para a aplicação dessa legislação
+são aplicadas também para atestados ou documentos exigidos para aplicação da legislação da outra
+Parte.
+
+2. Todos os documentos exigidos para aplicação do Acordo ficam isentos de visto de
+legalização concedidos pelas autoridades responsáveis.
+
+ARTIGO 23
+Proteção de informações pessoais
+1. Para aplicação do presente Artigo, o termo "legislação" tem o significado usual que
+lhe é atribuído em relação ao direito interno de ambas as Partes.
+
+2. Toda informação que possibilite a identificação de uma pessoa física é uma
+informação pessoal. Toda informação pessoal é confidencial.
+
+3. Os organismos de ambas as Partes podem trocar entre si qualquer informação pessoal
+necessária à aplicação do Acordo.
+
+4. Uma informação pessoal comunicada a um organismo de uma das Partes, no marco
+da aplicação do presente Acordo, somente pode ser utilizada para a aplicação do Acordo.
+
+No entanto, uma das Partes pode utilizar essa informação para outros fins, desde que
+tenha sido obtido o consentimento da pessoa concemnida ou, sem o seu consentimento, apenas nos
+seguintes casos:
+
+a) quando a utilização tenha um vínculo direto e pertinente com os propósitos para
+os quais a informação tenha sido obtida;
+
+b) quando a utilização é manifestamente em benefício da pessoa concernida ou;
+
+c) quando a utilização dessa informação é necessária à aplicação de uma lei no
+Quebec ou no Brasil.
+
+5. Uma informação pessoal comunicada a um organismo de uma das Partes, no marco
+da aplicação do Acordo, apenas pode ser comunicada a outro organismo dessa Parte para aplicação
+do Acordo.
+
+No entanto, uma das Partes pode comunicar tal informação com o consentimento da
+pessoa concernida ou, sem o seu consentimento, apenas nos seguintes casos:
+
+a) a informação é necessária ao exercício das atribuições de um organismo de uma
+das Partes;
+
+b) a comunicação da informação é manifestamente em benefício da pessoa
+concernida; ou
+
+c) a comunicação da informação é necessária para a aplicação de uma lei no Quebec
+ou no Brasil.
+
+6. Ao transmitir as informações mencionadas no parágrafo 3, os organismos de ambas
+as Partes asseguram-se de empregar os meios necessários para preservar a confidencialidade dessas
+informações.
+
+7. O organismo de uma das Partes que recebe uma informação mencionada no
+parágrafo 3, a protege contra o acesso, a alteração e a comunicação não autorizados.
+
+8. O organismo de uma das Partes que recebe uma informação pessoal mencionada no
+
+parágrafo 3 toma as medidas necessárias a fim de que essa informação esteja atualizada, completa e
+exata para servir aos propósitos para os quais tenha sido coletada. Se necessário, esse organismo
+corrige tal informação e destrói os dados cuja coleta ou conservação não tenham sido autorizadas
+pela legislação aplicável a esse organismo. Quando solicitado, esse organismo também destrói a
+informação cuja transmissão seja proibida nos termos da legislação da Parte que as comunicou.
+
+9. Observado o disposto na legislação de uma das Partes, as informações obtidas por
+essa Parte decorrentes da aplicação do presente Acordo são destruídas quando os propósitos para os
+quais foram coletadas ou utilizadas tenham sido atingidos. Os organismos de ambas as Partes
+utilizam meios de destruição seguros e definitivos e asseguram-se de que o caráter confidencial das
+informações pessoais seja mantido até o momento de sua destruição.
+
+10. Por solicitação a um organismo de uma das Partes, a pessoa concernida tem o direito
+de ser informada sobre troca de informação pessoal nos termos do parágrafo 3 e de sua utilização
+distinta da dos fins da aplicação do Acordo. Essa pessoa também pode ter acesso às informações
+pessoais que lhe concernem e retificá-las, observadas as exceções previstas pela legislação da Parte
+em cujo território essas informações se encontram.
+
+11. As autoridades competentes de ambas as Partes comunicam-se sobre qualquer
+modificação da legislação relativa à proteção de informações pessoais, particularmente em relação a
+outros motivos pelos quais essas informações possam ser empregadas ou comunicadas a outras
+entidades sem o consentimento da pessoa concernida.
+
+12. As disposições dos parágrafos 3 e subsequentes aplicam-se, com as adaptações
+necessárias, às demais informações de caráter confidencial obtidas no âmbito da aplicação do
+Acordo ou em sua decorrência.
+
+ARTIGO 24
+Colaboração administrativa
+As autoridades e as instituições competentes:
+a) trocam entre si toda informação necessária à aplicação do Acordo;
+
+b) colaboram gratuitamente em todas as questões que envolvam a aplicação do
+Acordo;
+
+c) trocam entre si toda informação sobre as medidas adotadas para fins de aplicação
+do Acordo ou sobre as modificações introduzidas em suas respectivas legislações,
+sempre que tais modificações influenciem a aplicação do Acordo;
+
+d) informam-se sobre dificuldades encontradas na interpretação ou na aplicação do
+Acordo.
+
+ARTIGO 25
+Reembolso entre instituições
+
+1. A instituição competente de uma Parte deve reembolsar à instituição competente da
+outra Parte os custos correspondentes a cada perícia em conformidade com o Artigo 21. No entanto,
+o envio dos laudos periciais e de outras informações que estejam em posse das instituições
+competentes é parte integrante da colaboração administrativa e é feito gratuitamente.
+
+2. As Partes estabelecem no Ajuste Administrativo, se necessário, se renunciam parcial
+ou integralmente ao reembolso de tais custos.
+
+ARTIGO 26
+Comunicações
+
+1. Para a aplicação deste Acordo, as autoridades e instituições competentes e os
+organismos de ligação das Partes podem comunicar-se diretamente em suas respectivas línguas
+oficiais.
+
+2. Uma decisão de um tribunal ou de uma instituição pode ser dirigida diretamente a
+uma pessoa que resida ou que esteja temporariamente no território da outra Parte.
+
+ARTIGO 27
+Resolução de controvérsias
+
+1. Uma comissão mista, composta de representantes de ambas as Partes, é responsável
+por fazer o acompanhamento da aplicação do Acordo e elaborar propostas de eventuais
+modificações. Se necessário, essa comissão mista reúne-se a pedido de uma das Partes.
+
+2. As dificuldades relativas à aplicação ou à interpretação do presente Acordo são
+solucionadas pela comissão mista. Caso não seja possível chegar a um entendimento por meio desse
+mecanismo, os governos de ambas as Partes solucionam de comum acordo as controvérsias.
+
+TÍTULO V
+DISPOSIÇÕES TRANSITÓRIAS E FINAIS
+
+ARTIGO 28
+Disposições transitórias
+1. O Acordo não gera direito algum ao pagamento de prestações por período anterior à
+data de sua entrada em vigor.
+2. Para a aplicação do Título III e ressalvadas as disposições do parágrafo 1:
+
+a) um período de seguro cumprido antes da data de entrada em vigor do Acordo é
+considerado para determinar o direito a uma prestação em virtude do Acordo;
+
+b) uma prestação que não seja a prestação decorrente de falecimento prevista pela
+legislação do Quebec é devida em virtude do Acordo, ainda que se refira a um
+acontecimento anterior à data de sua entrada em vigor;
+
+c) quando o requerimento de uma prestação a ser concedida mediante a aplicação do
+Artigo 13 for apresentado dentro dos dois anos seguintes à data de entrada em
+vigor do Acordo, os direitos decorrentes do Acordo serão adquiridos a contar da
+data de entrada em vigor do Acordo ou a contar da data de implementação de
+direito a uma prestação de aposentadoria por morte ou por invalidez, caso essa
+data seja posterior à entrada em vigor do Acordo, não obstante as disposições da
+legislação de ambas as Partes relativas à prescrição de direitos;
+
+d) uma prestação que, em razão da nacionalidade ou da residência, tenha sido
+indeferida, diminuída ou suspensa é, a pedido da pessoa interessada, deferida ou
+restabelecida a partir da data de entrada em vigor do Acordo;
+
+e) uma prestação deferida antes da data de entrada em vigor do Acordo é revisada a
+pedido da pessoa interessada. A prestação também pode ser revisada de ofício.
+Caso a revisão resulte em uma prestação inferior à paga antes da data de entrada
+em vigor do Acordo, a prestação é mantida no valor anterior;
+
+f) caso o pedido referido nas alíneas "d" e "e" do presente parágrafo seja
+apresentado no prazo de dois anos seguintes à data de entrada em vigor do
+Acordo, os direitos reconhecidos em virtude do Acordo são adquiridos a partir da
+data de entrada em vigor, não obstante as disposições da legislação de uma ou de
+outra Parte relativas à prescrição dos direitos;
+
+g) caso o pedido referido nas alíneas "d" e "e" do presente parágrafo seja
+apresentado após expirado o prazo de dois anos seguintes à data de entrada em
+vigor do Acordo, os direitos não prescritos são adquiridos a partir da data do
+pedido, observadas as disposições mais favoráveis da legislação aplicável.
+
+3. Para a aplicação do Artigo 8, uma pessoa enviada ao território da outra Parte é
+presumida deslocada somente após a data de entrada em vigor do Acordo.
+
+ARTIGO 29
+Entrada em vigor e duração do Acordo
+
+1. Cada uma das Partes notifica a outra Parte do cumprimento dos trâmites internos
+necessários à entrada em vigor do Acordo.
+
+2. O Acordo entrará em vigor no primeiro dia do quarto mês seguinte à data de
+recebimento da notificação pela qual a última das duas Partes terá indicado à outra Parte que as
+formalidades legalmente exigidas foram cumpridas.
+
+3 O Acordo permanecerá válido por prazo indeterminado a partir da data de sua entrada
+em vigor.
+
+4. O Acordo pode ser denunciado por uma das Partes por notificação dirigida à outra
+Parte. Nesse caso, o Acordo fica extinto no dia trinta e um de dezembro do ano subsequente à
+notificação.
+
+5. Em caso de denúncia do Acordo, todo direito adquirido por uma pessoa em virtude
+das disposições do Acordo é mantido e negociações são iniciadas a fim de deliberar sobre os direitos
+em via de aquisição em virtude do Acordo.
+
+Feito em Brasília, em 26 do mês de outubro de 2011, em dois exemplares, nos
+idiomas português e francês, sendo ambos os textos igualmente autênticos.
+
+PELO GOVERNO DA REPÚBLICA
+FEDERATIVA DO BRASIL
+
+PELO GOVERNO DO QUEBEC
+
+Garibaldi Alves Filho
+O Ministro da Previdência Social do Brasil
+
+Monique Gagnon-Tremblay
+Ministra de Relações Internacionais do Quebec
+
+</div>
+        </div>
+
+        <div id="ajuste" class="tab-content">
+            <h2 class="section-title">Ajuste Administrativo — Transcrição Completa</h2>
+            <div class="document-text">AJUSTE ADMINISTRATIVO PARA APLICACAO DO ACORDO DE PREVIDENCIA
+SOCIAL ENTRE A REPUBLICA FEDERATIVA DO BRASIL E O QUEBEC
+
+A Autoridade Competente da República Federativa do Brasil
+e
+
+A Autoridade Competente do Quebec,
+
+Considerando o parágrafo 1 do Artigo 17 do Acordo de Previdência Social entre o
+Quebec ¢ a República Federativa do Brasil;
+
+Acordam as seguintes disposições:
+
+ARTIGO 1
+Definigdes
+
+No presente Ajuste Administrativo:
+
+a) o termo "Acordo" designa o Acordo de Previdência Social entre o Quebec ¢ a
+República Federativa do Brasil;
+
+b) os demais termos empregados tém o significado que thes atribui o Artigo 1 do
+Acordo.
+
+ARTIGO 2
+Organismos de ligação
+
+Os organismos de ligação referidos no Artigo 17 do Acordo tém como função
+facilitar a aplicação do Acordo e adotar as medidas necessárias para assegurar uma gestão eficaz.
+Ficam designados os seguintes organismos de ligação:
+
+a) para o Quebec, Bureau des ententes de sécurité sociale de la Régie des rentes du
+Québec (Repartição de Acordos de Previdência Social da Superintendência do
+Regime Geral de Previdência Social do Quebec) ou qualquer outro organismo
+que o Governo do Quebec designe posteriormente;
+
+b) para o Brasil, o Instituto Nacional do Seguro Social ~ INSS.
+ARTIGO3
+Certificado de cobertura
+1. Para aplicação dos Artigos 7 e 8, do parágrafo 1 do Artigo 10 e do Artigo 11 do
+Acordo, quando uma pessoa € sujeita 4 legislação de uma Parte, embora trabalhe no território da
+outra Parte, um certificado de cobertura é expedido:
+
+a) pelo organismo de ligago do Quebec, quando a pessoa permanece sujeita a
+
+legislação do Quebec;
+b) pelo organismo de ligação do Brasil, quando a pessoa permanece sujeita a
+legislagdo do Brasil.
+2. O organismo de ligação emite o certificado de cobertura e o entrega ao requerente
+
+que, quando tratar-se de empregador, 0 encaminha ao empregado. Uma copia autenticada é enviada
+ao Organismo de Ligagao da outra Parte.
+
+3. Um certificado de cobertura é emitido para cada período individual de deslocamento.
+A soma desses períodos somente poderd exceder sessenta meses através da aplicagdo do Artigo 11
+do Acordo,
+
+4, Para aplicação do Artigo 11 do Acordo, as exceções do cumprimento das disposi¢des
+devem resultar da troca de informações entre os organismos de ligago, comunicando-se a decisdo.
+
+ARTIGO 4
+Prestagdes
+
+1. Para aplicação do Titulo III do Acordo, uma solicitag&o de prestação em virtude do
+Acordo pode ser apresentada ao organismo de ligac&o de uma das Partes ou a instituição competente
+da Parte cuja legislagiio seja aplicavel, acompanhada obrigatoriamente dos comprovantes.
+
+2, Quando a solicitagio de prestagdo citada no parágrafo 1 é apresentada aun
+organismo de ligagZio, este encaminha a solicitagio a instituigéo competente da Parte cuja legislação
+é aplicavel, acompanhada das cópias dos comprovantes obrigatérios que são autenticadas pelo
+respectivo organismo.
+
+3, O organismo de ligacio que, inicialmente, recebe a solicitação, conserva uma cópia
+da solicitagdio de prestagfio e dos comprovantes e, quando solicitado, coloca a disposigéo da
+institui¢do competente da outra Parte uma cópia de tais documentos,
+4, Um formulário de ligag%o acompanha a solicitag#o ¢ os comprovantes visados no
+presente Artigo.
+
+3. Quando a instituig&o competente ou o organismo de ligagiio de uma Parte solicita, o
+Organismo de Ligação ou a Instituição Competente da outra Parte indica no formulário de ligação os
+periodos de seguro reconhecidos em virtude da legislação aplicavel.
+
+6. Quando a instituigéo competente adota uma decisio em virtude da legislagdo que
+aplica, o solicitante é informado, orientado e avisado do prazo para recorrer previsto por essa
+legislação. O mesmo também é comunicado ao organismo de ligação da outra Parte através da
+utilizagdo do formulário de ligação.
+
+7 As informagdes sobre as pericias médicas sfo fornecidas no formulário “Parecer
+Médico” e, se houver, informagdSes médicas complementares sfio anexadas a esse parecer, Um
+exame complementar pode ser solicitado se a instituição competente julgar necessário.
+
+ARTIGO 5
+Reembolso entre instituições
+
+1 Para aplicação do Artigo 25 do Acordo, ao término de cada ano civil, 0 organismo de
+ligação envia um pedido de reembolso ao organismo de ligação da outra Parte referente aos exames
+complementares, em atendimento a solicitação da instituição competente dessa Parte.
+
+2. Os valores dos reembolsos devem ser liquidados no semestre subsequente 4 data de
+recepção dos pedidos de reembolso, efetuados em conformidade com as disposigdes do parágrafo 1.
+
+ARTIGO 6
+Formularios
+
+1 Os formulários padrões necessários & aplicação do Acordo e do presente Ajuste
+Administrativo so definidos de comum acordo pelos organismos de ligação ou pelas instituições
+competentes de ambas as Partes.
+
+2. De comum acordo, as autoridades competentes poderão utilizar um sistema de
+transmissão de dados e documentos entre as instituigdes por via eletrônica, informática ¢ telemática.
+Disposições serfo tomadas para garantir a transmissão segura desses dados e documentos.
+
+ARTIGO 7
+Dados estatisticos
+
+Os organismos de ligação de ambas as Partes trocam, conforme por eles definido, os
+dados estatísticos relativos aos pagamentos efetuados aos beneficiários em virtude da aplicação do
+Titulo IMI do Acordo durante cada ano civil. Tais dados compreendem o número de beneficiários e 0
+
+valor total das prestações por categoria,
+ARTIGO 8
+Entrada em vigor e duração
+
+A entrada em vigor do Ajuste Administrativo ocorrerá na mesma data do Acordo e
+terá idéntica duração.
+
+Feito em Brasília, em 26 do mês de outubro de 2011, em dois exemplares, em língua
+Portuguesa e em língua francesa, sendo ambos os textos igualmente autênticos.
+
+PELA AUTORIDADE COMPETENTE DA PELA AUTORIDADE COMPETENTE DO
+REPUBLICA FEDERATIVA DO BRASIL QUEBEC
+
+CO Cuvee.
+
+‘s
+
+\\ Garibaldi Alves Filho
+O Ministro da Previdência Social do Brasil
+
+</div>
+        </div>
+
+        <div id="documentos" class="tab-content">
+            <h2 class="section-title">Documentos Disponíveis (11)</h2>
+            <table class="docs-table">
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Categoria</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Acordo Principal (2011)</div>
+                            <div class="doc-desc">29 Artigos - Texto oficial do acordo bilateral</div>
+                        </td>
+                        <td><span class="badge principal">PRINCIPAL</span></td>
+                        <td><a href="01-acordo-principal-quebec.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Ajuste Administrativo</div>
+                            <div class="doc-desc">8 Artigos - Disposições complementares</div>
+                        </td>
+                        <td><span class="badge complementar">COMPLEMENTAR</span></td>
+                        <td><a href="02-acordo-complementar-quebec.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Certificado de Deslocamento</div>
+                            <div class="doc-desc">Formulário para comprovação de deslocamento</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="03-certificado-deslocamento.doc" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Retificação de Deslocamento</div>
+                            <div class="doc-desc">Documento para retificação de deslocamento</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="04-retificacao-deslocamento.doc" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Aposentadoria (Quebec)</div>
+                            <div class="doc-desc">Demande de rente de retraite</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="05-formulario-idade-quebec.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Aposentadoria (Brasil)</div>
+                            <div class="doc-desc">Requerimento de aposentadoria por idade</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="06-formulario-idade-brasil.doc" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Pensão (Brasil)</div>
+                            <div class="doc-desc">Requerimento de pensão por morte</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="07-formulario-morte-brasil.doc" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Invalidez (Brasil)</div>
+                            <div class="doc-desc">Requerimento de aposentadoria por invalidez</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="08-formulario-invalidez-brasil.doc" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Recurso</div>
+                            <div class="doc-desc">Formulário de recurso administrativo</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="09-formulario-recurso-brasil.doc" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Pensão (Quebec)</div>
+                            <div class="doc-desc">Demande de rente de retraite (Quebec)</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="10-formulario-morte-quebec.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="doc-name">📄 Formulário — Invalidez (Quebec)</div>
+                            <div class="doc-desc">Formulário para incapacidade permanente</div>
+                        </td>
+                        <td><span class="badge principal">FORMULÁRIO</span></td>
+                        <td><a href="11-formulario-invalidez-quebec.pdf" download class="btn-download">⬇ Download</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>✅ Acordo completo com 29 artigos + Ajuste Administrativo com 8 artigos</p>
+        <p>Acordos Internacionais de Previdência Social • Brasil • 2026</p>
+    </footer>
+
+    <script>
+        function abrirAba(evt, abaId) {
+            document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
+            document.getElementById(abaId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
