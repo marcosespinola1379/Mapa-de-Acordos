@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -1045,7 +1045,7 @@ Dionigi Coppo</div>
 
     <script>
         const documentos = [
-            { nome: "Acordo de Previdência Social Brasil-Itália", desc: "Texto oficial do acordo bilateral", arquivo: "01-acordo-principal.pdf", tamanho: "693 KB" },
+            { nome: "Acordo de Previdência Social Brasil-Itália (2016)", desc: "Texto oficial do acordo bilateral", arquivo: "01-acordo-principal.pdf", tamanho: "693 KB" },
             { nome: "Protocolo Adicional", desc: "Normas aplicáveis ao protocolo", arquivo: "02-protocolo-adicional.pdf", tamanho: "192 KB" },
             { nome: "Ajuste Administrativo", desc: "Procedimentos administrativos de execução", arquivo: "03-ajuste-administrativo.pdf", tamanho: "162 KB" },
             { nome: "Formulário de Ajuste", desc: "Documentação para aplicação do ajuste", arquivo: "04-formulario-ajuste.pdf", tamanho: "156 KB" },
@@ -1069,7 +1069,7 @@ Dionigi Coppo</div>
                         <div class="doc-name">📄 ${d.nome}</div>
                         <div class="doc-desc">${d.desc}</div>
                     </td>
-                    <td><div class="file-size">${d.tamanho}</div></td>
+                    <td><div class="file-size">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
                     <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
                 </tr>
             `).join('');

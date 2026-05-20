@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -1121,7 +1121,7 @@ PELO MINISTÉRIO DE RECURSOS HUMANOS E DESENVOLVIMENTO DE HABILIDADES</div>
                         <div class="doc-desc">${d.desc}</div>
                     </td>
                     <td><span class="badge ${d.cat}">${getCatLabel(d.cat)}</span></td>
-                    <td><div class="file-size">${d.tamanho}</div></td>
+                    <td><div class="file-size">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
                     <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
                 </tr>
             `).join('');

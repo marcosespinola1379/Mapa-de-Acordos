@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -470,23 +470,18 @@
         }
 
         .badge.principal {
-            background: rgba(217, 119, 6, 0.2);
-            color: #fbbf24;
+            background: rgba(61, 165, 255, 0.15);
+            color: #3DA5FF;
         }
 
         .badge.complementar {
-            background: rgba(124, 58, 237, 0.2);
-            color: #c4b5fd;
+            background: rgba(74, 222, 128, 0.15);
+            color: #4ade80;
         }
 
         .badge.formulario {
-            background: rgba(3, 105, 161, 0.2);
-            color: #7dd3fc;
-        }
-
-        .badge.roteiro {
-            background: rgba(22, 163, 74, 0.2);
-            color: #86efac;
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
         }
 
         .file-size {
@@ -545,65 +540,7 @@
                 max-height: 500px;
             }
 
-    
-
-        .tooltip-benefit {
-            position: relative;
-            cursor: help;
-        }
-
-        .tooltip-benefit::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            left: 12px;
-            right: 12px;
-            bottom: calc(100% + 10px);
-            z-index: 30;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(6px);
-            transition: opacity 0.18s ease, transform 0.18s ease;
-            background: rgba(5, 12, 28, 0.98);
-            border: 1px solid var(--bright);
-            color: var(--cream);
-            border-radius: 8px;
-            padding: 11px 12px;
-            font-size: 12px;
-            line-height: 1.45;
-            text-align: left;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.42);
-        }
-
-        .tooltip-benefit::before {
-            content: "";
-            position: absolute;
-            left: 24px;
-            bottom: calc(100% + 3px);
-            z-index: 31;
-            opacity: 0;
-            pointer-events: none;
-            border-width: 7px 7px 0 7px;
-            border-style: solid;
-            border-color: var(--bright) transparent transparent transparent;
-            transition: opacity 0.18s ease;
-        }
-
-        .tooltip-benefit:hover::after,
-        .tooltip-benefit:focus::after,
-        .tooltip-benefit:hover::before,
-        .tooltip-benefit:focus::before {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .benefit-note {
-            margin: -4px 0 16px;
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.55;
-        }
-
-        .tabs {
+            .tabs-nav {
                 flex-wrap: wrap;
             }
 
@@ -644,7 +581,7 @@
                 </div>
                 <div class="info-card">
                     <div class="info-label">✅ Em Vigor Desde</div>
-                    <div class="info-value">Conforme Art. 29 do Acordo</div>
+                    <div class="info-value">01 de dezembro de 2024</div>
                 </div>
                 <div class="info-card">
                     <div class="info-label">📄 Documentos</div>
@@ -723,7 +660,7 @@
         </div>
 
         <!-- ABAS -->
-        <div class="tabs">
+        <div class="tabs-nav">
             <button class="tab-btn active" onclick="abrirAba(event, 'beneficios-bulgaria')">Benefícios — Bulgária</button>
             <button class="tab-btn" onclick="abrirAba(event, 'beneficios-brasil')">Benefícios — Brasil</button>
             <button class="tab-btn" onclick="abrirAba(event, 'acordo')">Acordo</button>
@@ -1275,19 +1212,16 @@ no
         <!-- ABA: DOCUMENTOS -->
         <div id="documentos" class="tab-content">
             <div style="background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px;">
-                <h2 class="section-title">Documentos Disponíveis</h2>
-                
                 <div class="docs-toolbar">
                     <div class="search-box">
                         <span>⌕</span>
                         <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="filtrarDocs()">
                     </div>
                     <div class="filter-buttons">
-                        <button class="filter-btn active" onclick="filtrarCategoria('todas')">Todos</button>
-                        <button class="filter-btn" onclick="filtrarCategoria('principal')">Principal</button>
-                        <button class="filter-btn" onclick="filtrarCategoria('complementar')">Complementar</button>
-                        <button class="filter-btn" onclick="filtrarCategoria('formulario')">Formulário</button>
-                        <button class="filter-btn" onclick="filtrarCategoria('roteiro')">Roteiro</button>
+                        <button class="filter-btn active" onclick="filtrarCategoria('todos', event)">Todos</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('principal', event)">Principal</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('complementar', event)">Complementar</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('formulario', event)">Formulário</button>
                     </div>
                 </div>
 
@@ -1312,17 +1246,17 @@ no
 
     <script>
         const documentos = [
-            { nome: "Acordo de Previdência Social Brasil-Bulgária", desc: "Texto oficial do acordo bilateral de previdência social", cat: "principal", arquivo: "01-acordo-principal.pdf", tamanho: "422 KB" }
+            { nome: "Acordo de Previdência Social Brasil-Bulgária (2016)", desc: "Texto oficial do acordo bilateral de previdência social", cat: "principal", arquivo: "Acordo de Previdência Social Brasil-Bulgária (2016).pdf", tamanho: "422 KB" }
         ];
 
-        let categoriaAtiva = 'todas';
+        let catAtiva = 'todos';
 
         function renderDocs() {
             const tb = document.getElementById('docs-tbody');
             const termo = document.getElementById('search-docs').value.toLowerCase();
 
             const filtrados = documentos.filter(d =>
-                (categoriaAtiva === 'todas' || d.cat === categoriaAtiva) &&
+                (catAtiva === 'todos' || d.cat === catAtiva) &&
                 (d.nome.toLowerCase().includes(termo) || d.desc.toLowerCase().includes(termo))
             );
 
@@ -1333,19 +1267,19 @@ no
                         <div class="doc-desc">${d.desc}</div>
                     </td>
                     <td><span class="badge ${d.cat}">${getCatLabel(d.cat)}</span></td>
-                    <td><div class="file-size">${d.tamanho}</div></td>
+                    <td><div class="file-size">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
                     <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
                 </tr>
             `).join('');
         }
 
         function getCatLabel(c) {
-            const labels = { principal: "Principal", complementar: "Complementar", formulario: "Formulário", roteiro: "Roteiro" };
+            const labels = { principal: "Principal", complementar: "Complementar", formulario: "Formulário" };
             return labels[c];
         }
 
-        function filtrarCategoria(cat) {
-            categoriaAtiva = cat;
+        function filtrarCategoria(cat, event) {
+            catAtiva = cat;
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
             renderDocs();

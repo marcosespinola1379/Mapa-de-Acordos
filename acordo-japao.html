@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -906,12 +906,19 @@ qualquer divergência de interpretação, o texto em inglês prevalecerá.</div>
                         <span>⌕</span>
                         <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="filtrarDocs()">
                     </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filtrarCategoria('todas')">Todos</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('principal')">Principal</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('formulario')">Formulário</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('roteiro')">Roteiro</button>
+                    </div>
                 </div>
 
                 <table class="docs-table">
                     <thead>
                         <tr>
                             <th>Documento</th>
+                            <th>Categoria</th>
                             <th>Arquivo</th>
                             <th>Ação</th>
                         </tr>
@@ -928,27 +935,33 @@ qualquer divergência de interpretação, o texto em inglês prevalecerá.</div>
 
     <script>
         const documentos = [
-            { nome: "Acordo de Previdência Social Brasil-Japão", desc: "Texto oficial do acordo bilateral", arquivo: "01-acordo-principal.pdf", tamanho: "3.2 MB" },
-            { nome: "Protocolo Adicional", desc: "Complementação do acordo principal", arquivo: "02-protocolo-adicional.pdf", tamanho: "1.3 MB" },
-            { nome: "Ajuste Administrativo", desc: "Procedimentos de execução do acordo", arquivo: "03-ajuste-administrativo.pdf", tamanho: "832 KB" },
-            { nome: "Formulário A", desc: "Requerimento de benefício", arquivo: "04-formulario-a.pdf", tamanho: "136 KB" },
-            { nome: "Formulário B", desc: "Solicitação de informações", arquivo: "05-formulario-b.pdf", tamanho: "81 KB" },
-            { nome: "Formulário C", desc: "Comunicação de dados", arquivo: "06-formulario-c.pdf", tamanho: "109 KB" },
-            { nome: "Relatório Médico", desc: "Modelo de relatório para invalidez", arquivo: "07-relatorio-medico.pdf", tamanho: "226 KB" },
-            { nome: "Formulário de Ligação", desc: "Comunicação entre instituições", arquivo: "08-formulario-ligacao.pdf", tamanho: "116 KB" },
-            { nome: "Documento Administrativo A", desc: "Instruções operacionais", arquivo: "09-documento-a.doc", tamanho: "228 KB" },
-            { nome: "Documento Administrativo B", desc: "Procedimentos complementares", arquivo: "10-documento-b.doc", tamanho: "92 KB" },
-            { nome: "Certificado Brasil-Japão A", desc: "Certificado de cobertura A", arquivo: "11-certificado-a.pdf", tamanho: "441 KB" },
-            { nome: "Certificado Brasil-Japão B", desc: "Certificado de cobertura B", arquivo: "12-certificado-b.pdf", tamanho: "448 KB" },
-            { nome: "Certificado Brasil-Japão C", desc: "Certificado de cobertura C", arquivo: "13-certificado-c.pdf", tamanho: "446 KB" },
-            { nome: "Cartilha INSS", desc: "Guia informativo do acordo Brasil-Japão", arquivo: "14-cartilha-inss-japao.pdf", tamanho: "1.8 MB" }
+            { nome: "Acordo de Previdência Social Brasil-Japão (2010)", desc: "Texto oficial do acordo bilateral", cat: "principal", arquivo: "Acordo de Previdência Social Brasil-Japão.pdf" },
+            { nome: "Ajuste Administrativo Brasil-Japão", desc: "Procedimentos de execução do acordo", cat: "principal", arquivo: "Ajuste Administrativo Brasil-Japão.pdf" },
+            { nome: "Formulário de Recurso CRPS", desc: "Formulário para recurso junto ao CRPS", cat: "formulario", arquivo: "Formulário de Recurso CRPS.pdf" },
+            { nome: "Formulário para Beneficiários Residentes no Exterior", desc: "Formulário para beneficiários residentes fora do Brasil", cat: "formulario", arquivo: "Formulário para Beneficiários Residentes no Exterior.pdf" },
+            { nome: "Certificado de Deslocamento Temporário — Japão", desc: "Certificado de cobertura para trabalhadores deslocados ao Japão", cat: "formulario", arquivo: "Certificado de Deslocamento Temporário - Japão.pdf" },
+            { nome: "Parecer Médico", desc: "Modelo de parecer médico para invalidez", cat: "formulario", arquivo: "Parecer Médico.pdf" },
+            { nome: "Certificado de Deslocamento Temporário — Brasil", desc: "Certificado de cobertura para trabalhadores deslocados ao Brasil", cat: "formulario", arquivo: "Certificado de Deslocamento Temporário - Brasil.pdf" },
+            { nome: "Formulário de Benefícios", desc: "Aposentadoria por Idade, Aposentadoria por Invalidez e Pensão por Morte", cat: "formulario", arquivo: "Formulário de Benefícios - Japão.doc" },
+            { nome: "Formulário de Atualização de Dados do Benefício", desc: "Atualização cadastral do benefício em manutenção", cat: "formulario", arquivo: "Formulário de Atualização de Dados do Benefício - Japão.doc" },
+            { nome: "Pedido de Pensão — Japão para Brasil (A)", desc: "Pensão Nacional / Seguro de Pensão para Empregados — aposentadoria por idade e por invalidez", cat: "formulario", arquivo: "Pedido de Pensão - Japão para Brasil (A).pdf" },
+            { nome: "Pedido de Pensão — Japão para Brasil (B)", desc: "Pensão Nacional / Seguro de Pensão para Empregados — aposentadoria por idade e por invalidez", cat: "formulario", arquivo: "Pedido de Pensão - Japão para Brasil (B).pdf" },
+            { nome: "Pedido de Verificação de Períodos de Seguro", desc: "Verificação de períodos de contribuição para fins de totalização", cat: "formulario", arquivo: "Pedido de Verificação de Períodos de Seguro - Japão.pdf" }
         ];
+
+        let categoriaAtiva = 'todas';
+
+        function getCatLabel(c) {
+            const labels = { principal: 'Principal', formulario: 'Formulário', roteiro: 'Roteiro' };
+            return labels[c] || c;
+        }
 
         function renderDocs() {
             const tb = document.getElementById('docs-tbody');
             const termo = document.getElementById('search-docs').value.toLowerCase();
 
             const filtrados = documentos.filter(d =>
+                (categoriaAtiva === 'todas' || d.cat === categoriaAtiva) &&
                 (d.nome.toLowerCase().includes(termo) || d.desc.toLowerCase().includes(termo))
             );
 
@@ -958,13 +971,21 @@ qualquer divergência de interpretação, o texto em inglês prevalecerá.</div>
                         <div class="doc-name">📄 ${d.nome}</div>
                         <div class="doc-desc">${d.desc}</div>
                     </td>
-                    <td><div class="file-size">${d.tamanho}</div></td>
+                    <td><span class="badge ${d.cat}">${getCatLabel(d.cat)}</span></td>
+                    <td><div class="file-size">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
                     <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
                 </tr>
             `).join('');
         }
 
         function filtrarDocs() {
+            renderDocs();
+        }
+
+        function filtrarCategoria(cat) {
+            categoriaAtiva = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
             renderDocs();
         }
 

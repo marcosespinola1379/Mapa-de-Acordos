@@ -62,6 +62,16 @@
         .badge.complementar { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
         .btn-download { display: inline-block; background: var(--electric); color: var(--navy); padding: 5px 12px; border-radius: 3px; font-size: 11px; font-weight: 600; text-decoration: none; text-transform: uppercase; }
         .btn-download:hover { background: var(--bright); }
+        .badge.formulario { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+        .file-size { color: var(--muted); font-size: 11px; font-family: monospace; }
+        .docs-toolbar { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+        .search-box { flex: 1; min-width: 200px; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; }
+        .search-box input { flex: 1; background: none; border: none; outline: none; color: var(--cream); font-size: 13px; font-family: inherit; }
+        .search-box input::placeholder { color: rgba(255,255,255,0.35); }
+        .filter-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 12px; border-radius: 16px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; font-family: inherit; transition: all 0.2s; }
+        .filter-btn:hover { border-color: var(--electric); color: var(--cream); }
+        .filter-btn.active { background: var(--electric); border-color: var(--electric); color: var(--navy); font-weight: 600; }
         footer { background: rgba(0, 0, 0, 0.3); border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--muted); font-size: 13px; }
         @media (max-width: 768px) {
             .title-info h1 { font-size: 28px; }
@@ -98,8 +108,8 @@
                     <div class="info-value">09 de dezembro de 2020</div>
                 </div>
                 <div class="info-card">
-                    <div class="info-label">📄 Artigos</div>
-                    <div class="info-value">28 (Acordo) + 16 (Ajuste)</div>
+                    <div class="info-label">📄 Documentos</div>
+                    <div class="info-value">12 disponíveis</div>
                 </div>
             </div>
         </div>
@@ -153,8 +163,9 @@
         <div class="tabs-nav">
             <button class="tab-btn active" onclick="abrirAba(event, 'beneficios-tcheca')">Benefícios — Rep. Tcheca</button>
             <button class="tab-btn" onclick="abrirAba(event, 'beneficios-brasil')">Benefícios — Brasil</button>
-            <button class="tab-btn" onclick="abrirAba(event, 'acordo')">Acordo (28 Artigos)</button>
-            <button class="tab-btn" onclick="abrirAba(event, 'documentos')">Documentos (7)</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'acordo')">Acordo</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'ajuste')">Ajuste Administrativo</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'documentos')">Documentos</button>
         </div>
 
         <div id="beneficios-tcheca" class="tab-content active">
@@ -206,7 +217,7 @@
         </div>
 
         <div id="acordo" class="tab-content">
-            <h2 class="section-title">Acordo de Previdência Social (28 Artigos)</h2>
+            <h2 class="section-title">Acordo de Previdência Social</h2>
             <div class="document-text">ACORDO ENTRE A REPUBLICA FEDERATIVA DO BRASIL
 E A REPUBLICA TCHECA SOBRE A PREVIDENCIA SOCIAL
 
@@ -334,90 +345,291 @@ Artigo 28 - Duragao e Dentncia
 Este Acordo é celebrado por um periodo indeterminado. Cada Estado Contratante podera denunciar este Acordo mediante notificac3o por escrito ao outro Estado Contratante.</div>
         </div>
 
+        <div id="ajuste" class="tab-content">
+            <h2 class="section-title">Ajuste Administrativo</h2>
+            <div class="document-text">AJUSTE ADMINISTRATIVO PARA IMPLEMENTAÇÃO DO ACORDO ENTRE A REPÚBLICA FEDERATIVA DO BRASIL E A REPÚBLICA TCHECA SOBRE PREVIDÊNCIA SOCIAL
+
+Nos termos do Artigo 18, do parágrafo 2, da alínea (a) do Acordo entre a República Federativa do Brasil e a República Tcheca sobre Previdência Social, assinado em 09 de dezembro de 2020, doravante denominado Acordo, as Autoridades Competentes dos dois Estados Contratantes estabelecem, de comum acordo, as seguintes disposições:
+
+
+PARTE I
+DISPOSIÇÕES GERAIS
+
+
+Artigo 1
+Definições
+
+Os termos utilizados no presente Ajuste Administrativo terão o significado que lhes foi atribuído no Artigo 1 do Acordo.
+
+
+Artigo 2
+Instituições Competentes
+
+As seguintes instituições competentes são responsáveis pela implementação do Acordo:
+
+I. Na República Tcheca:
+
+   a) a Administração do Seguro Social Tcheco (Česká správa sociálního zabezpečení – ČSSZ) e seus escritórios regionais; e
+
+   b) as unidades do seguro social dos Ministérios da Defesa, Interior e da Justiça.
+
+II. Na República Federativa do Brasil:
+
+   a) o Instituto Nacional do Seguro Social (INSS) em relação à legislação do Regime Geral de Previdência Social; e
+
+   b) as unidades gestoras dos Regimes Próprios de Previdência Social em relação à legislação dos regimes de previdência dos entes federativos.
+
+
+Artigo 3
+Organismos de Ligação
+
+1. Conforme o Artigo 18, do parágrafo 2, da alínea (c) do Acordo, são designados como organismos de ligação:
+
+   a) Para a República Tcheca: a Administração do Seguro Social Tcheco (CSSZ);
+   b) Para a República Federativa do Brasil: o Instituto Nacional do Seguro Social (INSS).
+
+2. Para a implementação do Acordo, os organismos de ligação designados assistirão uns aos outros e poderão comunicar-se diretamente entre si, bem como, com as autoridades competentes, instituições competentes e pessoas interessadas ou seus representantes.
+
+3. Os organismos de ligação concordarão conjuntamente sobre os formulários e os procedimentos detalhados necessários para implementar o Acordo e o Ajuste Administrativo.
+As instituições competentes ou os organismos de ligação de ambos os Estados Contratantes podem recusar-se a aceitar um requerimento de benefício ou qualquer outra solicitação ou certificado se não for apresentado no formulário acordado.
+
+
+PARTE II
+DISPOSIÇÕES REFERENTES À LEGISLAÇÃO APLICÁVEL
+
+
+Artigo 4
+Certificado relativo à legislação aplicável
+
+1. Quando a legislação de um Estado Contratante for aplicável, nos casos previstos no Artigo 8 do Acordo, a instituição competente emitirá, a pedido do empregador, o certificado de deslocamento atestando que a pessoa empregada continua sujeita à legislação desse Estado Contratante, com a indicação do período do deslocamento no território do outro Estado Contratante que não poderá exceder 36 meses.
+
+2. O certificado de deslocamento garantirá que a pessoa em questão não estará sujeita à legislação do Estado Contratante no qual a atividade será exercida, para a qual o certificado foi emitido. No caso das pessoas mencionadas no parágrafo 4 do Artigo 25 do Acordo, o certificado de deslocamento deve ser solicitado dentro de 12 meses após a entrada em vigor do Acordo com efeito desse certificado a partir dessa data.
+
+3. A Instituição competente que emitir o certificado de deslocamento deverá enviar uma cópia para a Instituição competente do outro Estado Contratante.
+
+4. A pessoa empregada deverá conservar o certificado de deslocamento, durante sua permanência no território do outro Estado Contratante, e apresentá-lo, se necessário, ao órgão competente desse Estado Contratante.
+
+5. Em caso de retorno antecipado da pessoa empregada referente ao período de deslocamento inicialmente previsto, a pessoa empregada ou o seu empregador deverá notificar o retorno à Instituição competente do Estado Contratante que emitiu o certificado, para que ela possa informar à Instituição Competente do outro Estado Contratante.
+
+6. Para os fins de aplicação das exceções previstas no Artigo 13 do Acordo:
+
+   a) As seguintes instituições competentes são designadas:
+      i) Na República Checa: Administração da Seguridade Social Tcheca (Česká správa sociálního zabezpečení - ČSSZ);
+      ii) Na República Federativa do Brasil: o Instituto Nacional do Seguro Social (INSS).
+
+   b) Um(a) empregado(a) e seu empregador submetem o pedido conjunto de exceção por escrito à Instituição Competente do Estado Contratante cuja legislação deve ser aplicada de acordo com o pedido. O pedido de um trabalhador por conta própria deve ser apresentado de forma análoga.
+   O pedido de exceção à aplicação da legislação do Estado Contratante das pessoas a que se refere o Artigo 8 do Acordo deve ser apresentado antes do final do prazo atual do deslocamento.
+
+   c) O acordo de exceção deve ser atestado por um certificado emitido e processado de acordo com os parágrafos anteriores deste Artigo.
+
+
+PARTE III
+DISPOSIÇÃO SOBRE BENEFÍCIOS
+
+
+Artigo 5
+Totalização de períodos de seguro
+
+Para a proposta de implementação do Acordo, as Instituições Competentes dos Estados Contratantes deverão certificar, em formulário específico e acordado, os períodos de seguro cumpridos sob a sua legislação.
+
+
+Artigo 6
+Requerimento de benefícios
+
+1. Para se qualificar aos benefícios previstos nas disposições do Acordo, o pedido deverá ser apresentado preferencialmente à Instituição competente do Estado Contratante de residência.
+
+2. As instituições competentes deverão enviar para a instituição competente do outro Estado Contratante, sem demora, seja diretamente ou por meio dos organismos de ligação, as solicitações das pessoas interessadas, assim como o formulário certificando os períodos de seguro, especialmente elaborado para esse fim, conforme Artigo 5 deste Ajuste Administrativo, e quaisquer outros documentos necessários para a determinação do direito aos benefícios.
+
+3. Se nenhum período de seguro tiver sido cumprido pelo requerente sob a legislação do Estado Contratante em cujo território foi feita a solicitação, a instituição competente deverá enviar o requerimento, com todos os documentos necessários, sem demora, à instituição competente do outro Estado Contratante.
+
+4. As instituições competentes deverão informar uma à outra sobre quaisquer fatos que sejam relevantes para a determinação dos direitos a benefícios.
+
+5. Antes de encaminhar os documentos mencionados no parágrafo 2 e 3 deste Artigo, a instituição competente do Estado Contratante no qual a solicitação foi feita deve especificar a data de entrada e certificar a exatidão dos dados de identificação pessoal do requerente. Essa validação dos documentos substituirá o envio de documentos originais que comprovem tais informações. Em caso de dúvidas, tais documentos podem ser solicitados.
+
+
+Artigo 7
+Notificação de decisões
+
+1. Cada Instituição competente deverá determinar os direitos do requerente por força das disposições do Acordo e notificar a parte interessada da decisão, com indicação dos meios e prazos de recursos, enviando, ao mesmo tempo, uma cópia da decisão, também, à instituição competente do outro Estado Contratante.
+
+2. A inobservância dos prazos previstos na legislação de cada Estado Contratante, para cumprimento das exigências necessárias ao reconhecimento do direito poderá ensejar o indeferimento do benefício. Isso sem prejuízo de uma nova análise do pedido se os requisitos são subsequentemente cumpridos.
+
+
+PARTE IV
+DISPOSIÇÕES DIVERSAS
+
+
+Artigo 8
+Troca de Informações médicas
+
+1. Em caso de solicitação de benefícios que necessitem de exames médicos, a instituição competente do Estado Contratante do território onde reside o requerente deverá realizá-los gratuitamente e enviar, de acordo com a legislação desse Estado Contratante, toda informação médica e toda documentação disponível relativa à condição de incapacidade do requerente ou do beneficiário, para a instituição competente do outro Estado Contratante.
+
+2. Se a Instituição competente julgar necessário, poderá pedir exames complementares.
+
+3. As Instituições Competentes mantêm, no entanto, o direito de realizar um exame médico do interessado por um médico de sua escolha.
+
+
+Artigo 9
+Pagamento de benefícios
+
+1. As instituições competentes pagarão as prestações ao beneficiário que reside no território do outro Estado Contratante ou no do Terceiro Estado, dentro dos prazos e formas estabelecidos pela legislação aplicável.
+
+2. Os beneficiários são obrigados a apresentar à Instituição competente do Estado Contratante que paga o benefício, seja diretamente ou por meio dos organismos de ligação, um atestado de vida emitido de acordo com a legislação desse Estado Contratante.
+
+
+Artigo 10
+Informações de contas bancárias
+
+Os beneficiários, diretamente ou por meio da Instituição competente ou organismo de ligação, deverão enviar as informações de contas bancárias necessárias, à Instituição competente do Estado Contratante que faz os pagamentos.
+
+
+Artigo 11
+Estatísticas
+
+As Instituições competentes trocarão estatísticas anuais sobre os certificados de deslocamento emitidos e os pagamentos efetuados aos beneficiários amparados pelo Acordo na forma a ser definida entre os organismos de ligação.
+
+
+Artigo 12
+Troca de informações
+
+1. No que diz respeito ao dever de notificação constante de uma legislação nacional, os beneficiários de prestações concedidas, nos termos da legislação de um dos Estados Contratantes, e que residam no território do outro Estado Contratante comunicarão à instituição competente ou ao organismo de ligação toda mudança relativa à sua situação pessoal ou familiar, seu estado de saúde, sua capacidade de trabalho, suas rendas, bem como, qualquer outra circunstância suscetível de influenciar seus direitos ou obrigações previstas nas legislações mencionadas no Artigo 2 e demais disposições do Acordo.
+
+2. As Instituições competentes de ambos os Estados Contratantes se apoiarão mutuamente e trocarão, diretamente ou por meio dos organismos de ligação, todas as informações disponíveis que possam interferir no direito às prestações ou, ainda, sobre alterações em suas respectivas legislações que possam afetar sua aplicação.
+
+3. Os organismos de ligação podem acordar o uso da troca eletrônica de dados entre as Instituições Competentes. Neste caso, os dados e os documentos trocados por meio eletrônico serão legalmente válidos para ambos os Estados Contratantes.
+
+
+Artigo 13
+Confidencialidade de dados pessoais
+
+Todas as informações pessoais, às quais se faz referência no presente Ajuste Administrativo, poderão ser utilizadas somente no âmbito do objeto do Acordo e em conformidade com a legislação relativa à confidencialidade de dados pessoais dos Estados Contratantes.
+
+
+Artigo 14
+Recuperação de pagamento indevido
+
+As Instituições competentes adotarão as medidas necessárias para a recuperação de valores pagos indevidamente, nos termos do Artigo 22 do Acordo.
+
+
+Artigo 15
+Recuperação de pagamento de um benefício
+
+Se, após a suspensão de uma prestação, a pessoa recuperar o direito, enquanto residente no território do outro Estado Contratante, as Instituições competentes trocarão informações necessárias com vistas ao restabelecimento do pagamento do benefício.
+
+
+Artigo 16
+Entrada em vigor e duração
+
+O presente Ajuste Administrativo entrará em vigor na mesma data do Acordo e terá a mesma duração.
+
+Feito em Brasília, em 09 de dezembro de 2020, em duas cópias originais, nos idiomas tcheco, português e inglês, sendo todos os textos igualmente autênticos. No caso de divergência de interpretação, o texto em inglês deve prevalecer.
+
+
+Pela autoridade competente da República Federativa do Brasil
+BRUNO BIANCO LEAL
+Secretário Especial de Previdência e Trabalho do Ministério da Economia
+
+Pela autoridade competente da República Tcheca
+SANDRA LANG LINKENSEDEROVÁ
+Embaixadora Extraordinária e Plenipotenciária</div>
+        </div>
+
         <div id="documentos" class="tab-content">
-            <h2 class="section-title">Documentos Disponíveis (7)</h2>
-            <table class="docs-table">
-                <thead>
-                    <tr>
-                        <th>Documento</th>
-                        <th>Categoria</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Acordo de Segurança Social (2020)</div>
-                            <div class="doc-desc">Texto oficial do acordo bilateral assinado em 09/12/2020</div>
-                        </td>
-                        <td><span class="badge principal">PRINCIPAL</span></td>
-                        <td><a href="01-acordo-principal-tcheca.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Ajuste Administrativo</div>
-                            <div class="doc-desc">Regulamentação complementar do acordo de segurança social</div>
-                        </td>
-                        <td><span class="badge complementar">COMPLEMENTAR</span></td>
-                        <td><a href="02-ajuste-administrativo-tcheca.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Certificado de Deslocamento</div>
-                            <div class="doc-desc">Comprovante de aplicação de legislação de deslocamento</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="03-certificado-deslocamento.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Retificação de Certificado</div>
-                            <div class="doc-desc">Documento para retificação de deslocamento</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="04-retificacao-deslocamento.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Aposentadoria Brasil</div>
-                            <div class="doc-desc">Formulário oficial para solicitação de aposentadoria</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="05-formulario-idade-brasil.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Pensão Brasil</div>
-                            <div class="doc-desc">Formulário para requerimento de pensão por morte</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="06-formulario-morte-brasil.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Incapacidade Brasil</div>
-                            <div class="doc-desc">Formulário para requerimento de incapacidade permanente</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="07-formulario-invalidez-brasil.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div style="background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px;">
+                <h2 class="section-title">Documentos Disponíveis</h2>
+
+                <div class="docs-toolbar">
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="filtrarDocs()">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filtrarCategoria('todas', event)">Todos</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('principal', event)">Principal</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('formulario', event)">Formulário</button>
+                    </div>
+                </div>
+
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Documento</th>
+                            <th>Categoria</th>
+                            <th>Arquivo</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="docs-tbody"></tbody>
+                </table>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>✅ Acordo completo com 28 artigos + Ajuste Administrativo com 16 artigos + 7 documentos</p>
         <p>Acordos Internacionais de Previdência Social • Brasil • 2026</p>
     </footer>
 
     <script>
+        const documentos = [
+            { nome: "Acordo de Previdência Social Brasil-República Tcheca (2020)", desc: "Texto oficial do acordo bilateral", cat: "principal", arquivo: "01-acordo-principal-tcheca.pdf" },
+            { nome: "Ajuste Administrativo Brasil-República Tcheca", desc: "Regulamentação complementar do acordo", cat: "principal", arquivo: "02-ajuste-administrativo-tcheca.pdf" },
+            { nome: "Certificado de Deslocamento", desc: "Comprovante de aplicação de legislação de deslocamento", cat: "formulario", arquivo: "03-certificado-deslocamento.pdf" },
+            { nome: "Retificação do Certificado de Deslocamento", desc: "Documento para retificação de deslocamento temporário", cat: "formulario", arquivo: "04-retificacao-deslocamento.pdf" },
+            { nome: "Formulário — Aposentadoria por Idade", desc: "Formulário oficial para solicitação de aposentadoria por idade", cat: "formulario", arquivo: "05-formulario-idade-brasil.pdf" },
+            { nome: "Formulário — Pensão por Morte", desc: "Formulário para requerimento de pensão por morte", cat: "formulario", arquivo: "06-formulario-morte-brasil.pdf" },
+            { nome: "Formulário — Aposentadoria por Invalidez", desc: "Formulário para requerimento de aposentadoria por invalidez", cat: "formulario", arquivo: "07-formulario-invalidez-brasil.pdf" },
+            { nome: "Atestado de Vida - República Tcheca", desc: "Formulário bilateral para comprovação de vida", cat: "formulario", arquivo: "bra_cz-108-atestado-de-vida-definitivo-cz.pdf" },
+            { nome: "Certificado de Vida - República Tcheca", desc: "Formulário tcheco de certificado de vida para pagamento de pensão", cat: "formulario", arquivo: "pozpt.pdf" },
+            { nome: "Certificado de Cobertura - República Tcheca", desc: "Certificado de cobertura para trabalhadores deslocados", cat: "formulario", arquivo: "cz_bra_101-final.docx" },
+            { nome: "Retificação do Certificado de Cobertura - República Tcheca", desc: "Retificação do certificado de cobertura", cat: "formulario", arquivo: "cz_bra_102-final.docx" },
+            { nome: "Requerimento de Benefício - República Tcheca", desc: "Requerimento de benefício previdenciário na República Tcheca", cat: "formulario", arquivo: "cz_bra_202-final.docx" },
+        ];
+
+        let categoriaAtiva = 'todas';
+
+        function getCatLabel(c) {
+            return { principal: "Principal", formulario: "Formulário" }[c] || c;
+        }
+
+        function renderDocs() {
+            const tb = document.getElementById('docs-tbody');
+            const termo = document.getElementById('search-docs').value.toLowerCase();
+            const filtrados = documentos.filter(d =>
+                (categoriaAtiva === 'todas' || d.cat === categoriaAtiva) &&
+                (d.nome.toLowerCase().includes(termo) || d.desc.toLowerCase().includes(termo))
+            );
+            tb.innerHTML = filtrados.map(d => `
+                <tr>
+                    <td>
+                        <div class="doc-name">📄 ${d.nome}</div>
+                        <div class="doc-desc">${d.desc}</div>
+                    </td>
+                    <td><span class="badge ${d.cat}">${getCatLabel(d.cat)}</span></td>
+                    <td><div class="file-size">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
+                    <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
+                </tr>
+            `).join('');
+        }
+
+        function filtrarCategoria(cat, event) {
+            categoriaAtiva = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderDocs();
+        }
+
+        function filtrarDocs() {
+            renderDocs();
+        }
+
         function abrirAba(evt, abaId) {
             document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
             document.getElementById(abaId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }
+
+        renderDocs();
     </script>
 </body>
 </html>

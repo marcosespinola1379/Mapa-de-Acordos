@@ -47,7 +47,9 @@
         .tab-content.active { display: block; }
         .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 700; color: var(--bright); margin-bottom: 24px; }
         .benefits-list { display: grid; gap: 12px; }
-        .benefit-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: rgba(0, 102, 255, 0.08); border: 1px solid var(--border); border-radius: 6px; }
+        .benefit-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: rgba(0, 102, 255, 0.08); border: 1px solid var(--border); border-radius: 6px; position: relative; cursor: default; }
+        .benefit-item:hover { border-color: rgba(0, 102, 255, 0.5); background: rgba(0, 102, 255, 0.13); }
+        .benefit-item[data-tooltip]:hover::after { content: attr(data-tooltip); position: absolute; left: 0; top: calc(100% + 6px); background: #0F1E3A; border: 1px solid rgba(0,102,255,0.4); color: var(--muted); font-size: 12px; line-height: 1.5; padding: 10px 14px; border-radius: 6px; width: 320px; z-index: 99; box-shadow: 0 4px 16px rgba(0,0,0,0.4); pointer-events: none; white-space: normal; }
         .benefit-check { color: var(--success); font-weight: 700; flex-shrink: 0; }
         .benefit-name { color: var(--cream); }
         .document-text { background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px; max-height: 900px; overflow-y: auto; color: var(--cream); font-size: 12px; line-height: 1.7; white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New', monospace; }
@@ -62,6 +64,16 @@
         .badge.complementar { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
         .btn-download { display: inline-block; background: var(--electric); color: var(--navy); padding: 5px 12px; border-radius: 3px; font-size: 11px; font-weight: 600; text-decoration: none; text-transform: uppercase; }
         .btn-download:hover { background: var(--bright); }
+        .badge.formulario { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+        .file-size { color: var(--muted); font-size: 11px; font-family: monospace; }
+        .docs-toolbar { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+        .search-box { flex: 1; min-width: 200px; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; }
+        .search-box input { flex: 1; background: none; border: none; outline: none; color: var(--cream); font-size: 13px; font-family: inherit; }
+        .search-box input::placeholder { color: rgba(255,255,255,0.35); }
+        .filter-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 12px; border-radius: 16px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; font-family: inherit; transition: all 0.2s; }
+        .filter-btn:hover { border-color: var(--electric); color: var(--cream); }
+        .filter-btn.active { background: var(--electric); border-color: var(--electric); color: var(--navy); font-weight: 600; }
         footer { background: rgba(0, 0, 0, 0.3); border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--muted); font-size: 13px; }
         @media (max-width: 768px) {
             .contact-section { grid-template-columns: 1fr; }
@@ -96,8 +108,8 @@
                     <div class="info-value">08 de agosto de 2011</div>
                 </div>
                 <div class="info-card">
-                    <div class="info-label">📄 Artigos</div>
-                    <div class="info-value">29 (Acordo) + 8 (Ajuste)</div>
+                    <div class="info-label">📄 Documentos</div>
+                    <div class="info-value">11 disponíveis</div>
                 </div>
             </div>
         </div>
@@ -159,15 +171,15 @@
         <div id="beneficios-quebec" class="tab-content active">
             <h2 class="section-title">Benefícios Cobertos — Quebec</h2>
             <div class="benefits-list">
-                <div class="benefit-item">
+                <div class="benefit-item" data-tooltip="Garante renda básica aos idosos residentes no Québec que não possuem pensão suficiente. Não exige histórico de contribuição — é baseado na residência e na renda do beneficiário.">
                     <span class="benefit-check">✓</span>
                     <span class="benefit-name">Lei da Proteção Social do Idoso (Lei Q-2)</span>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item" data-tooltip="Benefício contributivo baseado nas contribuições realizadas durante a vida laboral no Canadá. Cobre aposentadoria por idade, aposentadoria por invalidez e pensão por morte dos dependentes.">
                     <span class="benefit-check">✓</span>
                     <span class="benefit-name">Plano de Pensão do Canadá</span>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item" data-tooltip="Cobertura previdenciária para trabalhadores brasileiros temporariamente deslocados ao Québec. Evita a dupla contribuição e garante que o período trabalhado no exterior seja reconhecido para fins de benefício.">
                     <span class="benefit-check">✓</span>
                     <span class="benefit-name">Seguro de Deslocamento</span>
                 </div>
@@ -177,27 +189,27 @@
         <div id="beneficios-brasil" class="tab-content">
             <h2 class="section-title">Benefícios Cobertos — Brasil</h2>
             <div class="benefits-list">
-                <div class="benefit-item">
+                <div class="benefit-item" data-tooltip="Devida ao segurado que atingir a idade mínima (65 anos para homens, 62 para mulheres) com o período de carência exigido. Os períodos contribuídos no Québec podem ser totalizados para atingir a carência.">
                     <span class="benefit-check">✓</span>
-                    <span class="benefit-name">Aposentadoria por idade</span>
+                    <span class="benefit-name">Aposentadoria por Idade</span>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item" data-tooltip="Devida ao segurado considerado incapaz e insusceptível de reabilitação para o exercício de atividade que lhe garanta subsistência. Carência de 12 contribuições mensais, salvo acidente ou doença profissional.">
                     <span class="benefit-check">✓</span>
-                    <span class="benefit-name">Aposentadoria por invalidez</span>
+                    <span class="benefit-name">Aposentadoria por Invalidez</span>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item" data-tooltip="Devida ao conjunto de dependentes do segurado que falecer, aposentado ou não. O valor corresponde a 100% da aposentadoria recebida ou que o segurado teria direito, rateado entre os dependentes.">
                     <span class="benefit-check">✓</span>
-                    <span class="benefit-name">Pensão por morte</span>
+                    <span class="benefit-name">Pensão por Morte</span>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item" data-tooltip="Corresponde à aposentadoria por invalidez na legislação brasileira. É concedida ao segurado que, após cumprida a carência, for considerado incapaz de forma permanente para qualquer atividade laboral.">
                     <span class="benefit-check">✓</span>
-                    <span class="benefit-name">Incapacidade permanente para o trabalho</span>
+                    <span class="benefit-name">Incapacidade Permanente para o Trabalho</span>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item" data-tooltip="Regime previdenciário administrado pelo INSS que cobre trabalhadores da iniciativa privada, autônomos e contribuintes individuais. É o regime geral ao qual se aplica a totalização de períodos do acordo com o Québec.">
                     <span class="benefit-check">✓</span>
                     <span class="benefit-name">Regime Geral de Previdência Social (RGPS)</span>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item" data-tooltip="Regimes previdenciários exclusivos dos servidores públicos efetivos da União, Estados, Distrito Federal e Municípios. Também reconhecidos no acordo para fins de totalização de períodos.">
                     <span class="benefit-check">✓</span>
                     <span class="benefit-name">Regimes Próprios de Previdência Social (RPPS)</span>
                 </div>
@@ -924,121 +936,100 @@ O Ministro da Previdência Social do Brasil
         </div>
 
         <div id="documentos" class="tab-content">
-            <h2 class="section-title">Documentos Disponíveis (11)</h2>
-            <table class="docs-table">
-                <thead>
-                    <tr>
-                        <th>Documento</th>
-                        <th>Categoria</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Acordo Principal (2011)</div>
-                            <div class="doc-desc">29 Artigos - Texto oficial do acordo bilateral</div>
-                        </td>
-                        <td><span class="badge principal">PRINCIPAL</span></td>
-                        <td><a href="01-acordo-principal-quebec.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Ajuste Administrativo</div>
-                            <div class="doc-desc">8 Artigos - Disposições complementares</div>
-                        </td>
-                        <td><span class="badge complementar">COMPLEMENTAR</span></td>
-                        <td><a href="02-acordo-complementar-quebec.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Certificado de Deslocamento</div>
-                            <div class="doc-desc">Formulário para comprovação de deslocamento</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="03-certificado-deslocamento.doc" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Retificação de Deslocamento</div>
-                            <div class="doc-desc">Documento para retificação de deslocamento</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="04-retificacao-deslocamento.doc" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Aposentadoria (Quebec)</div>
-                            <div class="doc-desc">Demande de rente de retraite</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="05-formulario-idade-quebec.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Aposentadoria (Brasil)</div>
-                            <div class="doc-desc">Requerimento de aposentadoria por idade</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="06-formulario-idade-brasil.doc" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Pensão (Brasil)</div>
-                            <div class="doc-desc">Requerimento de pensão por morte</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="07-formulario-morte-brasil.doc" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Invalidez (Brasil)</div>
-                            <div class="doc-desc">Requerimento de aposentadoria por invalidez</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="08-formulario-invalidez-brasil.doc" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Recurso</div>
-                            <div class="doc-desc">Formulário de recurso administrativo</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="09-formulario-recurso-brasil.doc" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Pensão (Quebec)</div>
-                            <div class="doc-desc">Demande de rente de retraite (Quebec)</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="10-formulario-morte-quebec.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="doc-name">📄 Formulário — Invalidez (Quebec)</div>
-                            <div class="doc-desc">Formulário para incapacidade permanente</div>
-                        </td>
-                        <td><span class="badge principal">FORMULÁRIO</span></td>
-                        <td><a href="11-formulario-invalidez-quebec.pdf" download class="btn-download">⬇ Download</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div style="background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px;">
+                <h2 class="section-title">Documentos Disponíveis</h2>
+
+                <div class="docs-toolbar">
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="filtrarDocs()">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filtrarCategoria('todas', event)">Todos</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('principal', event)">Principal</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('formulario', event)">Formulário</button>
+                    </div>
+                </div>
+
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Documento</th>
+                            <th>Categoria</th>
+                            <th>Arquivo</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="docs-tbody"></tbody>
+                </table>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>✅ Acordo completo com 29 artigos + Ajuste Administrativo com 8 artigos</p>
         <p>Acordos Internacionais de Previdência Social • Brasil • 2026</p>
     </footer>
 
     <script>
+        const documentos = [
+            { nome: "Acordo de Previdência Social Brasil-Québec (2011)", desc: "Texto oficial do acordo bilateral", cat: "principal", arquivo: "Acordo de Previdência Social Brasil-Quebec.pdf" },
+            { nome: "Ajuste Administrativo Brasil-Québec", desc: "Disposições complementares para implementação do acordo", cat: "principal", arquivo: "Ajuste Administrativo Brasil-Quebec.pdf" },
+            { nome: "Certificado de Deslocamento Temporário — Brasil", desc: "Formulário para comprovação de deslocamento temporário", cat: "formulario", arquivo: "Certificado de Deslocamento Temporário - Brasil.doc" },
+            { nome: "Retificação de Deslocamento Temporário — Brasil", desc: "Documento para retificação de deslocamento temporário", cat: "formulario", arquivo: "Retificação de Deslocamento Temporário - Brasil.doc" },
+            { nome: "Formulário — Aposentadoria por Idade (Québec)", desc: "Demande de rente de retraite", cat: "formulario", arquivo: "Formulário Aposentadoria por Idade - Quebec.pdf" },
+            { nome: "Formulário — Aposentadoria por Idade (Brasil)", desc: "Requerimento de aposentadoria por idade", cat: "formulario", arquivo: "Formulário Aposentadoria por Idade - Brasil.doc" },
+            { nome: "Formulário — Pensão por Morte (Brasil)", desc: "Requerimento de pensão por morte", cat: "formulario", arquivo: "Formulário Pensão por Morte - Brasil.doc" },
+            { nome: "Formulário — Aposentadoria por Invalidez (Brasil)", desc: "Requerimento de aposentadoria por invalidez", cat: "formulario", arquivo: "Formulário Aposentadoria por Invalidez - Brasil.doc" },
+            { nome: "Formulário — Recurso (Brasil)", desc: "Formulário de recurso administrativo", cat: "formulario", arquivo: "Formulário Recurso - Brasil.doc" },
+            { nome: "Formulário — Pensão por Morte (Québec)", desc: "Formulário de pensão por morte — lado Québec", cat: "formulario", arquivo: "Formulário Pensão por Morte - Quebec.pdf" },
+            { nome: "Formulário — Aposentadoria por Invalidez (Québec)", desc: "Formulário para incapacidade permanente — lado Québec", cat: "formulario", arquivo: "Formulário Aposentadoria por Invalidez - Quebec.pdf" },
+        ];
+
+        let categoriaAtiva = 'todas';
+
+        function getCatLabel(c) {
+            return { principal: "Principal", formulario: "Formulário" }[c] || c;
+        }
+
+        function renderDocs() {
+            const tb = document.getElementById('docs-tbody');
+            const termo = document.getElementById('search-docs').value.toLowerCase();
+            const filtrados = documentos.filter(d =>
+                (categoriaAtiva === 'todas' || d.cat === categoriaAtiva) &&
+                (d.nome.toLowerCase().includes(termo) || d.desc.toLowerCase().includes(termo))
+            );
+            tb.innerHTML = filtrados.map(d => `
+                <tr>
+                    <td>
+                        <div class="doc-name">📄 ${d.nome}</div>
+                        <div class="doc-desc">${d.desc}</div>
+                    </td>
+                    <td><span class="badge ${d.cat}">${getCatLabel(d.cat)}</span></td>
+                    <td><div class="file-size">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
+                    <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
+                </tr>
+            `).join('');
+        }
+
+        function filtrarCategoria(cat, event) {
+            categoriaAtiva = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderDocs();
+        }
+
+        function filtrarDocs() {
+            renderDocs();
+        }
+
         function abrirAba(evt, abaId) {
             document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
             document.getElementById(abaId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }
+
+        renderDocs();
     </script>
 </body>
 </html>

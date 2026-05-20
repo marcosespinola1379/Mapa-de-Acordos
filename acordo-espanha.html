@@ -399,6 +399,14 @@
             background: var(--electric);
             color: var(--navy);
         }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 3px; font-size: 10px; font-weight: 600; text-transform: uppercase; }
+        .badge.principal { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .badge.complementar { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .badge.formulario { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+        .filter-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 12px; border-radius: 16px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; font-family: inherit; transition: all 0.2s; }
+        .filter-btn:hover { border-color: var(--electric); color: var(--cream); }
+        .filter-btn.active { background: var(--electric); border-color: var(--electric); color: var(--navy); font-weight: 600; }
 
         footer {
             text-align: center;
@@ -770,12 +778,19 @@ O presente Convênio é válido por prazo indeterminado. Qualquer Parte pode den
                         <span>⌕</span>
                         <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="filtrarDocs()">
                     </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filtrarCategoria('todas', event)">Todos</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('principal', event)">Principal</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('complementar', event)">Complementar</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('formulario', event)">Formulário</button>
+                    </div>
                 </div>
 
                 <table class="docs-table">
                     <thead>
                         <tr>
                             <th>Documento</th>
+                            <th>Categoria</th>
                             <th>Arquivo</th>
                             <th>Ação</th>
                         </tr>
@@ -792,20 +807,24 @@ O presente Convênio é válido por prazo indeterminado. Qualquer Parte pode den
 
     <script>
         const documentos = [
-            { nome: "Convênio de Seguridade Social Brasil-Espanha (2008)", desc: "Texto oficial do convênio bilateral assinado em 04/09/2008", arquivo: "01-acordo-principal.pdf", tamanho: "241 KB" },
-            { nome: "Acordo Complementar Brasil-Espanha", desc: "Documento complementar ao convênio principal", arquivo: "02-acordo-complementar.pdf", tamanho: "330 KB" },
-            { nome: "Ajuste Administrativo Brasil-Espanha", desc: "Regulamentação administrativa para implementação do convênio", arquivo: "03-ajuste-administrativo.pdf", tamanho: "166 KB" },
-            { nome: "Acordo Iberoamericano", desc: "Acordo multilateral iberoamericano de previdência social", arquivo: "04-acordo-iberoamericano.pdf", tamanho: "1.2 MB" },
-            { nome: "Ajuste Iberoamericano", desc: "Ajuste administrativo do acordo iberoamericano", arquivo: "05-ajuste-iberoamericano.pdf", tamanho: "753 KB" },
-            { nome: "Anexos Iberoamericano", desc: "Anexos técnicos do acordo iberoamericano", arquivo: "06-anexos-iberoamericano.pdf", tamanho: "241 KB" },
-            { nome: "Convênio Multilateral", desc: "Convênio multilateral de segurança social", arquivo: "07-convenio-multilateral.pdf", tamanho: "2.1 MB" }
+            { nome: "Convênio de Seguridade Social Brasil-Espanha (2008)", desc: "Texto oficial do convênio bilateral assinado em 04/09/2008", cat: "principal", arquivo: "Convênio de Seguridade Social Brasil-Espanha (2008).pdf" },
+            { nome: "Acordo Complementar Brasil-Espanha", desc: "Documento complementar ao convênio principal", cat: "complementar", arquivo: "Acordo Complementar Brasil-Espanha.pdf" },
+            { nome: "Ajuste Administrativo Brasil-Espanha", desc: "Regulamentação administrativa para implementação do convênio", cat: "complementar", arquivo: "Ajuste Administrativo Brasil-Espanha.pdf" },
+            { nome: "Certificado de Deslocamento", desc: "Certificado de cobertura para trabalhadores deslocados", cat: "formulario", arquivo: "Certificado de Deslocamento.pdf" }
         ];
+
+        let categoriaAtiva = 'todas';
+
+        function getCatLabel(c) {
+            return { principal: "Principal", complementar: "Complementar", formulario: "Formulário" }[c] || c;
+        }
 
         function renderDocs() {
             const tb = document.getElementById('docs-tbody');
             const termo = document.getElementById('search-docs').value.toLowerCase();
 
             const filtrados = documentos.filter(d =>
+                (categoriaAtiva === 'todas' || d.cat === categoriaAtiva) &&
                 (d.nome.toLowerCase().includes(termo) || d.desc.toLowerCase().includes(termo))
             );
 
@@ -815,10 +834,18 @@ O presente Convênio é válido por prazo indeterminado. Qualquer Parte pode den
                         <div class="doc-name">📄 ${d.nome}</div>
                         <div class="doc-desc">${d.desc}</div>
                     </td>
-                    <td><div class="file-size">${d.tamanho}</div></td>
+                    <td><span class="badge ${d.cat}">${getCatLabel(d.cat)}</span></td>
+                    <td><div class="file-size">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
                     <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
                 </tr>
             `).join('');
+        }
+
+        function filtrarCategoria(cat, event) {
+            categoriaAtiva = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderDocs();
         }
 
         function filtrarDocs() {

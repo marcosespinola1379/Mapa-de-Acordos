@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -1252,7 +1252,7 @@ Ministra do Trabalho e Previdência Social</div>
                         <button class="filter-btn active" onclick="filtrarCategoria('todas')">Todos</button>
                         <button class="filter-btn" onclick="filtrarCategoria('principal')">Principal</button>
                         <button class="filter-btn" onclick="filtrarCategoria('complementar')">Complementar</button>
-                        <button class="filter-btn" onclick="filtrarCategoria('multilateral')">Multilateral</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('formulario')">Formulário</button>
                     </div>
                 </div>
 
@@ -1277,15 +1277,14 @@ Ministra do Trabalho e Previdência Social</div>
 
     <script>
         const documentos = [
-            { nome: "Acordo de Previdência Social Brasil-Chile (2009)", desc: "Texto oficial do acordo bilateral assinado em 03/03/2009", cat: "principal", arquivo: "01-acordo-principal-2009.pdf", tamanho: "1.3 MB" },
-            { nome: "Ajuste Administrativo (2009)", desc: "Regulamentação da execução do acordo", cat: "complementar", arquivo: "02-ajuste-administrativo-2009.pdf", tamanho: "1.4 MB" },
-            { nome: "Acordo Brasil-Chile (1993)", desc: "Acordo histórico de 1993", cat: "complementar", arquivo: "03-acordo-1993.pdf", tamanho: "489 KB" },
-            { nome: "Ajuste Complementar (1996)", desc: "Ajuste complementar de 1996", cat: "complementar", arquivo: "04-ajuste-1996.pdf", tamanho: "447 KB" },
-            { nome: "Acordo Iberoamericano", desc: "Acordo multilateral iberoamericano de previdência social", cat: "multilateral", arquivo: "05-acordo-iberoamericano.pdf", tamanho: "1.2 MB" },
-            { nome: "Ajuste Iberoamericano", desc: "Ajuste administrativo do acordo iberoamericano", cat: "multilateral", arquivo: "06-ajuste-iberoamericano.pdf", tamanho: "753 KB" },
-            { nome: "Anexos Iberoamericano", desc: "Anexos técnicos do acordo iberoamericano", cat: "multilateral", arquivo: "07-anexos-iberoamericano.pdf", tamanho: "241 KB" },
-            { nome: "Convênio Multilateral", desc: "Convênio multilateral de segurança social", cat: "multilateral", arquivo: "08-convenio-multilateral.pdf", tamanho: "2.1 MB" },
-            { nome: "Guia Ouvidoria", desc: "Guia de atendimento e ouvidoria", cat: "complementar", arquivo: "09-guia-ouvidoria.pdf", tamanho: "591 KB" }
+            { nome: "Acordo de Previdência Social Brasil-Chile (2009)", desc: "Texto oficial do acordo bilateral assinado em 03/03/2009", cat: "principal", arquivo: "Acordo de Previdência Social Brasil-Chile (2009).pdf", tamanho: "PDF" },
+            { nome: "Ajuste Administrativo (2009)", desc: "Regulamentação da execução do acordo", cat: "complementar", arquivo: "Ajuste Administrativo (2009).pdf", tamanho: "PDF" },
+            { nome: "Acordo Brasil-Chile (1993)", desc: "Acordo histórico de 1993", cat: "complementar", arquivo: "Acordo Brasil-Chile (1993).pdf", tamanho: "PDF" },
+            { nome: "Ajuste Complementar (1996)", desc: "Ajuste complementar de 1996", cat: "complementar", arquivo: "Ajuste Complementar (1996).pdf", tamanho: "PDF" },
+            { nome: "Certificado de Deslocamento", desc: "Certificado de cobertura para trabalhadores deslocados", cat: "formulario", arquivo: "Certificado de Deslocamento.PDF", tamanho: "PDF" },
+            { nome: "Formulário — Solicitação de Benefício", desc: "Formulário para solicitação de benefício previdenciário", cat: "formulario", arquivo: "Formulário - Solicitação de Benefício.PDF", tamanho: "PDF" },
+            { nome: "Formulário — Pedido de Prorrogação de Deslocamento", desc: "Formulário para prorrogação do período de deslocamento", cat: "formulario", arquivo: "Formulário - Pedido de Prorrogação de Deslocamento.PDF", tamanho: "PDF" },
+            { nome: "Requerimento — Pensão por Morte", desc: "Formulário para requerimento de pensão por morte", cat: "formulario", arquivo: "Requerimento - Pensão por Morte.PDF", tamanho: "PDF" }
         ];
 
         let categoriaAtiva = 'todas';
@@ -1313,7 +1312,7 @@ Ministra do Trabalho e Previdência Social</div>
         }
 
         function getCatLabel(c) {
-            const labels = { principal: "Principal", complementar: "Complementar", multilateral: "Multilateral" };
+            const labels = { principal: "Principal", complementar: "Complementar", formulario: "Formulário" };
             return labels[c];
         }
 

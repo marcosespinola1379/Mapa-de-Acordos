@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -1471,7 +1471,7 @@ originais, nos idiomas português e francês, sendo ambos os textos igualmente a
 
     <script>
                 const documentos = [
-            { nome: "Acordo de Previdência Social Brasil-França", desc: "Texto oficial do acordo bilateral", cat: "principal", arquivo: "01-acordo-principal.pdf", tamanho: "16.2 MB" },
+            { nome: "Acordo de Previdência Social Brasil-França (2013)", desc: "Texto oficial do acordo bilateral", cat: "principal", arquivo: "01-acordo-principal.pdf", tamanho: "16.2 MB" },
             { nome: "Ajuste Administrativo", desc: "Ajuste administrativo", cat: "complementar", arquivo: "02-ajuste-administrativo.pdf", tamanho: "11.3 MB" },
             { nome: "Formulário SE41619", desc: "Formulário 41619", cat: "formulario", arquivo: "03-formulario-se41619.pdf", tamanho: "437 KB" },
             { nome: "Formulário SE41620", desc: "Formulário 41620", cat: "formulario", arquivo: "04-formulario-se41620.pdf", tamanho: "159 KB" },
@@ -1507,7 +1507,7 @@ originais, nos idiomas português e francês, sendo ambos os textos igualmente a
                         <div class="doc-desc">${d.desc}</div>
                     </td>
                     <td><span class="badge ${d.cat}">${getCatLabel(d.cat)}</span></td>
-                    <td><div class="file-size">${d.tamanho}</div></td>
+                    <td><div class="file-size">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
                     <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
                 </tr>
             `).join('');

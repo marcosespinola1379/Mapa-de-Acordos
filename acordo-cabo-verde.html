@@ -6,7 +6,7 @@
     <title>Acordo Brasil-Cabo Verde • Previdência Social</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
-        
+
         :root {
             --navy: #0A1326;
             --secondary: #0F1E3A;
@@ -18,11 +18,7 @@
             --success: #1BA947;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Source Serif 4', Georgia, serif;
@@ -37,10 +33,7 @@
             padding: 32px 24px;
         }
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .header-content { max-width: 1200px; margin: 0 auto; }
 
         .breadcrumb {
             display: flex;
@@ -53,15 +46,8 @@
             letter-spacing: 1px;
         }
 
-        .breadcrumb a {
-            color: var(--bright);
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-
-        .breadcrumb a:hover {
-            opacity: 0.8;
-        }
+        .breadcrumb a { color: var(--bright); text-decoration: none; transition: opacity 0.2s; }
+        .breadcrumb a:hover { opacity: 0.8; }
 
         .title-section {
             display: flex;
@@ -116,17 +102,9 @@
             margin-bottom: 4px;
         }
 
-        .info-value {
-            color: var(--cream);
-            font-size: 13px;
-            line-height: 1.4;
-        }
+        .info-value { color: var(--cream); font-size: 13px; line-height: 1.4; }
 
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 24px;
-        }
+        main { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
 
         .contact-section {
             display: grid;
@@ -140,7 +118,7 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 24px;
-            min-height: 300px;
+            min-height: 220px;
         }
 
         .contact-header {
@@ -152,12 +130,7 @@
             border-bottom: 2px solid rgba(0, 102, 255, 0.2);
         }
 
-        .contact-header img {
-            width: 40px;
-            height: 30px;
-            border-radius: 3px;
-            object-fit: contain;
-        }
+        .contact-header img { width: 40px; height: 30px; border-radius: 3px; object-fit: contain; }
 
         .contact-title {
             font-family: 'Playfair Display', Georgia, serif;
@@ -166,14 +139,8 @@
             color: var(--bright);
         }
 
-        .contact-item {
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-
-        .contact-item:last-child {
-            margin-bottom: 0;
-        }
+        .contact-item { margin-bottom: 16px; line-height: 1.5; }
+        .contact-item:last-child { margin-bottom: 0; }
 
         .contact-label {
             display: flex;
@@ -187,22 +154,9 @@
             margin-bottom: 3px;
         }
 
-        .contact-value {
-            color: var(--cream);
-            font-size: 13px;
-            padding-left: 20px;
-            word-break: break-word;
-        }
-
-        .contact-value a {
-            color: var(--bright);
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-
-        .contact-value a:hover {
-            opacity: 0.8;
-        }
+        .contact-value { color: var(--cream); font-size: 13px; padding-left: 20px; word-break: break-word; }
+        .contact-value a { color: var(--bright); text-decoration: none; transition: opacity 0.2s; }
+        .contact-value a:hover { opacity: 0.8; }
 
         .section-title {
             font-family: 'Playfair Display', Georgia, serif;
@@ -230,20 +184,10 @@
             gap: 10px;
         }
 
-        .benefit-check {
-            color: var(--success);
-            font-weight: 700;
-            font-size: 16px;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
+        .benefit-check { color: var(--success); font-weight: 700; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+        .benefit-name { color: var(--cream); font-size: 13px; }
 
-        .benefit-name {
-            color: var(--cream);
-            font-size: 13px;
-        }
-
-        .tabs {
+        .tabs-nav {
             display: flex;
             gap: 0;
             margin-bottom: 24px;
@@ -266,22 +210,11 @@
             font-family: 'Source Serif 4', Georgia, serif;
         }
 
-        .tab-btn:hover {
-            color: var(--bright);
-        }
+        .tab-btn:hover { color: var(--bright); }
+        .tab-btn.active { color: var(--bright); border-bottom-color: var(--electric); }
 
-        .tab-btn.active {
-            color: var(--bright);
-            border-bottom-color: var(--electric);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
         .acordo-text {
             background: rgba(0, 0, 0, 0.2);
@@ -299,12 +232,7 @@
             text-justify: inter-word;
         }
 
-        .docs-toolbar {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
+        .docs-toolbar { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
 
         .search-box {
             flex: 1;
@@ -328,15 +256,9 @@
             font-family: inherit;
         }
 
-        .search-box input::placeholder {
-            color: rgba(255, 255, 255, 0.35);
-        }
+        .search-box input::placeholder { color: rgba(255, 255, 255, 0.35); }
 
-        .filter-buttons {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
+        .filter-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
 
         .filter-btn {
             padding: 8px 12px;
@@ -350,22 +272,10 @@
             transition: all 0.2s;
         }
 
-        .filter-btn:hover {
-            border-color: var(--electric);
-            color: var(--cream);
-        }
+        .filter-btn:hover { border-color: var(--electric); color: var(--cream); }
+        .filter-btn.active { background: var(--electric); border-color: var(--electric); color: var(--navy); }
 
-        .filter-btn.active {
-            background: var(--electric);
-            border-color: var(--electric);
-            color: var(--navy);
-        }
-
-        .docs-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
+        .docs-table { width: 100%; border-collapse: collapse; font-size: 12px; }
 
         .docs-table thead {
             background: rgba(0, 0, 0, 0.2);
@@ -382,26 +292,11 @@
             letter-spacing: 1px;
         }
 
-        .docs-table td {
-            padding: 14px;
-            border-bottom: 1px solid var(--border);
-            color: var(--cream);
-        }
+        .docs-table td { padding: 14px; border-bottom: 1px solid var(--border); color: var(--cream); }
+        .docs-table tbody tr:hover { background: rgba(0, 102, 255, 0.08); }
 
-        .docs-table tbody tr:hover {
-            background: rgba(0, 102, 255, 0.08);
-        }
-
-        .doc-name {
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-
-        .doc-desc {
-            font-size: 11px;
-            color: var(--muted);
-            font-style: italic;
-        }
+        .doc-name { font-weight: 600; margin-bottom: 3px; }
+        .doc-desc { font-size: 11px; color: var(--muted); font-style: italic; }
 
         .badge {
             display: inline-block;
@@ -411,30 +306,11 @@
             font-weight: 600;
         }
 
-        .badge.principal {
-            background: rgba(217, 119, 6, 0.2);
-            color: #fbbf24;
-        }
+        .badge.principal { background: rgba(61, 165, 255, 0.15); color: #3DA5FF; }
+        .badge.complementar { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+        .badge.formulario { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
 
-        .badge.complementar {
-            background: rgba(124, 58, 237, 0.2);
-            color: #c4b5fd;
-        }
-
-        .badge.formulario {
-            background: rgba(3, 105, 161, 0.2);
-            color: #7dd3fc;
-        }
-
-        .badge.roteiro {
-            background: rgba(22, 163, 74, 0.2);
-            color: #86efac;
-        }
-
-        .file-size {
-            font-size: 11px;
-            color: var(--muted);
-        }
+        .file-type { font-size: 11px; color: var(--muted); font-weight: 600; }
 
         .btn-download {
             display: inline-flex;
@@ -452,10 +328,7 @@
             text-decoration: none;
         }
 
-        .btn-download:hover {
-            background: var(--electric);
-            color: var(--navy);
-        }
+        .btn-download:hover { background: var(--electric); color: var(--navy); }
 
         footer {
             text-align: center;
@@ -466,35 +339,13 @@
         }
 
         @media (max-width: 768px) {
-            .title-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .contact-section {
-                grid-template-columns: 1fr;
-            }
-
-            .header h1 {
-                font-size: 28px;
-            }
-
-            .benefits-list {
-                grid-template-columns: 1fr;
-            }
-
-            .acordo-text {
-                max-height: 500px;
-            }
-
-            .tabs {
-                flex-wrap: wrap;
-            }
-
-            .tab-btn {
-                padding: 10px 12px;
-                font-size: 12px;
-            }
+            .title-section { flex-direction: column; align-items: flex-start; }
+            .contact-section { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+            .benefits-list { grid-template-columns: 1fr; }
+            .acordo-text { max-height: 500px; }
+            .tabs-nav { flex-wrap: wrap; }
+            .tab-btn { padding: 10px 12px; font-size: 12px; }
         }
     </style>
 </head>
@@ -510,29 +361,29 @@
             </div>
 
             <div class="title-section">
-                <img src="https://flagcdn.com/w80/bg.png" alt="Cabo Verde" class="flag">
+                <img src="https://flagcdn.com/w80/cv.png" alt="Cabo Verde" class="flag">
                 <div class="title-info">
                     <h1>Acordo Brasil-Cabo Verde</h1>
-                    <p class="agreement-type">Acordo Bilateral</p>
+                    <p class="agreement-type">Acordo Bilateral de Segurança Social</p>
                 </div>
             </div>
 
             <div class="key-info">
                 <div class="info-card">
                     <div class="info-label">📋 Instrumento</div>
-                    <div class="info-value">Decreto nº 12.498/2025 • Entrada em vigor: 01/12/2024 • Bilateral</div>
+                    <div class="info-value">Decreto nº 12.498/2025 • Bilateral</div>
                 </div>
                 <div class="info-card">
-                    <div class="info-label">📅 Decreto</div>
-                    <div class="info-value">Decreto nº 8.000/2013</div>
+                    <div class="info-label">✍️ Assinado em</div>
+                    <div class="info-value">04 de fevereiro de 2026 • Brasília</div>
                 </div>
                 <div class="info-card">
                     <div class="info-label">✅ Em Vigor Desde</div>
-                    <div class="info-value">01 de maio de 2013</div>
+                    <div class="info-value">01 de dezembro de 2024</div>
                 </div>
                 <div class="info-card">
                     <div class="info-label">📄 Documentos</div>
-                    <div class="info-value">13 documentos disponíveis</div>
+                    <div class="info-value">2 documentos disponíveis</div>
                 </div>
             </div>
         </div>
@@ -541,103 +392,92 @@
     <main>
         <!-- SEÇÃO CONTATOS -->
         <div class="contact-section">
-            <!-- APSAI Brasil -->
             <div class="contact-box">
                 <div class="contact-header">
                     <img src="https://flagcdn.com/w40/br.png" alt="Brasil">
                     <div class="contact-title">APSAI / INSS (Brasil)</div>
                 </div>
-                
+
                 <div class="contact-item">
-                    <div class="contact-label">
-                        <span>🏢</span>
-                        Instituição
-                    </div>
-                    <div class="contact-value">Agência da Previdência Social de Atendimento Acordos Internacionais - Florianópolis (SC)</div>
+                    <div class="contact-label"><span>🏢</span> Instituição</div>
+                    <div class="contact-value">Agência da Previdência Social de Atendimento Acordos Internacionais (APSAI/INSS)</div>
                 </div>
 
                 <div class="contact-item">
-                    <div class="contact-label">
-                        <span>📍</span>
-                        Endereço
-                    </div>
+                    <div class="contact-label"><span>📍</span> Endereço</div>
                     <div class="contact-value">Rua Pedro Lessa nº 36, 5º andar, sala 519, Centro, Rio de Janeiro (RJ), CEP 20.030-030</div>
                 </div>
 
                 <div class="contact-item">
-                    <div class="contact-label">
-                        <span>📞</span>
-                        Telefone
-                    </div>
+                    <div class="contact-label"><span>📞</span> Telefone</div>
                     <div class="contact-value">(21) 2272-3438 / 2272-3515</div>
                 </div>
 
                 <div class="contact-item">
-                    <div class="contact-label">
-                        <span>✉️</span>
-                        E-mail
-                    </div>
+                    <div class="contact-label"><span>✉️</span> E-mail</div>
                     <div class="contact-value"><a href="mailto:apsai17001220@inss.gov.br">apsai17001220@inss.gov.br</a></div>
                 </div>
             </div>
 
-            <!-- Órgão de Ligação Estrangeiro -->
             <div class="contact-box">
                 <div class="contact-header">
                     <img src="https://flagcdn.com/w40/cv.png" alt="Cabo Verde">
-                    <div class="contact-title">Órgão de Ligação (Cabo Verde)</div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-label">
-                        <span>🏢</span>
-                        Status
-                    </div>
-                    <div class="contact-value">Informação em atualização</div>
+                    <div class="contact-title">INPS (Cabo Verde)</div>
                 </div>
 
                 <div class="contact-item">
-                    <div class="contact-label">
-                        <span>⚠️</span>
-                        Observação
-                    </div>
-                    <div class="contact-value">Os organismos de ligação e os formulários referentes ao acordo internacional de Previdência entre Brasil e Cabo Verde ainda estão em processo de definição.</div>
+                    <div class="contact-label"><span>🏢</span> Instituição</div>
+                    <div class="contact-value">Instituto Nacional de Previdência Social (INPS)</div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-label"><span>⚠️</span> Observação</div>
+                    <div class="contact-value">Organismo de Ligação designado conforme o Artigo 3º do Ajuste Administrativo. Endereço e contatos em processo de atualização.</div>
                 </div>
             </div>
         </div>
 
         <!-- ABAS -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="abrirAba(event, 'beneficios-bulgaria')">Benefícios — Cabo Verde</button>
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="abrirAba(event, 'beneficios-caboverde')">Benefícios — Cabo Verde</button>
             <button class="tab-btn" onclick="abrirAba(event, 'beneficios-brasil')">Benefícios — Brasil</button>
             <button class="tab-btn" onclick="abrirAba(event, 'acordo')">Acordo</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'ajuste')">Ajuste Administrativo</button>
             <button class="tab-btn" onclick="abrirAba(event, 'documentos')">Documentos</button>
         </div>
 
-        <!-- ABA: BENEFÍCIOS ALEMANHA -->
-        <div id="beneficios-bulgaria" class="tab-content active">
+        <!-- ABA: BENEFÍCIOS CABO VERDE -->
+        <div id="beneficios-caboverde" class="tab-content active">
             <div style="margin-bottom: 40px;">
                 <h2 class="section-title">Benefícios Cobertos pelo Acordo — Cabo Verde</h2>
                 <div class="benefits-list">
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Aposentadoria por Invalidez</span>
+                        <span class="benefit-name">Pensão por Invalidez (trabalhadores por conta de outrem e por conta própria)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Aposentadoria por Idade</span>
+                        <span class="benefit-name">Pensão por Velhice (trabalhadores por conta de outrem e por conta própria)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Pensão por Morte</span>
+                        <span class="benefit-name">Pensão de Sobrevivência (trabalhadores por conta de outrem e por conta própria)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Aposentadoria (Agentes Públicos)</span>
+                        <span class="benefit-name">Aposentação por Idade e por Invalidez (Agentes Públicos)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Pensão por Acidentes de Trabalho e Doenças Profissionais</span>
+                        <span class="benefit-name">Pensão de Sobrevivência (Agentes Públicos)</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Pensão por Incapacidade Permanente (Acidente do Trabalho e Doenças Profissionais)</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Pensão por Morte (Acidente do Trabalho e Doenças Profissionais)</span>
                     </div>
                 </div>
             </div>
@@ -650,31 +490,39 @@
                 <div class="benefits-list">
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Aposentadoria por Idade</span>
+                        <span class="benefit-name">Aposentadoria por Idade (RGPS)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Aposentadoria por Tempo de Contribuição</span>
+                        <span class="benefit-name">Aposentadoria por Idade da Pessoa com Deficiência (RGPS)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Aposentadoria por Invalidez</span>
+                        <span class="benefit-name">Aposentadoria Programada (RGPS)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Aposentadoria Especial</span>
+                        <span class="benefit-name">Pensão por Morte (RGPS)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Pensão por Morte</span>
+                        <span class="benefit-name">Aposentadoria por Incapacidade Permanente (RGPS, inclusive AT/DP)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">Auxílio-Acidente</span>
+                        <span class="benefit-name">Aposentadorias Voluntárias por Idade e Tempo de Contribuição (RPPS)</span>
                     </div>
                     <div class="benefit-item">
                         <span class="benefit-check">✓</span>
-                        <span class="benefit-name">RPPS (Regimes Próprios de Previdência)</span>
+                        <span class="benefit-name">Aposentadoria Especial da Pessoa com Deficiência (RPPS)</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Pensão por Morte (RPPS)</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-check">✓</span>
+                        <span class="benefit-name">Aposentadoria por Incapacidade Permanente (RPPS, inclusive AT/DP)</span>
                     </div>
                 </div>
             </div>
@@ -682,130 +530,540 @@
 
         <!-- ABA: ACORDO -->
         <div id="acordo" class="tab-content">
-            <div class="acordo-text">ACORDO DE PREVIDÊNCIA SOCIAL ENTRE A REPÚBLICA FEDERATIVA DO BRASIL E A REPÚBLICA DA BULGÁRIA
+            <div class="acordo-text">ACORDO SOBRE SEGURANÇA SOCIAL ENTRE A REPÚBLICA FEDERATIVA DO BRASIL E A REPÚBLICA DE CABO VERDE
 
-A República Federativa do Brasil e a República de Cabo Verde (doravante denominados "Partes"), Imbuídos do desejo de regulamentar suas relações em matéria de Previdência Social, Acordam o seguinte:
+A República Federativa do Brasil
 
-TÍTULO I - DISPOSIÇÕES GERAIS
+e
 
-ARTIGO 1 - Definições
-1. Neste Acordo, os termos relacionados a seguir possuem o seguinte significado: a) "cidadão nacional" é, em relação à República de Cabo Verde, um cabo-verdianao segundo a Lei Fundamental da República de Cabo Verde e, em relação à República Federativa do Brasil, um brasileiro segundo a Constituição Federal e as Leis da República Federativa do Brasil; b) "legislação" são as leis, os regulamentos e os demais atos normativos vinculantes, que se referem aos setores e sistemas da previdência social pertinentes ao âmbito material deste Acordo; c) "Autoridade Competente" é, na República de Cabo Verde, o órgãos competentes da Cabo Verde e, na República Federativa do Brasil, o Ministério da Previdência Social; d) "Instituição" é a autoridade ou o organismo responsável pela aplicação da legislação pertinente ao âmbito material deste Acordo.
+a República de Cabo Verde,
+(doravante denominados "Partes"),
 
-ARTIGO 2 - Âmbito material
-1. Este Acordo refere-se: a) à legislação cabo-verdiana sobre seguro previdenciário, seguro complementar da caixa de seguro dos operários siderúrgicos, seguro de aposentadoria dos agricultores, seguro de acidentes, relativo a aposentadorias; b) à legislação brasileira sobre o seguro social referente às aposentadorias, pensão por morte e auxílio-acidente do Regime Geral de Previdência Social, às aposentadorias e pensão por morte dos Regimes Próprios de Previdência Social dos servidores públicos.
+Imbuídos do desejo de regulamentar suas relações bilaterais em matéria de Segurança Social,
 
-ARTIGO 3 - Âmbito pessoal
-Este Acordo se refere: a) diretamente a cidadãos nacionais das Partes, refugiados e apátridas; b) indiretamente, a outras pessoas, no que diz respeito aos direitos derivados de uma pessoa diretamente abrangida.
+Acordam o seguinte:
 
-ARTIGO 4 - Igualdade de tratamento
-1. As pessoas compreendidas, direta ou indiretamente, no âmbito de aplicação deste Acordo, que residam habitualmente no território de uma das Partes, encontram-se igualizadas aos cidadãos dessa Parte, no que se refere à aplicação da sua legislação.
-2. As prestações segundo a legislação de uma Parte serão atribuídas aos cidadãos da outra Parte que residam habitualmente fora dos territórios das Partes, sob as mesmas condições prévias que aos cidadãos da primeira Parte que aí habitualmente residam.
 
-ARTIGO 5 - Equiparação da residência habitual
-As disposições legais restritivas de uma Parte, nos termos das quais a geração de direitos a prestações e a sua realização ou o pagamento de prestações pecuniárias dependam de haver residência habitual no território dessa Parte, não são válidas para pessoas abrangidas, direta ou indiretamente, pelo âmbito do presente Acordo, que residam no território da outra Parte.
+TÍTULO I
+DISPOSIÇÕES GERAIS
 
-ARTIGO 6 - Legislação aplicável a pessoas que exercem atividades econômicas
-1. Salvo disposição em contrário no presente Acordo, para uma pessoa que exerce atividade dependente, aplica-se exclusivamente a legislação da Parte em cujo território essa pessoa efetivamente desempenha sua atividade.
-2. A membros da tripulação de empresas aéreas, que realizem transporte internacional de pessoas ou mercadorias por conta própria ou por conta alheia, aplica-se a legislação da Parte em cujo território está sediada a empresa.
-3. Para uma pessoa que exerce atividade dependente a bordo de embarcação de longo curso que viaje sob a bandeira de uma das Partes, aplica-se a legislação desta Parte.
+Artigo 1º
+Definições
 
-ARTIGO 7 - Legislação aplicável em caso de deslocamento
-1. Se uma pessoa que habitualmente exerce atividade dependente em uma das Partes for deslocada, no âmbito dessa relação de trabalho, pelo seu empregador, o qual exerce regularmente uma atividade econômica significativa no Estado de origem, para o território da outra Parte, a fim de realizar trabalho para esse mesmo empregador por um período previamente determinado, a legislação da primeira Parte continuará a ser aplicada durante os primeiros 24 meses, como se ainda estivesse trabalhando no território dessa Parte.
+1. Os termos que se relacionam a seguir possuem, para os efeitos da aplicação do Acordo, o seguinte significado:
 
-ARTIGO 8 - Legislação aplicável aos funcionários de Missões diplomáticas ou Repartições consulares
-1. Este Acordo não afeta a aplicação da Convenção de Viena sobre Relações Diplomáticas, de 18 de abril de 1961, ou da Convenção de Viena sobre Relações Consulares, de 24 de abril de 1963.
-2. Se um cidadão de uma das Partes é contratado por essa Parte ou por membro ou funcionário de uma de suas Missões diplomáticas ou Repartições consulares para exercer funções no território da outra Parte, a legislação da primeira Parte é válida, para o período de exercício de suas funções.
+a) "Partes": a República Federativa do Brasil e a República de Cabo Verde;
 
-ARTIGO 9 - Exceções às disposições sobre a legislação aplicável
-1. Autoridades competentes das Partes ou instâncias por elas designadas podem, de comum acordo, estabelecer exceções às disposições do presente Acordo com relação à legislação aplicável, desde que a pessoa interessada continue ou venha a estar sujeita a legislação de uma das Partes.
-2. As exceções indicadas no parágrafo 1 deste Artigo devem ser solicitadas por meio de requerimento conjunto do trabalhador dependente e de seu empregador ou, caso não se trate de trabalhador dependente, a pedido da própria pessoa.
+b) "Legislação": leis, regulamentos e demais atos normativos pertinentes ao campo de incidência material do Acordo, tal como definido no Artigo 2º;
 
-TÍTULO II - DISPOSIÇÕES ESPECIAIS
+c) "Autoridade Competente":
+   i) na República Federativa do Brasil, o ministro competente em matéria de previdência social, e
+   ii) na República de Cabo Verde, o ministro competente em matéria de proteção social;
 
-ARTIGO 10 - Consideração de acidentes de trabalho ou doenças ocupacionais
-1. Se a legislação de uma Parte prever, para a avaliação do grau de incapacidade ou para a fixação do direito à prestação em consequência de um acidente de trabalho ou de doença ocupacional no sentido desta legislação, que se tenha de levar em consideração outros acidentes de trabalho ou doenças ocupacionais, essa previsão será igualmente aplicável a acidentes de trabalho e doenças ocupacionais sujeitos à legislação da outra Parte.
+d) "Instituição Competente": instituição responsável, no todo ou em parte, pela aplicação da legislação pertinente ao campo de incidência material do Acordo, tal como definido no Artigo 2º;
 
-ARTIGO 11 - Totalização de períodos de seguro e cálculo da aposentadoria
-1. Para o direito à prestação, segundo a legislação a ser aplicada, também são considerados os períodos de seguro cumputáveis segundo a legislação da outra Parte se não recaiam sobre o mesmo período de tempo.
-2. No caso de o direito à prestação exigir períodos de seguro com determinadas características, só serão considerados períodos de seguro equiparáveis nos termos da legislação da outra Parte.
-3. O cálculo das aposentadorias e pensões por morte é regulado pela legislação da respectiva Parte, salvo disposição contrária contida neste Acordo.
+e) "Organismo de Ligação": organismo indicado pela Instituição Competente para exercer as funções de coordenação, intercâmbio de informações e assistência, entre as instituições partes deste Acordo, com vistas à sua aplicação;
 
-ARTIGO 12 - Particularidades para a Instituição cabo-verdiana
-1. A base para a apuração da pontuação pessoal são os pontos adquiridos de acordo com a legislação cabo-verdiana.
-2. A disposição sobre a totalização dos períodos de seguro aplica-se, correspondentemente, às prestações, cuja concessão por uma instituição competente é facultativa.
-3. Os períodos de seguro cumpridos de acordo com a legislação brasileira são levados em consideração na caixa de seguro dos mineiros caso o segurado tenha cumprido esse tempo na parte subterrânea de uma mina.
+f) "Trabalhador": toda pessoa que, por realizar ou ter realizado uma atividade remunerada, ainda que por conta própria, está ou esteve sujeita à legislação referida no Artigo 2º;
 
-ARTIGO 13 - Particularidades para a Instituição brasileira
-1. Se, para a legislação brasileira, for condição para o direito à pensão por morte, o fato de o falecimento do segurado ter acontecido durante um período de seguro, a condição para a fundamentação do direito à prestação é considerada cumprida se o falecimento houver ocorrido dentro de um período de seguro de acordo com a legislação cabo-verdiana.
-2. Os períodos de seguro cumpridos de acordo com a legislação cabo-verdiana no sistema especial para agricultores serão levados em consideração para o reconhecimento do direito a uma aposentadoria por idade, aposentadoria por invalidez ou pensão por morte no regime geral brasileiro como sendo equivalentes a períodos de seguro especial na agricultura.
+g) "Período de seguro": períodos de contribuição, determinados ou reconhecidos como tal pela legislação em que foram cumpridos, assim como os períodos equivalentes de acordo com a legislação de uma Parte;
 
-TÍTULO III - DISPOSIÇÕES DIVERSAS
+h) "Prestações pecuniárias": qualquer prestação, benefício, renda, subsídio ou indenização previstos na legislação referida no Artigo 2º, incluído qualquer complemento, suplemento ou revalorização;
 
-ARTIGO 14 - Cooperação administrativa e perícia médica
-1. As Instituições, associações de instituições e autoridades das Partes cooperarão entre si na aplicação deste Acordo, bem como na aplicação da legislação pertinente ao seu âmbito material.
-2. A cooperação administrativa engloba, igualmente, perícias médicas no âmbito do seguro previdenciário.
+i) "Beneficiário": pessoa definida ou considerada como tal pela legislação, em virtude da qual são concedidas as prestações;
 
-ARTIGO 15 - Taxas e legalização
-1. A isenção ou redução de impostos ou de taxas administrativas, previstas na legislação de uma das Partes, o reembolso com despesas de documentos de apresentação obrigatória, segundo esta legislação, englobam também os respectivos documentos que devem ser apresentados na aplicação do presente Acordo ou dentro da legislação da outra Parte.
+j) "Dependente": designa a pessoa assim qualificada pela legislação mencionada no Artigo 2º;
 
-ARTIGO 16 - Comunicação e línguas oficiais
-1. As Instituições, associações de instituições e autoridades das Partes, quando aplicarem este Acordo e a legislação pertinente ao seu âmbito material, podem comunicar-se diretamente, entre si e com as pessoas, bem como com os seus representantes, nas suas línguas oficiais.
+k) "Doenças profissionais": designa as doenças relacionadas ao trabalho na legislação de cada Parte, no âmbito da proteção prevista na Convenção 102 da Organização Internacional do Trabalho – OIT;
 
-ARTIGO 17 - Equiparação dos requerimentos
-1. Se o requerimento para uma prestação, feito segundo a legislação de uma Parte, tiver sido apresentado à instituição da outra Parte autorizada a receber requerimentos para uma prestação equivalente, segundo a legislação que está submetida, esse requerimento será válido como se tivesse sido feito na instituição competente da primeira Parte.
+l) "Residência": designa a residência habitual do beneficiário;
 
-ARTIGO 18 - Proteção de dados
-1. Quando, em razão deste Acordo, foram transmitidos dados pessoais, serão aplicadas as seguintes disposições, observando-se, ainda, a legislação vigente em cada uma das Partes: os dados podem ser transmitidos às instâncias designadas na Parte receptora para a finalidade de aplicação deste Acordo e da legislação à qual ele se refere.
+m) "Estada": designa a residência temporária do beneficiário; e
 
-ARTIGO 19 - Execução deste Acordo e Organismos de Ligação
-1. Os governos ou as autoridades competentes podem acordar sobre os convênios normativos necessários para a execução deste Acordo.
-2. Para a execução deste Acordo são aqui determinados os seguintes organismos de ligação: a) na República de Cabo Verde: para o seguro previdenciário: Deutsche Rentenversicherung Nordbayern, Bayreuth, Deutsche Rentenversicherung Bund, Berlin, Deutsche Rentenversicherung Knappschaft-Bahn-See, Bochum; b) na República Federativa do Brasil: INSS, Brasília.
+n) "Ajuste Administrativo": documento assinado pelas Autoridades Competentes para a implementação, aplicação e execução do Acordo estabelecido entre as Partes.
 
-ARTIGO 20 - Moeda e taxas de câmbio
-1. Prestações pecuniárias podem ser efetuadas, por uma instituição de uma das Partes, a uma pessoa que se encontre no território da outra Parte, na moeda deste último e com efeito liberatório.
+Artigo 2º
+Âmbito material
 
-ARTIGO 21 - Reembolsos
-Caso a Instituição de uma das Partes tenha pago, indevidamente, prestações pecuniárias, essa quantia paga indevidamente pode ser retida de uma prestação equivalente, a seu favor, segundo a legislação da outra Parte.
+1. O presente Acordo será aplicado:
 
-ARTIGO 22 - Solução de controvérsias
-1. Controvérsias sobre a interpretação ou a execução deste Acordo serão resolvidas pelas autoridades competentes ou, se persistir a controvérsia, por negociação direta entre as Partes.
+a) em relação à República Federativa do Brasil:
 
-TÍTULO IV - DISPOSIÇÕES FINAIS E TRANSITÓRIAS
+   i) à legislação que rege o Regime Geral de Previdência Social, no que se refere aos benefícios de aposentadoria por idade, aposentadoria por idade da pessoa com deficiência, aposentadoria programada, pensão por morte e aposentadoria por incapacidade permanente para o trabalho, inclusive quando decorrentes de acidentes de trabalho e doenças profissionais, e
 
-ARTIGO 23 - Direitos a prestações com base neste Acordo
-1. O presente Acordo não serve de base para direito a prestações referentes a período de tempo anterior à entrada em vigor deste instrumento.
-2. Na aplicação deste Acordo, os períodos de seguro anteriores à sua vigência, assim como os fatos juridicamente relevantes, serão levados em conta em conformidade com a respectiva legislação das Partes.
+   ii) à legislação que rege os Regimes Próprios de Previdência Social dos Servidores Públicos, no que se refere aos benefícios de aposentadorias voluntárias comuns por idade e tempo de contribuição, aposentadoria voluntária especial por idade e tempo de contribuição da pessoa com deficiência, pensão por morte e aposentadoria por incapacidade permanente para o trabalho, inclusive quando decorrentes de acidentes de trabalho e doenças profissionais;
 
-ARTIGO 24 - Protocolo Adicional
-O Protocolo Adicional, em anexo, é parte integrante deste Acordo e dele não pode ser separado.
+b) em relação à República de Cabo Verde:
 
-ARTIGO 25 - Vigência e denúncia
-1. Este Acordo é válido por tempo indeterminado. Qualquer Parte pode denunciá-lo, por via diplomática e por escrito, até o dia 30 de setembro de cada ano. A denúncia será válida a partir do dia 1º de janeiro do ano seguinte.
-2. Em caso de denúncia, as disposições deste Acordo continuam a vigorar para os direitos a prestações, adquiridos até esse momento. Ficam sem efeito, para esses direitos, quaisquer disposições legais restritivas que excluam um direito, ou suspendam ou revoquem prestações em função da estada no estrangeiro.
+   i) à legislação que rege os regimes de proteção social dos trabalhadores por conta de outrem e por conta própria no que se refere às pensões de invalidez, velhice e sobrevivência,
 
-ARTIGO 26 - Ratificação e entrada em vigor
-1. Este Acordo deverá ser ratificado em conformidade com os respectivos procedimentos constitucionais das Partes. A troca dos instrumentos de ratificação terá lugar, assim que possível, em Brasília.
-2. Este Acordo entra em vigor no primeiro dia do segundo mês seguinte ao mês em que os instrumentos de ratificação tiverem sido trocados.
+   ii) à legislação que rege o regime de aposentação por idade e por invalidez e pensão de sobrevivência dos agentes públicos, no que se refere às pensões de aposentação e sobrevivência, e
 
-Feito em Berlim, aos 3 dias do mês de dezembro do ano de 2009 em dois originais, nos idiomas português e cabo-verdianao, sendo ambos os textos igualmente autênticos.</div>
+   iii) à legislação que rege o regime de acidentes de trabalho e doenças profissionais no que se refere às pensões de incapacidade permanente e por morte.
+
+2. O presente Acordo aplicar-se-á igualmente às disposições legais que revoguem, substituam, emendem, suplementem ou consolidem aquelas mencionadas no parágrafo 1.
+
+Artigo 3º
+Âmbito pessoal
+
+O presente Acordo aplicar-se-á às pessoas que estejam ou tenham estado submetidas à legislação de uma ou ambas as Partes, bem como aos seus dependentes.
+
+Artigo 4º
+Igualdade de tratamento
+
+Nos limites do previsto neste Acordo, as pessoas referidas no Artigo 3º estarão sujeitas às obrigações e aos deveres constantes da legislação mencionada no Artigo 2º e terão direitos às prestações nela previstas, nos mesmos termos concedidos aos nacionais das Partes.
+
+Artigo 5º
+Irredutibilidade do valor dos benefícios
+
+1. As prestações pecuniárias concedidas e pagas em virtude da legislação nacional não estão sujeitas a redução, modificação, suspensão ou retenção pelo fato de o beneficiário residir no território da outra Parte ou em um terceiro país.
+
+2. As prestações outorgadas em conformidade com o presente Acordo por uma das Partes a beneficiários da outra Parte que residam em um terceiro país serão efetivadas nas mesmas condições e com igual abrangência dadas aos próprios nacionais que residam nesse terceiro país.
+
+
+TÍTULO II
+LEGISLAÇÃO APLICÁVEL
+
+CAPÍTULO I
+NORMAS GERAIS
+
+Artigo 6º
+Trabalhadores abrangidos
+
+1. Observadas as exceções previstas nos Artigos 7º ao 12, um empregado ou trabalhador por conta própria que trabalha no território de uma Parte estará, no que diz respeito a esse emprego ou trabalho por conta própria, sujeito apenas à legislação dessa Parte, independentemente do território no qual a pessoa resida.
+
+2. Os direitos adquiridos pelas pessoas a que se refere o Artigo 3º, na conformidade da legislação de uma das Partes, serão mantidos por essa Parte, em relação às prestações elencadas no Artigo 2º, mesmo quando o interessado estiver residindo no território da outra Parte.
+
+CAPÍTULO II
+REGRAS ESPECIAIS
+
+Artigo 7º
+Trabalhadores deslocados
+
+1. O trabalhador que, estando a serviço de uma empresa em uma das Partes, for deslocado por essa empresa ao território da outra Parte para efetuar trabalho temporário e que continua a receber seus salários da empresa de origem, poderá permanecer submetido à legislação da primeira Parte, desde que o período de trabalho temporário não ultrapasse vinte e quatro (24) meses.
+
+2. Se, por circunstâncias necessárias, a duração do trabalho a ser realizado exceder a vinte e quatro (24) meses, poderá continuar sendo aplicada a legislação da primeira Parte, mediante prorrogação por até mais vinte e quatro (24) meses, uma única vez.
+
+3. O trabalhador que exercer atividade por conta própria no território de uma Parte, e que realizar trabalho temporário por sua conta no território da outra Parte, continuará a ser regido pela legislação da primeira Parte, desde que a duração do trabalho não exceda vinte e quatro (24) meses.
+
+4. Um mesmo empregado ou trabalhador por conta própria não poderá se beneficiar da possibilidade de deslocamento temporário antes de decorridos doze (12) meses a partir da data em que terminou o período máximo de deslocamento e, se for o caso, da prorrogação.
+
+5. Será admitido o fracionamento dos prazos previstos nos parágrafos 1 a 3.
+
+6. Eventuais importâncias pagas pelas empresas destinatárias ou por terceiros ao trabalhador de uma das Partes, no território do País onde o trabalho é prestado temporariamente, ficarão sujeitas à legislação dessa Parte.
+
+Artigo 8º
+Pessoal de empresas de transportes aéreos
+
+O pessoal de voo contratado por empresas de transportes aéreos estará sujeito à legislação da Parte onde a empresa tenha a sua sede, salvo quando for contratado por uma filial da mesma empresa constituída na outra Parte, na qual o trabalhador tenha sua residência.
+
+Artigo 9º
+Tripulação em embarcações marítimas
+
+Quando um trabalhador exercer a sua atividade laboral a bordo de um navio com bandeira pertencente a uma das Partes, aplicar-se-á a legislação dessa Parte.
+
+Artigo 10
+Pessoal de carga e descarga de navio
+
+Os trabalhadores portuários empregados em trabalhos de carga e descarga e reparação ou inspeção de carga ficarão sujeitos às disposições legais vigentes na Parte da sede do porto.
+
+Artigo 11
+Funcionários de missões diplomáticas e consulares
+
+1. O presente Acordo não afetará o disposto pela Convenção de Viena sobre Relações Diplomáticas, de 18 de abril de 1961, e pela Convenção de Viena sobre Relações Consulares, de 24 de abril de 1963.
+
+2. Os nacionais de uma Parte enviados ao território da outra Parte como Membros do Pessoal Diplomático de uma Missão Diplomática ou como Funcionários Consulares de uma Repartição Consular dessa Parte estarão sujeitos à legislação da primeira Parte.
+
+3. Os nacionais de uma Parte que prestam serviços em uma Missão Diplomática ou Repartição Consular no território da outra Parte ficarão sujeitos à legislação da Parte onde se encontra a Missão Diplomática ou Repartição Consular, exceto se amparado pela legislação previdenciária da respectiva Parte.
+
+Artigo 12
+Supressão ou modificação das exceções
+
+As Autoridades Competentes de ambas as Partes ou as instituições designadas por elas poderão, de comum acordo, suprimir ou modificar as exceções do Artigo 7º, em relação a qualquer pessoa ou grupo de pessoas, no seu interesse.
+
+
+TÍTULO III
+DISPOSIÇÕES RELATIVAS A BENEFÍCIOS
+
+CAPÍTULO I
+DA TOTALIZAÇÃO DOS PERÍODOS DE SEGURO
+
+Artigo 13
+Totalização de períodos de seguro
+
+1. Para fins de aquisição de direito aos benefícios previstos na legislação constante no Artigo 2º, serão totalizados os períodos de seguros cumpridos pelos trabalhadores, em épocas diferentes, em qualquer das Partes.
+
+2. Se, após a totalização dos períodos de seguro, a pessoa segurada não adquirir o direito a aposentadoria e pensão, cada Parte deverá considerar os períodos de seguro cumpridos ao abrigo da legislação de terceiros Estados, no âmbito de suas obrigações internacionais.
+
+Artigo 14
+Regras de cálculo
+
+1. O trabalhador que tenha estado, alternadamente, submetido à legislação de uma e outra Parte terá direito às prestações previstas neste Capítulo, nas seguintes condições:
+
+a) se forem cumpridos os requisitos exigidos pela legislação interna de uma Parte, a Instituição Competente dessa Parte determinará o direito ao benefício, tendo em conta, unicamente, os períodos de seguro cumpridos nessa mesma Parte; e
+
+b) se não forem cumpridos os requisitos exigidos pela legislação interna, a Instituição Competente de cada Parte determinará o direito ao benefício, totalizando, com os próprios períodos, os períodos de seguro cumpridos sob a legislação da outra Parte, desde que não concomitantes.
+
+2. Efetuada a totalização, se resultar direito à prestação, para o cálculo do montante a pagar, aplicar-se-ão as seguintes regras:
+
+a) determinar-se-á o montante da prestação à qual o interessado teria direito como se todos os períodos de seguro totalizados tivessem sido cumpridos sob a sua própria legislação, mas tomando por base de cálculo os salários que deram origem ao cálculo e ao pagamento das contribuições na Parte que concede o benefício (prestação teórica);
+
+b) a prestação teórica do benefício não será, sob nenhuma circunstância, inferior ao valor mínimo garantido pela legislação da Parte; e
+
+c) o valor do benefício será estabelecido, aplicando-se à prestação teórica, calculada nos termos referidos na alínea "a", a proporção existente entre o período de seguro cumprido na Parte que calcula a prestação e a totalidade dos períodos de seguro cumpridos em ambas as Partes (prestação pro rata temporis).
+
+Artigo 15
+Período mínimo para totalização
+
+1. Se os períodos de seguro cumpridos nos termos da legislação de uma Parte forem inferiores a doze (12) meses e não houver direito a benefício nos termos da respectiva legislação, a Instituição Competente dessa Parte não será obrigada a conceder benefício em razão desses períodos.
+
+2. A despeito das disposições do parágrafo 1, a Instituição Competente da outra Parte, se assim lhe permitir a legislação interna nacional, deve considerar os períodos de seguro referidos no parágrafo 1, seja para o reconhecimento do direito, seja para o cálculo da prestação.
+
+CAPÍTULO II
+DISPOSIÇÕES ESPECÍFICAS SOBRE BENEFÍCIOS POR INCAPACIDADE PERMANENTE
+
+Artigo 16
+Verificação de informação em caso de incapacidade permanente
+
+1. Para se reconhecer a situação de incapacidade permanente do trabalhador para o exercício da atividade profissional, as Instituições Competentes de cada uma das Partes levarão em conta os relatórios médicos periciais e os dados administrativos emitidos pela Instituição da outra Parte, sem prejuízo, se entender necessário, do direito de submeter o segurado a exame por um médico por ela escolhido.
+
+2. Se a Instituição Competente de uma Parte solicitar à Instituição Competente da outra Parte a realização de exames médicos adicionais, que sejam de seu exclusivo interesse, tais exames serão financiados pela Instituição Competente que os solicitou.
+
+CAPÍTULO III
+DISPOSIÇÕES ESPECÍFICAS SOBRE BENEFÍCIOS POR ACIDENTE DO TRABALHO E DOENÇAS PROFISSIONAIS
+
+Artigo 17
+Determinação do direito a benefícios por acidente do trabalho e doenças profissionais
+
+1. O direito aos benefícios decorrentes de acidentes do trabalho ou de doenças profissionais deverá ser estabelecido de acordo com a legislação da Parte a que a pessoa estiver sujeita na data do acidente ou do surgimento da doença.
+
+2. Para determinar o direito aos benefícios relacionados a acidentes de trabalho ou doenças profissionais, a Instituição Competente da Parte deverá realizar sua avaliação de acordo com sua legislação nacional.
+
+CAPÍTULO IV
+DISPOSIÇÕES DIVERSAS SOBRE BENEFÍCIOS
+
+Artigo 18
+Fatos e eventos juridicamente relevantes
+
+Os fatos e eventos que têm impacto na aquisição, na suspensão, na cessação ou no valor da aposentadoria ou pensão que ocorreram no território de uma Parte serão levados em consideração como se tivessem ocorrido no território da outra Parte.
+
+Artigo 19
+Atualização das prestações
+
+As prestações pecuniárias reconhecidas pela aplicação das normas do Título III serão atualizadas de acordo com a legislação vigente nas respectivas Partes.
+
+Artigo 20
+Emissão de documentos e seus efeitos jurídicos
+
+1. Os requerimentos, recursos, diligências e outros atos a cargo do interessado, que devam ser apresentados ou praticados em determinado prazo, em conformidade com a legislação de uma Parte, reputar-se-ão concretizados se apresentados no prazo previsto perante uma autoridade ou instituição da outra Parte.
+
+2. Os Organismos de Ligação a que se refere a alínea "a" do Artigo 24 estabelecerão critérios, prazos e regras para a tramitação dos documentos mencionados no parágrafo 1.
+
+Artigo 21
+Pagamento de benefícios
+
+1. As Instituições Competentes efetuarão o pagamento das prestações concedidas em decorrência deste Acordo na moeda da Parte que efetue o pagamento.
+
+2. Se o pagamento se fizer na moeda da outra Parte, o câmbio deverá ser estabelecido conforme a legislação da Parte que realiza o pagamento da prestação.
+
+3. Se em alguma das Partes forem promulgadas disposições que restrinjam a transferência de divisas, essa Parte adotará, imediatamente, as medidas apropriadas para garantir o pagamento de quaisquer quantias devidas em decorrência deste Acordo às pessoas especificadas no Artigo 3º que tenham o local de residência no território da outra Parte.
+
+
+TÍTULO IV
+DISPOSIÇÕES DIVERSAS, TRANSITÓRIAS E FINAIS
+
+CAPÍTULO I
+DISPOSIÇÕES DIVERSAS
+
+Artigo 22
+Ajuste administrativo
+
+As Autoridades Competentes de ambas as Partes estabelecerão Ajuste Administrativo para a execução do presente Acordo.
+
+Artigo 23
+Idioma de comunicação
+
+Para aplicação e cumprimento deste Acordo, as Autoridades Competentes, Instituições Competentes e Organismos de Ligação comunicar-se-ão diretamente entre si e com os interessados no idioma português.
+
+Artigo 24
+Medidas administrativas
+
+As Autoridades Competentes e as Instituições Competentes das Partes comprometem-se a tomar as seguintes medidas para o devido cumprimento do presente Acordo:
+
+a) designar os Organismos de Ligação;
+
+b) comunicar entre si as medidas adotadas internamente para a aplicação deste Acordo;
+
+c) notificar entre si as disposições legislativas e regulamentares que modifiquem a legislação referida no Artigo 2º; e
+
+d) prestar entre si a mais ampla colaboração técnica e administrativa para a aplicação deste Acordo.
+
+Artigo 25
+Cooperação administrativa entre as Instituições Competentes
+
+1. Com a finalidade de assegurar a implementação deste Acordo, as Instituições Competentes colaborarão mutuamente e atuarão da mesma forma como se aplicassem sua própria legislação.
+
+2. As Instituições Competentes de ambas as Partes poderão solicitar, a qualquer momento, documentos, relatórios médicos, provas documentais e leis que possam conduzir a aquisição, modificação, suspensão, extensão, extinção ou manutenção dos direitos aos benefícios por elas reconhecidos, livres de quaisquer encargos.
+
+Artigo 26
+Transmissão por meios eletrônicos
+
+1. As informações e documentos poderão ser transmitidos entre as Instituições Competentes ou Organismos de Ligação por meios eletrônicos. Nesse caso, serão considerados equivalentes às informações e documentos em papel e não será necessária uma autorização complementar.
+
+2. As informações e documentos transmitidos por esse meio terão caráter de provas nos procedimentos relativos à Segurança Social no âmbito do campo material deste Acordo.
+
+3. A troca de informação por via eletrônica poderá se referir à troca relativa a casos individuais, assim como à troca massiva de dados que incluírem informações relativas a mais de uma pessoa coberta pelo campo material deste Acordo.
+
+Artigo 27
+Proteção de dados
+
+1. Toda informação que permita a identificação de uma pessoa específica deverá ser classificada como "dados pessoais".
+
+2. Os dados pessoais deverão ser protegidos pelas disposições legais das Partes.
+
+3. As Autoridades Competentes, as Instituições Competentes e os Organismos de Ligação das Partes poderão trocar todos os dados pessoais necessários à aplicação do presente Acordo.
+
+4. Os dados pessoais enviados para uma Autoridade Competente, uma Instituição Competente e um Organismo de Ligação de uma Parte deverão ser utilizados exclusivamente para os fins da aplicação deste Acordo.
+
+5. Cada uma das Partes garantirá, em conformidade com suas disposições legais, que a pessoa interessada tenha direito de apresentar queixa eficaz para a instituição ou o juízo competente dessas Partes, no caso em que o direito à proteção de dados pessoais tenha sido violado ou que a pessoa interessada tenha possibilidade de utilizar do recurso efetivo.
+
+Artigo 28
+Resolução de controvérsias
+
+As Autoridades Competentes de ambas as Partes decidirão, de comum acordo, sobre as controvérsias que possam surgir na interpretação e aplicação deste Acordo.
+
+Artigo 29
+Isenção de taxas e autenticação
+
+1. Se a legislação de uma das Partes previr a isenção, no todo ou em parte, de taxas consulares ou encargos administrativos, tal isenção deverá ser aplicada a quaisquer documentos apresentados para Autoridade Competente, Instituição Competente ou Organismo de Ligação da outra Parte, na implementação deste Acordo.
+
+2. Documentos e certificados que precisem ser produzidos para efeitos do presente Acordo serão dispensados de legalização, bem como da aposição da apostila prevista na Convenção da Apostila da Haia, de 5 de outubro de 1961, sobre a Eliminação de Exigência de Legalização de Documentos Públicos Estrangeiros, desde que tramitados entre as Autoridades Competentes, Instituições Competentes e Organismos de Ligação.
+
+3. Cópias de documentos que sejam certificados como cópias verdadeiras e exatas pela Instituição Competente de uma Parte serão aceitas como cópias verdadeiras e exatas pela Instituição Competente da outra Parte, sem necessidade de autenticação adicional.
+
+CAPÍTULO II
+DISPOSIÇÕES TRANSITÓRIAS
+
+Artigo 30
+Período de seguro anterior à entrada em vigor
+
+1. Os períodos de seguros cumpridos, assim como os eventos relevantes ocorridos anteriormente à entrada em vigor deste Acordo, serão levados em consideração para a determinação do direito às prestações reconhecidas em virtude deste Acordo. Nessa hipótese, os efeitos financeiros retroagirão à data do protocolo do requerimento.
+
+2. Ficarão resguardados os direitos adquiridos com base no Acordo de Previdência Social assinado em 7 de fevereiro de 1979, por troca de notas, estendendo aos nacionais cabo-verdianos residentes no Brasil, e aos brasileiros residentes em Cabo Verde, as disposições previstas na Convenção de Previdência Social e Ajuste Complementar assinados entre a República Federativa do Brasil e a República Portuguesa, em 17 de outubro de 1969.
+
+3. O Acordo por troca de notas assinado em 7 de fevereiro de 1979, entre o Brasil e Cabo Verde, estendendo aos nacionais cabo-verdianos residentes no Brasil, e aos brasileiros residentes em Cabo Verde, as disposições dos Ajustes Complementares assinados entre a República Federativa do Brasil e República Portuguesa, será extinto na data de entrada em vigor deste Acordo.
+
+4. O presente Acordo garantirá os direitos adquiridos sob o amparo do Acordo mencionado no parágrafo 2.
+
+5. Os pedidos formulados antes da entrada em vigor do presente Acordo, pendentes de decisão, serão examinados em conformidade com as regras do Acordo anterior.
+
+CAPÍTULO III
+DISPOSIÇÕES FINAIS
+
+Artigo 31
+Ratificação e entrada em vigor
+
+Este Acordo será aprovado por ambas as Partes em conformidade com os requisitos constitucionais de cada uma e entrará em vigor no primeiro dia do segundo mês seguinte à troca de instrumentos de ratificação.
+
+Artigo 32
+Prazo de vigência
+
+1. O presente Acordo terá validade por tempo indeterminado, podendo ser denunciado por qualquer das Partes mediante notificação por via diplomática, cujos efeitos se produzirão após decorridos doze (12) meses contados da data da denúncia.
+
+2. No caso de cessar a vigência do Acordo, suas disposições continuarão sendo aplicadas relativamente aos direitos adquiridos sob seu amparo.
+
+Feito em Brasília, no dia 4 de fevereiro de 2026, em dois originais, em língua portuguesa, sendo ambos os textos igualmente autênticos.
+
+
+PELA REPÚBLICA FEDERATIVA DO BRASIL          PELA REPÚBLICA DE CABO VERDE
+
+Wolhey Queiroz Maciel                        José Luís do Livramento Monteiro Alves de Brito
+Ministro da Previdência Social               Ministro dos Negócios Estrangeiros,
+                                             Cooperação e Integração Regional</div>
+        </div>
+
+        <!-- ABA: AJUSTE ADMINISTRATIVO -->
+        <div id="ajuste" class="tab-content">
+            <div class="acordo-text">AJUSTE ADMINISTRATIVO PARA A IMPLEMENTAÇÃO DO ACORDO SOBRE SEGURANÇA SOCIAL ENTRE A REPÚBLICA FEDERATIVA DO BRASIL E A REPÚBLICA DE CABO VERDE
+
+A República Federativa do Brasil
+
+e
+
+a República de Cabo Verde,
+
+Em conformidade com o Artigo 22 do Acordo sobre Segurança Social entre a República Federativa do Brasil e a República de Cabo Verde, assinado em Brasília, no dia 4 de fevereiro de 2026,
+
+Decidem sobre os procedimentos de aplicação do Acordo e concordam com o seguinte:
+
+
+TÍTULO I
+DISPOSIÇÕES GERAIS
+
+Artigo 1º
+Definições
+
+1. Para a implementação deste Ajuste Administrativo, o termo "Acordo" significa o Acordo sobre Segurança Social entre a República Federativa do Brasil e a República de Cabo Verde, assinado em Brasília, no dia 4 de fevereiro de 2026.
+
+2. Quaisquer outros termos e expressões terão os significados que lhes são atribuídos no Acordo.
+
+Artigo 2º
+Instituições Competentes
+
+As Instituições Competentes responsáveis pela implementação do Acordo são:
+
+1) na República Federativa do Brasil:
+
+a) o Instituto Nacional do Seguro Social (INSS), para efeitos de aplicação da legislação que rege o Regime Geral de Previdência Social; e
+
+b) as unidades gestoras dos regimes próprios de previdência social dos servidores públicos, para efeitos de aplicação da legislação que rege os Regimes Próprios de Previdência Social;
+
+2) na República de Cabo Verde:
+
+a) o Instituto Nacional de Previdência Social (INPS), enquanto entidade gestora do sistema da proteção social obrigatória;
+
+b) a unidade gestora do regime de aposentação por idade e por invalidez e pensão de sobrevivência dos agentes públicos; e
+
+c) as unidades gestoras do regime de acidentes de trabalho e doenças profissionais.
+
+Artigo 3º
+Organismos de Ligação
+
+Os Organismos de Ligação responsáveis pela implementação do Acordo são:
+
+1) na República Federativa do Brasil, o Instituto Nacional do Seguro Social (INSS), por meio de uma de suas unidades especialmente designadas;
+
+2) na República de Cabo Verde, o Instituto Nacional de Previdência Social (INPS).
+
+Artigo 4º
+Disposições sobre Organismos de Ligação
+
+1. A Autoridade Competente de cada Parte pode designar outros Organismos de Ligação além dos mencionados no Artigo 3º do Acordo. A Autoridade Competente de uma Parte notificará imediatamente a Autoridade Competente da outra Parte de tal alteração.
+
+2. Os Organismos de Ligação especificados no Artigo 3º do Acordo concordam sobre os procedimentos e o uso dos formulários necessários à implementação do Acordo e deste Ajuste Administrativo.
+
+3. Em conformidade com o Artigo 26 do Acordo, a fim de facilitar a aplicação do Acordo e deste Ajuste Administrativo, as Instituições Competentes e os Organismos de Ligação podem acordar medidas para o intercâmbio eletrônico de dados. Estes dados terão validade plena entre as Partes.
+
+
+TÍTULO II
+DISPOSIÇÕES SOBRE A LEGISLAÇÃO APLICÁVEL
+
+Artigo 5º
+Certificados de deslocamento
+
+1. Para aplicação dos parágrafos 1 a 3 do Artigo 7º do Acordo, o Organismo de Ligação da Parte, cuja legislação é aplicável, emite, a pedido do empregador ou do trabalhador cuja atividade seja por conta própria, um certificado atestando que o trabalhador está sujeito a essa legislação, com a indicação do período de deslocamento, do endereço do local de contratação ou da realização da atividade por conta própria no território da outra Parte e da data de emissão do certificado.
+
+2. Esse certificado deverá ser requerido antes do início do período de deslocamento e constitui prova de que o trabalhador está isento da legislação relativa ao seguro obrigatório da outra Parte.
+
+3. O período de deslocamento inicial ou de prorrogação poderá ser utilizado de forma fracionada. Um certificado será emitido para cada período solicitado.
+
+4. O Organismo de Ligação da Parte que emite o certificado referido no parágrafo 1 fornecerá cópia do certificado, seja de forma eletrônica seja em papel, à pessoa empregada e ao empregador ou à pessoa que realiza atividade por conta própria, bem como ao Organismo de Ligação da outra Parte.
+
+5. Os Organismos de Ligação das Partes poderão acordar o envio das informações agregadas dos certificados emitidos, de forma periódica, sem a necessidade de sua transmissão individual de forma eletrônica ou em papel, em substituição ao previsto no parágrafo 4.
+
+6. O Organismo de Ligação que emitiu o certificado, conforme o parágrafo 1, pode retificá-lo e informar tal fato ao Organismo de Ligação da outra Parte.
+
+7. Para a aplicação do Artigo 12 do Acordo, o Organismo de Ligação consultará a outra Parte sobre a concordância quanto à exceção solicitada. A decisão será comunicada ao requerente e, se for autorizada, será emitido um novo certificado relativo ao novo pedido.
+
+
+TÍTULO III
+DISPOSIÇÕES RELATIVAS ÀS PRESTAÇÕES
+
+Artigo 6º
+Processamento do pedido
+
+1. Para fazer jus aos benefícios resultantes das disposições do Artigo 2º do Acordo, o requerente deverá apresentar solicitação à Instituição Competente ou ao Organismo de Ligação da Parte do território em que reside.
+
+2. A Instituição Competente ou o Organismo de Ligação da Parte que receba um pedido de benefício e identifique que nenhum período de seguro tiver sido cumprido sob sua legislação, deverá transmitir o pedido à Instituição Competente ou Organismo de Ligação da outra Parte, sem demora, por meio do formulário acordado para esse fim, juntamente com todos os documentos e informações disponíveis para determinar o direito do requerente, indicando a data em que o pedido foi apresentado.
+
+Artigo 7º
+Instrução do pedido
+
+1. Os Organismos de Ligação das Partes trocarão imediatamente, juntamente com os formulários acordados, os documentos disponíveis e as informações necessárias para tomar a decisão final sobre o pedido de benefício e informar-se-ão mutuamente de quaisquer circunstâncias que afetem o direito, o montante e o pagamento do benefício.
+
+2. Para efeitos da aplicação do Título III do Acordo, a Instituição Competente ou o Organismo de Ligação da Parte validará, por sua própria iniciativa ou a pedido da Instituição Competente ou Organismo de Ligação da outra Parte, os períodos de seguro cumpridos sob sua legislação aplicada.
+
+3. A Instituição Competente ou o Organismo de Ligação que recebeu o pedido de benefício verificará as informações relativas ao requerente e aos dependentes. O tipo de informação a ser verificada será acordado pelas Instituições Competentes ou Organismos de Ligação de ambas as Partes.
+
+4. Em caso de solicitação de prestações que necessitem de exames médicos, cada Organismo de Ligação enviará o formulário correspondente, anexando os exames médicos disponíveis.
+
+5. Antes do envio mencionado no parágrafo 1, a Instituição Competente ou o Organismo de Ligação da Parte que recebeu um requerimento de benefício deverá registrar no requerimento a data de entrada e atestar a exatidão dos dados de identificação pessoal. Essa certificação substituirá o envio dos documentos comprobatórios dessas informações. Em caso de dúvida, poderão ser solicitados os referidos documentos. Os tipos de informações a que se refere este parágrafo serão acordados pelos Organismos de Ligação das Partes, que podem acordar exceções neste âmbito.
+
+6. Cópias de documentos autenticados como cópias verdadeiras pela Instituição Competente ou o Organismo de Ligação de uma Parte serão aceitas pela Instituição Competente ou Organismo de Ligação da outra Parte como cópias autênticas.
+
+Artigo 8º
+Notificações de decisões
+
+A Instituição Competente ou o Organismo de Ligação de cada Parte estabelecerá o direito do requerente aos benefícios e o notificará da sua decisão, indicando os procedimentos e os prazos de recurso. O Organismo de Ligação notificará a outra Parte sobre a decisão.
+
+Artigo 9º
+Acidente do trabalho e doenças profissionais
+
+A fim de determinar o direito aos benefícios decorrentes de acidentes do trabalho ou de doenças profissionais, em conformidade com o Artigo 17 do Acordo, será aplicada a legislação da Parte que a pessoa estiver sujeita na data do acidente ou do surgimento da doença.
+
+Artigo 10
+Exames médicos e avaliação social
+
+1. A pedido, a Instituição Competente ou o Organismo de Ligação de cada Parte fornecerá, às suas expensas, à Instituição Competente ou ao Organismo de Ligação da outra Parte todas as informações, documentos, relatórios médicos e registros médicos referentes à deficiência, incapacidade para o trabalho, inclusive por doença profissional ou acidente de trabalho, do requerente ou do beneficiário.
+
+2. Em conformidade com o parágrafo 2 do Artigo 16 do Acordo, sempre que a Instituição Competente ou o Organismo de Ligação da Parte exigir que o requerente ou o beneficiário que resida ou permaneça no território da outra Parte se submeta a um exame médico ou avaliação social, ou seja necessário o preenchimento de relatório médico ou biopsicossocial, a Instituição Competente ou o Organismo de Ligação da outra Parte, a pedido da primeira Parte, e às suas expensas, tomará medidas possíveis para realizar o exame médico ou a avaliação social e o preenchimento dos relatórios acordados para este fim.
+
+3. A Instituição Competente da Parte reembolsará em até noventa (90) dias os montantes devidos nos termos do parágrafo 2 do Artigo 16 do Acordo, após a apresentação da lista das despesas pela Instituição Competente da outra Parte.
+
+
+TÍTULO IV
+DISPOSIÇÕES ADMINISTRATIVAS E DIVERSAS
+
+Artigo 11
+Cooperação administrativa
+
+1. As Autoridades Competentes, as Instituições Competentes e os Organismos de Ligação das Partes têm o direito de contatar diretamente entre si, bem como com as pessoas interessadas ou os seus representantes, a fim de aplicar as disposições do Acordo.
+
+2. As Autoridades Competentes, as Instituições Competentes e os Organismos de Ligação das Partes prestar-se-ão assistência mútua em todos os aspectos relativos à implementação do Acordo.
+
+3. As Instituições Competentes e os Organismos de Ligação das Partes cooperarão para assegurar que os pedidos de benefícios apresentados sob o Acordo sejam tratados sem demora.
+
+Artigo 12
+Pagamento dos benefícios
+
+1. O pagamento dos benefícios devidos às pessoas que residam no território da outra Parte será efetuado em conformidade com o Artigo 21 do Acordo, nas datas de pagamento fixadas na legislação aplicada pela Instituição Competente da Parte obrigada a pagá-los.
+
+2. Para efeitos da continuação do pagamento dos benefícios previstos no Título I, Artigo 2º do Acordo, os beneficiários são obrigados a apresentar à Instituição Competente que paga o benefício, seja diretamente, seja por intermédio dos Organismos de Ligação, uma comprovação de vida, de acordo com a Legislação dessa Parte.
+
+3. As Instituições Competentes ou os Organismos de Ligação das Partes podem acordar o intercâmbio de informações de óbito em formato eletrônico. Nesse caso, a transmissão das informações pela Instituição Competente ou pelo Organismo de Ligação de uma Parte à outra Parte dispensa a obrigação referida no parágrafo 2.
+
+Artigo 13
+Intercâmbio de dados estatísticos
+
+As Instituições Competentes ou os Organismos de Ligação das Partes procederão anualmente ao intercâmbio de dados estatísticos a partir de 31 de dezembro sobre o número de certificados emitidos em conformidade com o Artigo 5º deste Ajuste Administrativo e sobre os pagamentos efetuados aos beneficiários sob o Acordo. Esses dados estatísticos incluirão o número de beneficiários e o montante total dos benefícios pagos, bem como a especificação dos tipos de benefícios pagos sob o Acordo. Os dados estatísticos serão fornecidos nos formulários acordados pelas Partes.
+
+Artigo 14
+Entrada em vigor e duração
+
+Este Ajuste Administrativo entrará em vigor na data de entrada em vigor do Acordo e permanecerá em vigor durante a vigência do Acordo.
+
+Feito em Brasília, no dia 4 de fevereiro de 2026, em dois originais, em língua portuguesa, sendo ambos os textos igualmente autênticos.
+
+
+PELA REPÚBLICA FEDERATIVA DO BRASIL          PELA REPÚBLICA DE CABO VERDE
+
+Wolhey Queiroz Maciel                        José Luís do Livramento Monteiro Alves de Brito
+Ministro da Previdência Social               Ministro dos Negócios Estrangeiros,
+                                             Cooperação e Integração Regional</div>
         </div>
 
         <!-- ABA: DOCUMENTOS -->
         <div id="documentos" class="tab-content">
             <div style="background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px;">
-                <h2 class="section-title">Documentos Disponíveis</h2>
-                
                 <div class="docs-toolbar">
                     <div class="search-box">
                         <span>⌕</span>
-                        <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="filtrarDocs()">
+                        <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="renderDocs()">
                     </div>
                     <div class="filter-buttons">
-                        <button class="filter-btn active" onclick="filtrarCategoria('todas')">Todos</button>
-                        <button class="filter-btn" onclick="filtrarCategoria('principal')">Principal</button>
-                        <button class="filter-btn" onclick="filtrarCategoria('complementar')">Complementar</button>
-                        <button class="filter-btn" onclick="filtrarCategoria('formulario')">Formulário</button>
-                        <button class="filter-btn" onclick="filtrarCategoria('roteiro')">Roteiro</button>
+                        <button class="filter-btn active" onclick="filtrarCategoria('todos', event)">Todos</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('principal', event)">Principal</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('complementar', event)">Complementar</button>
                     </div>
                 </div>
 
@@ -829,19 +1087,29 @@ Feito em Berlim, aos 3 dias do mês de dezembro do ano de 2009 em dois originais
     </footer>
 
     <script>
-                const documentos = [
-            { nome: "Acordo sobre Segurança Social Brasil-Cabo Verde", desc: "Texto oficial do acordo bilateral", cat: "principal", arquivo: "01-acordo-principal.pdf", tamanho: "8.5 MB" },
-            { nome: "Ajuste Administrativo", desc: "Ajuste administrativo para implementação", cat: "complementar", arquivo: "02-ajuste-administrativo.pdf", tamanho: "5.2 MB" }
+        const documentos = [
+            {
+                nome: "Acordo sobre Segurança Social Brasil-Cabo Verde",
+                desc: "Texto oficial do acordo bilateral assinado em 04/02/2026",
+                cat: "principal",
+                arquivo: "Acordo sobre Segurança Social Brasil-Cabo Verde.pdf"
+            },
+            {
+                nome: "Ajuste Administrativo Brasil-Cabo Verde",
+                desc: "Ajuste administrativo para implementação do Acordo, assinado em 04/02/2026",
+                cat: "complementar",
+                arquivo: "Ajuste Administrativo Brasil-Cabo Verde.pdf"
+            }
         ];
 
-        let categoriaAtiva = 'todas';
+        let catAtiva = 'todos';
 
         function renderDocs() {
             const tb = document.getElementById('docs-tbody');
             const termo = document.getElementById('search-docs').value.toLowerCase();
 
             const filtrados = documentos.filter(d =>
-                (categoriaAtiva === 'todas' || d.cat === categoriaAtiva) &&
+                (catAtiva === 'todos' || d.cat === catAtiva) &&
                 (d.nome.toLowerCase().includes(termo) || d.desc.toLowerCase().includes(termo))
             );
 
@@ -852,35 +1120,27 @@ Feito em Berlim, aos 3 dias do mês de dezembro do ano de 2009 em dois originais
                         <div class="doc-desc">${d.desc}</div>
                     </td>
                     <td><span class="badge ${d.cat}">${getCatLabel(d.cat)}</span></td>
-                    <td><div class="file-size">${d.tamanho}</div></td>
+                    <td><div class="file-type">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
                     <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
                 </tr>
             `).join('');
         }
 
         function getCatLabel(c) {
-            const labels = { principal: "Principal", complementar: "Complementar", formulario: "Formulário", roteiro: "Roteiro" };
-            return labels[c];
+            const labels = { principal: 'Principal', complementar: 'Complementar', formulario: 'Formulário' };
+            return labels[c] || c;
         }
 
-        function filtrarCategoria(cat) {
-            categoriaAtiva = cat;
+        function filtrarCategoria(cat, event) {
+            catAtiva = cat;
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
             renderDocs();
         }
 
-        function filtrarDocs() {
-            renderDocs();
-        }
-
         function abrirAba(evt, abaId) {
-            const abas = document.querySelectorAll('.tab-content');
-            abas.forEach(aba => aba.classList.remove('active'));
-
-            const botoes = document.querySelectorAll('.tab-btn');
-            botoes.forEach(botao => botao.classList.remove('active'));
-
+            document.querySelectorAll('.tab-content').forEach(a => a.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(abaId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }

@@ -380,6 +380,16 @@
             color: var(--muted);
         }
 
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+        .badge.principal    { background: rgba(0, 102, 255, 0.2); color: #3DA5FF; }
+        .badge.complementar { background: rgba(27, 169, 71, 0.2); color: #4ade80; }
+        .badge.formulario   { background: rgba(217, 119, 6, 0.2); color: #fbbf24; }
+
+        .filter-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 12px; border-radius: 16px; border: 1px solid var(--border); background: transparent; color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .filter-btn:hover { border-color: var(--electric); color: var(--cream); }
+        .filter-btn.active { background: var(--electric); border-color: var(--electric); color: var(--navy); }
+
         .btn-download {
             display: inline-flex;
             align-items: center;
@@ -471,8 +481,8 @@
                     <div class="info-value">Decreto nº 10.293/2020</div>
                 </div>
                 <div class="info-card">
-                    <div class="info-label">✅ Em Vigor Desde</div>
-                    <div class="info-value">01 de março de 2020</div>
+                    <div class="info-label">⏳ Situação</div>
+                    <div class="info-value">Em ratificação</div>
                 </div>
                 <div class="info-card">
                     <div class="info-label">📄 Documentos</div>
@@ -567,7 +577,7 @@
         </div>
 
         <!-- ABAS -->
-        <div class="tabs">
+        <div class="tabs-nav">
             <button class="tab-btn active" onclick="abrirAba(event, 'beneficios-israel')">Benefícios — Israel</button>
             <button class="tab-btn" onclick="abrirAba(event, 'beneficios-brasil')">Benefícios — Brasil</button>
             <button class="tab-btn" onclick="abrirAba(event, 'acordo')">Acordo</button>
@@ -716,12 +726,16 @@ b) Nos Regimes Próprios de Previdência Social dos servidores públicos civis:
         <!-- ABA: DOCUMENTOS -->
         <div id="documentos" class="tab-content">
             <div style="background: linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(15, 30, 58, 0.3) 100%); border: 1px solid var(--border); border-radius: 8px; padding: 24px;">
-                <h2 class="section-title">Documentos Disponíveis</h2>
-                
                 <div class="docs-toolbar">
                     <div class="search-box">
                         <span>⌕</span>
                         <input type="text" id="search-docs" placeholder="Buscar documento…" onkeyup="filtrarDocs()">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filtrarCategoria('todos', event)">Todos</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('principal', event)">Principal</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('complementar', event)">Complementar</button>
+                        <button class="filter-btn" onclick="filtrarCategoria('formulario', event)">Formulário</button>
                     </div>
                 </div>
 
@@ -729,6 +743,7 @@ b) Nos Regimes Próprios de Previdência Social dos servidores públicos civis:
                     <thead>
                         <tr>
                             <th>Documento</th>
+                            <th>Categoria</th>
                             <th>Arquivo</th>
                             <th>Ação</th>
                         </tr>
@@ -745,14 +760,21 @@ b) Nos Regimes Próprios de Previdência Social dos servidores públicos civis:
 
     <script>
         const documentos = [
-            { nome: "Acordo de Previdência Social Brasil-Israel", desc: "Texto oficial do acordo bilateral", arquivo: "01-acordo-principal.pdf", tamanho: "6.9 MB" }
+            { nome: "Acordo de Previdência Social Brasil-Israel (2020)", desc: "Texto oficial do acordo bilateral assinado em 2020", cat: "principal", arquivo: "Acordo de Previdência Social Brasil-Israel.pdf" }
         ];
+
+        let catAtiva = 'todos';
+
+        function getCatLabel(cat) {
+            return { principal: 'Principal', complementar: 'Complementar', formulario: 'Formulário' }[cat] || cat;
+        }
 
         function renderDocs() {
             const tb = document.getElementById('docs-tbody');
             const termo = document.getElementById('search-docs').value.toLowerCase();
 
             const filtrados = documentos.filter(d =>
+                (catAtiva === 'todos' || d.cat === catAtiva) &&
                 (d.nome.toLowerCase().includes(termo) || d.desc.toLowerCase().includes(termo))
             );
 
@@ -762,10 +784,18 @@ b) Nos Regimes Próprios de Previdência Social dos servidores públicos civis:
                         <div class="doc-name">📄 ${d.nome}</div>
                         <div class="doc-desc">${d.desc}</div>
                     </td>
-                    <td><div class="file-size">${d.tamanho}</div></td>
+                    <td><span class="badge ${d.cat}">${getCatLabel(d.cat)}</span></td>
+                    <td><div class="file-size">${d.arquivo.split('.').pop().toUpperCase()}</div></td>
                     <td><a href="${d.arquivo}" download class="btn-download">⬇ Download</a></td>
                 </tr>
             `).join('');
+        }
+
+        function filtrarCategoria(cat, event) {
+            catAtiva = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            renderDocs();
         }
 
         function filtrarDocs() {
@@ -773,12 +803,8 @@ b) Nos Regimes Próprios de Previdência Social dos servidores públicos civis:
         }
 
         function abrirAba(evt, abaId) {
-            const abas = document.querySelectorAll('.tab-content');
-            abas.forEach(aba => aba.classList.remove('active'));
-
-            const botoes = document.querySelectorAll('.tab-btn');
-            botoes.forEach(botao => botao.classList.remove('active'));
-
+            document.querySelectorAll('.tab-content').forEach(a => a.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(abaId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }
