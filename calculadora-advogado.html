@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora RMI Pro-rata — Uso Profissional · Acordos Internacionais</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f1f5f9;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+            color: white;
+            padding: 28px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+        .header-left p { font-size: 13px; opacity: 0.75; }
+        .badge-pro {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .content { padding: 28px 32px; }
+
+        /* SEÇÕES */
+        .secao {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e8ecf0;
+        }
+        .secao:last-of-type { border-bottom: none; }
+
+        .secao-titulo {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e3a5f;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .secao-titulo::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        /* CAMPOS */
+        .campo-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .campo-group-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        @media (max-width: 640px) {
+            .campo-group, .campo-group-3 { grid-template-columns: 1fr; }
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 5px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .campo-dica { font-size: 11px; color: #94a3b8; margin-top: 3px; }
+
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #1e293b;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #fff;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+        }
+
+        /* UPLOAD */
+        .upload-area {
+            border: 2px dashed #2563eb;
+            border-radius: 8px;
+            padding: 22px;
+            text-align: center;
+            cursor: pointer;
+            background: #f8faff;
+            transition: all 0.2s;
+        }
+        .upload-area:hover { background: #eff6ff; }
+        .upload-area.sucesso { border-color: #16a34a; background: #f0fdf4; }
+        .upload-icon { font-size: 32px; margin-bottom: 8px; }
+        .upload-text { font-weight: 600; font-size: 14px; color: #1e3a5f; margin-bottom: 4px; }
+        .upload-sub { font-size: 12px; color: #94a3b8; }
+        #fileInput { display: none; }
+
+        .status-upload { margin-top: 10px; font-size: 13px; }
+        .status-ok { color: #166534; font-weight: 600; }
+        .status-erro { color: #991b1b; }
+        .status-loading { color: #1d4ed8; }
+
+        .loading-spin {
+            display: inline-block;
+            width: 14px; height: 14px;
+            border: 2px solid #ddd;
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* DIVISOR manual */
+        .modo-manual-label {
+            font-size: 12px;
+            color: #64748b;
+            margin: 12px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .modo-manual-label::before, .modo-manual-label::after {
+            content: ''; flex: 1; height: 1px; background: #e2e8f0;
+        }
+
+        /* BOTÕES */
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .btn-calcular {
+            flex: 1;
+            padding: 14px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        .btn-calcular:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+        .btn-calcular:disabled { background: #cbd5e1; cursor: not-allowed; }
+
+        .btn-imprimir {
+            padding: 14px 22px;
+            background: white;
+            color: #1e3a5f;
+            border: 2px solid #1e3a5f;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: none;
+        }
+        .btn-imprimir:hover { background: #f1f5f9; }
+
+        .btn-limpar {
+            padding: 14px 18px;
+            background: white;
+            color: #64748b;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-limpar:hover { border-color: #94a3b8; color: #334155; }
+
+        /* RESULTADO */
+        .resultado-container { margin-top: 28px; }
+
+        .resultado-sucesso {
+            background: #f0fdf4;
+            border: 1.5px solid #86efac;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 16px;
+        }
+        .resultado-aviso {
+            background: #fffbeb;
+            border: 1.5px solid #fcd34d;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 16px;
+        }
+        .resultado-erro {
+            background: #fef2f2;
+            border: 1.5px solid #fca5a5;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 16px;
+        }
+
+        .resultado-titulo {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .resultado-sucesso .resultado-titulo { color: #166534; }
+        .resultado-aviso .resultado-titulo { color: #92400e; }
+        .resultado-erro .resultado-titulo { color: #991b1b; }
+
+        /* QUADRO PRINCIPAL */
+        .resultado-quadro {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 14px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .rq-item {}
+        .rq-label { font-size: 11px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .rq-valor { font-size: 26px; font-weight: 800; }
+        .rq-valor-sm { font-size: 18px; font-weight: 700; }
+        .rq-sub { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+        .rq-divider { grid-column: 1/-1; height: 1px; background: rgba(255,255,255,0.15); }
+
+        /* TABELA TÉCNICA */
+        .tabela-tecnica {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+        .tabela-tecnica th {
+            text-align: left;
+            color: #64748b;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 6px 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .tabela-tecnica td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #1e293b;
+        }
+        .tabela-tecnica tr:last-child td { border-bottom: none; }
+        .tabela-tecnica td:last-child { font-weight: 600; text-align: right; }
+        .tabela-tecnica .destaque td { background: #f8faff; }
+
+        .formula-box {
+            background: #f8faff;
+            border: 1px solid #c7d2fe;
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 12px;
+            color: #3730a3;
+            margin-top: 10px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            line-height: 1.7;
+        }
+
+        /* DADOS DO CLIENTE (cabeçalho de impressão) */
+        .cliente-box {
+            background: #f8faff;
+            border: 1.5px solid #c7d2fe;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 8px;
+        }
+
+        /* ALERTA INFO */
+        .alerta-info {
+            background: #eff6ff;
+            border-left: 3px solid #2563eb;
+            border-radius: 4px;
+            padding: 10px 14px;
+            font-size: 12px;
+            color: #1e40af;
+            margin-bottom: 12px;
+        }
+
+        .resultado-planejamento {
+            background: #f5f3ff;
+            border: 1.5px solid #a78bfa;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 16px;
+        }
+        .resultado-planejamento .resultado-titulo { color: #5b21b6; }
+
+        .planej-contador {
+            background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 14px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            text-align: center;
+        }
+        .planej-contador .pc-label { font-size: 10px; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .planej-contador .pc-valor { font-size: 20px; font-weight: 800; }
+        .planej-contador .pc-sub { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+
+        .hidden { display: none !important; }
+
+        /* ===== IMPRESSÃO ===== */
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; border-radius: 0; max-width: 100%; }
+            .header { background: #1e3a5f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .btn-row, .secao-entrada, .upload-area, #statusUpload { display: none !important; }
+            .resultado-container { margin-top: 0; }
+            .resultado-quadro {
+                background: #1e3a5f !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .print-show { display: block !important; }
+            .print-hide { display: none !important; }
+            .secao { page-break-inside: avoid; }
+            .rodape-impressao { display: block !important; }
+        }
+
+        .rodape-impressao {
+            display: none;
+            text-align: center;
+            font-size: 11px;
+            color: #94a3b8;
+            padding: 16px 0 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <div class="header-left">
+            <h1>Calculadora RMI Pro-rata — Totalização Internacional</h1>
+            <p>Uso exclusivo para advogados e despachantes previdenciários</p>
+        </div>
+        <span class="badge-pro">Pro</span>
+    </div>
+
+    <div class="content">
+
+        <!-- 1. DADOS DO CLIENTE -->
+        <div class="secao secao-entrada">
+            <div class="secao-titulo">Identificação do Cliente</div>
+            <div class="cliente-box">
+                <div class="campo-group-3">
+                    <div class="campo">
+                        <label>Nome completo</label>
+                        <input type="text" id="clienteNome" placeholder="Nome do segurado">
+                    </div>
+                    <div class="campo">
+                        <label>CPF</label>
+                        <input type="text" id="clienteCpf" placeholder="000.000.000-00" maxlength="14" oninput="mascaraCpf(this)">
+                    </div>
+                    <div class="campo">
+                        <label>Data da análise</label>
+                        <input type="date" id="dataAnalise">
+                    </div>
+                </div>
+                <div class="campo-group">
+                    <div class="campo">
+                        <label>Data de nascimento</label>
+                        <input type="date" id="dataNascimento">
+                        <div class="campo-dica">Extraída do CNIS automaticamente · necessária para verificar idade mínima</div>
+                    </div>
+                    <div class="campo">
+                        <label>Sexo</label>
+                        <select id="sexo">
+                            <option value="">Selecione...</option>
+                            <option value="F">Feminino — idade mínima 62 anos</option>
+                            <option value="M">Masculino — idade mínima 65 anos</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="campo" style="max-width:340px;">
+                    <label>Responsável / Advogado</label>
+                    <input type="text" id="advogadoNome" placeholder="Nome do responsável">
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. TIPO DE BENEFÍCIO E PAÍS -->
+        <div class="secao secao-entrada">
+            <div class="secao-titulo">Parâmetros do Benefício</div>
+            <div class="campo-group">
+                <div class="campo">
+                    <label>Espécie do benefício</label>
+                    <select id="tipoBeneficio">
+                        <option value="">Selecione...</option>
+                        <option value="aposentadoria_idade">Aposentadoria por Idade</option>
+                        <option value="pensao_morte">Pensão por Morte</option>
+                    </select>
+                    <div class="campo-dica">Carência: 180 meses (Ap. Idade) | 18 meses (Pensão)</div>
+                </div>
+                <div class="campo">
+                    <label>País signatário (acordo)</label>
+                    <select id="paisAcordante">
+                        <option value="">Selecione...</option>
+                        <option value="alemanha">Alemanha</option>
+                        <option value="argentina">Argentina</option>
+                        <option value="austria">Áustria</option>
+                        <option value="belgica">Bélgica</option>
+                        <option value="bolivia">Bolívia</option>
+                        <option value="bulgaria">Bulgária</option>
+                        <option value="cabo_verde">Cabo Verde</option>
+                        <option value="canada">Canadá</option>
+                        <option value="chile">Chile</option>
+                        <option value="coreia_sul">Coreia do Sul</option>
+                        <option value="espanha">Espanha</option>
+                        <option value="eua">Estados Unidos</option>
+                        <option value="franca">França</option>
+                        <option value="grecia">Grécia</option>
+                        <option value="india">Índia</option>
+                        <option value="italia">Itália</option>
+                        <option value="japao">Japão</option>
+                        <option value="luxemburgo">Luxemburgo</option>
+                        <option value="mocambique">Moçambique</option>
+                        <option value="paraguai">Paraguai</option>
+                        <option value="portugal">Portugal</option>
+                        <option value="republica_tcheca">República Tcheca</option>
+                        <option value="suica">Suíça</option>
+                        <option value="uruguai">Uruguai</option>
+                        <option value="quebec">Quebec (Canadá)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. CNIS / TEMPO BRASIL -->
+        <div class="secao secao-entrada">
+            <div class="secao-titulo">Tempo de Contribuição — Brasil (RGPS)</div>
+
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📄</div>
+                <p class="upload-text">Carregar CNIS em PDF</p>
+                <p class="upload-sub">Extrato de Contribuição do INSS · até 20 MB</p>
+                <input type="file" id="fileInput" accept=".pdf">
+            </div>
+            <div id="statusUpload" class="status-upload"></div>
+
+            <div class="modo-manual-label">ou inserir manualmente</div>
+
+            <div class="campo-group">
+                <div class="campo">
+                    <label>Salário de Benefício médio (SB) — R$</label>
+                    <input type="number" id="salarioManual" placeholder="Ex: 4.200,00" min="0" step="0.01">
+                    <div class="campo-dica">Média dos SC corrigidos pelo IPCA-E (80% maiores)</div>
+                </div>
+                <div class="campo">
+                    <label>Tempo contribuído no Brasil</label>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                        <div>
+                            <input type="number" id="anosManual" placeholder="Anos" min="0">
+                        </div>
+                        <div>
+                            <input type="number" id="mesesManual" placeholder="Meses" min="0" max="11">
+                        </div>
+                    </div>
+                    <div class="campo-dica">Total de vínculos computados no RGPS</div>
+                </div>
+            </div>
+
+            <div class="alerta-info">
+                ℹ️ Se o CNIS for carregado, os valores do PDF prevalecem sobre os campos manuais.
+                Use os campos manuais apenas para ajustes ou quando não houver CNIS disponível.
+            </div>
+        </div>
+
+        <!-- 4. PERÍODO NO EXTERIOR -->
+        <div class="secao secao-entrada">
+            <div class="secao-titulo">Período de Filiação — País Signatário</div>
+            <div class="campo-group">
+                <div class="campo">
+                    <label>Data de início (país signatário)</label>
+                    <input type="date" id="dataInicPais">
+                </div>
+                <div class="campo">
+                    <label>Data de término (país signatário)</label>
+                    <input type="date" id="dataFimPais">
+                </div>
+            </div>
+            <div class="campo" style="max-width:200px;">
+                <label>Ou: total em meses</label>
+                <input type="number" id="periodoMesesPais" placeholder="Ex: 72">
+                <div class="campo-dica">Prevalece sobre as datas acima, se preenchido</div>
+            </div>
+        </div>
+
+        <!-- BOTÕES -->
+        <div class="btn-row">
+            <button class="btn-calcular" id="btnCalcular" onclick="calcularTudo()">⚖️ Calcular RMI Pro-rata</button>
+            <button class="btn-imprimir" id="btnImprimir" onclick="imprimirLaudo()">🖨️ Imprimir / PDF</button>
+            <button class="btn-limpar" onclick="limpar()">✕ Limpar</button>
+        </div>
+
+        <!-- RESULTADO -->
+        <div id="areaResultado" class="resultado-container hidden"></div>
+
+        <div class="rodape-impressao" id="rodapeImpressao">
+            Calculadora de RMI Pro-rata — Acordos Internacionais de Previdência Social<br>
+            www.acordosinternacionais.com · Documento gerado em <span id="dataImpressao"></span>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    // ===== ESTADO =====
+    let cnisCarregado = false;
+    let cnisData = { vinculos: [], salarios: [], totalMeses: 0, somaSalarios: 0, qtdSalarios: 0, dataInicio: null, dataFim: null };
+
+    // ===== CPF MÁSCARA =====
+    function mascaraCpf(el) {
+        let v = el.value.replace(/\D/g, '').slice(0, 11);
+        if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
+        else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
+        else if (v.length > 3) v = v.replace(/(\d{3})(\d{0,3})/, '$1.$2');
+        el.value = v;
+    }
+
+    // ===== UPLOAD =====
+    const uploadArea = document.getElementById('uploadArea');
+    uploadArea.addEventListener('click', () => document.getElementById('fileInput').click());
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.style.background = '#eff6ff'; });
+    uploadArea.addEventListener('dragleave', () => { uploadArea.style.background = '#f8faff'; });
+    uploadArea.addEventListener('drop', e => {
+        e.preventDefault();
+        uploadArea.style.background = '#f8faff';
+        if (e.dataTransfer.files[0]) lerCNIS(e.dataTransfer.files[0]);
+    });
+    document.getElementById('fileInput').addEventListener('change', e => {
+        if (e.target.files[0]) lerCNIS(e.target.files[0]);
+    });
+
+    async function lerCNIS(file) {
+        const status = document.getElementById('statusUpload');
+        status.innerHTML = '<span class="loading-spin"></span><span class="status-loading">Processando CNIS...</span>';
+        try {
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+            let texto = '';
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const tc = await page.getTextContent();
+                texto += tc.items.map(x => x.str).join(' ') + '\n';
+            }
+            parseadorCNIS(texto);
+            cnisCarregado = true;
+
+            // Preenche dados do segurado
+            if (cnisData.nome && !document.getElementById('clienteNome').value.trim()) {
+                document.getElementById('clienteNome').value = cnisData.nome;
+            }
+            if (cnisData.cpf && !document.getElementById('clienteCpf').value.trim()) {
+                document.getElementById('clienteCpf').value = cnisData.cpf;
+            }
+            if (cnisData.dataNasc && !document.getElementById('dataNascimento').value) {
+                const p = cnisData.dataNasc.split('/');
+                document.getElementById('dataNascimento').value = `${p[2]}-${p[1]}-${p[0]}`;
+            }
+
+            // Preenche salário e tempo
+            if (cnisData.qtdSalarios > 0) {
+                document.getElementById('salarioManual').value = (cnisData.somaSalarios / cnisData.qtdSalarios).toFixed(2);
+            }
+            const anos = Math.floor(cnisData.totalMeses / 12);
+            const meses = cnisData.totalMeses % 12;
+            document.getElementById('anosManual').value = anos;
+            document.getElementById('mesesManual').value = meses;
+
+            const nomeExibir = cnisData.nome ? ` · ${cnisData.nome}` : '';
+            status.innerHTML = `<span class="status-ok">✓ CNIS carregado${nomeExibir} — ${cnisData.qtdSalarios} salários · ${cnisData.totalMeses} meses de vínculo</span>`;
+            uploadArea.classList.add('sucesso');
+        } catch (err) {
+            status.innerHTML = `<span class="status-erro">✗ Erro ao processar PDF: ${err.message}</span>`;
+        }
+    }
+
+    function parseadorCNIS(texto) {
+        cnisData = { vinculos: [], salarios: [], totalMeses: 0, somaSalarios: 0, qtdSalarios: 0, dataInicio: null, dataFim: null, nome: null, cpf: null, dataNasc: null };
+
+        // Extrai nome — para antes de "Data", "CPF", "NIT" ou dois espaços seguidos
+        const nomeMatch = texto.match(/Nome[:\s]+([A-ZÁÀÂÃÉÊÍÓÔÕÚÇ][A-ZÁÀÂÃÉÊÍÓÔÕÚÇ ]{2,49}?)(?=\s{2,}|\s*(?:CPF|NIT|Data\b|Nasc|\d{3}\.))/i);
+        if (nomeMatch) cnisData.nome = nomeMatch[1].trim().replace(/\s+/g, ' ');
+
+        // Extrai CPF
+        const cpfMatch = texto.match(/CPF[:\s]+(\d{3}[\.\s]?\d{3}[\.\s]?\d{3}[-\s]?\d{2})/i);
+        if (cpfMatch) {
+            let cpf = cpfMatch[1].replace(/\D/g, '');
+            cnisData.cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        // Extrai data de nascimento
+        const nascMatch = texto.match(/(?:Nascimento|Nasc\.?)[:\s]+(\d{2}\/\d{2}\/\d{4})/i);
+        if (nascMatch) cnisData.dataNasc = nascMatch[1];
+
+        // Vínculos — ignora pares com duração negativa ou zero (datas fora de ordem no PDF)
+        const regexVinculos = /(\d{2}\/\d{2}\/\d{4})\s+.*?(\d{2}\/\d{2}\/\d{4})/g;
+        let match;
+        while ((match = regexVinculos.exec(texto)) !== null) {
+            if (isDataValida(match[1]) && isDataValida(match[2])) {
+                const meses = calcMeses(match[1], match[2]);
+                if (meses > 0) {  // descarta pares invertidos (ex: data de emissão antes de data de início)
+                    cnisData.vinculos.push({ ini: match[1], fim: match[2], meses });
+                    if (!cnisData.dataInicio) cnisData.dataInicio = match[1];
+                    cnisData.dataFim = match[2];
+                }
+            }
+        }
+        const candidatos = texto.match(/\d{1,3}[\.,]\d{3}([\.,]\d{2})?/g) || [];
+        cnisData.salarios = candidatos
+            .map(s => parseFloat(s.replace(/\./g, '').replace(',', '.')))
+            .filter(v => v > 100 && v < 50000 && !isNaN(v))
+            .slice(0, 360);
+        cnisData.qtdSalarios = cnisData.salarios.length;
+        cnisData.somaSalarios = cnisData.salarios.reduce((a, b) => a + b, 0);
+        cnisData.totalMeses = cnisData.vinculos.reduce((a, b) => a + b.meses, 0);
+    }
+
+    function isDataValida(d) {
+        const p = d.split('/');
+        if (p.length !== 3) return false;
+        const dia = +p[0], mes = +p[1], ano = +p[2];
+        return dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano >= 1960 && ano <= 2030;
+    }
+
+    function calcMeses(d1, d2) {
+        const parse = s => { const [d,m,a] = s.split('/'); return new Date(`${a}-${m}-${d}`); };
+        return Math.round((parse(d2) - parse(d1)) / (1000*60*60*24*30.44));
+    }
+
+    // ===== HELPERS =====
+    function formatarTempo(meses) {
+        if (meses <= 0) return '0 meses';
+        const a = Math.floor(meses / 12), m = meses % 12;
+        if (a > 0 && m > 0) return `${a} ano${a>1?'s':''} e ${m} mês${m>1?'es':''}`;
+        if (a > 0) return `${a} ano${a>1?'s':''}`;
+        return `${m} mês${m>1?'es':''}`;
+    }
+
+    function formatarMoeda(v) {
+        return v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function nomePais() {
+        const el = document.getElementById('paisAcordante');
+        return el.options[el.selectedIndex]?.text || '';
+    }
+
+    function dataHoje() {
+        return new Date().toLocaleDateString('pt-BR');
+    }
+
+    function cabecalhoCliente() {
+        const nome  = document.getElementById('clienteNome').value.trim();
+        const cpf   = document.getElementById('clienteCpf').value.trim();
+        const data  = document.getElementById('dataAnalise').value;
+        const adv   = document.getElementById('advogadoNome').value.trim();
+        const nasc  = document.getElementById('dataNascimento').value;
+        const sexo  = document.getElementById('sexo').value;
+        if (!nome && !cpf) return '';
+        const dataFmt = data ? new Date(data + 'T12:00:00').toLocaleDateString('pt-BR') : dataHoje();
+        const nascFmt = nasc ? new Date(nasc + 'T12:00:00').toLocaleDateString('pt-BR') : '—';
+        const sexoFmt = sexo === 'F' ? 'Feminino' : sexo === 'M' ? 'Masculino' : '—';
+        return `
+            <div class="cliente-box" style="margin-bottom:16px;">
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; font-size:13px; margin-bottom:8px;">
+                    <div><span style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.4px;">Cliente</span><br><strong>${nome || '—'}</strong></div>
+                    <div><span style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.4px;">CPF</span><br><strong>${cpf || '—'}</strong></div>
+                    <div><span style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.4px;">Data da análise</span><br><strong>${dataFmt}</strong></div>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; font-size:13px;">
+                    <div><span style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.4px;">Nascimento</span><br><strong>${nascFmt}</strong></div>
+                    <div><span style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.4px;">Sexo</span><br><strong>${sexoFmt}</strong></div>
+                    ${adv ? `<div><span style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.4px;">Responsável</span><br><strong>${adv}</strong></div>` : '<div></div>'}
+                </div>
+            </div>`;
+    }
+
+    function calcIdade(nascInput) {
+        if (!nascInput) return null;
+        const nasc = new Date(nascInput + 'T12:00:00');
+        const hoje = new Date();
+        let anos = hoje.getFullYear() - nasc.getFullYear();
+        const m = hoje.getMonth() - nasc.getMonth();
+        if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) anos--;
+        return anos;
+    }
+
+    function mesesParaIdade(nascInput, idadeAlvo) {
+        if (!nascInput) return null;
+        const nasc = new Date(nascInput + 'T12:00:00');
+        const alvo = new Date(nasc);
+        alvo.setFullYear(nasc.getFullYear() + idadeAlvo);
+        const hoje = new Date();
+        if (alvo <= hoje) return 0;
+        return Math.ceil((alvo - hoje) / (1000*60*60*24*30.44));
+    }
+
+    // ===== CÁLCULO =====
+    function calcularTudo() {
+        const resultado = document.getElementById('areaResultado');
+        resultado.innerHTML = '';
+        resultado.classList.add('hidden');
+        document.getElementById('btnImprimir').style.display = 'none';
+
+        const tipo = document.getElementById('tipoBeneficio').value;
+        if (!tipo) { alert('Selecione a espécie do benefício'); return; }
+        if (!document.getElementById('paisAcordante').value) { alert('Selecione o país signatário'); return; }
+
+        // --- Salário de Benefício ---
+        const salarioInput = parseFloat((document.getElementById('salarioManual').value || '0').replace(',', '.'));
+        const anos = parseInt(document.getElementById('anosManual').value) || 0;
+        const mesesExtra = parseInt(document.getElementById('mesesManual').value) || 0;
+        const tempoBrasilMeses = anos * 12 + mesesExtra;
+
+        const SMmin = 1412; // salário mínimo vigente (atualizar conforme necessário)
+        let sbFinal, fonteSB;
+        if (cnisCarregado && cnisData.qtdSalarios > 0) {
+            sbFinal = Math.max(cnisData.somaSalarios / cnisData.qtdSalarios, SMmin);
+            fonteSB = `CNIS (${cnisData.qtdSalarios} salários de contribuição)`;
+        } else if (salarioInput > 0) {
+            sbFinal = Math.max(salarioInput, SMmin);
+            fonteSB = 'Inserção manual';
+        } else {
+            alert('Informe o Salário de Benefício ou carregue o CNIS'); return;
+        }
+
+        if (tempoBrasilMeses === 0) {
+            alert('Informe o tempo de contribuição no Brasil (anos/meses)'); return;
+        }
+
+        // --- Período exterior ---
+        let tempoPaisMeses = 0;
+        const periodoDigitado = document.getElementById('periodoMesesPais').value;
+        if (periodoDigitado) {
+            tempoPaisMeses = parseInt(periodoDigitado);
+        } else {
+            const dI = document.getElementById('dataInicPais').value;
+            const dF = document.getElementById('dataFimPais').value;
+            if (dI && dF) tempoPaisMeses = Math.round((new Date(dF) - new Date(dI)) / (1000*60*60*24*30.44));
+        }
+        if (tempoPaisMeses <= 0) { alert('Informe o período de filiação no país signatário'); return; }
+
+        const tempoTotal = tempoBrasilMeses + tempoPaisMeses;
+        const carencia = tipo === 'pensao_morte' ? 18 : 180;
+        const coef = tipo === 'pensao_morte' ? 1.0 : 0.70;
+        const rmiTeorica = sbFinal * coef;
+        const pais = nomePais();
+        const tipoBenLabel = tipo === 'pensao_morte' ? 'Pensão por Morte' : 'Aposentadoria por Idade';
+
+        resultado.classList.remove('hidden');
+        document.getElementById('btnImprimir').style.display = 'inline-block';
+
+        // ---- CASO 1: Brasil já tem carência ----
+        if (tempoBrasilMeses >= carencia) {
+            resultado.innerHTML = cabecalhoCliente() + `
+                <div class="resultado-aviso">
+                    <div class="resultado-titulo">⚠️ Carência cumprida sem totalização</div>
+                    <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:14px;">
+                        O segurado já cumpre a carência de <strong>${carencia} meses</strong> pelo RGPS brasileiro.
+                        A totalização com o ${pais} não é necessária e <strong>reduziria</strong> o RMI (efeito pro-rata indesejado).
+                        O requerimento deve ser feito diretamente ao INSS.
+                    </p>
+                    <table class="tabela-tecnica">
+                        <tr><th>Parâmetro</th><th>Valor</th></tr>
+                        <tr><td>Espécie</td><td>${tipoBenLabel}</td></tr>
+                        <tr><td>Carência exigida</td><td>${carencia} meses (${formatarTempo(carencia)})</td></tr>
+                        <tr><td>Tempo RGPS (Brasil)</td><td>${tempoBrasilMeses} meses (${formatarTempo(tempoBrasilMeses)})</td></tr>
+                        <tr><td>Tempo ${pais}</td><td>${tempoPaisMeses} meses (${formatarTempo(tempoPaisMeses)})</td></tr>
+                        <tr class="destaque"><td><strong>Situação da carência (solo)</strong></td><td><strong style="color:#166534;">✓ Carência satisfeita — totalização dispensável</strong></td></tr>
+                        <tr><td>SB apurado</td><td>R$ ${formatarMoeda(sbFinal)} <span style="font-size:11px;color:#64748b;">(${fonteSB})</span></td></tr>
+                        <tr><td>Coeficiente (${tipo === 'pensao_morte' ? '100%' : '70%'})</td><td>${(coef*100).toFixed(0)}%</td></tr>
+                        <tr class="destaque"><td><strong>RMI integral estimada</strong></td><td><strong>R$ ${formatarMoeda(rmiTeorica)}</strong></td></tr>
+                    </table>
+                    <div class="formula-box">
+                        RMI = SB × coef = R$ ${formatarMoeda(sbFinal)} × ${(coef*100).toFixed(0)}% = R$ ${formatarMoeda(rmiTeorica)}
+                        (sem redução pro-rata — totalização não aplicada)
+                    </div>
+                </div>`;
+            return;
+        }
+
+        // ---- CASO 2: Combinado insuficiente ----
+        if (tempoTotal < carencia) {
+            const faltam = carencia - tempoTotal;
+            resultado.innerHTML = cabecalhoCliente() + `
+                <div class="resultado-erro">
+                    <div class="resultado-titulo">❌ Carência insuficiente — totalização inviável</div>
+                    <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:14px;">
+                        Mesmo com a totalização, o somatório de períodos (Brasil + ${pais})
+                        não alcança a carência mínima de <strong>${carencia} meses</strong> para ${tipoBenLabel}.
+                        O benefício não pode ser concedido nesta configuração.
+                    </p>
+                    <table class="tabela-tecnica">
+                        <tr><th>Parâmetro</th><th>Valor</th></tr>
+                        <tr><td>Espécie</td><td>${tipoBenLabel}</td></tr>
+                        <tr><td>Carência exigida</td><td>${carencia} meses (${formatarTempo(carencia)})</td></tr>
+                        <tr><td>Tempo RGPS (Brasil)</td><td>${tempoBrasilMeses} meses (${formatarTempo(tempoBrasilMeses)})</td></tr>
+                        <tr><td>Tempo ${pais}</td><td>${tempoPaisMeses} meses (${formatarTempo(tempoPaisMeses)})</td></tr>
+                        <tr><td>Total combinado</td><td>${tempoTotal} meses (${formatarTempo(tempoTotal)})</td></tr>
+                        <tr class="destaque"><td><strong style="color:#991b1b;">Déficit de carência</strong></td><td><strong style="color:#991b1b;">⏳ ${faltam} meses (${formatarTempo(faltam)})</strong></td></tr>
+                    </table>
+                    <div class="formula-box">
+                        Tempo total = ${tempoBrasilMeses} (BR) + ${tempoPaisMeses} (${pais}) = ${tempoTotal} meses
+                        Déficit = ${carencia} (carência) − ${tempoTotal} (total) = ${faltam} meses
+                    </div>
+                </div>`;
+            return;
+        }
+
+        // ---- CASO 2B: Totalização viável, mas sem idade mínima ----
+        const nascInput = document.getElementById('dataNascimento').value;
+        const sexo = document.getElementById('sexo').value;
+        if (tipo === 'aposentadoria_idade' && nascInput && sexo) {
+            const idadeMin = sexo === 'F' ? 62 : 65;
+            const idadeAtual = calcIdade(nascInput);
+            if (idadeAtual < idadeMin) {
+                const mesesRestantes = mesesParaIdade(nascInput, idadeMin);
+                const anosR = Math.floor(mesesRestantes / 12);
+                const mesesR = mesesRestantes % 12;
+                const faltaTexto = anosR > 0 && mesesR > 0 ? `${anosR} ano${anosR>1?'s':''} e ${mesesR} mês${mesesR>1?'es':''}` :
+                                   anosR > 0 ? `${anosR} ano${anosR>1?'s':''}` : `${mesesR} mês${mesesR>1?'es':''}`;
+                const indiceProrrata = tempoBrasilMeses / tempoTotal;
+                const rmiProrrata = rmiTeorica * indiceProrrata;
+                resultado.innerHTML = cabecalhoCliente() + `
+                    <div class="resultado-planejamento">
+                        <div class="resultado-titulo">📋 Totalização viável — planejamento recomendado</div>
+                        <p style="font-size:13px;color:#4c1d95;line-height:1.6;margin-bottom:4px;">
+                            O segurado <strong>já possui tempo suficiente</strong> para a totalização com o ${pais}
+                            (${tempoTotal} meses combinados vs. carência de ${carencia} meses).
+                            Porém, a <strong>idade mínima de ${idadeMin} anos ainda não foi atingida</strong> —
+                            atualmente com <strong>${idadeAtual} anos</strong>, faltam aproximadamente <strong>${faltaTexto}</strong>.
+                        </p>
+
+                        <div class="planej-contador">
+                            <div>
+                                <div class="pc-label">Idade atual</div>
+                                <div class="pc-valor">${idadeAtual} anos</div>
+                                <div class="pc-sub">data de nascimento registrada</div>
+                            </div>
+                            <div>
+                                <div class="pc-label">Idade mínima</div>
+                                <div class="pc-valor">${idadeMin} anos</div>
+                                <div class="pc-sub">${sexo === 'F' ? 'mulheres' : 'homens'} (EC 103/2019)</div>
+                            </div>
+                            <div>
+                                <div class="pc-label">Faltam</div>
+                                <div class="pc-valor">${faltaTexto}</div>
+                                <div class="pc-sub">para atingir a idade</div>
+                            </div>
+                        </div>
+
+                        <table class="tabela-tecnica">
+                            <tr><th>Parâmetro técnico</th><th>Valor</th></tr>
+                            <tr><td>Espécie</td><td>${tipoBenLabel}</td></tr>
+                            <tr><td>País signatário</td><td>${pais}</td></tr>
+                            <tr><td>Carência exigida</td><td>${carencia} meses — <span style="color:#166534;font-weight:600;">✓ cumprida</span></td></tr>
+                            <tr><td>Tempo RGPS — Brasil</td><td>${tempoBrasilMeses} meses (${formatarTempo(tempoBrasilMeses)})</td></tr>
+                            <tr><td>Tempo filiação — ${pais}</td><td>${tempoPaisMeses} meses (${formatarTempo(tempoPaisMeses)})</td></tr>
+                            <tr><td>Total combinado</td><td>${tempoTotal} meses (${formatarTempo(tempoTotal)})</td></tr>
+                            <tr><td>RMI Teórica (se requerida hoje)</td><td>R$ ${formatarMoeda(rmiTeorica)}</td></tr>
+                            <tr><td>Índice Pro-rata (BR ÷ Total)</td><td>${(indiceProrrata*100).toFixed(4)}%</td></tr>
+                            <tr class="destaque"><td><strong>RMI Pro-rata projetada</strong></td><td><strong>R$ ${formatarMoeda(rmiProrrata)}</strong></td></tr>
+                        </table>
+
+                        <div style="background:#ede9fe;border-radius:8px;padding:14px 16px;margin-top:12px;font-size:13px;color:#4c1d95;line-height:1.6;">
+                            <strong>💡 Oportunidade de planejamento:</strong> neste período até a idade mínima,
+                            cada mês adicional de contribuição no Brasil <strong>aumenta o índice pro-rata</strong> e, consequentemente,
+                            o RMI final. Contribuições no exterior também elevam a base de cálculo do país signatário.
+                            Um planejamento previdenciário pode definir a estratégia ideal para maximizar o benefício.
+                        </div>
+                    </div>`;
+                return;
+            }
+        }
+
+        // ---- CASO 3: Totalização válida — calcula pro-rata ----
+        const indiceProrrata = tempoBrasilMeses / tempoTotal;
+        const rmiProrrata = rmiTeorica * indiceProrrata;
+
+        resultado.innerHTML = cabecalhoCliente() + `
+            <div class="resultado-sucesso">
+                <div class="resultado-titulo">✅ Totalização válida — RMI Pro-rata apurada</div>
+
+                <div class="resultado-quadro">
+                    <div class="rq-item">
+                        <div class="rq-label">RMI Pro-rata (Brasil)</div>
+                        <div class="rq-valor">R$ ${formatarMoeda(rmiProrrata)}</div>
+                        <div class="rq-sub">parte proporcional paga pelo INSS</div>
+                    </div>
+                    <div class="rq-item">
+                        <div class="rq-label">RMI Teórica</div>
+                        <div class="rq-valor-sm">R$ ${formatarMoeda(rmiTeorica)}</div>
+                        <div class="rq-sub">base de cálculo antes do pro-rata</div>
+                    </div>
+                    <div class="rq-divider"></div>
+                    <div class="rq-item">
+                        <div class="rq-label">Índice Pro-rata</div>
+                        <div class="rq-valor-sm">${(indiceProrrata * 100).toFixed(4)}%</div>
+                        <div class="rq-sub">${tempoBrasilMeses} ÷ ${tempoTotal} meses</div>
+                    </div>
+                    <div class="rq-item">
+                        <div class="rq-label">SB apurado</div>
+                        <div class="rq-valor-sm">R$ ${formatarMoeda(sbFinal)}</div>
+                        <div class="rq-sub">${fonteSB}</div>
+                    </div>
+                </div>
+
+                <table class="tabela-tecnica">
+                    <tr><th>Parâmetro técnico</th><th>Valor</th></tr>
+                    <tr><td>Espécie do benefício</td><td>${tipoBenLabel}</td></tr>
+                    <tr><td>País signatário</td><td>${pais}</td></tr>
+                    <tr><td>Carência exigida</td><td>${carencia} meses (${formatarTempo(carencia)})</td></tr>
+                    <tr><td>Tempo RGPS — Brasil</td><td>${tempoBrasilMeses} meses (${formatarTempo(tempoBrasilMeses)})</td></tr>
+                    <tr><td>Tempo filiação — ${pais}</td><td>${tempoPaisMeses} meses (${formatarTempo(tempoPaisMeses)})</td></tr>
+                    <tr><td>Tempo total (totalizado)</td><td>${tempoTotal} meses (${formatarTempo(tempoTotal)})</td></tr>
+                    <tr><td>Salário de Benefício (SB)</td><td>R$ ${formatarMoeda(sbFinal)}</td></tr>
+                    <tr><td>Coeficiente</td><td>${(coef*100).toFixed(0)}% (${tipoBenLabel})</td></tr>
+                    <tr><td>RMI Teórica (SB × coef)</td><td>R$ ${formatarMoeda(rmiTeorica)}</td></tr>
+                    <tr><td>Índice Pro-rata (BR ÷ Total)</td><td>${(indiceProrrata * 100).toFixed(4)}%</td></tr>
+                    <tr class="destaque"><td><strong>RMI Pro-rata — Brasil</strong></td><td><strong>R$ ${formatarMoeda(rmiProrrata)}</strong></td></tr>
+                </table>
+
+                <div class="formula-box">
+                    SB = R$ ${formatarMoeda(sbFinal)} (${fonteSB})
+                    RMI teórica = SB × ${(coef*100).toFixed(0)}% = R$ ${formatarMoeda(rmiTeorica)}
+                    Índice pro-rata = ${tempoBrasilMeses} meses (BR) ÷ ${tempoTotal} meses (total) = ${(indiceProrrata*100).toFixed(4)}%
+                    RMI pro-rata = R$ ${formatarMoeda(rmiTeorica)} × ${(indiceProrrata*100).toFixed(4)}% = <strong>R$ ${formatarMoeda(rmiProrrata)}</strong>
+                    Fundamento legal: art. 4º do Decreto nº 3.048/99 c/c acordos bilaterais vigentes
+                </div>
+
+                <p style="font-size:11px;color:#94a3b8;margin-top:10px;">
+                    * Cálculo estimado com base nos dados fornecidos. O valor definitivo será apurado pelo INSS
+                    na análise do NB, podendo variar conforme correção monetária, período básico de cálculo e
+                    regras específicas do acordo bilateral com o ${pais}.
+                </p>
+            </div>`;
+    }
+
+    // ===== IMPRIMIR =====
+    function imprimirLaudo() {
+        document.getElementById('dataImpressao').textContent = dataHoje();
+        window.print();
+    }
+
+    // ===== LIMPAR =====
+    function limpar() {
+        document.getElementById('clienteNome').value = '';
+        document.getElementById('clienteCpf').value = '';
+        document.getElementById('dataAnalise').value = '';
+        document.getElementById('dataNascimento').value = '';
+        document.getElementById('sexo').value = '';
+        document.getElementById('advogadoNome').value = '';
+        document.getElementById('tipoBeneficio').value = '';
+        document.getElementById('paisAcordante').value = '';
+        document.getElementById('salarioManual').value = '';
+        document.getElementById('anosManual').value = '';
+        document.getElementById('mesesManual').value = '';
+        document.getElementById('dataInicPais').value = '';
+        document.getElementById('dataFimPais').value = '';
+        document.getElementById('periodoMesesPais').value = '';
+        document.getElementById('statusUpload').innerHTML = '';
+        uploadArea.classList.remove('sucesso');
+        uploadArea.style.background = '#f8faff';
+        cnisCarregado = false;
+        cnisData = { vinculos: [], salarios: [], totalMeses: 0, somaSalarios: 0, qtdSalarios: 0, dataInicio: null, dataFim: null };
+        const res = document.getElementById('areaResultado');
+        res.innerHTML = '';
+        res.classList.add('hidden');
+        document.getElementById('btnImprimir').style.display = 'none';
+        document.getElementById('fileInput').value = '';
+    }
+
+    // Pré-preenche data de análise com hoje
+    document.getElementById('dataAnalise').valueAsDate = new Date();
+</script>
+</body>
+</html>
