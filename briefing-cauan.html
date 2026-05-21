@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing Técnico — Calculadoras · acordosinternacionais.com</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            padding: 32px 20px 60px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 860px; margin: 0 auto; }
+
+        /* HEADER */
+        .brief-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 32px 36px;
+            margin-bottom: 32px;
+        }
+        .brief-header .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+        .brief-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+        .brief-header .subtitle { font-size: 14px; color: #94a3b8; }
+        .brief-header .meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+        .brief-header .meta strong { color: white; }
+
+        /* SEÇÕES */
+        .secao {
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            padding: 28px 32px;
+            margin-bottom: 20px;
+        }
+
+        .secao-titulo {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .secao-subtitulo {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        .secao-divider { height: 2px; background: linear-gradient(90deg, #e2e8f0, transparent); margin: 20px 0; }
+
+        /* CARDS DE ARQUIVO */
+        .arquivo-card {
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin-bottom: 14px;
+        }
+        .arquivo-card.segurado { border-left: 4px solid #7c3aed; }
+        .arquivo-card.advogado { border-left: 4px solid #2563eb; }
+
+        .arquivo-nome {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .arquivo-desc { font-size: 14px; color: #374151; margin-bottom: 12px; }
+
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li {
+            font-size: 13px;
+            color: #475569;
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+            font-weight: 700;
+        }
+        .feature-list li.vermelho::before { content: '✗'; color: #dc2626; }
+        .feature-list li.neutro::before { content: '→'; color: #2563eb; }
+
+        /* BADGES */
+        .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-left: 6px;
+        }
+        .badge-gratuito { background: #dcfce7; color: #166534; }
+        .badge-pago { background: #dbeafe; color: #1e40af; }
+        .badge-critico { background: #fee2e2; color: #991b1b; }
+
+        /* FLUXO */
+        .fluxo {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .fluxo-step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .fluxo-step:last-child { padding-bottom: 0; }
+        .fluxo-num {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 13px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .fluxo-num.seg { background: #ede9fe; color: #7c3aed; }
+        .fluxo-num.adv { background: #dbeafe; color: #1d4ed8; }
+        .fluxo-step:not(:last-child) .fluxo-num::after {
+            content: '';
+            position: absolute;
+            top: 32px; left: 50%;
+            width: 2px; height: calc(100% + 20px - 32px);
+            background: #e2e8f0;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        .fluxo-body { padding-top: 4px; }
+        .fluxo-titulo { font-weight: 700; font-size: 14px; color: #1e293b; }
+        .fluxo-desc { font-size: 13px; color: #64748b; margin-top: 2px; }
+
+        /* CODE BLOCK */
+        .code-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            overflow-x: auto;
+            margin: 12px 0;
+        }
+        .code-block .c { color: #64748b; } /* comentário */
+        .code-block .k { color: #93c5fd; } /* keyword */
+        .code-block .s { color: #86efac; } /* string */
+        .code-block .v { color: #fcd34d; } /* variável/valor */
+
+        /* CHECKLIST */
+        .checklist { list-style: none; }
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 14px;
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .check-box {
+            width: 18px; height: 18px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .check-label { color: #374151; }
+        .check-label .detalhe { font-size: 12px; color: #94a3b8; display: block; margin-top: 2px; }
+
+        /* ALERT */
+        .alerta {
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 13px;
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+        .alerta-amarelo { background: #fffbeb; border-left: 4px solid #f59e0b; color: #78350f; }
+        .alerta-azul { background: #eff6ff; border-left: 4px solid #2563eb; color: #1e3a5f; }
+        .alerta-verde { background: #f0fdf4; border-left: 4px solid #16a34a; color: #14532d; }
+
+        /* TABELA */
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th {
+            text-align: left; padding: 8px 12px;
+            background: #f8fafc;
+            color: #64748b;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #374151;
+        }
+        tr:last-child td { border-bottom: none; }
+        td code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background: #f1f5f9;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #7c3aed;
+        }
+
+        h3 { font-size: 15px; color: #1e293b; margin: 16px 0 8px; }
+        p { font-size: 14px; color: #374151; margin-bottom: 12px; }
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        ul li { font-size: 13px; color: #475569; padding: 3px 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="brief-header">
+        <div class="tag">Documento técnico interno · v2</div>
+        <h1>Briefing de Integração — Calculadoras Previdenciárias</h1>
+        <div class="subtitle">Dois arquivos prontos para embedar em acordosinternacionais.com — detalhamento completo para o desenvolvedor</div>
+        <div class="meta">
+            <div><strong>Projeto</strong> acordosinternacionais.com</div>
+            <div><strong>Módulo</strong> Calculadoras de RMI Pro-rata</div>
+            <div><strong>Arquivos entregues</strong> 2 (+ este briefing)</div>
+            <div><strong>Dependência backend</strong> Nenhuma</div>
+        </div>
+    </div>
+
+
+    <!-- 1. VISÃO GERAL -->
+    <div class="secao">
+        <div class="secao-titulo">📋 1. Visão Geral do Projeto</div>
+        <div class="secao-subtitulo">O que é, para quem é, qual o objetivo</div>
+
+        <p>
+            O escritório trabalha com <strong>acordos internacionais de previdência social</strong> — tratados entre o Brasil
+            e outros países que permitem somar tempo de contribuição no exterior com o tempo no Brasil para fins de aposentadoria.
+            O cálculo principal se chama <strong>RMI Pro-rata</strong> (Renda Mensal Inicial Proporcional).
+        </p>
+
+        <p>
+            Foram criadas duas calculadoras para o site <strong>www.acordosinternacionais.com</strong>, com perfis de acesso
+            diferentes:
+        </p>
+
+        <div class="arquivo-card segurado">
+            <div class="arquivo-nome">calculadora-segurado.html</div>
+            <div class="arquivo-desc">
+                Versão pública e gratuita, para o segurado (cidadão comum que quer saber se tem direito ao benefício).
+                Linguagem simples, tutorial embutido, CTA para o escritório.
+            </div>
+            <ul class="feature-list">
+                <li>Acesso: público — sem login</li>
+                <li>Tutorial de como baixar o CNIS do gov.br</li>
+                <li>Dois modos: upload de PDF ou preenchimento manual</li>
+                <li>CNIS extrai automaticamente: nome, CPF, data de nascimento, salário e tempo</li>
+                <li>Campos de data de nascimento e sexo (necessários para verificar idade mínima)</li>
+                <li>Resultado em linguagem acessível — 4 casos possíveis (ver seção 7)</li>
+                <li>Botão de contato via WhatsApp ao final (CTA — texto varia por caso)</li>
+                <li class="vermelho">Sem campos de cliente / sem impressão</li>
+            </ul>
+        </div>
+
+        <div class="arquivo-card advogado">
+            <div class="arquivo-nome">calculadora-advogado.html</div>
+            <div class="arquivo-desc">
+                Versão profissional, para advogados e despachantes previdenciários que assinam o plano.
+                Terminologia técnica, campos de cliente, laudo imprimível.
+            </div>
+            <ul class="feature-list">
+                <li>Acesso: restrito — somente usuários com assinatura ativa</li>
+                <li>Campos: nome, CPF, data de nascimento, sexo, data da análise, responsável</li>
+                <li>CNIS extrai automaticamente: nome, CPF, data de nascimento, salário e tempo</li>
+                <li>Resultado técnico completo: SB, coeficiente, índice pro-rata, fórmula — 4 casos (ver seção 7)</li>
+                <li>Caso de planejamento (sem idade): RMI projetada + análise de oportunidade</li>
+                <li>Botão "Imprimir / PDF" (window.print() com CSS de impressão embutido)</li>
+                <li>Botão "Limpar" para novo cálculo sem recarregar</li>
+                <li class="vermelho">Sem CTA / sem tutorial</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- 2. ARQUITETURA -->
+    <div class="secao">
+        <div class="secao-titulo">🏗️ 2. Arquitetura Técnica</div>
+        <div class="secao-subtitulo">O que você precisa saber antes de integrar</div>
+
+        <div class="alerta-verde">
+            <strong>✓ Sem backend nos arquivos HTML.</strong> Toda a lógica (leitura de PDF, cálculo, exibição) roda 100%
+            no navegador do usuário. Você não precisa criar nenhuma API para as calculadoras em si.
+        </div>
+
+        <h3>Única dependência externa (CDN)</h3>
+        <p>Os dois arquivos carregam uma biblioteca JavaScript de leitura de PDF:</p>
+        <div class="code-block">
+<span class="c">// Incluído no &lt;head&gt; de cada arquivo:</span>
+&lt;script src="<span class="s">https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js</span>"&gt;&lt;/script&gt;
+
+<span class="c">// Configurado no &lt;script&gt; interno:</span>
+pdfjsLib.GlobalWorkerOptions.workerSrc = <span class="s">'https://cdnjs.cloudflare.com/.../pdf.worker.min.js'</span>;
+        </div>
+        <p style="font-size:13px;color:#64748b;">
+            Se quiser hospedar localmente para não depender do CDN, baixe os dois arquivos
+            (<code>pdf.min.js</code> e <code>pdf.worker.min.js</code>) e atualize os caminhos.
+        </p>
+
+        <div class="secao-divider"></div>
+
+        <h3>Como integrar ao site (3 formas possíveis)</h3>
+
+        <table>
+            <tr>
+                <th>Abordagem</th>
+                <th>Como funciona</th>
+                <th>Recomendação</th>
+            </tr>
+            <tr>
+                <td><strong>Rota dedicada</strong></td>
+                <td>Cada arquivo HTML vira uma página própria no site<br>
+                    <code>/calculadora</code> → segurado<br>
+                    <code>/pro/calculadora</code> → advogado</td>
+                <td>✓ Mais simples e limpo</td>
+            </tr>
+            <tr>
+                <td><strong>iFrame</strong></td>
+                <td>Embed dos HTMLs dentro de uma página do site existente via <code>&lt;iframe src="..."&gt;</code></td>
+                <td>Funciona, mas menos ideal para impressão</td>
+            </tr>
+            <tr>
+                <td><strong>Copiar código</strong></td>
+                <td>Copiar o conteúdo de cada arquivo para dentro do template do site</td>
+                <td>Possível, cuidado com conflito de CSS</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- 3. CONTROLE DE ACESSO -->
+    <div class="secao">
+        <div class="secao-titulo">🔐 3. Controle de Acesso — O Que Precisa Ser Feito</div>
+        <div class="secao-subtitulo">Esta é a parte que exige desenvolvimento backend</div>
+
+        <div class="alerta-amarelo">
+            <strong>⚠️ Os HTMLs entregues não têm autenticação embutida.</strong>
+            O controle de quem pode acessar cada página deve ser implementado por você
+            no sistema de login/assinaturas do site.
+        </div>
+
+        <table>
+            <tr>
+                <th>Página</th>
+                <th>Perfil</th>
+                <th>Regra de acesso</th>
+            </tr>
+            <tr>
+                <td><code>/calculadora</code></td>
+                <td>Segurado <span class="badge badge-gratuito">Gratuito</span></td>
+                <td>Público — qualquer visitante acessa sem login</td>
+            </tr>
+            <tr>
+                <td><code>/pro/calculadora</code></td>
+                <td>Advogado <span class="badge badge-pago">Assinante</span></td>
+                <td>Login obrigatório + verificação de assinatura ativa.
+                Se não autenticado → redirecionar para login ou página de planos.</td>
+            </tr>
+        </table>
+
+        <h3>Sugestão de middleware (pseudocódigo)</h3>
+        <div class="code-block">
+<span class="c">// Qualquer linguagem/framework — lógica genérica</span>
+
+<span class="k">if</span> (route === <span class="s">'/pro/calculadora'</span>) {
+  <span class="k">if</span> (!usuarioLogado()) {
+    redirect(<span class="s">'/login?next=/pro/calculadora'</span>);
+  }
+  <span class="k">if</span> (!assinaturaAtiva(usuario)) {
+    redirect(<span class="s">'/planos'</span>);  <span class="c">// ou mostrar modal de upgrade</span>
+  }
+  <span class="c">// Ok — renderiza calculadora-advogado.html</span>
+}
+
+<span class="c">// /calculadora é pública — sem verificação</span>
+        </div>
+    </div>
+
+
+    <!-- 4. FLUXOS DE USUÁRIO -->
+    <div class="secao">
+        <div class="secao-titulo">🔄 4. Fluxos de Usuário</div>
+        <div class="secao-subtitulo">Como cada perfil interage com o sistema</div>
+
+        <h3 style="color:#7c3aed;">Segurado (público)</h3>
+        <div class="fluxo">
+            <div class="fluxo-step">
+                <div class="fluxo-num seg">1</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">Acessa o site</div>
+                    <div class="fluxo-desc">Chega via busca orgânica, redes sociais ou indicação. Nenhum login necessário.</div>
+                </div>
+            </div>
+            <div class="fluxo-step">
+                <div class="fluxo-num seg">2</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">Abre a calculadora pública</div>
+                    <div class="fluxo-desc">URL: <code>/calculadora</code>. Pode expandir o tutorial para aprender como baixar o CNIS.</div>
+                </div>
+            </div>
+            <div class="fluxo-step">
+                <div class="fluxo-num seg">3</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">Faz upload do CNIS ou preenche manualmente</div>
+                    <div class="fluxo-desc">CNIS preenche automaticamente salário, tempo, data de nascimento e exibe nome/CPF como confirmação. Seleciona tipo de benefício, sexo, país e período no exterior.</div>
+                </div>
+            </div>
+            <div class="fluxo-step">
+                <div class="fluxo-num seg">4</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">Recebe resultado</div>
+                    <div class="fluxo-desc">Um dos 4 casos: (1) já tem direito no Brasil sem totalização; (2) combinado insuficiente; (2B) tem tempo mas não tem a idade — <strong>caso de planejamento</strong>; (3) totalização válida com RMI estimado.</div>
+                </div>
+            </div>
+            <div class="fluxo-step">
+                <div class="fluxo-num seg">5</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">CTA: "Falar com um especialista"</div>
+                    <div class="fluxo-desc">Botão abre WhatsApp do escritório. <strong>Nunca direciona para outros advogados.</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="secao-divider"></div>
+
+        <h3 style="color:#1d4ed8;">Advogado / Assinante</h3>
+        <div class="fluxo">
+            <div class="fluxo-step">
+                <div class="fluxo-num adv">1</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">Faz login</div>
+                    <div class="fluxo-desc">Acessa com conta de assinante. Sistema verifica assinatura ativa antes de liberar a rota.</div>
+                </div>
+            </div>
+            <div class="fluxo-step">
+                <div class="fluxo-num adv">2</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">Preenche dados do cliente</div>
+                    <div class="fluxo-desc">Nome, CPF, data de nascimento, sexo, data da análise, responsável. Todos opcionais, mas aparecem no laudo impresso. A maioria é preenchida automaticamente pelo CNIS.</div>
+                </div>
+            </div>
+            <div class="fluxo-step">
+                <div class="fluxo-num adv">3</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">Carrega o CNIS</div>
+                    <div class="fluxo-desc">PDF lido no navegador. Sistema preenche automaticamente nome, CPF, data de nascimento, salário e tempo. Pode ajustar manualmente.</div>
+                </div>
+            </div>
+            <div class="fluxo-step">
+                <div class="fluxo-num adv">4</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">Calcula RMI Pro-rata</div>
+                    <div class="fluxo-desc">Resultado técnico completo com fórmula, SB, índice pro-rata, fundamento legal.</div>
+                </div>
+            </div>
+            <div class="fluxo-step">
+                <div class="fluxo-num adv">5</div>
+                <div class="fluxo-body">
+                    <div class="fluxo-titulo">Imprime ou gera PDF</div>
+                    <div class="fluxo-desc">Botão "Imprimir / PDF" aciona window.print(). CSS de impressão oculta formulários e exibe só o laudo.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 5. CHECKLIST DE PERSONALIZAÇÃO -->
+    <div class="secao">
+        <div class="secao-titulo">✏️ 5. Checklist de Personalização</div>
+        <div class="secao-subtitulo">O que precisa ser ajustado antes de publicar</div>
+
+        <ul class="checklist">
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Substituir número do WhatsApp no CTA da calculadora segurado
+                    <span class="detalhe">Arquivo: <code>calculadora-segurado.html</code> · Buscar: <code>wa.me/SEUNUMERO</code> · Substituir pelo número real com DDI (ex: <code>wa.me/5548999990000</code>)</span>
+                </div>
+            </li>
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Ajustar o texto do botão/CTA do WhatsApp se necessário
+                    <span class="detalhe">Arquivo: <code>calculadora-segurado.html</code> · Função <code>ctaBox()</code> no JavaScript</span>
+                </div>
+            </li>
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Verificar o salário mínimo vigente na calculadora advogado
+                    <span class="detalhe">Arquivo: <code>calculadora-advogado.html</code> · Buscar: <code>const SMmin = 1412</code> · Atualizar conforme o SM do ano corrente</span>
+                </div>
+            </li>
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Rodapé de impressão (calculadora advogado)
+                    <span class="detalhe">Arquivo: <code>calculadora-advogado.html</code> · Buscar: <code>www.acordosinternacionais.com</code> · Ajustar se necessário</span>
+                </div>
+            </li>
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Configurar rota pública: <code>/calculadora</code> → segurado
+                    <span class="detalhe">Sem login. Hospeda o arquivo <code>calculadora-segurado.html</code></span>
+                </div>
+            </li>
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Configurar rota protegida: <code>/pro/calculadora</code> → advogado
+                    <span class="detalhe">Login + assinatura ativa obrigatórios. Hospeda o arquivo <code>calculadora-advogado.html</code></span>
+                </div>
+            </li>
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Testar upload de CNIS real em ambas as calculadoras
+                    <span class="detalhe">Verificar se o parser lê: salários, vínculos, nome, CPF e data de nascimento do PDF emitido pelo meu.inss.gov.br</span>
+                </div>
+            </li>
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Testar o caso de planejamento (sem idade) em ambas as calculadoras
+                    <span class="detalhe">Inserir data de nascimento que resulte em idade abaixo de 62 (F) ou 65 (M) e verificar se o resultado correto é exibido</span>
+                </div>
+            </li>
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Testar impressão (calculadora advogado)
+                    <span class="detalhe">Clicar em "Imprimir / PDF" e verificar se o layout de impressão está correto — formulários devem sumir, apenas o laudo aparece</span>
+                </div>
+            </li>
+            <li>
+                <div class="check-box"></div>
+                <div class="check-label">
+                    Verificar idades mínimas vigentes anualmente
+                    <span class="detalhe">EC 103/2019 estabelece 62 anos (F) e 65 anos (M). Verificar se há regras de transição aplicáveis e ajustar <code>const idadeMin</code> em <code>calcularTudo()</code> se necessário</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- 6. REFERÊNCIA RÁPIDA -->
+    <div class="secao">
+        <div class="secao-titulo">📌 6. Referência Rápida — IDs e Pontos de Ajuste</div>
+        <div class="secao-subtitulo">Mapa dos elementos principais de cada arquivo</div>
+
+        <h3>calculadora-segurado.html</h3>
+        <table>
+            <tr><th>Elemento / ID</th><th>Descrição</th></tr>
+            <tr><td><code>wa.me/SEUNUMERO</code></td><td>Número do WhatsApp — <strong>substituir antes de publicar</strong></td></tr>
+            <tr><td><code>#tutorialContent</code></td><td>Painel colapsável do tutorial (3 passos)</td></tr>
+            <tr><td><code>#btnModoCnis / #btnModoManual</code></td><td>Botões de alternância CNIS / manual</td></tr>
+            <tr><td><code>#uploadArea</code></td><td>Área de drag-and-drop do PDF</td></tr>
+            <tr><td><code>#areaManual</code></td><td>Seção de preenchimento manual (oculta por padrão)</td></tr>
+            <tr><td><code>#dataNascimento</code></td><td>Data de nascimento — preenchida pelo CNIS ou manualmente · usada na verificação de idade</td></tr>
+            <tr><td><code>#sexo</code></td><td>Sexo (F/M) — determina a idade mínima aplicável (62 ou 65 anos)</td></tr>
+            <tr><td><code>#tipoBeneficio</code></td><td>Select do tipo de benefício (aposentadoria / pensão)</td></tr>
+            <tr><td><code>#paisAcordante</code></td><td>Select do país signatário</td></tr>
+            <tr><td><code>#areaResultado</code></td><td>Container onde o resultado é injetado dinamicamente</td></tr>
+            <tr><td><code>function ctaBox(btnTexto, subTexto)</code></td><td>Gera o card de contato — aceita texto customizado do botão e subtítulo. Parâmetros opcionais: usa defaults se omitidos</td></tr>
+            <tr><td><code>function calcIdade(nascInput)</code></td><td>Calcula idade atual a partir de uma data ISO (YYYY-MM-DD)</td></tr>
+            <tr><td><code>function mesesParaIdade(nascInput, idadeAlvo)</code></td><td>Retorna quantos meses faltam para atingir a idade alvo</td></tr>
+            <tr><td><code>function calcularTudo()</code></td><td>Função principal — 4 casos: (1) carência solo; (2) combinado insuficiente; (2B) viável sem idade; (3) RMI pro-rata</td></tr>
+        </table>
+
+        <div class="secao-divider"></div>
+
+        <h3>calculadora-advogado.html</h3>
+        <table>
+            <tr><th>Elemento / ID</th><th>Descrição</th></tr>
+            <tr><td><code>#clienteNome / #clienteCpf</code></td><td>Dados do cliente — preenchidos pelo CNIS ou manualmente (aparecem no laudo impresso)</td></tr>
+            <tr><td><code>#dataNascimento</code></td><td>Data de nascimento — preenchida pelo CNIS ou manualmente · usada na verificação de idade</td></tr>
+            <tr><td><code>#sexo</code></td><td>Sexo (F/M) — determina a idade mínima aplicável (62 ou 65 anos)</td></tr>
+            <tr><td><code>#dataAnalise</code></td><td>Data da análise (pré-preenchida com hoje)</td></tr>
+            <tr><td><code>#advogadoNome</code></td><td>Nome do advogado/responsável</td></tr>
+            <tr><td><code>#salarioManual</code></td><td>Salário de Benefício (SB) — preenchido pelo CNIS ou manualmente</td></tr>
+            <tr><td><code>#anosManual / #mesesManual</code></td><td>Tempo de contribuição no Brasil — preenchido pelo CNIS ou manualmente</td></tr>
+            <tr><td><code>#periodoMesesPais</code></td><td>Meses no exterior (prevalece sobre as datas se preenchido)</td></tr>
+            <tr><td><code>#btnImprimir</code></td><td>Botão de impressão (aparece só após calcular)</td></tr>
+            <tr><td><code>const SMmin = 1412</code></td><td>Salário mínimo — <strong>atualizar anualmente</strong></td></tr>
+            <tr><td><code>@media print</code></td><td>CSS de impressão — oculta formulários, mantém resultado e cabeçalho</td></tr>
+            <tr><td><code>function cabecalhoCliente()</code></td><td>Gera o cabeçalho com dados do cliente no resultado (inclui nascimento e sexo)</td></tr>
+            <tr><td><code>function calcIdade(nascInput)</code></td><td>Calcula idade atual a partir de uma data ISO (YYYY-MM-DD)</td></tr>
+            <tr><td><code>function mesesParaIdade(nascInput, idadeAlvo)</code></td><td>Retorna quantos meses faltam para atingir a idade alvo</td></tr>
+            <tr><td><code>function limpar()</code></td><td>Reseta todos os campos, incluindo dataNascimento e sexo</td></tr>
+        </table>
+    </div>
+
+
+    <!-- 7. NOTAS TÉCNICAS -->
+    <div class="secao">
+        <div class="secao-titulo">⚙️ 7. Notas Técnicas Adicionais</div>
+
+        <h3>Sobre o parser de CNIS</h3>
+        <p>
+            O parser lê o texto extraído do PDF (via PDF.js) usando expressões regulares.
+            A função <code>parseadorCNIS()</code> extrai quatro tipos de dado:
+        </p>
+        <ul>
+            <li><strong>Nome:</strong> regex busca "Nome:" seguido de letras maiúsculas, para antes de "Data", "CPF", "NIT" ou dois espaços — evita capturar campos adjacentes</li>
+            <li><strong>CPF:</strong> regex busca "CPF:" seguido do padrão <code>000.000.000-00</code>, com formatação automática</li>
+            <li><strong>Data de nascimento:</strong> regex busca "Nascimento:" seguido de <code>DD/MM/AAAA</code></li>
+            <li><strong>Vínculos e salários:</strong> pares de datas <code>DD/MM/AAAA</code> e valores monetários <code>1.234,56</code> — vínculos com duração negativa ou zero são descartados (proteção contra datas invertidas no PDF)</li>
+        </ul>
+        <div class="alerta-amarelo">
+            <strong>Atenção sobre datas invertidas:</strong> o PDF do INSS imprime a data de emissão no topo do documento. O parser antigo capturava esse par invertido (emissão → data antiga) gerando meses negativos que corrompiam o total. A versão atual filtra <code>if (meses &gt; 0)</code>, descartando esses pares. Se o INSS mudar o layout, testar com CNIS real e verificar se o total de meses faz sentido.
+        </div>
+        <div class="alerta-azul">
+            O parser foi desenvolvido para o layout atual do PDF emitido em <strong>meu.inss.gov.br</strong>.
+            Se o INSS mudar o layout do extrato, pode ser necessário ajustar as regex em <code>parseadorCNIS()</code>.
+            Sempre testar com um PDF real antes de lançar.
+        </div>
+
+        <h3>Sobre o cálculo pro-rata — 4 casos</h3>
+        <p>A lógica avalia os casos nesta ordem (a primeira condição verdadeira encerra o cálculo):</p>
+        <ul>
+            <li><strong>Caso 1:</strong> Tempo Brasil ≥ carência → totalização desnecessária e prejudicial. Mostra RMI integral estimada sem pro-rata.</li>
+            <li><strong>Caso 2:</strong> Brasil + exterior &lt; carência → benefício inviável. Mostra déficit em meses.</li>
+            <li><strong>Caso 2B (planejamento):</strong> Carência cumprida por totalização, mas idade atual &lt; mínima (62F / 65M) → mostra quanto falta para a idade, RMI projetada e orientação sobre como maximizar o benefício até lá. <em>Só se avalia se data de nascimento e sexo estiverem preenchidos.</em></li>
+            <li><strong>Caso 3:</strong> Totalização válida e idade cumprida → calcula e exibe RMI pro-rata = (tempoBrasil ÷ tempoTotal) × RMI_teórica.</li>
+        </ul>
+        <div class="alerta-amarelo">
+            <strong>Carências usadas:</strong> Aposentadoria por Idade = 180 meses (15 anos) | Pensão por Morte = 18 meses.
+            Estes são os valores correntes pela legislação (Lei 8.213/91). Verificar periodicamente se houve alteração.
+        </div>
+        <div class="alerta-amarelo">
+            <strong>Idades mínimas (EC 103/2019):</strong> 62 anos (feminino) e 65 anos (homens). Existem regras de transição para quem já contribuía antes da reforma — a calculadora usa as idades definitivas como referência. Para análises de casos em transição, o advogado deve ajustar manualmente.
+        </div>
+
+        <h3>Compatibilidade</h3>
+        <ul>
+            <li>Funciona em todos os navegadores modernos (Chrome, Firefox, Edge, Safari)</li>
+            <li>Responsivo para mobile (layout adapta em telas menores de 600px)</li>
+            <li>Não requer instalação, build ou compilação — são arquivos HTML puros</li>
+            <li>A impressão foi testada em Chrome → "Salvar como PDF" e na impressora do sistema</li>
+        </ul>
+    </div>
+
+
+    <!-- 8. RESUMO FINAL -->
+    <div class="secao" style="background: linear-gradient(135deg, #f0f9ff, #f8fafc);">
+        <div class="secao-titulo">🚀 8. Resumo — O que você precisa fazer</div>
+
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Tarefa</th>
+                <th>Quem</th>
+                <th>Prioridade</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Substituir <code>wa.me/SEUNUMERO</code> em calculadora-segurado.html</td>
+                <td>Cauã ou Marco</td>
+                <td><span class="badge badge-critico">Crítico</span></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Hospedar <code>calculadora-segurado.html</code> em rota pública <code>/calculadora</code></td>
+                <td>Cauã</td>
+                <td><span class="badge badge-critico">Crítico</span></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Hospedar <code>calculadora-advogado.html</code> em rota protegida <code>/pro/calculadora</code></td>
+                <td>Cauã</td>
+                <td><span class="badge badge-critico">Crítico</span></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Implementar middleware de autenticação + verificação de assinatura</td>
+                <td>Cauã</td>
+                <td><span class="badge badge-pago">Alta</span></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Testar upload de CNIS real — verificar nome, CPF, data de nascimento, salário e tempo preenchidos automaticamente</td>
+                <td>Cauã + Marco</td>
+                <td><span class="badge badge-pago">Alta</span></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Verificar e atualizar <code>const SMmin = 1412</code> se necessário</td>
+                <td>Marco</td>
+                <td><span class="badge badge-gratuito">Média</span></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Testar caso de planejamento (2B): inserir nascimento abaixo da idade mínima e verificar resultado roxo em ambas as calculadoras</td>
+                <td>Cauã + Marco</td>
+                <td><span class="badge badge-pago">Alta</span></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Testar fluxo de impressão na calculadora advogado (incluindo campos de nascimento/sexo no cabeçalho)</td>
+                <td>Cauã + Marco</td>
+                <td><span class="badge badge-gratuito">Média</span></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Verificar idades mínimas vigentes — EC 103/2019: 62F / 65M. Ajustar se houver transição aplicável</td>
+                <td>Marco</td>
+                <td><span class="badge badge-gratuito">Média</span></td>
+            </tr>
+        </table>
+
+        <div class="alerta-azul" style="margin-top:20px;">
+            <strong>Dúvidas técnicas?</strong> Este briefing cobre tudo que foi desenvolvido.
+            Se precisar de ajustes nas calculadoras (novos países, novos tipos de benefício,
+            layout diferente), os arquivos HTML são de fácil edição e estão bem comentados.
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
