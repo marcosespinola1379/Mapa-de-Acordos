@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instruções de Implementação — Saída Fiscal | Acordos Internacionais</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 24px 16px 48px;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 28px rgba(20,20,50,.11);
+      overflow: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      padding: 26px 40px;
+      background: #1a1a2e;
+      border-bottom: 3px solid #3b82f6;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .header-brand { color: #fff; }
+    .header-brand .site { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin-bottom: 6px; }
+    .header-brand h1 { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.2; }
+    .header-brand p  { font-size: 13px; color: #94a3b8; margin-top: 6px; }
+    .header-meta { text-align: right; }
+    .header-meta .badge {
+      display: inline-block;
+      background: #3b82f6;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .header-meta .for-dev { font-size: 12px; color: #94a3b8; }
+    .header-meta .dev-name { font-size: 14px; font-weight: 700; color: #e2e8f0; margin-top: 2px; }
+
+    /* ÍNDICE */
+    .toc {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 20px 40px;
+    }
+    .toc-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #64748b; margin-bottom: 12px; }
+    .toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .toc-item {
+      display: flex; align-items: center; gap: 6px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: #475569;
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .toc-item:hover { border-color: #3b82f6; color: #3b82f6; background: #eff6ff; }
+    .toc-item .num { font-weight: 700; color: #3b82f6; }
+
+    /* CONTEÚDO */
+    .body { padding: 0 40px 40px; }
+
+    /* SEÇÃO */
+    .section { margin-top: 40px; }
+    .section-header {
+      display: flex; align-items: center; gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+    .section-num {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      background: #1a1a2e;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .section-title { font-size: 17px; font-weight: 700; color: #1a1a2e; }
+    .section-sub   { font-size: 12px; color: #64748b; margin-top: 1px; }
+
+    /* ENTREGÁVEIS */
+    .files-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 8px; }
+    .file-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: #f8fafc;
+    }
+    .file-card .fname {
+      font-size: 12px; font-weight: 700; color: #1a1a2e;
+      font-family: 'Consolas', 'Courier New', monospace;
+      margin-bottom: 5px;
+    }
+    .file-card .fdesc { font-size: 12px; color: #64748b; }
+
+    /* BLOCO DE OPÇÕES */
+    .option {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+    }
+    .option-title {
+      font-size: 13px; font-weight: 700; color: #1a1a2e;
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 8px;
+    }
+    .tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 4px;
+    }
+    .tag-remix   { background: #fef3c7; color: #92400e; }
+    .tag-rr      { background: #ede9fe; color: #5b21b6; }
+    .tag-note    { background: #dcfce7; color: #166534; }
+    .tag-warn    { background: #fee2e2; color: #991b1b; }
+
+    /* CÓDIGO */
+    .code-block {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 10px 0;
+      overflow-x: auto;
+    }
+    .code-block pre {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      white-space: pre;
+    }
+    .code-block .cm  { color: #64748b; }   /* comment */
+    .code-block .kw  { color: #93c5fd; }   /* keyword */
+    .code-block .st  { color: #86efac; }   /* string */
+    .code-block .cl  { color: #fcd34d; }   /* class/component */
+    .code-block .at  { color: #f9a8d4; }   /* attribute */
+
+    /* LABEL ACIMA DO CÓDIGO */
+    .code-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #64748b;
+      margin-bottom: 4px;
+      margin-top: 12px;
+    }
+
+    /* TABELA DIFF */
+    .diff-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 10px 0; }
+    .diff-table th {
+      background: #f1f5f9; padding: 8px 12px;
+      text-align: left; font-weight: 700; color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+    .diff-table td {
+      padding: 8px 12px; border: 1px solid #e2e8f0;
+      vertical-align: top; font-family: 'Consolas', monospace;
+      line-height: 1.6;
+    }
+    .diff-del { background: #fef2f2; color: #dc2626; }
+    .diff-add { background: #f0fdf4; color: #16a34a; }
+    .diff-ctx { background: #f8fafc; color: #64748b; }
+
+    /* CARD PREVIEW */
+    .preview-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .preview-card .preview-label {
+      background: #f1f5f9;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: #64748b;
+      padding: 6px 14px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .preview-card .preview-body { padding: 16px 18px; background: #fff; }
+
+    /* LISTA SIMPLES */
+    .simple-list { list-style: none; space-y: 8px; }
+    .simple-list li {
+      display: flex; gap: 10px;
+      font-size: 13px; color: #475569;
+      padding: 5px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .simple-list li:last-child { border-bottom: none; }
+    .simple-list li .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #3b82f6; flex-shrink: 0; margin-top: 7px;
+    }
+
+    /* CHECKLIST */
+    .checklist { list-style: none; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: #475569;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .check-box {
+      width: 18px; height: 18px; border: 2px solid #cbd5e1;
+      border-radius: 4px; flex-shrink: 0; margin-top: 1px;
+    }
+    .checklist li .check-tag {
+      font-size: 10px; font-weight: 700; padding: 1px 7px;
+      border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* NOTA / ALERTA */
+    .note {
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 12px;
+      margin: 12px 0;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .note-info { background: #eff6ff; border-left: 3px solid #3b82f6; color: #1e3a5f; }
+    .note-warn { background: #fffbeb; border-left: 3px solid #f59e0b; color: #78350f; }
+    .note-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    /* FOOTER */
+    .footer {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      padding: 16px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .footer p { font-size: 11px; color: #94a3b8; }
+
+    @media (max-width: 600px) {
+      .header, .toc, .body, .footer { padding-left: 20px; padding-right: 20px; }
+      .files-grid { grid-template-columns: 1fr; }
+      .header { flex-direction: column; }
+      .header-meta { text-align: left; }
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .container { box-shadow: none; border-radius: 0; }
+      .code-block { break-inside: avoid; }
+      .section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-brand">
+      <div class="site">acordosinternacionais.com</div>
+      <h1>Aba "Saída Fiscal" + Página</h1>
+      <p>Instruções de implementação — nova rota, menu e listagem de guias</p>
+    </div>
+    <div class="header-meta">
+      <div class="badge">Para o Dev</div>
+      <div class="for-dev">Responsável</div>
+      <div class="dev-name">Cauã</div>
+    </div>
+  </div>
+
+  <!-- ÍNDICE -->
+  <div class="toc">
+    <div class="toc-title">Neste documento</div>
+    <div class="toc-list">
+      <a class="toc-item" href="#entregaveis"><span class="num">0</span> Entregáveis</a>
+      <a class="toc-item" href="#rota"><span class="num">1</span> Nova rota</a>
+      <a class="toc-item" href="#header"><span class="num">2</span> Header — menu</a>
+      <a class="toc-item" href="#guias"><span class="num">3</span> Listagem de guias</a>
+      <a class="toc-item" href="#jornadas"><span class="num">4</span> Jornadas</a>
+      <a class="toc-item" href="#seo"><span class="num">5</span> SEO</a>
+      <a class="toc-item" href="#checklist"><span class="num">6</span> Checklist</a>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- 0. ENTREGÁVEIS -->
+    <div class="section" id="entregaveis">
+      <div class="section-header">
+        <div class="section-num">0</div>
+        <div>
+          <div class="section-title">Arquivos entregues</div>
+          <div class="section-sub">O que está no pacote</div>
+        </div>
+      </div>
+      <div class="files-grid">
+        <div class="file-card">
+          <div class="fname">guias.saida-definitiva-do-pais.tsx</div>
+          <div class="fdesc">Componente React completo da nova página. Pronto para copiar para o projeto.</div>
+        </div>
+        <div class="file-card">
+          <div class="fname">instrucoes_caua_saida_fiscal.html</div>
+          <div class="fdesc">Este documento — onde aplicar cada trecho de código no projeto.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. NOVA ROTA -->
+    <div class="section" id="rota">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div>
+          <div class="section-title">Nova rota / página</div>
+          <div class="section-sub">URL: <code style="font-size:12px;background:#f1f5f9;padding:1px 6px;border-radius:4px;">/guias/saida-definitiva-do-pais</code></div>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="option-title"><span class="tag tag-remix">Remix</span> File-based routing</div>
+        <p style="font-size:13px;color:#475569;margin-bottom:8px;">Copiar o arquivo para a pasta de rotas. A rota é criada automaticamente.</p>
+        <div class="code-label">Destino do arquivo</div>
+        <div class="code-block"><pre>app/routes/guias.saida-definitiva-do-pais.tsx</pre></div>
+      </div>
+
+      <div class="option">
+        <div class="option-title"><span class="tag tag-rr">React Router v6</span> Router config centralizado</div>
+        <p style="font-size:13px;color:#475569;margin-bottom:8px;">Copiar o arquivo para a pasta de páginas e adicionar a rota no config.</p>
+        <div class="code-label">1 — Destino do arquivo</div>
+        <div class="code-block"><pre>src/pages/GuiaSaidaDefinitiva.tsx</pre></div>
+        <div class="code-label">2 — Adicionar no router config</div>
+        <div class="code-block"><pre><span class="kw">import</span> <span class="cl">GuiaSaidaDefinitiva</span> <span class="kw">from</span> <span class="st">"./pages/GuiaSaidaDefinitiva"</span>;
+
+<span class="cm">// Dentro do array de routes — ANTES de qualquer rota dinâmica /guias/:slug:</span>
+{
+  path: <span class="st">"/guias/saida-definitiva-do-pais"</span>,
+  element: &lt;<span class="cl">GuiaSaidaDefinitiva</span> /&gt;,
+}</pre></div>
+      </div>
+
+      <div class="note note-info">
+        <span class="note-icon">ℹ</span>
+        <span>O arquivo usa <code>import { Link } from "react-router-dom"</code>. Se o projeto usa <code>@remix-run/react</code>, trocar na linha 17 do arquivo.</span>
+      </div>
+      <div class="note note-warn">
+        <span class="note-icon">⚠</span>
+        <span>O componente <code>Accordion</code> é do shadcn/ui. Se ainda não estiver instalado: <code>npx shadcn@latest add accordion</code></span>
+      </div>
+    </div>
+
+    <!-- 2. HEADER -->
+    <div class="section" id="header">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div>
+          <div class="section-title">Header — menu principal</div>
+          <div class="section-sub">Adicionar aba "Saída Fiscal" no nav desktop</div>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:#475569;margin-bottom:16px;">
+        Localizar o componente do Header (provavelmente <code style="background:#f1f5f9;padding:1px 5px;border-radius:3px;">app/components/Header.tsx</code> ou <code style="background:#f1f5f9;padding:1px 5px;border-radius:3px;">src/components/Header.tsx</code>).
+      </p>
+
+      <div class="code-label">Nav desktop — inserir entre "Guias" e "Hub Profissional"</div>
+      <table class="diff-table">
+        <tr>
+          <th style="width:80px;">Tipo</th>
+          <th>Código</th>
+        </tr>
+        <tr>
+          <td class="diff-ctx">contexto</td>
+          <td class="diff-ctx">&lt;a href="/guias" ...&gt;Guias&lt;/a&gt;</td>
+        </tr>
+        <tr>
+          <td class="diff-add">+ adicionar</td>
+          <td class="diff-add">&lt;a href="/guias/saida-definitiva-do-pais" className="text-foreground/80 transition-colors hover:text-foreground"&gt;Saída Fiscal&lt;/a&gt;</td>
+        </tr>
+        <tr>
+          <td class="diff-ctx">contexto</td>
+          <td class="diff-ctx">&lt;a href="/profissional" ...&gt;Hub Profissional&lt;/a&gt;</td>
+        </tr>
+      </table>
+
+      <div class="code-label">Estado ativo — se o Header já aplica classe ativa via useLocation</div>
+      <div class="code-block"><pre><span class="at">className</span>={
+  location.pathname === <span class="st">"/guias/saida-definitiva-do-pais"</span>
+    ? <span class="st">"text-foreground underline underline-offset-8 transition-colors hover:text-foreground"</span>
+    : <span class="st">"text-foreground/80 transition-colors hover:text-foreground"</span>
+}</pre></div>
+
+      <div class="note note-info">
+        <span class="note-icon">ℹ</span>
+        <span><strong>Mobile:</strong> o menu mobile atual do site exibe apenas "Países". Nenhuma alteração necessária no mobile — o padrão existente está sendo mantido.</span>
+      </div>
+    </div>
+
+    <!-- 3. GUIAS LISTING -->
+    <div class="section" id="guias">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div>
+          <div class="section-title">Listagem de Guias — card 05</div>
+          <div class="section-sub">Arquivo: guias.tsx / guias._index.tsx — dentro do &lt;ul&gt; de cards</div>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:#475569;margin-bottom:12px;">
+        Adicionar após o último <code style="background:#f1f5f9;padding:1px 5px;border-radius:3px;">&lt;li&gt;</code> existente (guia 04 — aposentadoria-morando-fora):
+      </p>
+
+      <div class="preview-card">
+        <div class="preview-label">Preview do card na listagem</div>
+        <div class="preview-body" style="font-family:'Segoe UI',sans-serif;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px;">
+            <span style="font-size:28px;font-weight:700;color:#3b82f6;">05</span>
+            <span style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;">Guia temático</span>
+          </div>
+          <p style="font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:6px;">Comunicação de Saída Definitiva do País</p>
+          <p style="font-size:13px;color:#64748b;margin-bottom:12px;">Entenda a saída fiscal do Brasil, a DSDP, os prazos e os riscos de manter residência fiscal indevida.</p>
+          <span style="font-size:12px;text-decoration:underline;color:#475569;">Abrir guia →</span>
+        </div>
+      </div>
+
+      <div class="code-label">Código TSX a inserir</div>
+      <div class="code-block"><pre>&lt;<span class="kw">li</span> <span class="at">className</span>=<span class="st">"bg-background"</span>&gt;
+  &lt;<span class="kw">a</span>
+    <span class="at">href</span>=<span class="st">"/guias/saida-definitiva-do-pais"</span>
+    <span class="at">className</span>=<span class="st">"group flex h-full flex-col gap-4 p-8 transition-colors hover:bg-[var(--accent-ink-soft)] md:p-10"</span>
+  &gt;
+    &lt;<span class="kw">div</span> <span class="at">className</span>=<span class="st">"flex items-baseline justify-between gap-4"</span>&gt;
+      &lt;<span class="kw">span</span> <span class="at">className</span>=<span class="st">"font-display text-3xl text-[var(--accent-ink)] md:text-4xl"</span>&gt;05&lt;/<span class="kw">span</span>&gt;
+      &lt;<span class="kw">span</span> <span class="at">className</span>=<span class="st">"eyebrow"</span>&gt;Guia temático&lt;/<span class="kw">span</span>&gt;
+    &lt;/<span class="kw">div</span>&gt;
+    &lt;<span class="kw">h2</span> <span class="at">className</span>=<span class="st">"font-display text-2xl leading-tight md:text-3xl"</span>&gt;
+      Comunicação de Saída Definitiva do País
+    &lt;/<span class="kw">h2</span>&gt;
+    &lt;<span class="kw">p</span> <span class="at">className</span>=<span class="st">"text-base text-muted-foreground"</span>&gt;
+      Entenda a saída fiscal do Brasil, a DSDP, os prazos e os riscos
+      de manter residência fiscal indevida.
+    &lt;/<span class="kw">p</span>&gt;
+    &lt;<span class="kw">span</span> <span class="at">className</span>=<span class="st">"mt-auto pt-2 text-sm underline underline-offset-4 group-hover:text-destructive"</span>&gt;
+      Abrir guia →
+    &lt;/<span class="kw">span</span>&gt;
+  &lt;/<span class="kw">a</span>&gt;
+&lt;/<span class="kw">li</span>&gt;</pre></div>
+    </div>
+
+    <!-- 4. JORNADAS -->
+    <div class="section" id="jornadas">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div>
+          <div class="section-title">Links internos — Jornadas</div>
+          <div class="section-sub">Adicionar links contextualizados nas jornadas relacionadas, se existirem</div>
+        </div>
+      </div>
+
+      <ul class="simple-list">
+        <li>
+          <span class="dot"></span>
+          <span><strong>Jornada "Vou me mudar para o exterior"</strong> — sugerir leitura da Saída Fiscal antes de sair</span>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <span><strong>Jornada "Moro no exterior"</strong> — oferecer caminho para regularização fiscal</span>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <span><strong>Jornada "Estou voltando ao Brasil"</strong> — explicar reflexos do retorno na residência fiscal</span>
+        </li>
+      </ul>
+
+      <div class="code-label">Padrão de link contextualizado (mesmo estilo dos outros guias)</div>
+      <div class="code-block"><pre><span class="cm">// Jornada: Vou me mudar</span>
+&lt;<span class="cl">Link</span> <span class="at">to</span>=<span class="st">"/guias/saida-definitiva-do-pais"</span> <span class="at">className</span>=<span class="st">"underline underline-offset-4 hover:text-foreground"</span>&gt;
+  Saída Fiscal — o que fazer antes de sair
+&lt;/<span class="cl">Link</span>&gt;
+
+<span class="cm">// Jornada: Moro no exterior</span>
+&lt;<span class="cl">Link</span> <span class="at">to</span>=<span class="st">"/guias/saida-definitiva-do-pais"</span> <span class="at">className</span>=<span class="st">"underline underline-offset-4 hover:text-foreground"</span>&gt;
+  Regularize sua situação fiscal no Brasil
+&lt;/<span class="cl">Link</span>&gt;
+
+<span class="cm">// Jornada: Voltando ao Brasil</span>
+&lt;<span class="cl">Link</span> <span class="at">to</span>=<span class="st">"/guias/saida-definitiva-do-pais"</span> <span class="at">className</span>=<span class="st">"underline underline-offset-4 hover:text-foreground"</span>&gt;
+  Saída Fiscal — entenda os reflexos do retorno
+&lt;/<span class="cl">Link</span>&gt;</pre></div>
+    </div>
+
+    <!-- 5. SEO -->
+    <div class="section" id="seo">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div>
+          <div class="section-title">SEO — Meta tags</div>
+          <div class="section-sub">Já incluído no arquivo .tsx via export meta</div>
+        </div>
+      </div>
+
+      <div class="code-block"><pre><span class="cm">// Exportado automaticamente pelo componente — funciona em Remix nativamente</span>
+<span class="kw">export const</span> meta = () => [
+  {
+    title: <span class="st">"Comunicação de Saída Definitiva do País | Saída Fiscal para Brasileiros no Exterior"</span>,
+  },
+  {
+    name: <span class="st">"description"</span>,
+    content: <span class="st">"Entenda o que é a Comunicação de Saída Definitiva do País, quando fazer, como funciona a DSDP, os riscos de não regularizar e por que saída definitiva é uma saída fiscal."</span>,
+  },
+];</pre></div>
+
+      <div class="note note-info">
+        <span class="note-icon">ℹ</span>
+        <span>Para React Router v6 sem SSR: usar <code>react-helmet-async</code> ou o mecanismo de meta já em uso no projeto.</span>
+      </div>
+    </div>
+
+    <!-- 6. CHECKLIST -->
+    <div class="section" id="checklist">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <div>
+          <div class="section-title">Checklist de validação</div>
+          <div class="section-sub">Verificar antes de considerar a entrega concluída</div>
+        </div>
+      </div>
+
+      <ul class="checklist">
+        <li><div class="check-box"></div><span class="check-tag tag-rr" style="background:#ede9fe;color:#5b21b6;">Rota</span> <span>Rota <code>/guias/saida-definitiva-do-pais</code> abre a página corretamente</span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-rr" style="background:#ede9fe;color:#5b21b6;">Rota</span> <span>H1 exibe "Comunicação de Saída Definitiva do País"</span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-remix" style="background:#fef3c7;color:#92400e;">Nav</span> <span>Aba "Saída Fiscal" aparece no menu desktop</span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-remix" style="background:#fef3c7;color:#92400e;">Nav</span> <span>Aba fica ativa (underline/estado) quando na URL da página</span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-note" style="background:#dcfce7;color:#166534;">Guias</span> <span>Card 05 aparece corretamente em <code>/guias</code></span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-note" style="background:#dcfce7;color:#166534;">UI</span> <span>FAQ accordion abre e fecha corretamente</span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-note" style="background:#dcfce7;color:#166534;">Links</span> <span>Links internos (CDT, outros guias) funcionam sem 404</span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-note" style="background:#dcfce7;color:#166534;">Links</span> <span>Links externos (Receita Federal) abrem em nova aba</span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-note" style="background:#dcfce7;color:#166534;">CTA</span> <span>Botões "Falar com especialista" apontam para <code>/contato</code></span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-warn" style="background:#fee2e2;color:#991b1b;">Build</span> <span>Build e lint passam sem erros</span></li>
+        <li><div class="check-box"></div><span class="check-tag tag-warn" style="background:#fee2e2;color:#991b1b;">Build</span> <span>Página responsiva e legível no mobile</span></li>
+      </ul>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>acordosinternacionais.com · Implementação: Aba Saída Fiscal</p>
+    <p>Responsável pelo conteúdo: Dr. Marcos Espínola · Dev: Cauã</p>
+  </div>
+
+</div>
+</body>
+</html>

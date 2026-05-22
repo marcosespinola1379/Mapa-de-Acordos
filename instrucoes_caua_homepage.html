@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instruções de Implementação — Homepage | Acordos Internacionais</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 24px 16px 48px;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 28px rgba(20,20,50,.11);
+      overflow: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      padding: 26px 40px;
+      background: #1a1a2e;
+      border-bottom: 3px solid #3b82f6;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .header-brand { color: #fff; }
+    .header-brand .site { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin-bottom: 6px; }
+    .header-brand h1 { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.2; }
+    .header-brand p  { font-size: 13px; color: #94a3b8; margin-top: 6px; }
+    .header-meta { text-align: right; }
+    .header-meta .badge {
+      display: inline-block;
+      background: #3b82f6;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .header-meta .for-dev { font-size: 12px; color: #94a3b8; }
+    .header-meta .dev-name { font-size: 14px; font-weight: 700; color: #e2e8f0; margin-top: 2px; }
+
+    /* ÍNDICE */
+    .toc {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 20px 40px;
+    }
+    .toc-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #64748b; margin-bottom: 12px; }
+    .toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .toc-item {
+      display: flex; align-items: center; gap: 6px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: #475569;
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .toc-item:hover { border-color: #3b82f6; color: #3b82f6; background: #eff6ff; }
+    .toc-item .num { font-weight: 700; color: #3b82f6; }
+
+    /* FASE BADGE */
+    .fase-banner {
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .fase-1 { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+    .fase-2 { background: #fffbeb; border: 1px solid #fcd34d; color: #78350f; }
+    .fase-icon { font-size: 16px; }
+
+    /* CONTEÚDO */
+    .body { padding: 0 40px 40px; }
+
+    /* SEÇÃO */
+    .section { margin-top: 40px; }
+    .section-header {
+      display: flex; align-items: center; gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+    .section-num {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      background: #1a1a2e;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .section-title { font-size: 17px; font-weight: 700; color: #1a1a2e; }
+    .section-sub   { font-size: 12px; color: #64748b; margin-top: 1px; }
+
+    /* CÓDIGO */
+    .code-block {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 10px 0;
+      overflow-x: auto;
+    }
+    .code-block pre {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      white-space: pre;
+    }
+    .code-block .cm  { color: #64748b; }
+    .code-block .kw  { color: #93c5fd; }
+    .code-block .st  { color: #86efac; }
+    .code-block .cl  { color: #fcd34d; }
+    .code-block .at  { color: #f9a8d4; }
+    .code-block .tx  { color: #e2e8f0; }
+
+    /* LABEL ACIMA DO CÓDIGO */
+    .code-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #64748b;
+      margin-bottom: 4px;
+      margin-top: 12px;
+    }
+
+    /* TABELA DIFF */
+    .diff-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 10px 0; }
+    .diff-table th {
+      background: #f1f5f9; padding: 8px 12px;
+      text-align: left; font-weight: 700; color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+    .diff-table td {
+      padding: 10px 12px; border: 1px solid #e2e8f0;
+      vertical-align: top;
+      line-height: 1.6;
+      font-size: 12px;
+    }
+    .diff-del { background: #fef2f2; color: #dc2626; }
+    .diff-add { background: #f0fdf4; color: #16a34a; }
+    .diff-ctx { background: #f8fafc; color: #64748b; }
+    .diff-del .label, .diff-add .label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 4px; display: block;
+    }
+    .diff-del .label { color: #dc2626; }
+    .diff-add .label { color: #16a34a; }
+
+    /* BLOCO OPÇÃO */
+    .option {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+    }
+    .option-title {
+      font-size: 13px; font-weight: 700; color: #1a1a2e;
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* TAGS */
+    .tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 4px;
+    }
+    .tag-green  { background: #dcfce7; color: #166534; }
+    .tag-yellow { background: #fef3c7; color: #92400e; }
+    .tag-red    { background: #fee2e2; color: #991b1b; }
+    .tag-blue   { background: #eff6ff; color: #1d4ed8; }
+    .tag-purple { background: #ede9fe; color: #5b21b6; }
+
+    /* LISTA DE ITENS */
+    .item-list { list-style: none; margin: 8px 0; }
+    .item-list li {
+      display: flex; gap: 10px;
+      font-size: 13px; color: #475569;
+      padding: 6px 0;
+      border-bottom: 1px solid #f1f5f9;
+      align-items: flex-start;
+    }
+    .item-list li:last-child { border-bottom: none; }
+    .item-list .bullet {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #3b82f6; flex-shrink: 0; margin-top: 7px;
+    }
+    .item-list .bullet-red { background: #ef4444; }
+    .item-list .bullet-green { background: #22c55e; }
+
+    /* NOTA */
+    .note {
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 12px;
+      margin: 12px 0;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .note-info { background: #eff6ff; border-left: 3px solid #3b82f6; color: #1e3a5f; }
+    .note-warn { background: #fffbeb; border-left: 3px solid #f59e0b; color: #78350f; }
+    .note-danger { background: #fef2f2; border-left: 3px solid #ef4444; color: #7f1d1d; }
+    .note-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    /* CHECKLIST */
+    .checklist { list-style: none; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: #475569;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .check-box {
+      width: 18px; height: 18px; border: 2px solid #cbd5e1;
+      border-radius: 4px; flex-shrink: 0; margin-top: 1px;
+    }
+    .check-tag {
+      font-size: 10px; font-weight: 700; padding: 1px 7px;
+      border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* TABELA SIMPLE */
+    .simple-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 10px 0; }
+    .simple-table th {
+      background: #f1f5f9; padding: 8px 12px;
+      text-align: left; font-weight: 700; color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+    .simple-table td {
+      padding: 8px 12px; border: 1px solid #e2e8f0;
+      vertical-align: top; font-size: 12px; color: #475569;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      padding: 16px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .footer p { font-size: 11px; color: #94a3b8; }
+
+    p.body-text { font-size: 13px; color: #475569; margin-bottom: 12px; }
+
+    @media (max-width: 600px) {
+      .header, .toc, .body, .footer { padding-left: 20px; padding-right: 20px; }
+      .header { flex-direction: column; }
+      .header-meta { text-align: left; }
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .container { box-shadow: none; border-radius: 0; }
+      .code-block { break-inside: avoid; }
+      .section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-brand">
+      <div class="site">acordosinternacionais.com</div>
+      <h1>Homepage — Atualização de Conteúdo</h1>
+      <p>Seção cidadão, advogado, jornadas, prova de vida e totalização</p>
+    </div>
+    <div class="header-meta">
+      <div class="badge">Para o Dev</div>
+      <div class="for-dev">Responsável</div>
+      <div class="dev-name">Cauã</div>
+    </div>
+  </div>
+
+  <!-- ÍNDICE -->
+  <div class="toc">
+    <div class="toc-title">Neste documento</div>
+    <div class="toc-list">
+      <a class="toc-item" href="#cidadao"><span class="num">1</span> Seção Cidadão</a>
+      <a class="toc-item" href="#advogado"><span class="num">2</span> Seção Advogado</a>
+      <a class="toc-item" href="#peticoes"><span class="num">3</span> Modelos de Petição</a>
+      <a class="toc-item" href="#jornadas"><span class="num">4</span> Jornadas</a>
+      <a class="toc-item" href="#provavida"><span class="num">5</span> Prova de Vida</a>
+      <a class="toc-item" href="#totalizacao"><span class="num">6</span> Totalização</a>
+      <a class="toc-item" href="#checklist"><span class="num">7</span> Checklist</a>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- 1. SEÇÃO CIDADÃO -->
+    <div class="section" id="cidadao">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div>
+          <div class="section-title">Seção Cidadão — homepage</div>
+          <div class="section-sub">Seção "01 Para o cidadão" — headline e CTAs</div>
+        </div>
+      </div>
+
+      <div class="fase-banner fase-1">
+        <span class="fase-icon">✅</span>
+        FASE 1 — Pronta para implementação
+      </div>
+
+      <!-- HEADLINE -->
+      <div class="option">
+        <div class="option-title"><span class="tag tag-blue">Headline</span> Substituir texto da chamada principal</div>
+        <table class="diff-table">
+          <tr>
+            <th style="width:100px;">Estado</th>
+            <th>Texto</th>
+          </tr>
+          <tr>
+            <td class="diff-del"><span class="label">Atual</span></td>
+            <td class="diff-del">Brasileiro no exterior</td>
+          </tr>
+          <tr>
+            <td class="diff-add"><span class="label">Novo</span></td>
+            <td class="diff-add">Para o brasileiro que trabalha ou trabalhou no exterior e que precisa entender seus direitos previdenciários.</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- CTAs -->
+      <div class="option">
+        <div class="option-title"><span class="tag tag-blue">CTAs</span> Reestruturar botões de ação</div>
+        <table class="diff-table">
+          <tr>
+            <th style="width:100px;">Estado</th>
+            <th>CTAs</th>
+          </tr>
+          <tr>
+            <td class="diff-del"><span class="label">Atual</span></td>
+            <td class="diff-del">
+              [Ver jornadas] → /jornadas/moro-fora<br>
+              [Falar com o Dr. Marcos Espínola] → /contato
+            </td>
+          </tr>
+          <tr>
+            <td class="diff-add"><span class="label">Novo</span></td>
+            <td class="diff-add">
+              [Ver os 25 países] → /paises<br>
+              [Explorar por situação/jornadas] → /jornadas<br>
+              [Blog] → /blog
+            </td>
+          </tr>
+        </table>
+        <div class="note note-info" style="margin-top:10px;">
+          <span class="note-icon">ℹ</span>
+          <span>O CTA "Falar com o Dr. Marcos Espínola" <strong>não é removido do site</strong> — apenas migra para baixo da seção de Jornadas (ver seção 4 deste documento).</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. SEÇÃO ADVOGADO -->
+    <div class="section" id="advogado">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div>
+          <div class="section-title">Seção Advogado — homepage</div>
+          <div class="section-sub">Seção "02 Para o advogado" — título, descrição, tagline e CTAs</div>
+        </div>
+      </div>
+
+      <div class="fase-banner fase-1">
+        <span class="fase-icon">✅</span>
+        FASE 1 — Pronta para implementação
+      </div>
+
+      <!-- TÍTULO NOVO -->
+      <div class="option">
+        <div class="option-title"><span class="tag tag-green">Novo</span> Adicionar título (elemento não existente)</div>
+        <p class="body-text">A seção atualmente só tem descrição. Inserir um novo elemento de título <strong>antes</strong> da descrição:</p>
+        <div class="code-label">Texto do novo título</div>
+        <div class="code-block"><pre><span class="tx">Hub Profissional em Direito Previdenciário Internacional:
+Educação, Eficiência e Excelência</span></pre></div>
+        <div class="code-label">HTML sugerido</div>
+        <div class="code-block"><pre>&lt;<span class="kw">h3</span> <span class="at">className</span>=<span class="st">"titulo-hub font-display text-2xl md:text-3xl"</span>&gt;
+  Hub Profissional em Direito Previdenciário Internacional:
+  Educação, Eficiência e Excelência
+&lt;/<span class="kw">h3</span>&gt;</pre></div>
+      </div>
+
+      <!-- DESCRIÇÃO -->
+      <div class="option">
+        <div class="option-title"><span class="tag tag-blue">Descrição</span> Atualizar parágrafo de descrição</div>
+        <table class="diff-table">
+          <tr>
+            <th style="width:100px;">Estado</th>
+            <th>Texto</th>
+          </tr>
+          <tr>
+            <td class="diff-del"><span class="label">Atual</span></td>
+            <td class="diff-del">Base técnica completa por país: portarias comentadas, <strong>modelos de petição</strong>, jurisprudência, calculadoras e fluxogramas. Acesso vitalício, atualização contínua.</td>
+          </tr>
+          <tr>
+            <td class="diff-add"><span class="label">Novo</span></td>
+            <td class="diff-add">Base técnica completa, sem juridiquês: textos integrais dos acordos internacionais comentados, portarias estruturadas por tema, jurisprudência organizada, calculadoras de totalização e benefícios previdenciários, certificados (saída fiscal, deslocamento temporário, prorrogação). Tudo integrado para economizar tempo no seu dia a dia e fundamentar suas estratégias em lei.</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- TAGLINE -->
+      <div class="option">
+        <div class="option-title"><span class="tag tag-green">Novo</span> Adicionar tagline (elemento não existente)</div>
+        <p class="body-text">Inserir <strong>após</strong> a descrição, antes dos CTAs:</p>
+        <div class="code-label">Texto da tagline</div>
+        <div class="code-block"><pre><span class="tx">O fundamento técnico que você merece. A eficiência que você precisa.</span></pre></div>
+        <div class="code-label">HTML sugerido</div>
+        <div class="code-block"><pre>&lt;<span class="kw">p</span> <span class="at">className</span>=<span class="st">"tagline-hub text-sm italic text-muted-foreground mt-2"</span>&gt;
+  &lt;<span class="kw">em</span>&gt;O fundamento técnico que você merece. A eficiência que você precisa.&lt;/<span class="kw">em</span>&gt;
+&lt;/<span class="kw">p</span>&gt;</pre></div>
+      </div>
+
+      <!-- CTAs ADVOGADO -->
+      <div class="option">
+        <div class="option-title"><span class="tag tag-blue">CTAs</span> Atualizar botões de ação</div>
+        <table class="diff-table">
+          <tr>
+            <th style="width:100px;">Estado</th>
+            <th>CTAs</th>
+          </tr>
+          <tr>
+            <td class="diff-del"><span class="label">Atual</span></td>
+            <td class="diff-del">
+              [Conhecer o hub] → /profissional<br>
+              [Sobre o Dr. Marcos Espínola] → /sobre/dr-marcos
+            </td>
+          </tr>
+          <tr>
+            <td class="diff-add"><span class="label">Novo</span></td>
+            <td class="diff-add">
+              [Conhecer o hub] → /profissional <em>(PRIMARY — verde/destacado)</em><br>
+              [Blog] → /blog <em>(secondary)</em><br>
+              [Sobre o Dr. Marcos Espínola] → /sobre <em>(secondary)</em>
+            </td>
+          </tr>
+        </table>
+        <div class="note note-info" style="margin-top:10px;">
+          <span class="note-icon">ℹ</span>
+          <span>"Conhecer o hub" já existe — manter como primary/destaque. Apenas <strong>adicionar [Blog]</strong> entre ele e o botão do Dr. Marcos.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. MODELOS DE PETIÇÃO -->
+    <div class="section" id="peticoes">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div>
+          <div class="section-title">Remover "modelos de petição"</div>
+          <div class="section-sub">Homepage + página /profissional — funcionalidade suspensa</div>
+        </div>
+      </div>
+
+      <div class="fase-banner fase-1">
+        <span class="fase-icon">✅</span>
+        FASE 1 — Pronta para implementação
+      </div>
+
+      <p class="body-text">A funcionalidade "modelos de petição" está suspensa por hora e <strong>não deve aparecer em nenhuma página</strong>. Vai retornar em versão futura.</p>
+
+      <div class="note note-danger">
+        <span class="note-icon">🚫</span>
+        <span>Remover qualquer menção a "modelos de petição" de <strong>todas as páginas</strong>: homepage (seção advogado, já tratado acima) e página <code>/profissional</code>.</span>
+      </div>
+
+      <ul class="item-list" style="margin-top:12px;">
+        <li>
+          <span class="bullet bullet-red"></span>
+          <span><strong>Homepage (seção 02):</strong> já corrigido na descrição acima (seção 2 deste documento)</span>
+        </li>
+        <li>
+          <span class="bullet bullet-red"></span>
+          <span><strong>Página /profissional:</strong> localizar e remover qualquer parágrafo, card, item de lista ou CTA que mencione "modelos de petição"</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 4. JORNADAS -->
+    <div class="section" id="jornadas">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div>
+          <div class="section-title">Jornadas — reordenação e CTA</div>
+          <div class="section-sub">Reposicionar "Atendimento direto" para baixo das 3 jornadas</div>
+        </div>
+      </div>
+
+      <div class="fase-banner fase-1">
+        <span class="fase-icon">✅</span>
+        FASE 1 — Pronta para implementação
+      </div>
+
+      <div class="option">
+        <div class="option-title"><span class="tag tag-blue">Ordem</span> Sequência correta das jornadas</div>
+        <table class="simple-table">
+          <tr>
+            <th>#</th>
+            <th>Jornada</th>
+            <th>Obs</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Moro fora</td>
+            <td style="color:#64748b;">—</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Voltei para o Brasil</td>
+            <td style="color:#64748b;">—</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Trabalho temporariamente no exterior</td>
+            <td style="color:#64748b;">—</td>
+          </tr>
+          <tr>
+            <td style="color:#3b82f6;font-weight:700;">↓</td>
+            <td style="color:#3b82f6;font-weight:700;">Atendimento direto com Dr. Marcos Espínola</td>
+            <td style="color:#3b82f6;">Aparece ABAIXO das 3 jornadas</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="option">
+        <div class="option-title"><span class="tag tag-blue">CTA</span> Bloco "Atendimento direto" (abaixo das jornadas)</div>
+        <p class="body-text">Este bloco é o CTA do Dr. Marcos que migrou da seção cidadão. Deve aparecer <strong>após</strong> o visitante explorar as 3 jornadas:</p>
+        <div class="code-label">Texto do bloco</div>
+        <div class="code-block"><pre><span class="cm">// Título do bloco</span>
+<span class="tx">Atendimento direto com Dr. Marcos Espínola</span>
+
+<span class="cm">// CTA principal (verde/destacado)</span>
+<span class="tx">Agendar consulta gratuita  →  /contato</span></pre></div>
+        <div class="note note-info" style="margin-top:10px;">
+          <span class="note-icon">ℹ</span>
+          <span>Posicionar o CTA após as jornadas aumenta a conversão — o visitante já entendeu o contexto antes de ver a oferta de atendimento.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. PROVA DE VIDA -->
+    <div class="section" id="provavida">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div>
+          <div class="section-title">Prova de Vida — novo conteúdo</div>
+          <div class="section-sub">Dentro da jornada "Moro fora" ou página dedicada — 5 modalidades</div>
+        </div>
+      </div>
+
+      <div class="fase-banner fase-2">
+        <span class="fase-icon">⏳</span>
+        FASE 2 — Documentado, aguardando validação do cliente para implementar
+      </div>
+
+      <p class="body-text">Criar seção de "Prova de Vida" com as 5 modalidades oficiais. Remover o item vago "Compute seu tempo lá fora".</p>
+
+      <div class="option">
+        <div class="option-title"><span class="tag tag-yellow">Estrutura</span> 5 modalidades + tabela resumo</div>
+        <table class="simple-table">
+          <tr>
+            <th>#</th>
+            <th>Modalidade</th>
+            <th>Tempo</th>
+            <th>Requisito</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Presencial no consulado brasileiro</td>
+            <td>1 dia</td>
+            <td>Nenhum</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Biometria facial online (Meu INSS)</td>
+            <td>5 min</td>
+            <td>Gov.br Prata/Ouro</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Notário público + Apostilamento de Haia</td>
+            <td>4–6 sem</td>
+            <td>Notário local</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Via procurador no Brasil</td>
+            <td>~7 dias</td>
+            <td>Procurador legal</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Comunicação digital automática (INSS cruza dados)</td>
+            <td>0 dias</td>
+            <td>Gov.br Ouro + dados registrados</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="option">
+        <div class="option-title"><span class="tag tag-yellow">Links externos</span> Incluir no corpo do conteúdo (contextualizados, não navbar)</div>
+        <table class="simple-table">
+          <tr>
+            <th>Contexto</th>
+            <th>Texto do link</th>
+            <th>URL</th>
+          </tr>
+          <tr>
+            <td>Modalidade 1 — Consulado</td>
+            <td>Consulado mais próximo</td>
+            <td style="font-family:monospace;font-size:11px;">gov.br/mre (embaixadas e consulados)</td>
+          </tr>
+          <tr>
+            <td>Modalidade 2 — Online</td>
+            <td>Meu INSS</td>
+            <td style="font-family:monospace;font-size:11px;">meu.inss.gov.br/#/login</td>
+          </tr>
+          <tr>
+            <td>Modalidade 2 — Gov.br</td>
+            <td>Criar conta Gov.br</td>
+            <td style="font-family:monospace;font-size:11px;">gov.br</td>
+          </tr>
+          <tr>
+            <td>Modalidade 3 — Formulário</td>
+            <td>Formulário Atestado de Vida</td>
+            <td style="font-family:monospace;font-size:11px;">gov.br/inss (comprovação de vida exterior)</td>
+          </tr>
+          <tr>
+            <td>Modalidade 3 — Haia</td>
+            <td>Países signatários de Haia</td>
+            <td style="font-family:monospace;font-size:11px;">hcch.net/pt/states/hcch-members</td>
+          </tr>
+        </table>
+        <div class="note note-info" style="margin-top:10px;">
+          <span class="note-icon">ℹ</span>
+          <span>Links contextualizados no corpo do texto, <strong>não criar nova entrada no navbar</strong>. Cada link aparece apenas no passo em que é relevante.</span>
+        </div>
+      </div>
+
+      <div class="note note-warn">
+        <span class="note-icon">⚠</span>
+        <span>Remover o item "Compute seu tempo lá fora" (mencionado na estrutura atual) — foi considerado vago e redundante.</span>
+      </div>
+    </div>
+
+    <!-- 6. TOTALIZAÇÃO -->
+    <div class="section" id="totalizacao">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <div>
+          <div class="section-title">Planejamento da Totalização — novo conteúdo</div>
+          <div class="section-sub">Dentro da jornada "Voltei para o Brasil" ou página dedicada — 4 etapas</div>
+        </div>
+      </div>
+
+      <div class="fase-banner fase-2">
+        <span class="fase-icon">⏳</span>
+        FASE 2 — Documentado, aguardando validação do cliente para implementar
+      </div>
+
+      <p class="body-text">Criar seção de "Planejamento da Totalização" com 4 etapas sequenciais.</p>
+
+      <div class="option">
+        <div class="option-title"><span class="tag tag-yellow">Estrutura</span> 4 etapas</div>
+        <table class="simple-table">
+          <tr>
+            <th>Etapa</th>
+            <th>Título</th>
+            <th>Conteúdo principal</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>CDT vs CDSP — Qual é minha situação?</td>
+            <td>Diferença entre Certificado de Deslocamento Temporário e Comunicação de Saída Definitiva. Fluxo decisório.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Manter contribuições ativas</td>
+            <td>3 opções: facultativo Brasil / só país de residência / ambos. CTA para calculadora de totalização.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Analisar possibilidades</td>
+            <td>Direito à totalização (25 países com acordo). Cenários: aposentadoria simultânea em 2 países, planejamento por horizonte de tempo.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Protocolar a totalização no INSS</td>
+            <td>Fluxo via Meu INSS, documentação necessária, prazo estimado (6–12 meses).</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="option">
+        <div class="option-title"><span class="tag tag-yellow">CDT — wording corrigido</span></div>
+        <table class="diff-table">
+          <tr>
+            <th style="width:100px;">Estado</th>
+            <th>Texto da descrição do CDT</th>
+          </tr>
+          <tr>
+            <td class="diff-del"><span class="label">Antes</span></td>
+            <td class="diff-del">Para quem vai trabalhar TEMPORARIAMENTE no exterior (até 12 meses)</td>
+          </tr>
+          <tr>
+            <td class="diff-add"><span class="label">Correto</span></td>
+            <td class="diff-add">Para quem vai trabalhar TEMPORARIAMENTE no exterior — prazo varia conforme o acordo bilateral com o país de destino</td>
+          </tr>
+        </table>
+        <div class="note note-warn" style="margin-top:8px;">
+          <span class="note-icon">⚠</span>
+          <span>O prazo do CDT <strong>não é fixo em 12 meses</strong> — cada acordo bilateral define seu próprio período. Não usar "até 12 meses" em nenhuma página.</span>
+        </div>
+      </div>
+
+      <div class="option">
+        <div class="option-title"><span class="tag tag-yellow">CTAs</span> Dentro da seção de Totalização</div>
+        <ul class="item-list">
+          <li><span class="bullet bullet-green"></span><span><strong>[Calculadora de Totalização]</strong> — PRIMARY (verde). Disponível nas etapas 2 e 3.</span></li>
+          <li><span class="bullet bullet-green"></span><span><strong>[Agendar consulta com Marcos]</strong> — PRIMARY. Disponível nos 3 cenários (etapa 3).</span></li>
+          <li><span class="bullet"></span><span><strong>[Baixar guia completo PDF]</strong> — secondary. Final da seção.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 7. CHECKLIST -->
+    <div class="section" id="checklist">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <div>
+          <div class="section-title">Checklist de validação</div>
+          <div class="section-sub">Verificar antes de considerar cada fase concluída</div>
+        </div>
+      </div>
+
+      <p class="body-text" style="font-weight:700;color:#166534;margin-bottom:8px;">FASE 1 — Homepage e remoções</p>
+      <ul class="checklist" style="margin-bottom:24px;">
+        <li><div class="check-box"></div><span class="check-tag" style="background:#eff6ff;color:#1d4ed8;">Cidadão</span><span>Headline atualizada para "Para o brasileiro que trabalha ou trabalhou no exterior…"</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#eff6ff;color:#1d4ed8;">Cidadão</span><span>CTAs: [Ver os 25 países] + [Explorar por situação/jornadas] + [Blog] presentes</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#eff6ff;color:#1d4ed8;">Cidadão</span><span>CTA "Falar com Dr. Marcos" removido desta seção (migrado para Jornadas)</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#dcfce7;color:#166534;">Advogado</span><span>Novo título "Hub Profissional em Direito Previdenciário Internacional: …" aparece</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#dcfce7;color:#166534;">Advogado</span><span>Descrição atualizada — sem "modelos de petição"</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#dcfce7;color:#166534;">Advogado</span><span>Tagline "O fundamento técnico que você merece…" aparece após a descrição</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#dcfce7;color:#166534;">Advogado</span><span>CTAs: [Conhecer o hub] (primary) + [Blog] + [Sobre Dr. Marcos] presentes</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fee2e2;color:#991b1b;">Remoção</span><span>"Modelos de petição" removido da homepage (seção advogado)</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fee2e2;color:#991b1b;">Remoção</span><span>"Modelos de petição" removido da página /profissional</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fef3c7;color:#92400e;">Jornadas</span><span>Ordem: Moro fora → Voltei ao Brasil → Trabalho temporariamente</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fef3c7;color:#92400e;">Jornadas</span><span>CTA "Agendar consulta gratuita" aparece abaixo das 3 jornadas</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fee2e2;color:#991b1b;">Build</span><span>Build e lint passam sem erros</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fee2e2;color:#991b1b;">Build</span><span>Homepage responsiva no mobile</span></li>
+      </ul>
+
+      <p class="body-text" style="font-weight:700;color:#78350f;margin-bottom:8px;">FASE 2 — Conteúdo novo (implementar após validação)</p>
+      <ul class="checklist">
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fffbeb;color:#92400e;">Prova de Vida</span><span>5 modalidades documentadas com passos e links externos</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fffbeb;color:#92400e;">Prova de Vida</span><span>Item "Compute seu tempo lá fora" removido</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fffbeb;color:#92400e;">Prova de Vida</span><span>Links contextualizados (consulado, Meu INSS, formulário, Haia) no corpo do texto</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fffbeb;color:#92400e;">Totalização</span><span>4 etapas implementadas na jornada "Voltei ao Brasil"</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fffbeb;color:#92400e;">Totalização</span><span>CDT descrito sem "até 12 meses" — menciona prazo variável por acordo</span></li>
+        <li><div class="check-box"></div><span class="check-tag" style="background:#fffbeb;color:#92400e;">Totalização</span><span>CTA calculadora de totalização funcionando nos pontos indicados</span></li>
+      </ul>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>acordosinternacionais.com · Implementação: Homepage — Atualização de Conteúdo</p>
+    <p>Responsável pelo conteúdo: Dr. Marcos Espínola · Dev: Cauã</p>
+  </div>
+
+</div>
+</body>
+</html>
