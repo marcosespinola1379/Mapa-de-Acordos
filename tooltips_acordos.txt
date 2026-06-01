@@ -1,0 +1,174 @@
+ACORDOS INTERNACIONAIS DE PREVIDÊNCIA SOCIAL
+MAPEAMENTO DE TOOLTIPS ATIVOS — PROJETO ATLAS
+======================================================================
+Data de geração: 29/05/2026
+Acordos com tooltip: 8
+Lista: França, Suíça, Portugal, Bulgária, Canadá, Alemanha, Quebec, Itália
+
+
+======================================================================
+ACORDO: BRASIL × FRANÇA
+Tooltips encontrados: 3
+----------------------------------------------------------------------
+
+  [ Aba: Benefícios — Franca ]
+
+  Benefício : Benefício por óbito
+  Tooltip   : No sistema francês, este item cobre prestações ligadas ao falecimento do segurado. Não é sinônimo automático de pensão por morte, porque o acordo também trata separadamente das prestações a sobreviventes.
+
+  Benefício : Pensão por morte e prestações a sobreviventesNa legislação francesa, “prestações a sobreviventes” pode abranger, conforme o caso, pensão de reversão, auxílio viuvez, capital por morte, renda aos dependentes em caso de acidente de trabalho ou doença profissional e prestações específicas ao cônjuge sobrevivente inválido.
+
+1. Pensão de reversão (retraite de réversion / pension de réversion).
+É a prestação mais clássica ao cônjuge ou ex-cônjuge sobrevivente, sob condições. A Assurance Retraite trata esse direito como uma parte da aposentadoria do segurado falecido.
+
+2. Auxílio viuvez (allocation veuvage).
+É uma prestação temporária para viúvo ou viúva, sujeita a requisitos como idade e renda.
+
+3. Capital por morte (capital décès).
+É um pagamento único, voltado a ajudar com as despesas e o impacto financeiro imediato do falecimento. Não é pensão mensal.
+
+4. Renda aos dependentes em caso de acidente do trabalho ou doença profissional (rente aux ayants droit).
+Se o falecimento decorre de acidente de trabalho ou doença ocupacional, os dependentes podem receber uma renda periódica específica.
+
+5. Pensão para viúvo ou viúva inválido(a) (pension de veuf/veuve invalide).
+Existe também essa prestação específica no sistema francês, ligada à condição de invalidez do cônjuge sobrevivente, em hipóteses próprias.
+  Tooltip   : Prestações a sobreviventes são os benefícios pagos aos dependentes do segurado falecido.
+
+  Benefício : Benefícios familiares
+  Tooltip   : Na aplicação do acordo França-Brasil, “benefícios familiares” abrange, em especial, os abonos de família e o subsídio de nascimento ou de adoção da prestação de acolhimento à criança (PAJE). Os abonos de família são prestações pagas para ajudar nas despesas com filhos a cargo, e a PAJE inclui ajuda financeira ligada ao nascimento ou à adoção.
+
+======================================================================
+ACORDO: BRASIL × SUÍÇA
+Tooltips encontrados: 3
+----------------------------------------------------------------------
+
+  [ Aba: Benefícios — Suica ]
+
+  Benefício : Aposentadoria por Idade
+  Tooltip   : Na Suíça denominada 'renda de velhice'. Regida pelo seguro-velhice e sobreviventes, cujas siglas são AVS (Assurance-vieillesse et survivants, em francês) e AHV (Alters- und Hinterlassenenversicherung, em alemão). A totalização com períodos brasileiros pode ser usada para atingir o mínimo exigido.
+
+  Benefício : Aposentadoria por Invalidez
+  Tooltip   : Na Suíça denominada 'renda de invalidez'. Regida pelo seguro-invalidez, cujas siglas são AI (Assurance-invalidité, em francês) e IV (Invalidenversicherung, em alemão). Cobre incapacidade para o trabalho reconhecida pela legislação suíça, incluindo doença geral e acidente.
+
+  Benefício : Pensão por Morte
+  Tooltip   : Na Suíça denominada 'renda de sobrevivência'. Regida pelo mesmo seguro-velhice e sobreviventes (AVS/AHV), concedida ao cônjuge sobrevivente e aos órfãos quando o direito decorre de períodos de seguro cobertos pelo acordo.
+
+======================================================================
+ACORDO: BRASIL × PORTUGAL
+Tooltips encontrados: 3
+----------------------------------------------------------------------
+
+  [ Aba: Benefícios — Portugal ]
+
+  Benefício : Assistência médica
+  Tooltip   : No lado português, a assistência médica refere-se às prestações em espécie de doença e maternidade no sistema público de saúde, nos termos do acordo.
+
+  Benefício : Benefícios familiares
+  Tooltip   : No lado português, benefícios familiares abrangem prestações pagas em razão dos encargos familiares, conforme a legislação aplicável e os formulários do acordo.
+
+  [ Aba: Benefícios — Brasil ]
+
+  Benefício : Assistência médica
+  Tooltip   : No lado brasileiro, “assistência médica” refere-se ao atendimento na rede pública de saúde, atualmente no âmbito do SUS. No contexto do acordo, a previsão tem função de coordenação e reciprocidade entre os sistemas, e não de criação de um acesso exclusivo à saúde pública.
+
+======================================================================
+ACORDO: BRASIL × BULGÁRIA
+Tooltips encontrados: 3
+----------------------------------------------------------------------
+
+  [ Aba: Benefícios — Bulgaria ]
+
+  Benefício : Pensão por períodos de seguro e idade
+  Tooltip   : Benefício búlgaro concedido conforme períodos de seguro e idade. É a categoria mais próxima da aposentadoria por idade, mas segue os critérios próprios do Seguro Social Estatal da Bulgária.
+
+  Benefício : Aposentadoria por Invalidez
+  Tooltip   : Benefício búlgaro por invalidez. O acordo reúne nessa categoria as situações de incapacidade reconhecidas pela legislação búlgara, sem necessidade de separar a causa no card.
+
+  Benefício : Pensão de sobreviventes
+  Tooltip   : Benefício destinado às pessoas sobreviventes ou dependentes, quando o direito decorre das categorias previdenciárias cobertas pela legislação búlgara. É a categoria mais próxima da pensão por morte.
+
+======================================================================
+ACORDO: BRASIL × CANADÁ
+Tooltips encontrados: 2
+----------------------------------------------------------------------
+
+  [ Aba: Benefícios — Canada ]
+
+  Benefício : Lei da Proteção Social do Idoso e seus Regulamentos
+  Tooltip   : Base legal do programa canadense de velhice/idade. No contexto do acordo, ela se relaciona principalmente à aposentadoria por idade no sistema OAS, além de prestações complementares vinculadas à renda e à condição familiar, conforme as regras internas do Canadá.
+
+  Benefício : Plano de Pensão do Canadá e seus Regulamentos
+  Tooltip   : Base legal do Canada Pension Plan (CPP), o regime contributivo canadense. No acordo, ele se conecta aos benefícios de aposentadoria contributiva, invalidez e sobrevivência, inclusive algumas prestações pagas a dependentes e sobreviventes, conforme a legislação canadense aplicável.
+
+======================================================================
+ACORDO: BRASIL × ALEMANHA
+Tooltips encontrados: 4
+----------------------------------------------------------------------
+
+  [ Aba: Benefícios — Alemanha ]
+
+  Benefício : Seguro Previdenciário
+  Tooltip   : Abrange as principais prestações da previdência alemã: aposentadorias por idade (Altersrenten), benefícios por incapacidade laboral (Erwerbsminderungsrenten) e pensões por morte/dependentes (Hinterbliebenenrenten).
+
+  Benefício : Seguro Complementar da Caixa dos Operários Siderúrgicos
+  Tooltip   : Regime complementar alemão específico para certos trabalhadores da indústria siderúrgica, com prestações adicionais relacionadas à aposentadoria, incapacidade e proteção aos dependentes.
+
+  Benefício : Seguro de Aposentadoria dos Agricultores
+  Tooltip   : Sistema próprio dos agricultores na Alemanha. Pode envolver prestações por idade, incapacidade laboral e pensões por morte, conforme a legislação alemã aplicável.
+
+  Benefício : Seguro de Acidentes
+  Tooltip   : Cobre acidentes de trabalho e doenças ocupacionais. No contexto do acordo, o foco está nas prestações pecuniárias, como rendas/pensões por redução da capacidade laboral e prestações para dependentes.
+
+======================================================================
+ACORDO: BRASIL × QUEBEC
+Tooltips encontrados: 9
+----------------------------------------------------------------------
+
+  [ Aba: Benefícios — Quebec ]
+
+  Benefício : Lei da Proteção Social do Idoso (Lei Q-2)
+  Tooltip   : Garante renda básica aos idosos residentes no Québec que não possuem pensão suficiente. Não exige histórico de contribuição — é baseado na residência e na renda do beneficiário.
+
+  Benefício : Plano de Pensão do Canadá
+  Tooltip   : Benefício contributivo baseado nas contribuições realizadas durante a vida laboral no Canadá. Cobre aposentadoria por idade, aposentadoria por invalidez e pensão por morte dos dependentes.
+
+  Benefício : Seguro de Deslocamento
+  Tooltip   : Cobertura previdenciária para trabalhadores brasileiros temporariamente deslocados ao Québec. Evita a dupla contribuição e garante que o período trabalhado no exterior seja reconhecido para fins de benefício.
+
+  [ Aba: Benefícios — Brasil ]
+
+  Benefício : Aposentadoria por Idade
+  Tooltip   : Devida ao segurado que atingir a idade mínima (65 anos para homens, 62 para mulheres) com o período de carência exigido. Os períodos contribuídos no Québec podem ser totalizados para atingir a carência.
+
+  Benefício : Aposentadoria por Invalidez
+  Tooltip   : Devida ao segurado considerado incapaz e insusceptível de reabilitação para o exercício de atividade que lhe garanta subsistência. Carência de 12 contribuições mensais, salvo acidente ou doença profissional.
+
+  Benefício : Pensão por Morte
+  Tooltip   : Devida ao conjunto de dependentes do segurado que falecer, aposentado ou não. O valor corresponde a 100% da aposentadoria recebida ou que o segurado teria direito, rateado entre os dependentes.
+
+  Benefício : Incapacidade Permanente para o Trabalho
+  Tooltip   : Corresponde à aposentadoria por invalidez na legislação brasileira. É concedida ao segurado que, após cumprida a carência, for considerado incapaz de forma permanente para qualquer atividade laboral.
+
+  Benefício : Regime Geral de Previdência Social (RGPS)
+  Tooltip   : Regime previdenciário administrado pelo INSS que cobre trabalhadores da iniciativa privada, autônomos e contribuintes individuais. É o regime geral ao qual se aplica a totalização de períodos do acordo com o Québec.
+
+  Benefício : Regimes Próprios de Previdência Social (RPPS)
+  Tooltip   : Regimes previdenciários exclusivos dos servidores públicos efetivos da União, Estados, Distrito Federal e Municípios. Também reconhecidos no acordo para fins de totalização de períodos.
+
+======================================================================
+ACORDO: BRASIL × ITÁLIA
+Tooltips encontrados: 3
+----------------------------------------------------------------------
+
+  [ Aba: Benefícios — Italia ]
+
+  Benefício : Auxílio-funeral
+  Tooltip   : Refere-se à prestação paga em razão das despesas decorrentes do falecimento, prevista nos documentos do acordo Itália-Brasil.
+
+  Benefício : Benefícios do seguro contra tuberculose
+  Tooltip   : Corresponde ao regime italiano de seguro contra tuberculose mencionado no Protocolo Adicional do acordo.
+
+  [ Aba: Benefícios — Brasil ]
+
+  Benefício : Assistência médica
+  Tooltip   : No lado brasileiro, “assistência médica” refere-se ao atendimento na rede pública de saúde, atualmente no âmbito do SUS. No contexto do acordo, a previsão tem função de coordenação e reciprocidade entre os sistemas, e não de criação de um acesso exclusivo à saúde pública.
